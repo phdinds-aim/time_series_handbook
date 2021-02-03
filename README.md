@@ -7,14 +7,14 @@ Insert instructions here
 
 # Outline 
 This handbook contains a variety of techniques that you can use for time series analysis -- from simple statistical models to some of the state-of-the-art algorithms as of writing. Here are the items that are covered in this material:
-- Chapter 1: [Autoregressive integrated moving average](time_series_handbook/tree/main/01_ARIMAandExponentialSmoothing)
-- Chapter 2: Linear Trend and Momentum Forecasting
-- Chapter 3: Vector Autoregressive Methods
-- Chapter 4: Granger Causality
-- Chapter 5: Simplex and S-map Projections
-- Chapter 6: Convergent Cross Mapping and Sugihara Causality
-- Chapter 7: Frequency Analysis
-- Chapter 8: Winningest Methods
+- Chapter 1: [Autoregressive integrated moving average](01_ARIMAandExponentialSmoothing)
+- Chapter 2: [Linear Trend and Momentum Forecasting](02_LinearForecastingTrendandMomentumForecasting)
+- Chapter 3: [Vector Autoregressive Methods](03_VectorAutoregressiveModels)
+- Chapter 4: [Granger Causality](04_GrangerCausality)
+- Chapter 5: [Simplex and S-map Projections](05_SimplexandSmapProjections)
+- Chapter 6: [Convergent Cross Mapping and Sugihara Causality](06_ConvergentCrossMappingandSugiharaCausality)
+- Chapter 7: [Frequency Analysis](07_FrequencyAnalysis)
+- Chapter 8: [Winningest Methods](08_WinningestMethods)
     
 
 
