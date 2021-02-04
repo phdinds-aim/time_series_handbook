@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preface - Advanced Time Series Analysis &#8212; Time Series Analysis Handbook</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2: Linear, Trend, and Momentum Forecasting" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" />
+    <link rel="prev" title="Time Series Handbook" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Time Series Analysis Handbook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Time Series Handbook
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Preface - Advanced Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html">
+   Chapter 2: Linear, Trend, and Momentum Forecasting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
+   Convergent Cross Mapping / Sugihara Causality
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html">
+     Applying CCM Using causal-ccm package
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
+   Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#cross-correlation-between-two-signals">
+   Cross-correlation Between Two Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#wavelet-transform">
+   Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#using-accelerometer-and-gyroscopic-data">
+   Using Accelerometer and Gyroscopic Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+   Final Handbook - Winningest Methods in Time Series Forecasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Data/README.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/00_Preface/Preface_AdvancedTimeSeriesAnalysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F00_Preface/Preface_AdvancedTimeSeriesAnalysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/00_Preface/Preface_AdvancedTimeSeriesAnalysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-introduction">
+   1. General Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-time-series">
+     What is a time series?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-forecasting">
+   2. Time Series Forecasting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-processes">
+   3. Stochastic Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stationarity">
+     Stationarity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autocovariance-of-a-stationary-process">
+     Autocovariance of a stationary process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moving-average-process">
+     Moving Average Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autoregressive-process">
+     Autoregressive Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autoregressive-moving-average-process">
+     Autoregressive Moving Average Process
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="preface-advanced-time-series-analysis">
+<h1>Preface - Advanced Time Series Analysis<a class="headerlink" href="#preface-advanced-time-series-analysis" title="Permalink to this headline">¶</a></h1>
+<p>This notebook introduces us to the concept of time series, fore-casting, and different fundamentals that we will use across the different chapters of our discussion. Specifically, this notebook will discuss:</p>
+<ol class="simple">
+<li><p>Time-Series</p></li>
+<li><p>Forecasting</p></li>
+<li><p>Stochastic Processes</p></li>
+</ol>
+<p>The contents of this notebook is compiled from the following references:</p>
+<ul class="simple">
+<li><p>C.Monterola, <em>“Notebook 10 Time Series Forecasting Method — ARIMA MSDS2021”</em></p></li>
+<li><p>C.Monterola, <em>“Advanced Time Series Analysis - Recurrent Neural Networks — PhDinDS2023”</em></p></li>
+<li><p>J.Valenzuela, <em>“Advanced Time Series Analysis — PhDinDS2023”</em></p></li>
+</ul>
+<p>Organized by:
+Benjur Emmanuel L. Borja</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Required Libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rng</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="k">as</span> <span class="nn">tg</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="general-introduction">
+<h2>1. General Introduction<a class="headerlink" href="#general-introduction" title="Permalink to this headline">¶</a></h2>
+<p>Most of us would have heard about the new buzz in the market i.e. Cryptocurrency. Many of us would have invested in their coins too. But, is investing money in such a volatile currency safe? How can we make sure that investing in these coins now would surely generate a healthy profit in the future? We can’t be sure but we can surely generate an approximate value based on the previous prices. Time series models is one way to predict them.</p>
+<div class="section" id="what-is-a-time-series">
+<h3>What is a time series?<a class="headerlink" href="#what-is-a-time-series" title="Permalink to this headline">¶</a></h3>
+<p>A time series is a series of indexed values, where each value is an <em>outcome</em> of a random variable. In other words, a time series is one realization of a corresponding process.</p>
+<p>An example of a time series is the weather timeseries dataset recorded at the Weather Station at the Max Planck Institute for Biogeochemistry in Jena, Germany. In this dataset, 14 different quantities (such air temperature, atmospheric pressure, humidity, wind direction, and so on) were recorded every 10 minutes, over several years. The original data goes back to 2003, but this example is limited to data from 2009–2016. This dataset is perfect for learning to work with numerical timeseries. We will be using this dataset to build our models. Here are the actual variables in the data:</p>
+<ul class="simple">
+<li><p>Date Time</p></li>
+<li><p>p (mbar) atmospheric pressure</p></li>
+<li><p>T (degC) temperature</p></li>
+<li><p>Tpot (K) potential temperature</p></li>
+<li><p>Tdew (degC) dew point temperature</p></li>
+<li><p>rh (%) relative humidity</p></li>
+<li><p>VPmax (mbar) saturation water vapor pressure</p></li>
+<li><p>VPact (mbar) actual water vapor pressure</p></li>
+<li><p>VPdef (mbar) water vapor pressure deficit</p></li>
+<li><p>sh (g/kg) specific humidity</p></li>
+<li><p>H2OC (mmol/mol) water vapor concentration</p></li>
+<li><p>rho (g/<span class="math notranslate nohighlight">\(m^3\)</span>) air density</p></li>
+<li><p>wv (m/s) wind velocity</p></li>
+<li><p>max. wv (m/s) maximum wind velocity</p></li>
+<li><p>wd (deg) wind direction</p></li>
+</ul>
+<p>Below is the temperature data from this dataset which we will be using frequently in the following chapters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1">#temperature (in degrees Celsius)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span> <span class="n">temp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degree Celcius)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (every 10 mins)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time (every 10 mins)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_4_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_4_1.png" />
+</div>
+</div>
+<p>Time series is anything that has been recorded sequentially over a period of time – regular or irregular. In any case, the goal is to see if the observed patterns can help us <em><strong>forecast</strong></em> a period of time into the future.</p>
+</div>
+</div>
+<div class="section" id="time-series-forecasting">
+<h2>2. Time Series Forecasting<a class="headerlink" href="#time-series-forecasting" title="Permalink to this headline">¶</a></h2>
+<p>Forecasting is predicting future values of our time series given all available information such as historical data and any possible variables that can influence the data. Besides Crypto Currencies, there are multiple important areas where time series forecasting is used for example : forecasting Sales, Call Volume in a Call Center, Solar activity, Ocean tides, Stock market behaviour, and many others. Assume the Manager of a hotel wants to predict how many visitors should he expect next year to accordingly adjust the hotel’s inventories and make a reasonable guess of the hotel’s revenue. Based on the data of the previous years/months/days, (S)he can use time series forecasting and get an approximate value of the visitors. Forecasted value of visitors will help the hotel to manage the resources and plan things accordingly.</p>
+<p>There are a lot of things to consider before we forecast our time-series:</p>
+<ol class="simple">
+<li><p>The kind of data (Trends, Seasonality, etc)</p></li>
+<li><p>Factors that influence it (Multivariate Analysis, Causality, etc)</p></li>
+<li><p>The amount of data available</p></li>
+</ol>
+<p>Through out the following Chapters, we will discuss different forecasting methods how they are used. Each method have their own sets of assumptions and limitations, but the general idea is we assume that there is a fundamental mathematical process that defines our time-series. Understanding these mathematical processes helps us find the best method or algorithm (and the corresponding hyperparameters) to better forecast our time-series.</p>
+<p>In the next section, we’ll discuss the first formulation of time-series data sets, <em><strong>Stochastic Processes</strong></em>.</p>
+</div>
+<div class="section" id="stochastic-processes">
+<h2>3. Stochastic Processes<a class="headerlink" href="#stochastic-processes" title="Permalink to this headline">¶</a></h2>
+<p>A stochastic, or random process (process hereon) is a series of indexed random variables. In the context of time series analysis, we’ll use <span class="math notranslate nohighlight">\(t = 0, 1, 2, ...\)</span>, (discrete) time, as an index.</p>
+<p><span class="math notranslate nohighlight">\(\lbrace \mathbf{X_0}, \mathbf{X_1}, \mathbf{X_2}, ...\rbrace\)</span> denotes a process where <span class="math notranslate nohighlight">\(\mathbf{X_0}, \mathbf{X_1}, \mathbf{X_2}, ...\)</span> are random variables.</p>
+<p>A time series, in this context, is a series of indexed values, where each value is an <em>outcome</em> of a random variable. In other words, a time series is one realization of a corresponding process.</p>
+<p><strong>Example 1: Bernoulli trials.</strong> Recall that a Bernoulli trial has two possible outcomes or realizations. Let’s take them to be <span class="math notranslate nohighlight">\(\{-1, +1\}\)</span>. Let’s generate a few values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bern_outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># Generate 100 Bernoulli trials</span>
+<span class="n">flips</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">bern_outcomes</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">flips</span><span class="p">)</span>
+<span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> <span class="c1"># here we implicitly index them; let the index stand for time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_7_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_7_1.png" />
+</div>
+</div>
+<p><strong>Example 2: Gaussian white noise.</strong> A Gaussian white noise process generates a time series in which each value was drawn from a Gaussian distribution with zero mean and unit variance: <span class="math notranslate nohighlight">\(\bf{X_t} \sim Gaussian(0, 1)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">wn_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+<span class="n">wn_series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_9_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_9_1.png" />
+</div>
+</div>
+<p>Gaussian white noise has the properties of being <em>independent</em> and <em>identically-distributed</em>, which leads some key properties for linear time series, to be brought up below.</p>
+<p><strong>Example 3: Brownian motion in one dimension.</strong> One-dimensional Brownian motion, or Wiener process, can be thought of as the cumulative sum of white noise time series. The value of the series at <span class="math notranslate nohighlight">\(t\)</span> is a sum of all preceding values, and can be thought of as a random walker’s displacement at time <span class="math notranslate nohighlight">\(t\)</span>: <span class="math notranslate nohighlight">\(X_t = X_{t_1} + X_{t-2}  + ... = \sum_{i=0}^{t}{X_i}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">bms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">bms_msq</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">wn</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">bm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+    <span class="n">bms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bm</span><span class="p">)</span>
+    <span class="n">bms_msq</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bm</span><span class="p">])</span>
+<span class="n">bm_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bms</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bm_msq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bms_msq</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">bms_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">bm_ave</span><span class="p">)</span>
+<span class="n">bms_msq_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">bm_msq</span><span class="p">)</span>
+<span class="n">bms_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Displacement&quot;</span><span class="p">)</span>
+<span class="n">bms_msq_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;MSD&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_11_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_11_1.png" />
+</div>
+</div>
+<p><strong>Example 4: Moving average.</strong> Given a white noise process (see above), a moving average process of order (<span class="math notranslate nohighlight">\(q\)</span>) can be generated by taking a weighted sum of the present and the previous <span class="math notranslate nohighlight">\(q\)</span> values of the white noise at each time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(X_t = \epsilon_t + a_1\epsilon_{t-1} + ... + a_q\epsilon_{t-q}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(\{\epsilon_t\} \sim WN(0, \sigma^2)\)</span>. We write <span class="math notranslate nohighlight">\(\{X_t\} \sim MA(q)\)</span>. The <span class="math notranslate nohighlight">\(MA\)</span> process is an example of a <em>linear process.</em></p>
+<p>Let’s consider an <span class="math notranslate nohighlight">\(MA(2)\)</span> process with <span class="math notranslate nohighlight">\(a_1 = 0.5\)</span> and <span class="math notranslate nohighlight">\(a_2 = 0.25\)</span>. Then</p>
+<p><span class="math notranslate nohighlight">\(X_t = \epsilon_t + 0.5\epsilon_{t-1} + 0.25\epsilon_{t-2}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ma2</span><span class="p">(</span><span class="n">wn</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># First element is just epsilon_t</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wn</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># For the second element, let&#39;s take just the first coefficient (admittedly a judgment call)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">wn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">wn</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># For the rest, use the full equation</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wn</span><span class="p">)):</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wn</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">wn</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.25</span><span class="o">*</span><span class="n">wn</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">ma2_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">ma2</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">wn_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+<span class="n">wn_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;WN(0,1)&quot;</span><span class="p">)</span>
+<span class="n">ma2_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;MA(2)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcc038c6750&gt;
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_13_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_13_1.png" />
+</div>
+</div>
+<p><strong>Exercise 1: Autoregressive process.</strong> Given a white noise process (see above), a time series from an autoregressive process of order <span class="math notranslate nohighlight">\(p\)</span> can be generated by taking a weighted sum of the previous <span class="math notranslate nohighlight">\(p\)</span> values of the time series, plus white noise at each time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(X_t = b_{1}X_{t-1} + ... + b_{p}X_{t-p} + \epsilon_{t}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(\{\epsilon_t\} \sim WN(0, \sigma^2)\)</span>. We write <span class="math notranslate nohighlight">\(\{X_t\} \sim MA(q)\)</span>.</p>
+<p>Given an <span class="math notranslate nohighlight">\(AR(2)\)</span> process with <span class="math notranslate nohighlight">\(b_1 = 0.6, b_2 = -0.2\)</span>, generate and plot a time series, similar to the <span class="math notranslate nohighlight">\(MA(1)\)</span> example above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ar2</span><span class="p">(</span><span class="n">wn</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># First element is just epsilon_t</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wn</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># For the second element, let&#39;s take just the first coefficient (admittedly a judgment call)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">wn</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># For the rest, use the full equation</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wn</span><span class="p">)):</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wn</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+<span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">ar2_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">ar2</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">wn_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+<span class="n">wn_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;WN(0,1)&quot;</span><span class="p">)</span>
+<span class="n">ar2_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;AR(2)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcc039a2810&gt;
+</pre></div>
+</div>
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_15_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_15_1.png" />
+</div>
+</div>
+<div class="section" id="stationarity">
+<h3>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this headline">¶</a></h3>
+<p>Consider a process <span class="math notranslate nohighlight">\(\{X_t\}\)</span>, with corresponding joint distribution <span class="math notranslate nohighlight">\(P(X_{t_1 + \tau}, X_{t_2 + \tau}, ..., X_{t_n + \tau})\)</span> at times <span class="math notranslate nohighlight">\(t_1 + \tau, t_2 + \tau, ..., t_n + \tau\)</span>.</p>
+<p>This process is <em>stationary</em> if:</p>
+<p><span class="math notranslate nohighlight">\(P(X_{t_1 + \tau}, X_{t_2 + \tau}, ..., X_{t_n + \tau}) = P(X_{t_1}, X_{t_2}, ..., X_{t_n})\)</span> for <span class="math notranslate nohighlight">\(\tau, t_1 ... t_n\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Essentially, the statistics of a stationary process is invariant to time-translation.</p>
+<p><span class="math notranslate nohighlight">\(\{X_t\}\)</span> is <em>weakly stationary</em> if:</p>
+<p>(i) <span class="math notranslate nohighlight">\(\mu(X_t) = \mu(X_{t + \tau}) = \mu\)</span> for all <span class="math notranslate nohighlight">\(\tau\)</span>,<br />
+(ii) <span class="math notranslate nohighlight">\(\Gamma(t_1, t_2) = \Gamma(t_1 - t_2)\)</span>, and <br />
+(iii) <span class="math notranslate nohighlight">\(E[|X_t|^2] &lt; \infty\)</span>.</p>
+<p>In the above, <span class="math notranslate nohighlight">\(\Gamma(t_1, t_2)\)</span> is the <em>autocovariance</em>, defined by:</p>
+<p><span class="math notranslate nohighlight">\(\Gamma(t_1, t_2) = cov~(t_1, t_2) = E\left[(X_{t_1} - \mu(X_{t_1}))(X_{t_2} - \mu(X_{t_2}))\right]\)</span></p>
+<p>Weak stationarity implies that the lag, <span class="math notranslate nohighlight">\(\tau\)</span>, can be used to parametrize the autocovariance, leading to:</p>
+<p><span class="math notranslate nohighlight">\(\Gamma(\tau)  = E\left[(X_t - \mu)(X_{t + \tau} - \mu)\right]\)</span>.</p>
+<p>Normalizing the autocovariance by the standard deviations at <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(t_2\)</span> yields the <em>autocorrelation</em>:</p>
+<p><span class="math notranslate nohighlight">\(P(t_1, t_2) = \frac{cov~(t_1, t_2)}{\sigma_{t_1}\sigma_{t_2}} = \frac{E\left[(X_{t_1} - \mu(X_{t_1}))(X_{t_2} - \mu(X_{t_2}))\right]}{\sigma_{t_1}\sigma_{t_2}}\)</span></p>
+<p>And for a weak stationary process:</p>
+<p><span class="math notranslate nohighlight">\(P(\tau) = \frac{E\left[(X_t - \mu)(X_{t + \tau} - \mu)\right]}{\sigma^2}\)</span></p>
+<p>For Gaussian white noise, weak stationarity implies stationarity, something not always valid for other processes.</p>
+</div>
+<div class="section" id="autocovariance-of-a-stationary-process">
+<h3>Autocovariance of a stationary process<a class="headerlink" href="#autocovariance-of-a-stationary-process" title="Permalink to this headline">¶</a></h3>
+<p>The autocovariance matrix of a stationary process has a particular form. Letting <span class="math notranslate nohighlight">\(\tau = |t_1 - t_2|\)</span> be the <em>lag</em>, for <span class="math notranslate nohighlight">\(n\)</span> successive observations from the time series <span class="math notranslate nohighlight">\({X_t}\)</span>, the autocovariance matrix is symmetric and positive-definite, given by:</p>
+<p><span class="math notranslate nohighlight">\(
+    \Gamma_n = \begin{pmatrix}
+                    \gamma_0 &amp; \gamma_1 &amp; \gamma_2 &amp; \cdots &amp; \gamma_{n-1} \\
+                    \gamma_1 &amp; \gamma_0 &amp; \gamma_1 &amp; \cdots &amp; \gamma_{n-2} \\
+                    \gamma_2 &amp; \gamma_1 &amp; \gamma_0 &amp; \cdots &amp; \gamma_{n-3} \\
+                    \vdots   &amp; \vdots   &amp;  \vdots  &amp; \ddots &amp;  \vdots \\
+                    \gamma_{n-1} &amp; \gamma_{n-2} &amp; \cdots &amp; \gamma_{n-3} &amp; \gamma_0
+                \end{pmatrix}
+\)</span></p>
+<p>Since for a stationary process the variance at zero lag is constant, the <em>autocorrelation matrix</em> is given by:</p>
+<p><span class="math notranslate nohighlight">\(
+    P_n = \sigma^2\Gamma_n = \begin{pmatrix}
+                    1 &amp; \rho_1 &amp; \rho_2 &amp; \cdots &amp; \rho_{n-1} \\
+                    \rho_1 &amp; 1 &amp; \rho_1 &amp; \cdots &amp; \rho_{n-2} \\
+                    \rho_2 &amp; \rho_1 &amp; 1 &amp; \cdots &amp; \rho_{n-3} \\
+                    \vdots   &amp; \vdots   &amp;  \vdots  &amp; \ddots &amp;  \vdots \\
+                    \rho_{n-1} &amp; \rho_{n-2} &amp; \cdots &amp; \rho_{n-3} &amp; 1
+                \end{pmatrix}
+\)</span></p>
+<p>The <em>autocovariance function</em>, <span class="math notranslate nohighlight">\(\Gamma(\tau)\)</span>, can simply be read off from the diagonals of the autocovariance matrix; likewise with the <em>autocorrelation function</em>.</p>
+<p><strong>Q.</strong> What is the autocorrelation function for the Gaussian white noise process with zero mean and unit variance?</p>
+<p><strong>A.</strong> Since the values are iid, the values are uncorrelated, thus:</p>
+<p><span class="math notranslate nohighlight">\(P(\tau) = \delta_{\tau,0}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting:</span>
+<span class="n">tg</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">wn_series</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_20_0.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_20_0.png" />
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_20_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_20_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting:</span>
+<span class="n">tg</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">wn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_21_0.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_21_0.png" />
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_21_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_21_1.png" />
+</div>
+</div>
+<p>Autocorrelations for other time series above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tg</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">bm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_23_0.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_23_0.png" />
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_23_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tg</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">ar2_series</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_24_0.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_24_0.png" />
+<img alt="../_images/Preface_AdvancedTimeSeriesAnalysis_24_1.png" src="../_images/Preface_AdvancedTimeSeriesAnalysis_24_1.png" />
+</div>
+</div>
+<p>What is the autocorrelation of the <span class="math notranslate nohighlight">\(AR(2)\)</span> process above?</p>
+</div>
+<div class="section" id="moving-average-process">
+<h3>Moving Average Process<a class="headerlink" href="#moving-average-process" title="Permalink to this headline">¶</a></h3>
+<p>From above, <span class="math notranslate nohighlight">\({X_t}\)</span> is a <em>moving average</em> process of order <span class="math notranslate nohighlight">\(q\)</span> if <span class="math notranslate nohighlight">\(X_t\)</span> follows:</p>
+<p><span class="math notranslate nohighlight">\(X_t = \epsilon_t + a_1\epsilon_{t-1} + ... + a_q\epsilon_{t-q}\)</span>.</p>
+<p>Let’s use the backward shift, or lag operator <span class="math notranslate nohighlight">\(\bf{B}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{B} X_t = X_{t-1}\)</span> <br />
+<span class="math notranslate nohighlight">\(\mathbf{B}^2 X_t = X_{t-2}\)</span></p>
+<p>and so on. We can rewrite the above as:</p>
+<p><span class="math notranslate nohighlight">\(X_t = \epsilon_t + a_1\mathbf{B}\epsilon_t + ... + a_q\mathbf{B}^q\epsilon_{t}\)</span></p>
+<p><span class="math notranslate nohighlight">\(X_t = \theta(\mathbf{B})\epsilon_t\)</span>, where</p>
+<p><span class="math notranslate nohighlight">\(\theta(\mathbf{B}) =  1 + a_1\mathbf{B} + ... + a_q\mathbf{B}^q\)</span>, with an associated polynomial</p>
+<p><span class="math notranslate nohighlight">\(\theta(z) =  1 + a_1z + ... + a_qz^q = \sum_{j=0}^q{a_jz^j}\)</span>.</p>
+</div>
+<div class="section" id="autoregressive-process">
+<h3>Autoregressive Process<a class="headerlink" href="#autoregressive-process" title="Permalink to this headline">¶</a></h3>
+<p>From above, <span class="math notranslate nohighlight">\({X_t}\)</span> is an <em>autoregressive</em> process of order <span class="math notranslate nohighlight">\(p\)</span> if <span class="math notranslate nohighlight">\(X_t\)</span> follows:</p>
+<p><span class="math notranslate nohighlight">\(X_t = b_{1}X_{t-1} + ... + b_{p}X_{t-p} + \epsilon_{t}\)</span>.</p>
+<p>Rewriting and using <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(X_t - b_{1}X_{t-1}~ - ...~ - b_{p}X_{t-p} = \epsilon_{t}\)</span></p>
+<p><span class="math notranslate nohighlight">\((1 - b_1\mathbf{B}~ - ...~ - b_p\mathbf{B}^p)X_t = \epsilon_{t}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi(\mathbf{B})X_t = \epsilon_{t}\)</span>, where</p>
+<p><span class="math notranslate nohighlight">\(\phi(\mathbf{B}) = 1 - b_1\mathbf{B}~ - ... - b_p\mathbf{B}^p\)</span>, and associated polynomial</p>
+<p><span class="math notranslate nohighlight">\(\phi(z) = 1 - b_1z~ - ... - b_pz^p = \sum_{j=0}^{p}{b_jz^j}\)</span>.</p>
+</div>
+<div class="section" id="autoregressive-moving-average-process">
+<h3>Autoregressive Moving Average Process<a class="headerlink" href="#autoregressive-moving-average-process" title="Permalink to this headline">¶</a></h3>
+<p>Combining the two yields the <em>autoregressive moving average</em> process of order <span class="math notranslate nohighlight">\((p, q)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(X_t = \epsilon_t + a_1\epsilon_{t-1} + ... + a_q\epsilon_{t-q} + b_{1}X_{t-1} + ... + b_{p}X_{t-p}\)</span></p>
+<p>This can be rewritten as:</p>
+<p><span class="math notranslate nohighlight">\(\phi(\mathbf{B})X_t = \theta(\mathbf{B})\epsilon_t\)</span>,</p>
+<p>with the characteristic polynomials as defined above.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./00_Preface"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Time Series Handbook</a>
+    <a class='right-next' id="next-link" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" title="next page">Chapter 2: Linear, Trend, and Momentum Forecasting</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Asian Institute of Management PhD in Data Science<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

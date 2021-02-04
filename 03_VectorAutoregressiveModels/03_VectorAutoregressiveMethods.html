@@ -1,0 +1,2623 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 3: Vector Autoregressive Methods &#8212; Time Series Analysis Handbook</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Convergent Cross Mapping / Sugihara Causality" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html" />
+    <link rel="prev" title="Chapter 2: Linear, Trend, and Momentum Forecasting" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Time Series Analysis Handbook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Time Series Handbook
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface - Advanced Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html">
+   Chapter 2: Linear, Trend, and Momentum Forecasting
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
+   Convergent Cross Mapping / Sugihara Causality
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html">
+     Applying CCM Using causal-ccm package
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
+   Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#cross-correlation-between-two-signals">
+   Cross-correlation Between Two Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#wavelet-transform">
+   Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#using-accelerometer-and-gyroscopic-data">
+   Using Accelerometer and Gyroscopic Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+   Final Handbook - Winningest Methods in Time Series Forecasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Data/README.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multivariate-time-series-model">
+     Multivariate Time Series Model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#motivation">
+       Motivation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#definition-univariate-vs-multivariate-time-series">
+       Definition: Univariate vs Multivariate Time Series
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples-of-multivariate-time-series">
+       Examples of Multivariate Time Series
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#air-quality-data-from-uci">
+         Air Quality Data from UCI
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#global-health-from-the-world-bank">
+         Global Health from The World Bank
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#us-treasury-rates">
+         US Treasury Rates
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#jena-weather-data">
+         Jena Weather Data
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#foundations">
+       Foundations
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#weak-stationarity-of-multivariate-time-series">
+         Weak Stationarity of Multivariate Time Series
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#obtaining-cross-correlation-matrix-from-cross-covariance-matrix">
+         Obtaining Cross-Correlation Matrix from Cross-Covariance Matrix
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-autoregressive-var-models">
+     Vector Autoregressive (VAR) Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-1-model">
+       VAR(1) Model
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#structural-and-reduced-form">
+         Structural and Reduced Form
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h5 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#reduced-form-var-var-in-standard-form">
+           Reduced-form VAR (VAR in standard form)
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#vma-infinite-representation-and-stationarity">
+         VMA infinite representation and Stationarity
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h5 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#stationarity-of-the-var-1-model">
+           Stationarity of the VAR(1) model
+          </a>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-p-model">
+       VAR(p) Model
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#properties">
+         Properties
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#stationarity">
+         Stationarity
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specification-of-a-var-model-choosing-the-order-p">
+       Specification of a VAR model: Choosing the order
+       <em>
+        p
+       </em>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#using-information-criterion">
+         Using information criterion
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#additional-criterion">
+         Additional criterion:
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-var-model">
+     Building a VAR model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quick-inspection-before-we-proceed-with-modeling">
+       Quick inspection before we proceed with modeling…
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#check-stationarity">
+       1. Check stationarity
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#kwiatkowskiphillipsschmidtshin-kpss-test">
+         Kwiatkowski–Phillips–Schmidt–Shin (KPSS) test
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#augmented-dickey-fuller-adf-test">
+         Augmented Dickey-Fuller (ADF) test
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#split-data-into-train-and-test-sets">
+       2. Split data into train and test sets
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#select-order-p">
+       3. Select order
+       <em>
+        p
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fit-var-model-with-chosen-order">
+       3. Fit VAR model with chosen order
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#get-forecast">
+       4. Get forecast
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#performance-evaluation-comparison-with-arima-model">
+         Performance Evaluation: Comparison with ARIMA model
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structural-analysis">
+     Structural Analysis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#impulse-response-function-irf">
+       Impulse Response Function (IRF)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#irf-in-the-var-system-for-air-quality">
+         IRF in the VAR system for Air Quality
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#forecast-error-variance-decomposition-fevd">
+       Forecast Error Variance Decomposition (FEVD)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#forecasting-the-jena-weather-data">
+       Forecasting the Jena Weather data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3-vector-autoregressive-methods">
+<h1>Chapter 3: Vector Autoregressive Methods<a class="headerlink" href="#chapter-3-vector-autoregressive-methods" title="Permalink to this headline">¶</a></h1>
+<p><strong>Introduction</strong></p>
+<p>Previously, we have introduced the classical approaches in forecasting single/univariate time series like the
+Autoregressive-Moving-Average (ARIMA) model and the simple linear regression model. We learned that stationarity is a condition that is necessary when using ARIMA while this need not be imposed when using the linear regression model. In this notebook, we extend the forecasting problem to a more generalized framework where we deal with <strong>multivariate time series</strong>–time series which has more than one time-dependent variable. More specifically, we introduce <strong>vector autoregressive (VAR)</strong> models and show how they can be used in forecasting mutivariate time series.</p>
+<p><strong>Chapter Outline</strong></p>
+<ul class="simple">
+<li><p>Multivariate Time Series model</p>
+<ul>
+<li><p>Motivation</p></li>
+<li><p>Univariate VS Multivariate Time Series</p></li>
+<li><p>Examples</p></li>
+<li><p>Foundations</p></li>
+</ul>
+</li>
+<li><p>Vector Autoregressive (VAR) Models</p>
+<ul>
+<li><p>VAR(1) model</p></li>
+<li><p>VAR(<em>p</em>) model</p></li>
+<li><p>Choosing the order <em>p</em></p></li>
+</ul>
+</li>
+<li><p>Building a VAR model</p></li>
+<li><p>Structural Analysis</p>
+<ul>
+<li><p>Impulse Response Function</p></li>
+<li><p>Forecast Error Variance Decomposition</p></li>
+</ul>
+</li>
+<li><p>Takeaways</p></li>
+<li><p>References</p></li>
+</ul>
+<p><strong>References</strong>: The contents of this notebook are compiled from the references listed <span class="xref myst">here</span>.</p>
+<p><strong>Organized by</strong>: Maria Eloisa Ventura</p>
+<div class="section" id="multivariate-time-series-model">
+<h2>Multivariate Time Series Model<a class="headerlink" href="#multivariate-time-series-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To understand the dynamic relationships over time among the series</p></li>
+<li><p>To improve accuracy of forecasts for individual series by utilizing the additional information available from the related series in the forecasts for each series</p></li>
+</ul>
+</div>
+<div class="section" id="definition-univariate-vs-multivariate-time-series">
+<h3>Definition: Univariate vs Multivariate Time Series<a class="headerlink" href="#definition-univariate-vs-multivariate-time-series" title="Permalink to this headline">¶</a></h3>
+<p>Time series can either be univariate or multivariate. The term <strong>univariate time series</strong> consists of single observations recorded sequentially over equal time increments. When dealing with a univariate time series model (e.g., ARIMA), we usually refer to a model that contains lag values of itself as the independent variable.</p>
+<p>On the other hand, a <strong>multivariate time series</strong> has more than one time-dependent variables. For a multivariate process, several related time series are observed simultaneously over time. As an extension of the univariate case, the multivariate time series model involves two or more input variables, and leverages the interrelationship among the different time series variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.tsa</span> <span class="k">as</span> <span class="nn">tsa</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.vector_ar.var_model</span> <span class="kn">import</span> <span class="n">VAR</span><span class="p">,</span> <span class="n">FEVD</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">acf</span><span class="p">,</span> <span class="n">adfuller</span><span class="p">,</span> <span class="n">ccf</span><span class="p">,</span> <span class="n">ccovf</span><span class="p">,</span> <span class="n">kpss</span><span class="p">,</span> <span class="n">coint</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.vector_ar.vecm</span> <span class="kn">import</span> <span class="n">coint_johansen</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">mvts_utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="examples-of-multivariate-time-series">
+<h3>Examples of Multivariate Time Series<a class="headerlink" href="#examples-of-multivariate-time-series" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="air-quality-data-from-uci">
+<h4>Air Quality Data from UCI<a class="headerlink" href="#air-quality-data-from-uci" title="Permalink to this headline">¶</a></h4>
+<p>The dataset contains hourly averaged measurements obtained from an Air Quality Chemical Multisensor Device which was located on the field of polluted area at an Italian city. The dataset can be downloaded <strong><a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Air+Quality">here</a></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aq_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/AirQualityUCI/AirQualityUCI.xlsx&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]])</span>\
+            <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date_Time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">()</span>
+<span class="n">aq_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">55</span><span class="n">cde3d3a9fa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">aq_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/AirQualityUCI/AirQualityUCI.xlsx&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]])</span>\
+<span class="g g-Whitespace">      </span><span class="mi">2</span>             <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date_Time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">aq_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>                 <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span>                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">299</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span> 
+<span class="g g-Whitespace">    </span><span class="mi">301</span>         <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/excel/_base.py</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span>         <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">336</span>         <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/excel/_base.py</span> in <span class="ni">__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1107</span>         <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="g g-Whitespace">   </span><span class="mi">1108</span> 
+<span class="ne">-&gt; </span><span class="mi">1109</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1110</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1111</span>     <span class="k">def</span> <span class="nf">__fspath__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/excel/_xlrd.py</span> in <span class="ni">__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="s2">         err_msg = &quot;Install xlrd &gt;= 1.0.0 for Excel support&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">24</span><span class="s2">         import_optional_dependency(&quot;xlrd&quot;, extra=err_msg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="s2">         super().__init__(filepath_or_buffer, storage_options=storage_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="s2"> </span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/compat/_optional.py</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, raise_on_missing, on_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s2">     except ImportError:</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="s2">         if raise_on_missing:</span>
+<span class="ne">--&gt; </span><span class="mi">109</span><span class="s2">             raise ImportError(msg) from None</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="s2">             return None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;xlrd&#39;. Install xlrd &gt;= 1.0.0 for Excel support Use pip or conda to install xlrd.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(GT)&#39;</span><span class="p">,</span> <span class="s1">&#39;C6H6(GT)&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">]</span>
+<span class="n">aq_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)):</span> 
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">plot_cols</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_11_0.png" src="../_images/03_VectorAutoregressiveMethods_11_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="global-health-from-the-world-bank">
+<h4>Global Health from The World Bank<a class="headerlink" href="#global-health-from-the-world-bank" title="Permalink to this headline">¶</a></h4>
+<p>This dataset combines key health statistics from a variety of sources to provide a look at global health and population trends. It includes information on nutrition, reproductive health, education, immunization, and diseases from over 200 countries. The dataset can be downloaded <strong><a class="reference external" href="https://console.cloud.google.com/marketplace/product/the-world-bank/global-health?filter=solution-type:dataset&amp;filter=category:health&amp;id=f3c38e10-2c45-43c8-8a12-8d749ba987ee">here</a></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/WorldBankHealth/WorldBankHealthPopulation_SeriesSummary.csv&#39;</span><span class="p">)</span>\
+            <span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;series_code&#39;</span><span class="p">,</span> <span class="s1">&#39;indicator_name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">()</span>\
+            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;indicator_name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;series_code&#39;</span><span class="p">)</span>
+<span class="n">hn_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/WorldBankHealth/WorldBankHealthPopulation_HealthNutritionPopulation.csv&#39;</span><span class="p">)</span>\
+            <span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;indicator_code&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SH.XPD.KHEX.GD.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.XPD.CHEX.GD.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.XPD.GHED.GD.ZS&#39;</span><span class="p">]</span>
+<span class="n">health_expenditure_df</span> <span class="o">=</span> <span class="n">hn_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span> <span class="n">cols</span><span class="p">]</span>\
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ind_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">indicator_name</span>\
+                           <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))))</span>
+<span class="n">health_expenditure_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2000-1-1&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">health_expenditure_df</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;A-DEC&quot;</span><span class="p">)</span>
+<span class="n">health_expenditure_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>indicator_code</th>
+      <th>Capital_health_expenditure</th>
+      <th>Current_health_expenditure</th>
+      <th>Domestic_general_government_health_expenditure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-12-31</th>
+      <td>0.013654</td>
+      <td>3.154818</td>
+      <td>1.400685</td>
+    </tr>
+    <tr>
+      <th>2001-12-31</th>
+      <td>0.012675</td>
+      <td>2.947059</td>
+      <td>1.196554</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">health_expenditure_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Capital health expenditure&#39;</span><span class="p">,</span> <span class="s1">&#39;Current health expenditure&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Domestic general government</span><span class="se">\n</span><span class="s1"> health expenditure&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)):</span> 
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y_label</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2"> (% of GDP)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_14_0.png" src="../_images/03_VectorAutoregressiveMethods_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="us-treasury-rates">
+<h4>US Treasury Rates<a class="headerlink" href="#us-treasury-rates" title="Permalink to this headline">¶</a></h4>
+<p>January, 1982 – December, 2016  (Weekly)
+<a class="reference external" href="https://essentialoftimeseries.com/data/">https://essentialoftimeseries.com/data/</a>
+This sample dataset contains weekly data of US Treasury rates from January 1982 to December 2016. The dataset can be downloaded <strong><a class="reference external" href="https://essentialoftimeseries.com/data/">here</a></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/USTreasuryRates/us-treasury-rates-weekly.xlsx&quot;</span><span class="p">)</span>
+<span class="n">treas_df</span> <span class="o">=</span> <span class="n">treas_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;Date&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">treas_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">treas_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">treas_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1-month</th>
+      <th>3-month</th>
+      <th>6-month</th>
+      <th>1-year</th>
+      <th>2-year</th>
+      <th>3-year</th>
+      <th>5-year</th>
+      <th>7-year</th>
+      <th>10-year</th>
+      <th>Excess CRSP Mkt Returns</th>
+      <th>10-year Treasury Returns</th>
+      <th>Term spread</th>
+      <th>Change in term spread</th>
+      <th>5-year Treasury Returns</th>
+      <th>Unnamed: 15</th>
+      <th>Excess 10-year Treasury Returns</th>
+      <th>Term Spread</th>
+      <th>VXO</th>
+      <th>Delta VXO</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1982-01-08</th>
+      <td>10.296</td>
+      <td>12.08</td>
+      <td>13.36</td>
+      <td>13.8</td>
+      <td>14.12</td>
+      <td>14.32</td>
+      <td>14.46</td>
+      <td>14.54</td>
+      <td>14.47</td>
+      <td>-1.632</td>
+      <td>NaN</td>
+      <td>2.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.286662</td>
+      <td>1.729559</td>
+      <td>20.461911</td>
+      <td>-0.003106</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">treas_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;US Treasury yield (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_17_0.png" src="../_images/03_VectorAutoregressiveMethods_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="jena-weather-data">
+<h4>Jena Weather Data<a class="headerlink" href="#jena-weather-data" title="Permalink to this headline">¶</a></h4>
+<p>Weather timeseries dataset recorded at the Weather Station at the Max Planck Institute for Biogeochemistry in Jena, Germany from 2009 to 2016. It contains 14 different quantities (such air temperature, atmospheric pressure, humidity, wind direction, and so on) were recorded every 10 minutes. You can download the data <strong><a class="reference external" href="https://www.kaggle.com/stytch16/jena-climate-2009-2016">here</a></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jena_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
+<span class="n">jena_data</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">jena_data</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">])</span>
+<span class="n">jena_data</span> <span class="o">=</span> <span class="n">jena_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date Time&#39;</span><span class="p">)</span>
+<span class="n">jena_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+      <th>Tpot (K)</th>
+      <th>Tdew (degC)</th>
+      <th>rh (%)</th>
+      <th>VPmax (mbar)</th>
+      <th>VPact (mbar)</th>
+      <th>VPdef (mbar)</th>
+      <th>sh (g/kg)</th>
+      <th>H2OC (mmol/mol)</th>
+      <th>rho (g/m**3)</th>
+      <th>wv (m/s)</th>
+      <th>max. wv (m/s)</th>
+      <th>wd (deg)</th>
+    </tr>
+    <tr>
+      <th>Date Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2009-01-01 00:10:00</th>
+      <td>996.52</td>
+      <td>-8.02</td>
+      <td>265.40</td>
+      <td>-8.90</td>
+      <td>93.3</td>
+      <td>3.33</td>
+      <td>3.11</td>
+      <td>0.22</td>
+      <td>1.94</td>
+      <td>3.12</td>
+      <td>1307.75</td>
+      <td>1.03</td>
+      <td>1.75</td>
+      <td>152.3</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 00:20:00</th>
+      <td>996.57</td>
+      <td>-8.41</td>
+      <td>265.01</td>
+      <td>-9.28</td>
+      <td>93.4</td>
+      <td>3.23</td>
+      <td>3.02</td>
+      <td>0.21</td>
+      <td>1.89</td>
+      <td>3.03</td>
+      <td>1309.80</td>
+      <td>0.72</td>
+      <td>1.50</td>
+      <td>136.1</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 00:30:00</th>
+      <td>996.53</td>
+      <td>-8.51</td>
+      <td>264.91</td>
+      <td>-9.31</td>
+      <td>93.9</td>
+      <td>3.21</td>
+      <td>3.01</td>
+      <td>0.20</td>
+      <td>1.88</td>
+      <td>3.02</td>
+      <td>1310.24</td>
+      <td>0.19</td>
+      <td>0.63</td>
+      <td>171.6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">jena_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">jena_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_20_0.png" src="../_images/03_VectorAutoregressiveMethods_20_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="foundations">
+<h3>Foundations<a class="headerlink" href="#foundations" title="Permalink to this headline">¶</a></h3>
+<p>Before we discuss VARs, we outline some fundamental concepts below that we’ll need to understand the model.</p>
+<div class="section" id="weak-stationarity-of-multivariate-time-series">
+<h4>Weak Stationarity of Multivariate Time Series<a class="headerlink" href="#weak-stationarity-of-multivariate-time-series" title="Permalink to this headline">¶</a></h4>
+<p>As in the univariate case, one of the requirements that we need to satisfy before we can apply VAR models is stationarity–in particular, weak stationarity. Both in the univariate and multivariate case, the first two moments of the time series are time-invariant. More formally, we describe weak stationarity below.</p>
+<p>Consider a <span class="math notranslate nohighlight">\(N\)</span>-dimensional time series, <span class="math notranslate nohighlight">\(\mathbf{y}_t = \left[y_{1,t}, y_{2,t}, ..., y_{N,t}\right]^\prime\)</span>. This is said to be weakly stationary if the first two moments are finite and constant through time, that is,</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\left[\mathbf{y}_t\right] = \boldsymbol{\mu}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E\left[(\mathbf{y}_t-\boldsymbol{\mu})(\mathbf{y}_t-\boldsymbol{\mu})^\prime\right] \equiv \boldsymbol\Gamma_0 &lt; \infty\)</span> for all <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E\left[(\mathbf{y}_t-\boldsymbol{\mu})(\mathbf{y}_{t-h}-\boldsymbol{\mu})^\prime\right] \equiv \boldsymbol\Gamma_h\)</span> for all <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(h\)</span></p></li>
+</ol>
+<p>where the expectations are taken element-by-element over the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{y}_t\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is the vector of means <span class="math notranslate nohighlight">\(\boldsymbol\mu = \left[\mu_1, \mu_2, ..., \mu_N \right]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol\Gamma_0\)</span> is the <span class="math notranslate nohighlight">\(N\times N\)</span> covariance matrix where the <span class="math notranslate nohighlight">\(i\)</span>th diagonal element is the variance of <span class="math notranslate nohighlight">\(y_{i,t}\)</span>, and the <span class="math notranslate nohighlight">\((i, j)\)</span>th element is the covariance between <span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\({y_{j,t}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol\Gamma_h\)</span> is the cross-covariance matrix at lag <span class="math notranslate nohighlight">\(h\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="obtaining-cross-correlation-matrix-from-cross-covariance-matrix">
+<h4>Obtaining Cross-Correlation Matrix from Cross-Covariance Matrix<a class="headerlink" href="#obtaining-cross-correlation-matrix-from-cross-covariance-matrix" title="Permalink to this headline">¶</a></h4>
+<p>When dealing with a multivariate time series, we can examine the predictability of one variable on another by looking at the relationship between them using the cross-covariance function (CCVF) and cross-correlation function (CCF). To do this, we begin by defining the cross-covariance between two variables, then we estimate the cross-correlation between one variable and another variable that is time-shifted. This informs us whether one time series may be related to the past lags of the other. In other words, CCF is used for identifying lags of one variable that might be useful as a predictor of the other variable.</p>
+<p><strong>At lag 0</strong>:</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf\Gamma_0\)</span> be the covariance matrix at lag 0, <span class="math notranslate nohighlight">\(\mathbf D\)</span> be a <span class="math notranslate nohighlight">\(N\times N\)</span> diagonal matrix containing the standard deviations of <span class="math notranslate nohighlight">\(y_{i,t}\)</span> for <span class="math notranslate nohighlight">\(i=1, ..., N\)</span>. The correlation matrix of <span class="math notranslate nohighlight">\(\mathbf{y}_t\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol\rho_0 = \mathbf D^{-1}\mathbf\Gamma_0\mathbf D^{-1}\]</div>
+<p>where the <span class="math notranslate nohighlight">\((i, j)\)</span>th element of <span class="math notranslate nohighlight">\(\boldsymbol\rho_0\)</span> is the correlation coefficient between <span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{i,j}(0) = \dfrac{Cov\left[y_{i,t}, y_{j,t} \right]}{\sigma_{i,t} \sigma_{j,t}}\]</div>
+<p><strong>At lag h</strong>:</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol\Gamma_h = E\left[(\mathbf{y}_t-\boldsymbol{\mu})(\mathbf{y}_{t-h}-\boldsymbol{\mu})^\prime\right]\)</span> be the lag-<span class="math notranslate nohighlight">\(h\)</span> covariance cross-covariance matrix of <span class="math notranslate nohighlight">\(\mathbf y_{t}\)</span>. The lag-<span class="math notranslate nohighlight">\(h\)</span> cross-correlation matrix is defined as</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol\rho_h = \mathbf D^{-1}\mathbf\Gamma_h\mathbf D^{-1}\]</div>
+<p>The <span class="math notranslate nohighlight">\((i,j)\)</span>th element of <span class="math notranslate nohighlight">\(\boldsymbol\rho_h\)</span> is the correlation coefficient between <span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t-h}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{i,j}(h) = \dfrac{Cov\left[y_{i,t}, y_{j,t-h} \right]}{\sigma_{i,t} \sigma_{j,t}}\]</div>
+<p><strong>What do we get from this?</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Correlation Coefficient</p></th>
+<th class="text-align:left head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rho_{i,j}(0)\neq0\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span> are <em>contemporaneously linearly correlated</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rho_{i,j}(h)=\rho_{j,i}(h)=0\)</span> for all <span class="math notranslate nohighlight">\(h\geq0\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span> share <em>no linear relationship</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rho_{i,j}(h)=0\)</span> and <span class="math notranslate nohighlight">\(\rho_{j,i}(h)=0\)</span> for all <span class="math notranslate nohighlight">\(h&gt;0\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span> are said to be linearly <em>uncoupled</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rho_{i,j}(h)=0\)</span> for all <span class="math notranslate nohighlight">\(h&gt;0\)</span>, but <span class="math notranslate nohighlight">\(\rho_{j,i}(q)\neq0\)</span> for at least some <span class="math notranslate nohighlight">\(q&gt;0\)</span></p></td>
+<td class="text-align:left"><p>There is a <em>unidirectional (linear) relationship</em> between <span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span>, where <span class="math notranslate nohighlight">\(y_{i,t}\)</span> does not depend on <span class="math notranslate nohighlight">\(y_{j,t}\)</span>, but <span class="math notranslate nohighlight">\(y_{j,t}\)</span> depends on (some) lagged values of <span class="math notranslate nohighlight">\(y_{i,t}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rho_{i,j}(h)\neq0\)</span> for at least some <span class="math notranslate nohighlight">\(h&gt;0\)</span> and <span class="math notranslate nohighlight">\(\rho_{j,i}(q)\neq0\)</span> for at least some <span class="math notranslate nohighlight">\(q&gt;0\)</span></p></td>
+<td class="text-align:left"><p>There is a <em>bi-directional (feedback) linear relationship</em> between <span class="math notranslate nohighlight">\(y_{i,t}\)</span> and <span class="math notranslate nohighlight">\(y_{j,t}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="vector-autoregressive-var-models">
+<h2>Vector Autoregressive (VAR) Models<a class="headerlink" href="#vector-autoregressive-var-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Generalization of the univariate AR model</p></li>
+<li><p>System regression model that treats all the variables as endogenous</p></li>
+<li><p>Allows each of the variables to depend on <span class="math notranslate nohighlight">\(p\)</span> lagged values of itself and of all the other variables in the system</p></li>
+</ul>
+<p>A VAR model of order <span class="math notranslate nohighlight">\(p\)</span> can be represented as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_t=\mathbf a_0 + \mathbf A_1 \mathbf y_{t-1} + \mathbf A_2 \mathbf y_{t-2} + ... + \mathbf A_p \mathbf y_{t-p} + \mathbf u_t = \mathbf a_0  + \sum_{j=1}^{p} \mathbf A_j \mathbf y_{t-j} + \mathbf u_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf y_t\)</span> is a <span class="math notranslate nohighlight">\(N\times 1\)</span> vector containing <span class="math notranslate nohighlight">\(N\)</span> endogenous variables, <span class="math notranslate nohighlight">\(\mathbf a_0\)</span> is a <span class="math notranslate nohighlight">\(N\times 1\)</span> vector of constants, <span class="math notranslate nohighlight">\(\mathbf A_1, \mathbf A_2, ..., \mathbf A_p\)</span> are the <span class="math notranslate nohighlight">\(p\)</span> <span class="math notranslate nohighlight">\(N\times N\)</span> matrices of autoregressive coefficients, and <span class="math notranslate nohighlight">\(\mathbf u_t\)</span> is a <span class="math notranslate nohighlight">\(N\times 1\)</span> vector of white noise disturbances.</p>
+<div class="section" id="var-1-model">
+<h3>VAR(1) Model<a class="headerlink" href="#var-1-model" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="structural-and-reduced-form">
+<h4>Structural and Reduced Form<a class="headerlink" href="#structural-and-reduced-form" title="Permalink to this headline">¶</a></h4>
+<p>Consider the following bivariate system</p>
+<div class="math notranslate nohighlight">
+\[ y_{1,t} = b_{1,0} - b_{1,2}y_{2,t} +  \varphi_{1,1}y_{1,t-1} + \varphi_{1,2}y_{2,t-1} + \varepsilon_{1,t}\]</div>
+<div class="math notranslate nohighlight">
+\[ y_{2,t} = b_{2,0} - b_{2,1}y_{2,t} +  \varphi_{2,1}y_{1,t-1} + \varphi_{2,2}y_{2,t-1} + \varepsilon_{2,t}\]</div>
+<p>where both <span class="math notranslate nohighlight">\(y_{1,t}\)</span> and <span class="math notranslate nohighlight">\(y_{2,t}\)</span> are assumed to be stationary, and <span class="math notranslate nohighlight">\(\varepsilon_{1,t}\)</span> and <span class="math notranslate nohighlight">\(\varepsilon_{2,t}\)</span> are the uncorrelated error terms with standard deviation <span class="math notranslate nohighlight">\(\sigma_{1,t}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{2,t}\)</span>, respectively.</p>
+<p>In matrix notation:</p>
+<p>\begin{equation*}
+\begin{bmatrix}
+1 &amp; b_{1,2}\
+b_{2,1} &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+y_{1,t} \
+y_{2,t}
+\end{bmatrix} =
+\begin{bmatrix}
+b_{1,0} \
+b_{2,0}
+\end{bmatrix} +
+\begin{bmatrix}
+\varphi_{1,1} &amp; \varphi_{1,2}\
+\varphi_{2,1} &amp; \varphi_{2,2}
+\end{bmatrix}
+\begin{bmatrix}
+y_{1,t-1} \
+y_{2,t-1}
+\end{bmatrix} +
+\begin{bmatrix}
+\varepsilon_{1,t} \
+\varepsilon_{2,t}
+\end{bmatrix}
+\end{equation*}</p>
+<p>Let
+\begin{equation*}
+\mathbf B \equiv \begin{bmatrix}
+1 &amp; b_{1,2}\
+b_{2,1} &amp; 1
+\end{bmatrix},
+\mathbf y_{t} \equiv
+\begin{bmatrix}
+y_{1,t} \
+y_{2,t}
+\end{bmatrix},
+\mathbf Q_0 \equiv
+\begin{bmatrix}
+b_{1,0} \
+b_{2,0}
+\end{bmatrix},
+\mathbf Q_1 \equiv
+\begin{bmatrix}
+\varphi_{1,1} &amp; \varphi_{1,2}\
+\varphi_{2,1} &amp; \varphi_{2,2}
+\end{bmatrix}, \end{equation*}
+\begin{equation*}
+\mathbf y_{t-1} \equiv
+\begin{bmatrix}
+y_{1,t-1} \
+y_{2,t-1}
+\end{bmatrix},
+\boldsymbol \varepsilon_t \equiv
+\begin{bmatrix}
+\varepsilon_{1,t} \
+\varepsilon_{2,t}
+\end{bmatrix}
+\end{equation*}</p>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\mathbf B \mathbf y_t = \mathbf Q_0 + \mathbf Q_1 \mathbf y_{t-1} + \boldsymbol\varepsilon_t\]</div>
+<p><strong>Structural VAR (VAR in primitive form)</strong></p>
+<ul class="simple">
+<li><p>Described by equation above</p></li>
+<li><p>Captures contemporaneous feedback effects (<span class="math notranslate nohighlight">\(b_{1,2}, b_{2,1}\)</span>)</p></li>
+<li><p>Not very practical to use</p></li>
+<li><p>Contemporaneous terms cannot be used in forecasting</p></li>
+<li><p>Needs further manipulation to make it more useful (e.g. multiplying the matrix equation by <span class="math notranslate nohighlight">\(\mathbf B^{-1}\)</span>)</p></li>
+</ul>
+<p>Multiplying the matrix equation by <span class="math notranslate nohighlight">\(\mathbf B^{-1}\)</span>), we get</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_t = \mathbf a_0 + \mathbf A_1 \mathbf y_{t-1} + \mathbf u_t\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_t = \mathbf a_0 + \mathbf A_1 L\mathbf y_t + \mathbf u_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf a_0 = \mathbf B^{-1}\mathbf Q_0\)</span>, <span class="math notranslate nohighlight">\(\mathbf A_1 = \mathbf B^{-1}\mathbf Q_1\)</span>, <span class="math notranslate nohighlight">\(L\)</span> is the lag/backshift operator, and <span class="math notranslate nohighlight">\(\mathbf u_t = \mathbf B^{-1}\boldsymbol\varepsilon_t\)</span>, equivalently,</p>
+<div class="math notranslate nohighlight">
+\[ y_{1,t} = a_{1,0} + a_{1,1}y_{1,t-1} + a_{1,2}y_{2,t-1} + u_{1,t}\]</div>
+<div class="math notranslate nohighlight">
+\[ y_{2,t} = a_{2,0} + a_{2,1}y_{1,t-1} + a_{2,2}y_{2,t-1} + u_{2,t}\]</div>
+<div class="section" id="reduced-form-var-var-in-standard-form">
+<h5>Reduced-form VAR (VAR in standard form)<a class="headerlink" href="#reduced-form-var-var-in-standard-form" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Described by equation above</p></li>
+<li><p>Only dependent on lagged endogenous variables (no contemporaneous feedback)</p></li>
+<li><p>Can be estimated using ordinary least squares (OLS)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="vma-infinite-representation-and-stationarity">
+<h4>VMA infinite representation and Stationarity<a class="headerlink" href="#vma-infinite-representation-and-stationarity" title="Permalink to this headline">¶</a></h4>
+<p>Consider the reduced form, standard VAR(1) model</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_t = \mathbf a_0 + \mathbf A_1 \mathbf y_{t-1} + \mathbf u_t\]</div>
+<p>Assuming that the process is weakly stationary and taking the expectation of <span class="math notranslate nohighlight">\(\mathbf y_t\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[E\left[\mathbf y_t\right] = \mathbf a_0 + \mathbf A_1 E\left[\mathbf y_{t-1}\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(E\left[\mathbf u_t\right]=0.\)</span> If we let <span class="math notranslate nohighlight">\(\tilde{\mathbf y}_{t}\equiv \mathbf y_t - \boldsymbol \mu\)</span> be the mean-corrected time-series, we can write the model as</p>
+<div class="math notranslate nohighlight">
+\[\tilde{\mathbf y}_{t} = \mathbf A_1 \tilde{\mathbf y}_{t-1} + \mathbf u_t\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(\tilde{\mathbf y}_{t-1} = \mathbf A_1 \tilde{\mathbf y}_{t-2} + \mathbf u_{t-1}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\tilde{\mathbf y}_{t} = \mathbf A_1 \left( \mathbf A_1 \tilde{\mathbf y}_{t-2} + \mathbf u_{t-1}\right)+ \mathbf u_t\]</div>
+<p>If we keep iterating, we get</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_{t} = \boldsymbol\mu + \sum_{i=1}^{\infty} \mathbf A_1^i  \mathbf u_{t-i} + \mathbf u_t\]</div>
+<p>Letting <span class="math notranslate nohighlight">\(\boldsymbol\Theta_i\equiv A_1^i\)</span>, we get the <strong>VMA infinite representation</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_{t} = \boldsymbol\mu + \sum_{i=1}^{\infty} \boldsymbol\Theta_i  \mathbf u_{t-i} + \mathbf u_t\]</div>
+<div class="section" id="stationarity-of-the-var-1-model">
+<h5>Stationarity of the VAR(1) model<a class="headerlink" href="#stationarity-of-the-var-1-model" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>All the N eigenvalues of the matrix <span class="math notranslate nohighlight">\(A_1\)</span> must be less than 1 in modulus, to avoid that the coefficient matrix <span class="math notranslate nohighlight">\(A_1^j\)</span> will either explode or converge to a nonzero matrix as <span class="math notranslate nohighlight">\(j\)</span> goes to infinity.</p></li>
+<li><p>Provided that the covariance matrix of <span class="math notranslate nohighlight">\(u_t\)</span> exists, the requirement that all the eigenvalues of <span class="math notranslate nohighlight">\(A_1\)</span> are less than one in modulus is a necessary and sufficient condition for <span class="math notranslate nohighlight">\(y_t\)</span> to be stable, and thus, stationary.</p></li>
+<li><p>All roots of <span class="math notranslate nohighlight">\(det\left(\mathbf I_N - \mathbf A_1 z\right)=0\)</span> must lie outside the unit circle.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="var-p-model">
+<h3>VAR(p) Model<a class="headerlink" href="#var-p-model" title="Permalink to this headline">¶</a></h3>
+<p>Consider the VAR(p) model described by</p>
+<div class="math notranslate nohighlight">
+\[\mathbf y_t=\mathbf a_0 + \mathbf A_1 \mathbf y_{t-1} + \mathbf A_2 \mathbf y_{t-2} + ... + \mathbf A_p \mathbf y_{t-p} + \mathbf u_t = \mathbf a_0  + \sum_{j=1}^{p} \mathbf A_j \mathbf y_{t-j} + \mathbf u_t\]</div>
+<p>Using the lag operator <span class="math notranslate nohighlight">\(L\)</span>, we get</p>
+<div class="math notranslate nohighlight">
+\[\tilde{\mathbf A} (L) \mathbf y_t = \mathbf a_0 + \mathbf u_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{\mathbf A} (L) = (\mathbf I_N - A_1 L - ... - A_p L^p)\)</span>. Assuming that <span class="math notranslate nohighlight">\(\mathbf y_t\)</span> is weakly stationary, we obtain that</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol\mu = E\left[\mathbf y_t\right] = (\mathbf I_N - A_1 L - ... - A_p L^p)^{-1} \mathbf a_0\]</div>
+<p>Defining <span class="math notranslate nohighlight">\(\tilde{\mathbf y}_t=\mathbf y_t -\boldsymbol\mu\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\tilde{\mathbf y}_t =  \mathbf A_1 \tilde{\mathbf y}_{t-1} + \mathbf A_2 \tilde{\mathbf y}_{t-2} + ... + \mathbf A_p \tilde{\mathbf y}_{t-p} + \mathbf u_t\]</div>
+<div class="section" id="properties">
+<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cov[\mathbf y_t, \mathbf u_t] = \Sigma_u\)</span>, the covariance matrix of <span class="math notranslate nohighlight">\(\mathbf u_t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Cov[\mathbf y_{t-h}, \mathbf u_t] = \mathbf 0\)</span> for any <span class="math notranslate nohighlight">\(h&gt;0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol\Gamma_h = \mathbf A_1 \boldsymbol\Gamma_{h-1} +...+\mathbf A_p \boldsymbol\Gamma_{h-p}\)</span> for <span class="math notranslate nohighlight">\(h&gt;0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol\rho_h = \boldsymbol \Psi_1 \boldsymbol\Gamma_{h-1} +...+\boldsymbol \Psi_p \boldsymbol\Gamma_{h-p}\)</span> for <span class="math notranslate nohighlight">\(h&gt;0\)</span>, where <span class="math notranslate nohighlight">\(\boldsymbol \Psi_i = \mathbf D^{-1/2}\mathbf A_i D^{-1/2}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="stationarity">
+<h4>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>All roots of <span class="math notranslate nohighlight">\(det\left(\mathbf I_N - \mathbf A_1 z - ...-  \mathbf A_p z^p\right)=0\)</span> must lie outside the unit circle.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="specification-of-a-var-model-choosing-the-order-p">
+<h3>Specification of a VAR model: Choosing the order <em>p</em><a class="headerlink" href="#specification-of-a-var-model-choosing-the-order-p" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="using-information-criterion">
+<h4>Using information criterion<a class="headerlink" href="#using-information-criterion" title="Permalink to this headline">¶</a></h4>
+<p>To select the appropriate lag length, we minimize the multivariate version of the information criteria presented previously:</p>
+<p><em>Akaike’s (1973) information criterion</em>
+$<span class="math notranslate nohighlight">\((M)\operatorname{AIC} = \operatorname{ln}|\tilde{\boldsymbol\Sigma}_u | + 2\dfrac{k}{T}\)</span>$</p>
+<p><em>Schwarz’s (1978) Bayesian information criterion’s information criterion</em>
+$<span class="math notranslate nohighlight">\((M)\operatorname{BIC} = \operatorname{ln}|\tilde{\boldsymbol\Sigma}_u | + \dfrac{k}{T}\operatorname{ln}(T)\)</span>$</p>
+<p><em>Hannan-Quinn’s (1979) information criterion</em>
+$<span class="math notranslate nohighlight">\((M)\operatorname{HQIC} = \operatorname{ln}|\tilde{\boldsymbol\Sigma}_u | + \dfrac{k}{T}\operatorname{ln}(\operatorname{ln}(T))\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> stands for multivariate, <span class="math notranslate nohighlight">\(\tilde{\boldsymbol\Sigma}_u\)</span> is the estimated covariance matrix of the residuals, <span class="math notranslate nohighlight">\(T\)</span> is the number of observations in the sample, and <span class="math notranslate nohighlight">\(k\)</span> is the total number of equations in the VAR(<span class="math notranslate nohighlight">\(p\)</span>) (i.e. <span class="math notranslate nohighlight">\(N^2p + N\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the number of equations and <span class="math notranslate nohighlight">\(p\)</span> is the number of lags).</p>
+</div>
+<div class="section" id="additional-criterion">
+<h4>Additional criterion:<a class="headerlink" href="#additional-criterion" title="Permalink to this headline">¶</a></h4>
+<p><em>Final prediction error</em></p>
+<div class="math notranslate nohighlight">
+\[\operatorname{FPE}(p) = \left[\dfrac{T+Np+1}{T-Np+1} \right]^N |\tilde{\boldsymbol\Sigma}_u | \]</div>
+</div>
+</div>
+</div>
+<div class="section" id="building-a-var-model">
+<h2>Building a VAR model<a class="headerlink" href="#building-a-var-model" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we show how we can use the VAR model to forecast the air quality data. The following steps are shown below:</p>
+<ol class="simple">
+<li><p>Check for stationarity.</p></li>
+<li><p>Split data into train and test sets.</p></li>
+<li><p>Select the VAR order <em>p</em> that gives.</p></li>
+<li><p>Fit VAR model of order <em>p</em> on the train set.</p></li>
+<li><p>Generate forecast.</p></li>
+<li><p>Evaluate model performance.</p></li>
+</ol>
+<p>For illustration, we consider the carbon monoxide, nitrous dioxide  and relative humidity time series from the Air Quality Dataset from 1 October 2014.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(GT)&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">]</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">aq_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">aq_df</span><span class="o">.</span><span class="n">index</span><span class="o">&gt;</span><span class="s1">&#39;2004-10-01&#39;</span><span class="p">,</span><span class="n">cols</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_48_0.png" src="../_images/03_VectorAutoregressiveMethods_48_0.png" />
+</div>
+</div>
+<div class="section" id="quick-inspection-before-we-proceed-with-modeling">
+<h3>Quick inspection before we proceed with modeling…<a class="headerlink" href="#quick-inspection-before-we-proceed-with-modeling" title="Permalink to this headline">¶</a></h3>
+<p>To find out whether the multivariate approach is better than treating the signals separately as univariate time series, we examine the relationship between the variables using CCF. The sample below shows the CCF for the last 100 data points of the Air quality data for CO, NO2 and RH.</p>
+<p><em>CO and NO2</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:]</span>
+<span class="n">ccf_y1_y2</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;NO2(GT)&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ccf_y2_y1</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;NO2(GT)&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y1_y2</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y2_y1</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;lag $h$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{CO,NO2} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{NO2,CO} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_51_0.png" src="../_images/03_VectorAutoregressiveMethods_51_0.png" />
+</div>
+</div>
+<p><em>CO and RH</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccf_y1_y2</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;RH&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ccf_y2_y1</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;RH&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y1_y2</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y2_y1</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;lag $h$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{CO,RH} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{RH,CO} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_53_0.png" src="../_images/03_VectorAutoregressiveMethods_53_0.png" />
+</div>
+</div>
+<p><em>RH and NO2</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccf_y1_y2</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;RH&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;NO2(GT)&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ccf_y2_y1</span> <span class="o">=</span> <span class="n">ccf</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;NO2(GT)&#39;</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;RH&#39;</span><span class="p">],</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y1_y2</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_df</span><span class="p">))[::</span><span class="n">d</span><span class="p">],</span> <span class="n">ccf_y2_y1</span><span class="p">[::</span><span class="n">d</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;C1-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;C1o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;lag $h$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{RH,NO2} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{NO2,RH} (h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_55_0.png" src="../_images/03_VectorAutoregressiveMethods_55_0.png" />
+</div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<p>As shown in the plot above, we can see that there’s a relationship between:</p>
+<ul class="simple">
+<li><p>CO and some lagged values of RH and NO2</p></li>
+<li><p>NO2 and some lagged values of RH and CO</p></li>
+<li><p>RH and some lagged values of CO and NO2</p></li>
+</ul>
+<p>This shows that we can benefit from the multivariate approach, so we proceed with building the VAR model.</p>
+</div>
+<div class="section" id="check-stationarity">
+<h3>1. Check stationarity<a class="headerlink" href="#check-stationarity" title="Permalink to this headline">¶</a></h3>
+<p>To check for stationarity, we use the Kwiatkowski–Phillips–Schmidt–Shin (KPSS) test and the Augmented Dickey-Fuller (ADF) test. For the data to be suitable for VAR modelling, we need each of the variables in the multivariate time series to be stationary. In both tests, we need the test statistic to be less than the critical values to say that a time series (a variable) to be stationary.</p>
+<div class="section" id="kwiatkowskiphillipsschmidtshin-kpss-test">
+<h4>Kwiatkowski–Phillips–Schmidt–Shin (KPSS) test<a class="headerlink" href="#kwiatkowskiphillipsschmidtshin-kpss-test" title="Permalink to this headline">¶</a></h4>
+<p>Recall: Null hypothesis is that an observable time series is stationary around a deterministic trend (i.e. trend-stationary) against the alternative of a unit root.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">cv_1pct</span><span class="p">,</span> <span class="n">cv_2p5pct</span><span class="p">,</span> <span class="n">cv_5pct</span><span class="p">,</span> <span class="n">cv_10pct</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+    <span class="n">kpss_res</span> <span class="o">=</span> <span class="n">kpss</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">)</span>
+    <span class="n">test_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">cv_1pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+    <span class="n">cv_2p5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+    <span class="n">cv_5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;5%&#39;</span><span class="p">])</span>
+    <span class="n">cv_10pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;10%&#39;</span><span class="p">])</span>
+<span class="n">kpss_res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">:</span> <span class="n">test_stat</span><span class="p">,</span> 
+                           <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_val</span><span class="p">,</span> 
+                           <span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">:</span> <span class="n">cv_1pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 2.5%&#39;</span><span class="p">:</span> <span class="n">cv_2p5pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">:</span> <span class="n">cv_5pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">:</span> <span class="n">cv_10pct</span><span class="p">},</span> 
+                         <span class="n">index</span><span class="o">=</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">kpss_res_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO(GT)</th>
+      <th>NO2(GT)</th>
+      <th>RH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0702</td>
+      <td>0.3239</td>
+      <td>0.1149</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.0100</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<p>From the KPSS test, CO and RH are stationary.</p>
+</div>
+<div class="section" id="augmented-dickey-fuller-adf-test">
+<h4>Augmented Dickey-Fuller (ADF) test<a class="headerlink" href="#augmented-dickey-fuller-adf-test" title="Permalink to this headline">¶</a></h4>
+<p>Recall: Null hypothesis is that a unit root is present in a time series sample against the alternative that the time series is stationary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">cv_1pct</span><span class="p">,</span> <span class="n">cv_5pct</span><span class="p">,</span> <span class="n">cv_10pct</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+    <span class="n">adf_res</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+    <span class="n">test_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">cv_1pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+    <span class="n">cv_5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;5%&#39;</span><span class="p">])</span>
+    <span class="n">cv_10pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;10%&#39;</span><span class="p">])</span>
+<span class="n">adf_res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">:</span> <span class="n">test_stat</span><span class="p">,</span> 
+                           <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_val</span><span class="p">,</span> 
+                           <span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">:</span> <span class="n">cv_1pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">:</span> <span class="n">cv_5pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">:</span> <span class="n">cv_10pct</span><span class="p">},</span> 
+                         <span class="n">index</span><span class="o">=</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">adf_res_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO(GT)</th>
+      <th>NO2(GT)</th>
+      <th>RH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-7.0195</td>
+      <td>-6.7695</td>
+      <td>-6.8484</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4318</td>
+      <td>-3.4318</td>
+      <td>-3.4318</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8622</td>
+      <td>-2.8622</td>
+      <td>-2.8622</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5671</td>
+      <td>-2.5671</td>
+      <td>-2.5671</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<p>From the ADF test, CO, NO2 and RH are stationary.</p>
+</div>
+</div>
+<div class="section" id="split-data-into-train-and-test-sets">
+<h3>2. Split data into train and test sets<a class="headerlink" href="#split-data-into-train-and-test-sets" title="Permalink to this headline">¶</a></h3>
+<p>We use the dataset from 01 October 2014 to predict the last 24 points (24 hrs/1 day) in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_length</span> <span class="o">=</span> <span class="mi">24</span> 
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="n">forecast_length</span><span class="p">],</span> <span class="n">data_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">forecast_length</span><span class="p">:]</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">test_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">~</span><span class="n">test_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="select-order-p">
+<h3>3. Select order <em>p</em><a class="headerlink" href="#select-order-p" title="Permalink to this headline">¶</a></h3>
+<p>We compute the different multivariate information criteria (AIC, BIC, HQIC), and FPE. We pick the set of order parameters that correspond to the lowest values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aic</span><span class="p">,</span> <span class="n">bic</span><span class="p">,</span> <span class="n">fpe</span><span class="p">,</span> <span class="n">hqic</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">aic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">aic</span><span class="p">)</span>
+    <span class="n">bic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">bic</span><span class="p">)</span>
+    <span class="n">fpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fpe</span><span class="p">)</span>
+    <span class="n">hqic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">hqic</span><span class="p">)</span>
+<span class="n">lags_metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;AIC&#39;</span><span class="p">:</span> <span class="n">aic</span><span class="p">,</span> 
+                                <span class="s1">&#39;BIC&#39;</span><span class="p">:</span> <span class="n">bic</span><span class="p">,</span> 
+                                <span class="s1">&#39;HQIC&#39;</span><span class="p">:</span> <span class="n">hqic</span><span class="p">,</span>
+                                <span class="s1">&#39;FPE&#39;</span><span class="p">:</span> <span class="n">fpe</span><span class="p">},</span> 
+                               <span class="n">index</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>    
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lags_metrics_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_70_0.png" src="../_images/03_VectorAutoregressiveMethods_70_0.png" />
+</div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<ul class="simple">
+<li><p>We find BIC and HQIC to be lowest at <span class="math notranslate nohighlight">\(p=25\)</span>, and we also observe an elbow in the plots for AIC, and FPE, so we choose the number of lags to be 25.</p></li>
+</ul>
+</div>
+<div class="section" id="fit-var-model-with-chosen-order">
+<h3>3. Fit VAR model with chosen order<a class="headerlink" href="#fit-var-model-with-chosen-order" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">var_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 200 ms, sys: 24.7 ms, total: 225 ms
+Wall time: 68.3 ms
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Summary of Regression Results   
+==================================
+Model:                         VAR
+Method:                        OLS
+Date:           Thu, 04, Feb, 2021
+Time:                     16:50:53
+--------------------------------------------------------------------
+No. of Equations:         3.00000    BIC:                    7.42533
+Nobs:                     4405.00    HQIC:                   7.21123
+Log likelihood:          -34149.0    FPE:                    1205.40
+AIC:                      7.09456    Det(Omega_mle):         1145.10
+--------------------------------------------------------------------
+Results for equation CO(GT)
+==============================================================================
+                 coefficient       std. error           t-stat            prob
+------------------------------------------------------------------------------
+const               0.225521         0.069726            3.234           0.001
+L1.CO(GT)           0.976458         0.018952           51.523           0.000
+L1.NO2(GT)          0.002284         0.000708            3.225           0.001
+L1.RH               0.009521         0.002735            3.481           0.001
+L2.CO(GT)          -0.297644         0.025904          -11.490           0.000
+L2.NO2(GT)          0.000742         0.000969            0.765           0.444
+L2.RH              -0.017846         0.004293           -4.157           0.000
+L3.CO(GT)           0.096602         0.026325            3.670           0.000
+L3.NO2(GT)         -0.000590         0.000969           -0.609           0.543
+L3.RH               0.013625         0.004364            3.122           0.002
+L4.CO(GT)          -0.001384         0.026373           -0.052           0.958
+L4.NO2(GT)         -0.001344         0.000968           -1.388           0.165
+L4.RH              -0.006603         0.004368           -1.512           0.131
+L5.CO(GT)           0.055848         0.026379            2.117           0.034
+L5.NO2(GT)         -0.001207         0.000969           -1.245           0.213
+L5.RH              -0.000053         0.004366           -0.012           0.990
+L6.CO(GT)          -0.016032         0.026390           -0.607           0.544
+L6.NO2(GT)          0.000392         0.000970            0.404           0.686
+L6.RH               0.001622         0.004363            0.372           0.710
+L7.CO(GT)           0.001227         0.026383            0.046           0.963
+L7.NO2(GT)          0.001042         0.000970            1.074           0.283
+L7.RH              -0.001344         0.004368           -0.308           0.758
+L8.CO(GT)          -0.000026         0.026384           -0.001           0.999
+L8.NO2(GT)          0.000678         0.000972            0.698           0.485
+L8.RH              -0.002613         0.004371           -0.598           0.550
+L9.CO(GT)           0.019077         0.026386            0.723           0.470
+L9.NO2(GT)         -0.001486         0.000972           -1.528           0.126
+L9.RH               0.005044         0.004376            1.153           0.249
+L10.CO(GT)         -0.004350         0.026382           -0.165           0.869
+L10.NO2(GT)         0.001415         0.000973            1.455           0.146
+L10.RH              0.003157         0.004381            0.721           0.471
+L11.CO(GT)         -0.018180         0.026372           -0.689           0.491
+L11.NO2(GT)        -0.001260         0.000972           -1.297           0.195
+L11.RH             -0.000972         0.004383           -0.222           0.825
+L12.CO(GT)          0.062129         0.026343            2.358           0.018
+L12.NO2(GT)        -0.000070         0.000974           -0.071           0.943
+L12.RH             -0.001962         0.004385           -0.447           0.655
+L13.CO(GT)         -0.070118         0.026363           -2.660           0.008
+L13.NO2(GT)         0.000413         0.000974            0.424           0.672
+L13.RH              0.004513         0.004386            1.029           0.303
+L14.CO(GT)          0.095131         0.026370            3.607           0.000
+L14.NO2(GT)        -0.003026         0.000974           -3.108           0.002
+L14.RH              0.001777         0.004385            0.405           0.685
+L15.CO(GT)         -0.031314         0.026361           -1.188           0.235
+L15.NO2(GT)         0.000711         0.000973            0.731           0.465
+L15.RH             -0.003448         0.004383           -0.787           0.432
+L16.CO(GT)          0.004675         0.026359            0.177           0.859
+L16.NO2(GT)         0.000935         0.000972            0.962           0.336
+L16.RH             -0.001708         0.004383           -0.390           0.697
+L17.CO(GT)         -0.027820         0.026330           -1.057           0.291
+L17.NO2(GT)         0.000159         0.000972            0.164           0.870
+L17.RH              0.000813         0.004382            0.186           0.853
+L18.CO(GT)          0.015400         0.026294            0.586           0.558
+L18.NO2(GT)        -0.000850         0.000969           -0.877           0.381
+L18.RH              0.003143         0.004378            0.718           0.473
+L19.CO(GT)          0.050616         0.026288            1.925           0.054
+L19.NO2(GT)        -0.000750         0.000968           -0.775           0.438
+L19.RH             -0.010711         0.004375           -2.448           0.014
+L20.CO(GT)         -0.065927         0.026301           -2.507           0.012
+L20.NO2(GT)         0.000829         0.000968            0.857           0.391
+L20.RH              0.009295         0.004373            2.126           0.034
+L21.CO(GT)         -0.034987         0.026306           -1.330           0.184
+L21.NO2(GT)         0.001146         0.000967            1.185           0.236
+L21.RH             -0.004594         0.004375           -1.050           0.294
+L22.CO(GT)          0.053955         0.026310            2.051           0.040
+L22.NO2(GT)        -0.000413         0.000967           -0.428           0.669
+L22.RH             -0.000109         0.004375           -0.025           0.980
+L23.CO(GT)          0.061769         0.026235            2.354           0.019
+L23.NO2(GT)         0.001314         0.000967            1.359           0.174
+L23.RH             -0.003627         0.004375           -0.829           0.407
+L24.CO(GT)          0.218390         0.025835            8.453           0.000
+L24.NO2(GT)        -0.000047         0.000968           -0.048           0.961
+L24.RH              0.002099         0.004306            0.488           0.626
+L25.CO(GT)         -0.207334         0.018931          -10.952           0.000
+L25.NO2(GT)        -0.001403         0.000705           -1.989           0.047
+L25.RH              0.000503         0.002747            0.183           0.855
+==============================================================================
+
+Results for equation NO2(GT)
+==============================================================================
+                 coefficient       std. error           t-stat            prob
+------------------------------------------------------------------------------
+const              12.158403         1.865002            6.519           0.000
+L1.CO(GT)           1.673798         0.506911            3.302           0.001
+L1.NO2(GT)          0.967850         0.018944           51.090           0.000
+L1.RH               0.239572         0.073165            3.274           0.001
+L2.CO(GT)          -2.505047         0.692854           -3.616           0.000
+L2.NO2(GT)         -0.102519         0.025930           -3.954           0.000
+L2.RH              -0.346011         0.114829           -3.013           0.003
+L3.CO(GT)           0.223870         0.704132            0.318           0.751
+L3.NO2(GT)          0.003616         0.025923            0.140           0.889
+L3.RH               0.202341         0.116730            1.733           0.083
+L4.CO(GT)           1.202200         0.705401            1.704           0.088
+L4.NO2(GT)         -0.070284         0.025904           -2.713           0.007
+L4.RH              -0.145444         0.116832           -1.245           0.213
+L5.CO(GT)          -0.241584         0.705577           -0.342           0.732
+L5.NO2(GT)          0.007729         0.025927            0.298           0.766
+L5.RH               0.007779         0.116779            0.067           0.947
+L6.CO(GT)           0.742687         0.705858            1.052           0.293
+L6.NO2(GT)         -0.029327         0.025939           -1.131           0.258
+L6.RH               0.025149         0.116708            0.215           0.829
+L7.CO(GT)          -0.545583         0.705666           -0.773           0.439
+L7.NO2(GT)          0.090752         0.025940            3.498           0.000
+L7.RH              -0.107232         0.116826           -0.918           0.359
+L8.CO(GT)          -0.976917         0.705702           -1.384           0.166
+L8.NO2(GT)         -0.034668         0.025988           -1.334           0.182
+L8.RH               0.114550         0.116920            0.980           0.327
+L9.CO(GT)           0.318388         0.705761            0.451           0.652
+L9.NO2(GT)          0.005343         0.026002            0.205           0.837
+L9.RH              -0.123204         0.117055           -1.053           0.293
+L10.CO(GT)         -0.550617         0.705661           -0.780           0.435
+L10.NO2(GT)         0.000926         0.026014            0.036           0.972
+L10.RH              0.205418         0.117168            1.753           0.080
+L11.CO(GT)         -1.302376         0.705398           -1.846           0.065
+L11.NO2(GT)         0.066804         0.026000            2.569           0.010
+L11.RH             -0.052208         0.117233           -0.445           0.656
+L12.CO(GT)          2.627476         0.704613            3.729           0.000
+L12.NO2(GT)        -0.072411         0.026044           -2.780           0.005
+L12.RH             -0.040736         0.117283           -0.347           0.728
+L13.CO(GT)         -1.968863         0.705141           -2.792           0.005
+L13.NO2(GT)         0.062516         0.026058            2.399           0.016
+L13.RH              0.164185         0.117316            1.400           0.162
+L14.CO(GT)          0.974378         0.705342            1.381           0.167
+L14.NO2(GT)        -0.071584         0.026043           -2.749           0.006
+L14.RH              0.124720         0.117298            1.063           0.288
+L15.CO(GT)          0.419435         0.705084            0.595           0.552
+L15.NO2(GT)         0.007261         0.026017            0.279           0.780
+L15.RH             -0.179144         0.117233           -1.528           0.126
+L16.CO(GT)          0.743315         0.705024            1.054           0.292
+L16.NO2(GT)         0.006201         0.026004            0.238           0.812
+L16.RH             -0.037346         0.117232           -0.319           0.750
+L17.CO(GT)         -1.267984         0.704259           -1.800           0.072
+L17.NO2(GT)         0.011982         0.025987            0.461           0.645
+L17.RH             -0.005382         0.117208           -0.046           0.963
+L18.CO(GT)          0.477752         0.703288            0.679           0.497
+L18.NO2(GT)        -0.013234         0.025929           -0.510           0.610
+L18.RH              0.123392         0.117101            1.054           0.292
+L19.CO(GT)          0.071419         0.703137            0.102           0.919
+L19.NO2(GT)        -0.006277         0.025897           -0.242           0.808
+L19.RH             -0.263107         0.117031           -2.248           0.025
+L20.CO(GT)         -0.880080         0.703494           -1.251           0.211
+L20.NO2(GT)         0.011131         0.025887            0.430           0.667
+L20.RH              0.089673         0.116963            0.767           0.443
+L21.CO(GT)         -0.236172         0.703626           -0.336           0.737
+L21.NO2(GT)         0.005237         0.025874            0.202           0.840
+L21.RH             -0.141417         0.117019           -1.208           0.227
+L22.CO(GT)          0.583425         0.703713            0.829           0.407
+L22.NO2(GT)         0.033944         0.025864            1.312           0.189
+L22.RH              0.124313         0.117030            1.062           0.288
+L23.CO(GT)          0.312989         0.701722            0.446           0.656
+L23.NO2(GT)         0.142013         0.025867            5.490           0.000
+L23.RH             -0.093247         0.117019           -0.797           0.426
+L24.CO(GT)          0.456393         0.691018            0.660           0.509
+L24.NO2(GT)         0.092663         0.025888            3.579           0.000
+L24.RH              0.012438         0.115166            0.108           0.914
+L25.CO(GT)         -1.129774         0.506362           -2.231           0.026
+L25.NO2(GT)        -0.164450         0.018867           -8.716           0.000
+L25.RH              0.027817         0.073485            0.379           0.705
+==============================================================================
+
+Results for equation RH
+==============================================================================
+                 coefficient       std. error           t-stat            prob
+------------------------------------------------------------------------------
+const               1.568389         0.390653            4.015           0.000
+L1.CO(GT)          -0.054329         0.106180           -0.512           0.609
+L1.NO2(GT)         -0.009150         0.003968           -2.306           0.021
+L1.RH               1.212463         0.015326           79.114           0.000
+L2.CO(GT)          -0.232349         0.145129           -1.601           0.109
+L2.NO2(GT)          0.009816         0.005431            1.807           0.071
+L2.RH              -0.292371         0.024053          -12.155           0.000
+L3.CO(GT)           0.166759         0.147491            1.131           0.258
+L3.NO2(GT)         -0.003824         0.005430           -0.704           0.481
+L3.RH               0.051448         0.024451            2.104           0.035
+L4.CO(GT)           0.108911         0.147757            0.737           0.461
+L4.NO2(GT)          0.002752         0.005426            0.507           0.612
+L4.RH              -0.023208         0.024472           -0.948           0.343
+L5.CO(GT)          -0.035363         0.147794           -0.239           0.811
+L5.NO2(GT)         -0.002184         0.005431           -0.402           0.688
+L5.RH               0.038528         0.024461            1.575           0.115
+L6.CO(GT)          -0.054690         0.147853           -0.370           0.711
+L6.NO2(GT)          0.001646         0.005433            0.303           0.762
+L6.RH              -0.075597         0.024446           -3.092           0.002
+L7.CO(GT)          -0.003521         0.147813           -0.024           0.981
+L7.NO2(GT)          0.007737         0.005434            1.424           0.154
+L7.RH               0.041399         0.024471            1.692           0.091
+L8.CO(GT)           0.084109         0.147820            0.569           0.569
+L8.NO2(GT)          0.001718         0.005444            0.316           0.752
+L8.RH              -0.078178         0.024491           -3.192           0.001
+L9.CO(GT)           0.047979         0.147832            0.325           0.746
+L9.NO2(GT)         -0.004827         0.005446           -0.886           0.376
+L9.RH               0.063188         0.024519            2.577           0.010
+L10.CO(GT)          0.047745         0.147812            0.323           0.747
+L10.NO2(GT)         0.005005         0.005449            0.919           0.358
+L10.RH             -0.043066         0.024543           -1.755           0.079
+L11.CO(GT)          0.115110         0.147756            0.779           0.436
+L11.NO2(GT)        -0.002121         0.005446           -0.390           0.697
+L11.RH              0.049423         0.024556            2.013           0.044
+L12.CO(GT)          0.091809         0.147592            0.622           0.534
+L12.NO2(GT)        -0.002609         0.005455           -0.478           0.633
+L12.RH             -0.040359         0.024567           -1.643           0.100
+L13.CO(GT)         -0.023361         0.147703           -0.158           0.874
+L13.NO2(GT)         0.000034         0.005458            0.006           0.995
+L13.RH              0.019726         0.024574            0.803           0.422
+L14.CO(GT)         -0.088905         0.147745           -0.602           0.547
+L14.NO2(GT)        -0.002159         0.005455           -0.396           0.692
+L14.RH              0.001817         0.024570            0.074           0.941
+L15.CO(GT)         -0.126771         0.147691           -0.858           0.391
+L15.NO2(GT)         0.001741         0.005450            0.319           0.749
+L15.RH              0.028134         0.024556            1.146           0.252
+L16.CO(GT)         -0.010414         0.147678           -0.071           0.944
+L16.NO2(GT)         0.001854         0.005447            0.340           0.734
+L16.RH             -0.047880         0.024556           -1.950           0.051
+L17.CO(GT)          0.046570         0.147518            0.316           0.752
+L17.NO2(GT)        -0.007429         0.005443           -1.365           0.172
+L17.RH              0.032349         0.024551            1.318           0.188
+L18.CO(GT)         -0.087754         0.147315           -0.596           0.551
+L18.NO2(GT)         0.006150         0.005431            1.132           0.257
+L18.RH              0.008841         0.024529            0.360           0.719
+L19.CO(GT)          0.276263         0.147283            1.876           0.061
+L19.NO2(GT)        -0.004690         0.005425           -0.865           0.387
+L19.RH             -0.014402         0.024514           -0.588           0.557
+L20.CO(GT)         -0.333769         0.147357           -2.265           0.024
+L20.NO2(GT)         0.001104         0.005422            0.204           0.839
+L20.RH              0.045333         0.024500            1.850           0.064
+L21.CO(GT)          0.182024         0.147385            1.235           0.217
+L21.NO2(GT)         0.005202         0.005420            0.960           0.337
+L21.RH             -0.038732         0.024511           -1.580           0.114
+L22.CO(GT)          0.131551         0.147404            0.892           0.372
+L22.NO2(GT)        -0.005621         0.005418           -1.037           0.300
+L22.RH              0.041899         0.024514            1.709           0.087
+L23.CO(GT)         -0.055160         0.146986           -0.375           0.707
+L23.NO2(GT)        -0.005221         0.005418           -0.964           0.335
+L23.RH              0.046515         0.024511            1.898           0.058
+L24.CO(GT)          0.166052         0.144744            1.147           0.251
+L24.NO2(GT)         0.005014         0.005423            0.925           0.355
+L24.RH              0.021166         0.024123            0.877           0.380
+L25.CO(GT)         -0.167526         0.106065           -1.579           0.114
+L25.NO2(GT)        -0.001009         0.003952           -0.255           0.799
+L25.RH             -0.082320         0.015393           -5.348           0.000
+==============================================================================
+
+Correlation matrix of residuals
+             CO(GT)   NO2(GT)        RH
+CO(GT)     1.000000  0.607652  0.151890
+NO2(GT)    0.607652  1.000000  0.080412
+RH         0.151890  0.080412  1.000000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-forecast">
+<h3>4. Get forecast<a class="headerlink" href="#get-forecast" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_var</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">var_model</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                                              <span class="n">steps</span><span class="o">=</span><span class="n">forecast_length</span><span class="p">),</span> 
+                           <span class="n">columns</span><span class="o">=</span><span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> 
+                           <span class="n">index</span><span class="o">=</span><span class="n">test_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">forecast_var</span> <span class="o">=</span> <span class="n">forecast_var</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">+</span><span class="s1">&#39;-VAR&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">forecast_var</span><span class="o">.</span><span class="n">columns</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_df</span><span class="p">[[</span><span class="n">c</span><span class="p">]],</span> <span class="n">forecast_var</span><span class="p">[[</span><span class="n">c</span><span class="o">+</span><span class="s1">&#39;-VAR&#39;</span><span class="p">]]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2005-03-01&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_76_0.png" src="../_images/03_VectorAutoregressiveMethods_76_0.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_76_1.png" src="../_images/03_VectorAutoregressiveMethods_76_1.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_76_2.png" src="../_images/03_VectorAutoregressiveMethods_76_2.png" />
+</div>
+</div>
+<div class="section" id="performance-evaluation-comparison-with-arima-model">
+<h4>Performance Evaluation: Comparison with ARIMA model<a class="headerlink" href="#performance-evaluation-comparison-with-arima-model" title="Permalink to this headline">¶</a></h4>
+<p>When using ARIMA, we treat each variable as a univariate time series, and we perform the forecasting for each variable: 1 for CO, 1 for NO2, and 1 for RH</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Uncomment this cell to perform hyperparameter tuning on p, d, q</span>
+<span class="c1"># %%time</span>
+<span class="c1"># select_model_params = {}</span>
+<span class="c1"># for c in cols: </span>
+<span class="c1">#     select_model_params[c] = utils.fit_arima(train_df[c].values,</span>
+<span class="c1">#                                              p_list=np.arange(10),</span>
+<span class="c1">#                                              d_list=[0],</span>
+<span class="c1">#                                              q_list=np.arange(5))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows the best model order given parameters in cell above/</span>
+<span class="n">selected_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span>
+                  <span class="s1">&#39;NO2(GT)&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span>
+                  <span class="s1">&#39;RH&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">forecast_arima</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">forecast_arima</span><span class="p">[</span><span class="n">c</span><span class="o">+</span><span class="s1">&#39;-ARIMA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">forecast_arima</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                                                      <span class="n">test_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                                                      <span class="n">order</span><span class="o">=</span><span class="n">selected_order</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">forecast_arima</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">forecast_arima</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">forecast_var</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">forecast_arima</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 22.2 s, sys: 727 ms, total: 23 s
+Wall time: 20.7 s
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO(GT)-ARIMA</th>
+      <th>NO2(GT)-ARIMA</th>
+      <th>RH-ARIMA</th>
+    </tr>
+    <tr>
+      <th>Date_Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2005-04-03 15:00:00</th>
+      <td>1.068780</td>
+      <td>88.631506</td>
+      <td>13.874144</td>
+    </tr>
+    <tr>
+      <th>2005-04-03 16:00:00</th>
+      <td>1.140279</td>
+      <td>94.363411</td>
+      <td>15.552831</td>
+    </tr>
+    <tr>
+      <th>2005-04-03 17:00:00</th>
+      <td>1.216862</td>
+      <td>104.121149</td>
+      <td>18.027024</td>
+    </tr>
+    <tr>
+      <th>2005-04-03 18:00:00</th>
+      <td>1.308468</td>
+      <td>116.130531</td>
+      <td>21.222107</td>
+    </tr>
+    <tr>
+      <th>2005-04-03 19:00:00</th>
+      <td>1.400756</td>
+      <td>127.783059</td>
+      <td>25.011151</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">forecast_arima</span><span class="p">,</span> <span class="n">forecast_var</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">plot_forecasts_static</span><span class="p">(</span><span class="n">train_df</span><span class="o">=</span><span class="n">train_df</span><span class="p">,</span>
+                                          <span class="n">test_df</span><span class="o">=</span><span class="n">test_df</span><span class="p">,</span> 
+                                          <span class="n">forecast_df</span><span class="o">=</span><span class="n">forecasts</span><span class="p">,</span> 
+                                          <span class="n">column_name</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+                                          <span class="n">min_train_date</span><span class="o">=</span><span class="s1">&#39;2005-04-01&#39;</span><span class="p">,</span> 
+                                          <span class="n">suffix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-VAR&#39;</span><span class="p">,</span> <span class="s1">&#39;-ARIMA&#39;</span><span class="p">],</span>
+                                          <span class="n">title</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_82_0.png" src="../_images/03_VectorAutoregressiveMethods_82_0.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_82_1.png" src="../_images/03_VectorAutoregressiveMethods_82_1.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_82_2.png" src="../_images/03_VectorAutoregressiveMethods_82_2.png" />
+</div>
+</div>
+<p><strong>Performance Metrics</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">utils</span><span class="o">.</span><span class="n">test_performance_metrics</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">forecast_var</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;-VAR&#39;</span><span class="p">),</span>
+           <span class="n">utils</span><span class="o">.</span><span class="n">test_performance_metrics</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">forecast_arima</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;-ARIMA&#39;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO(GT)-VAR</th>
+      <th>NO2(GT)-VAR</th>
+      <th>RH-VAR</th>
+      <th>CO(GT)-ARIMA</th>
+      <th>NO2(GT)-ARIMA</th>
+      <th>RH-ARIMA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MAE</th>
+      <td>0.678041</td>
+      <td>31.711149</td>
+      <td>9.932015</td>
+      <td>0.900885</td>
+      <td>39.134777</td>
+      <td>9.259939</td>
+    </tr>
+    <tr>
+      <th>MSE</th>
+      <td>1.197003</td>
+      <td>1234.428682</td>
+      <td>116.545989</td>
+      <td>1.473059</td>
+      <td>1814.145764</td>
+      <td>121.181972</td>
+    </tr>
+    <tr>
+      <th>MAPE</th>
+      <td>39.039852</td>
+      <td>29.188694</td>
+      <td>35.612265</td>
+      <td>71.522267</td>
+      <td>41.125145</td>
+      <td>39.000544</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<ul class="simple">
+<li><p>MAE: VAR forecasts have lower errors than ARIMA forecasts for CO and NO2 but not in RH.</p></li>
+<li><p>MSE: VAR forecasts have lower errors for all variables (CO, NO2 and RH).</p></li>
+<li><p>MAPE: VAR forecasts have lower errors for all variables (CO, NO2 and RH).</p></li>
+<li><p>Training time is significantly reduced when using VAR compared to ARIMA (&lt;0.1s run time for VAR while ~20s for ARIMA)</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="structural-analysis">
+<h2>Structural Analysis<a class="headerlink" href="#structural-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="impulse-response-function-irf">
+<h3>Impulse Response Function (IRF)<a class="headerlink" href="#impulse-response-function-irf" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Coefficients of the VAR models are often difficult to interpret so practitioners often estimate the impulse response function.</p></li>
+<li><p>IRFs trace out the time path of the effects of an exogenous shock to one (or more) of the endogenous variables on some or all of the other variables in a VAR system.</p></li>
+<li><p>IRF traces out the response of the dependent variable of the VAR system to shocks (also called innovations or impulses) in the error terms.</p></li>
+</ul>
+<div class="section" id="irf-in-the-var-system-for-air-quality">
+<h4>IRF in the VAR system for Air Quality<a class="headerlink" href="#irf-in-the-var-system-for-air-quality" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(y_{1,t}\)</span>, <span class="math notranslate nohighlight">\(y_{2,t}\)</span> and <span class="math notranslate nohighlight">\(y_{3,t}\)</span> be the time series corresponding to CO signal, NO2 signal, and RH signal, respectively. Consider the moving average representation of the system shown below:</p>
+<p>\begin{equation*}
+\begin{bmatrix}
+y_{1,t} \
+y_{2,t} \
+y_{3,t}
+\end{bmatrix} =
+\begin{bmatrix}
+\mu_{1} \
+\mu_{2} \
+\mu_{3}
+\end{bmatrix} +
+\sum_{i=0}^\infty
+\begin{bmatrix}
+\theta_{1,1} &amp; \theta_{1,2} &amp; \theta_{1,3}\
+\theta_{2,1} &amp; \theta_{2,2} &amp; \theta_{2,3}\
+\theta_{3,1} &amp; \theta_{3,2} &amp; \theta_{3,3}\
+\end{bmatrix}
+\begin{bmatrix}
+u_{1,t-i} \
+u_{2,t-i} \
+u_{3,t-i}
+\end{bmatrix}
+\end{equation*}</p>
+<p>Suppose <span class="math notranslate nohighlight">\(u_1\)</span> in the first equation increases by a value of one standard deviation.</p>
+<ul class="simple">
+<li><p>This shock will change <span class="math notranslate nohighlight">\(y_1\)</span> in the current as well as the future periods.</p></li>
+<li><p>This shock will also have an impact on <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(y_3\)</span>.</p></li>
+</ul>
+<p>Suppose <span class="math notranslate nohighlight">\(u_2\)</span> in the first equation increases by a value of one standard deviation.</p>
+<ul class="simple">
+<li><p>This shock will change <span class="math notranslate nohighlight">\(y_2\)</span> in the current as well as the future periods.</p></li>
+<li><p>This shock will also have an impact on <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_3\)</span>.</p></li>
+</ul>
+<p>Suppose <span class="math notranslate nohighlight">\(u_3\)</span> in the first equation increases by a value of one standard deviation.</p>
+<ul class="simple">
+<li><p>This shock will change <span class="math notranslate nohighlight">\(y_3\)</span> in the current as well as the future periods.</p></li>
+<li><p>This shock will also have an impact on <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">irf</span> <span class="o">=</span> <span class="n">var_model</span><span class="o">.</span><span class="n">irf</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">irf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orth</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_90_0.png" src="../_images/03_VectorAutoregressiveMethods_90_0.png" />
+</div>
+</div>
+<p><strong>Observation/s:</strong></p>
+<p>Effects of exogenous perturbation/shocks (1SD) of a variable on itself:</p>
+<ul class="simple">
+<li><p>CO <span class="math notranslate nohighlight">\(\rightarrow\)</span> CO: A shock in the value of CO has a larger effect CO in the early hours but this decays over time. Interestingly, the effect starts to increase again by the 24th hour.</p></li>
+<li><p>NO2 <span class="math notranslate nohighlight">\(\rightarrow\)</span> NO2: A shock in the value of NO2 has a larger effect NO2 in the early hours but this decays over time. The effect increased again after 20 hours.</p></li>
+<li><p>RH <span class="math notranslate nohighlight">\(\rightarrow\)</span> RH: A shock in the value of RH has a largest effect in RH after 1 hour and this effect decays over time. The effect increased again after 18 hours.</p></li>
+</ul>
+<p>Effects of exogenous perturbation/shocks of a variable on another:</p>
+<ul class="simple">
+<li><p>CO <span class="math notranslate nohighlight">\(\rightarrow\)</span> NO2: The effect of the shock in the value of CO on NO2 seems to be erratic. We see a strong effect in terms of the magnitude of the IRF but direction shifts between positive to negative over time.</p></li>
+<li><p>CO <span class="math notranslate nohighlight">\(\rightarrow\)</span> RH: On the earlier hours, the effect of a shock in CO is negative but becomes positive after 10 hours. In terms of magnitude, there seems to be a delayed stronger effect.</p></li>
+<li><p>NO2 <span class="math notranslate nohighlight">\(\rightarrow\)</span> CO: A shock in NO2 only causes a small effect in the values of CO</p></li>
+<li><p>NO2 <span class="math notranslate nohighlight">\(\rightarrow\)</span> RH: A shock in NO2 only causes a small effect in the values of RH</p></li>
+<li><p>RH <span class="math notranslate nohighlight">\(\rightarrow\)</span> CO: A shock in RH only causes a small effect in the values of CO</p></li>
+<li><p>RH <span class="math notranslate nohighlight">\(\rightarrow\)</span> NO2: A shock in RH seems to have an erratic effect on NO2 since the direction shifts positive and negative. However, magnitude-wise, we see that effect of the shock in RH seems to be stronger at later hours.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="forecast-error-variance-decomposition-fevd">
+<h3>Forecast Error Variance Decomposition (FEVD)<a class="headerlink" href="#forecast-error-variance-decomposition-fevd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>FEVD indicates the amount of information each variable contributes to the other variables in the autoregression</p></li>
+<li><p>While impulse response functions trace the effects of a shock to one endogenous variable on to the other variables in the VAR, variance decomposition separates the variation in an endogenous variable into the component shocks to the VAR.</p></li>
+<li><p>It determines how much of the forecast error variance of each of the variables can be explained by exogenous shocks to the other variables.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fevd</span> <span class="o">=</span> <span class="n">var_model</span><span class="o">.</span><span class="n">fevd</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fevd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="c1"># plt.tight_layout()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_93_0.png" src="../_images/03_VectorAutoregressiveMethods_93_0.png" />
+</div>
+</div>
+<p><strong>Observation/s:</strong></p>
+<ul class="simple">
+<li><p>For CO, the variance is mostly explained by exogenous shocks to CO. This decreases over time but only by a small amount.</p></li>
+<li><p>For NO2, the variance is mostly explained by exogenous shocks to NO2 and CO.</p></li>
+<li><p>For RH, the variance is mostly explained by exogenous shocks to RH. Over time, the contribution of the exogenous shocks to CO increases.</p></li>
+</ul>
+</div>
+<div class="section" id="forecasting-the-jena-weather-data">
+<h3>Forecasting the Jena Weather data<a class="headerlink" href="#forecasting-the-jena-weather-data" title="Permalink to this headline">¶</a></h3>
+<p>We try to forecast the Jena weather data using the method outlined above. For now, we’ll only be using the last 10,000 data points available in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jena_data_sample</span> <span class="o">=</span> <span class="n">jena_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">10000</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">test_stat</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">cv_1pct</span><span class="p">,</span> <span class="n">cv_5pct</span><span class="p">,</span> <span class="n">cv_10pct</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">jena_data_sample</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+    <span class="n">adf_res</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">jena_data_sample</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+    <span class="n">test_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">cv_1pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+    <span class="n">cv_5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;5%&#39;</span><span class="p">])</span>
+    <span class="n">cv_10pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;10%&#39;</span><span class="p">])</span>
+<span class="n">adf_res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">:</span> <span class="n">test_stat</span><span class="p">,</span> 
+                           <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_val</span><span class="p">,</span> 
+                           <span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">:</span> <span class="n">cv_1pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">:</span> <span class="n">cv_5pct</span><span class="p">,</span>
+                           <span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">:</span> <span class="n">cv_10pct</span><span class="p">},</span> 
+                         <span class="n">index</span><span class="o">=</span><span class="n">jena_data_sample</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">adf_res_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.3 s, sys: 3.09 s, total: 18.4 s
+Wall time: 4.78 s
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+      <th>Tpot (K)</th>
+      <th>Tdew (degC)</th>
+      <th>rh (%)</th>
+      <th>VPmax (mbar)</th>
+      <th>VPact (mbar)</th>
+      <th>VPdef (mbar)</th>
+      <th>sh (g/kg)</th>
+      <th>H2OC (mmol/mol)</th>
+      <th>rho (g/m**3)</th>
+      <th>wv (m/s)</th>
+      <th>max. wv (m/s)</th>
+      <th>wd (deg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-2.5615</td>
+      <td>-5.3932</td>
+      <td>-4.9907</td>
+      <td>-3.9679</td>
+      <td>-9.4216</td>
+      <td>-5.3657</td>
+      <td>-3.8384</td>
+      <td>-9.9704</td>
+      <td>-3.8128</td>
+      <td>-3.8148</td>
+      <td>-3.9943</td>
+      <td>-8.3022</td>
+      <td>-7.5758</td>
+      <td>-8.0519</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1012</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0016</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0025</td>
+      <td>0.0000</td>
+      <td>0.0028</td>
+      <td>0.0028</td>
+      <td>0.0014</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+      <td>-3.4310</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+      <td>-2.8618</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+      <td>-2.5669</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">])</span> <span class="o">&amp;</span> 
+<span class="p">(</span><span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+<span class="p">(</span> <span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">adf_res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p (mbar)           False
+T (degC)            True
+Tpot (K)            True
+Tdew (degC)         True
+rh (%)              True
+VPmax (mbar)        True
+VPact (mbar)        True
+VPdef (mbar)        True
+sh (g/kg)           True
+H2OC (mmol/mol)     True
+rho (g/m**3)        True
+wv (m/s)            True
+max. wv (m/s)       True
+wd (deg)            True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observation/s</strong>:</p>
+<p>From the values above, all the components of the Jena weather data are stationary except for p (mbar), so we’ll exclude this in our prediction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jena_data_sample</span> <span class="o">=</span> <span class="n">jena_data_sample</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">split_index</span> <span class="o">=</span> <span class="mi">144</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">jena_data_sample</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="n">split_index</span><span class="p">],</span> <span class="n">jena_data_sample</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">split_index</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.29 ms, sys: 744 µs, total: 3.04 ms
+Wall time: 767 µs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aic</span><span class="p">,</span> <span class="n">bic</span><span class="p">,</span> <span class="n">fpe</span><span class="p">,</span> <span class="n">hqic</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">aic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">aic</span><span class="p">)</span>
+    <span class="n">bic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">bic</span><span class="p">)</span>
+    <span class="n">fpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fpe</span><span class="p">)</span>
+    <span class="n">hqic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">hqic</span><span class="p">)</span>
+<span class="n">lags_metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;AIC&#39;</span><span class="p">:</span> <span class="n">aic</span><span class="p">,</span> 
+                                <span class="s1">&#39;BIC&#39;</span><span class="p">:</span> <span class="n">bic</span><span class="p">,</span> 
+                                <span class="s1">&#39;HQIC&#39;</span><span class="p">:</span> <span class="n">hqic</span><span class="p">,</span>
+                                <span class="s1">&#39;FPE&#39;</span><span class="p">:</span> <span class="n">fpe</span><span class="p">},</span> 
+                               <span class="n">index</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>    
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lags_metrics_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_103_0.png" src="../_images/03_VectorAutoregressiveMethods_103_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lags_metrics_df</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     11
+BIC      4
+HQIC     6
+FPE     11
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We choose <span class="math notranslate nohighlight">\(p = 4\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 76.4 ms, sys: 25.3 ms, total: 102 ms
+Wall time: 49.4 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_var</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">var_model</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                                              <span class="n">steps</span><span class="o">=</span><span class="mi">144</span><span class="p">),</span> 
+                           <span class="n">columns</span><span class="o">=</span><span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> 
+                           <span class="n">index</span><span class="o">=</span><span class="n">test_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">forecast_var</span> <span class="o">=</span> <span class="n">forecast_var</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">+</span><span class="s1">&#39;-VAR&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">forecast_var</span><span class="o">.</span><span class="n">columns</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">jena_data_sample</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">jena_data_sample</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">forecast_var</span><span class="p">[[</span><span class="n">c</span><span class="o">+</span><span class="s1">&#39;-VAR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2016-12-25&#39;</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2017-01-01&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_VectorAutoregressiveMethods_108_0.png" src="../_images/03_VectorAutoregressiveMethods_108_0.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_1.png" src="../_images/03_VectorAutoregressiveMethods_108_1.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_2.png" src="../_images/03_VectorAutoregressiveMethods_108_2.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_3.png" src="../_images/03_VectorAutoregressiveMethods_108_3.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_4.png" src="../_images/03_VectorAutoregressiveMethods_108_4.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_5.png" src="../_images/03_VectorAutoregressiveMethods_108_5.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_6.png" src="../_images/03_VectorAutoregressiveMethods_108_6.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_7.png" src="../_images/03_VectorAutoregressiveMethods_108_7.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_8.png" src="../_images/03_VectorAutoregressiveMethods_108_8.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_9.png" src="../_images/03_VectorAutoregressiveMethods_108_9.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_10.png" src="../_images/03_VectorAutoregressiveMethods_108_10.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_11.png" src="../_images/03_VectorAutoregressiveMethods_108_11.png" />
+<img alt="../_images/03_VectorAutoregressiveMethods_108_12.png" src="../_images/03_VectorAutoregressiveMethods_108_12.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="takeaways">
+<h1>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>VAR methods are useful when dealing with multivariate time series, as they allow us to use the relationship between the different variable to forecast.</p></li>
+<li><p>These models allow us to forecast the different variables simultaneously, with the added benefit of easy (only 1 hyperparameter) and fast training.</p></li>
+<li><p>Using the fitted VAR model, we can also explain the relationship between variables, and how the perturbation in one variable affects the others by getting the impulse response functions and the variance decomposition of the forecasts.</p></li>
+<li><p>However, the application of these models is limited due to the stationarity requirement for ALL the variables in the multivariate time series. This method won’t work well if there is at least one variable that’s non-stationary. When dealing with non-stationary multivariate time series, one can explore the use of vector error correction models (VECM).</p></li>
+<li><p>Another limitation of the VAR method is the assumption that all the variables in the system has the same order <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+</ul>
+<p>In the next chapter, we further extend the use of VAR models to explain the relationships between variables in a multivariate time series using <strong>Granger causality</strong>, which is one of the most common ways to elucidate underlying causal mechanisms in time series data.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_VectorAutoregressiveModels"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" title="previous page">Chapter 2: Linear, Trend, and Momentum Forecasting</a>
+    <a class='right-next' id="next-link" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html" title="next page">Convergent Cross Mapping / Sugihara Causality</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Asian Institute of Management PhD in Data Science<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

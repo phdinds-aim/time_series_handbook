@@ -1,0 +1,121 @@
+Traceback (most recent call last):
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import lightgbm as lgb
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedKFold
+
+plt.rcParams['figure.figsize'] = [15, 5]
+
+np.set_printoptions(precision = 6, suppress = True)
+
+### CREATE X,Y ####
+def create_xy(series, window_size, prediction_horizon, shuffle = False):
+    x = []
+    y = []
+    for i in range(0, len(series)):
+        if len(series[(i + window_size):(i + window_size + prediction_horizon)]) < prediction_horizon:
+            break
+        x.append(series[i:(i + window_size)])
+        y.append(series[(i + window_size):(i + window_size + prediction_horizon)])
+    x = np.array(x)
+    y = np.array(y)
+    return x,y
+
+date_list = [d.strftime('%Y-%m-%d') for d in pd.date_range(start = '2011-01-29', end = '2016-04-24')]
+
+df_sales = pd.read_csv('datasets/m5/sales_train_validation.csv')
+df_sales.rename(columns = dict(zip(df_sales.columns[6:], date_list)), inplace = True)
+
+df_sales_total_by_store = df_sales.groupby(['store_id']).sum()
+
+series = df_sales_total_by_store.iloc[0]
+
+### HYPERPARAMETERS ###
+window_size = 365
+prediction_horizon = 1
+
+### TRAIN VAL SPLIT ### (include shuffling later)
+test_size = 28
+split_time = len(series) - test_size
+
+train_series = series[:split_time]
+test_series = series[split_time - window_size:]
+
+train_x, train_y = create_xy(train_series, window_size, prediction_horizon)
+test_x, test_y = create_xy(test_series, window_size, prediction_horizon)
+
+train_y = train_y.flatten()
+test_y = test_y.flatten()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mOSError[0m                                   Traceback (most recent call last)
+[0;32m<ipython-input-1-a388807bba14>[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mimport[0m [0mlightgbm[0m [0;32mas[0m [0mlgb[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mmodel_selection[0m [0;32mimport[0m [0mcross_val_score[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mmodel_selection[0m [0;32mimport[0m [0mRepeatedKFold[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0;32mfrom[0m [0m__future__[0m [0;32mimport[0m [0mabsolute_import[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
+[0;32m----> 8[0;31m [0;32mfrom[0m [0;34m.[0m[0mbasic[0m [0;32mimport[0m [0mBooster[0m[0;34m,[0m [0mDataset[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m from .callback import (early_stopping, print_evaluation, record_evaluation,
+[1;32m     10[0m                        reset_parameter)
+
+[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/basic.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     41[0m [0;34m[0m[0m
+[1;32m     42[0m [0;34m[0m[0m
+[0;32m---> 43[0;31m [0m_LIB[0m [0;34m=[0m [0m_load_lib[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     44[0m [0;34m[0m[0m
+[1;32m     45[0m [0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/basic.py[0m in [0;36m_load_lib[0;34m()[0m
+[1;32m     32[0m     [0;32mif[0m [0mlen[0m[0;34m([0m[0mlib_path[0m[0;34m)[0m [0;34m==[0m [0;36m0[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     33[0m         [0;32mreturn[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 34[0;31m     [0mlib[0m [0;34m=[0m [0mctypes[0m[0;34m.[0m[0mcdll[0m[0;34m.[0m[0mLoadLibrary[0m[0;34m([0m[0mlib_path[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     35[0m     [0mlib[0m[0;34m.[0m[0mLGBM_GetLastError[0m[0;34m.[0m[0mrestype[0m [0;34m=[0m [0mctypes[0m[0;34m.[0m[0mc_char_p[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     36[0m     [0mcallback[0m [0;34m=[0m [0mctypes[0m[0;34m.[0m[0mCFUNCTYPE[0m[0;34m([0m[0;32mNone[0m[0;34m,[0m [0mctypes[0m[0;34m.[0m[0mc_char_p[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/ctypes/__init__.py[0m in [0;36mLoadLibrary[0;34m(self, name)[0m
+[1;32m    440[0m [0;34m[0m[0m
+[1;32m    441[0m     [0;32mdef[0m [0mLoadLibrary[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 442[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_dlltype[0m[0;34m([0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    443[0m [0;34m[0m[0m
+[1;32m    444[0m [0mcdll[0m [0;34m=[0m [0mLibraryLoader[0m[0;34m([0m[0mCDLL[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/ctypes/__init__.py[0m in [0;36m__init__[0;34m(self, name, mode, handle, use_errno, use_last_error)[0m
+[1;32m    362[0m [0;34m[0m[0m
+[1;32m    363[0m         [0;32mif[0m [0mhandle[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 364[0;31m             [0mself[0m[0;34m.[0m[0m_handle[0m [0;34m=[0m [0m_dlopen[0m[0;34m([0m[0mself[0m[0;34m.[0m[0m_name[0m[0;34m,[0m [0mmode[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    365[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    366[0m             [0mself[0m[0;34m.[0m[0m_handle[0m [0;34m=[0m [0mhandle[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mOSError[0m: dlopen(/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so, 6): Library not loaded: /usr/local/opt/libomp/lib/libomp.dylib
+  Referenced from: /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so
+  Reason: image not found
+OSError: dlopen(/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so, 6): Library not loaded: /usr/local/opt/libomp/lib/libomp.dylib
+  Referenced from: /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so
+  Reason: image not found
+

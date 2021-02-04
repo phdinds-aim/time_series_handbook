@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Series Handbook &#8212; Time Series Analysis Handbook</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Preface - Advanced Time Series Analysis" href="00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Time Series Analysis Handbook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="#">
+   Time Series Handbook
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface - Advanced Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html">
+   Chapter 2: Linear, Trend, and Momentum Forecasting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
+   Convergent Cross Mapping / Sugihara Causality
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html">
+     Applying CCM Using causal-ccm package
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
+   Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#cross-correlation-between-two-signals">
+   Cross-correlation Between Two Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#wavelet-transform">
+   Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#using-accelerometer-and-gyroscopic-data">
+   Using Accelerometer and Gyroscopic Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="08_WinningestMethods/lightgbm_jena_forecasting.html">
+   Final Handbook - Winningest Methods in Time Series Forecasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_WinningestMethods/lightgbm_m5_forecasting.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_WinningestMethods/lightgbm_m5_tuning.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data/README.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Time Series Handbook
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outline">
+     Outline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-use-this-reference">
+   How to use this reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-your-virtual-environment">
+     Setting up your virtual environment
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#anaconda">
+       Anaconda
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-venv">
+       Python venv
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rendering-the-notebooks">
+     Rendering the notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributors">
+   Contributors
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="time-series-handbook">
+<h1>Time Series Handbook<a class="headerlink" href="#time-series-handbook" title="Permalink to this headline">¶</a></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p>This handbook contains a variety of techniques that you can use for time series analysis – from simple statistical models to some of the state-of-the-art algorithms as of writing. Here are the items that are covered in this material:</p>
+<ul class="simple">
+<li><p>Preface: <span class="xref myst">Advanced Time Series Analysis</span></p></li>
+<li><p>Chapter 1: <span class="xref myst">Autoregressive integrated moving average</span></p></li>
+<li><p>Chapter 2: <span class="xref myst">Linear Trend and Momentum Forecasting</span></p></li>
+<li><p>Chapter 3: <span class="xref myst">Vector Autoregressive Methods</span></p></li>
+<li><p>Chapter 4: <span class="xref myst">Granger Causality</span></p></li>
+<li><p>Chapter 5: <span class="xref myst">Simplex and S-map Projections</span></p></li>
+<li><p>Chapter 6: <span class="xref myst">Convergent Cross Mapping and Sugihara Causality</span></p></li>
+<li><p>Chapter 7: <span class="xref myst">Cross-Correlations, Fourier Transform and Wavelet Transform</span></p></li>
+<li><p>Chapter 8: <span class="xref myst">Winningest Methods</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-use-this-reference">
+<h1>How to use this reference<a class="headerlink" href="#how-to-use-this-reference" title="Permalink to this headline">¶</a></h1>
+<p>Each of the chapters mentioned above includes Jupyter notebook/s that contain/s the discussion of each topic (background, limitations, applications). Most of the datasets used in the handbook are included in this repository, and the details of each are described in the <span class="xref myst">data folder</span>.</p>
+<div class="section" id="setting-up-your-virtual-environment">
+<h2>Setting up your virtual environment<a class="headerlink" href="#setting-up-your-virtual-environment" title="Permalink to this headline">¶</a></h2>
+<p>To be able to run the contents of this repository, it is advised that you setup a virtual environment. You can install one via Anaconda or via Python’s native <code class="docutils literal notranslate"><span class="pre">venv</span></code> module.</p>
+<div class="section" id="anaconda">
+<h3>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
+<p>To set up a virtual environment called <code class="docutils literal notranslate"><span class="pre">atsa</span></code>, run the following in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will create an anaconda environment</span>
+<span class="c1"># called atsa in &#39;path/to/anaconda3/envs/&#39;</span>
+conda create -n atsa
+</pre></div>
+</div>
+<p>To activate and enter the environment, run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">atsa</span></code>. To deactivate the environment, either run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span> <span class="pre">atsa</span></code> or exit the terminal. For more information on setting up your virtual evironment using Anaconda, please visit <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">this page</a>.</p>
+</div>
+<div class="section" id="python-venv">
+<h3>Python venv<a class="headerlink" href="#python-venv" title="Permalink to this headline">¶</a></h3>
+<p>To set up a virtual environment called <code class="docutils literal notranslate"><span class="pre">atsa</span></code>, run the following in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will create a virtual environment</span>
+<span class="c1"># called atsa in your home directory</span>
+python3 -m venv ~/atsa
+</pre></div>
+</div>
+<p>To activate and enter the environment, run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/atsa/bin/activate</span></code>. To deactivate the environment, either run <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> or exit the terminal. Note that every time you want to work on the assignment, you should rerun <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/atsa/bin/activate</span></code>.</p>
+</div>
+</div>
+<div class="section" id="rendering-the-notebooks">
+<h2>Rendering the notebooks<a class="headerlink" href="#rendering-the-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>To view the notebooks outside of Github without setting up a repository or installing any software, you may use <a class="reference external" href="https://nbviewer.jupyter.org/">The Jupyter Notebook Viewer</a>.</p>
+<ul class="simple">
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">https://nbviewer.jupyter.org/</span></code></p></li>
+<li><p>Paste the link to the notebook.</p></li>
+</ul>
+<p>When a notebook rendered in nbviewer appears differently from the one rendered github, just append <code class="docutils literal notranslate"><span class="pre">?flush_cache=true</span></code> to the end of the nbviewer URL to force it to rerender.</p>
+</div>
+</div>
+<div class="section" id="contributors">
+<h1>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Benjur Emmanuel Borja</p></li>
+<li><p>Gilbert Chua</p></li>
+<li><p>Francis James Corpuz</p></li>
+<li><p>Carlo Vincienzo Dajac</p></li>
+<li><p>Sebastian Ibanez</p></li>
+<li><p>Prince Javier</p></li>
+<li><p>Marissa Pastor-Liponhay</p></li>
+<li><p>Maria Eloisa Ventura</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" title="next page">Preface - Advanced Time Series Analysis</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Asian Institute of Management PhD in Data Science<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

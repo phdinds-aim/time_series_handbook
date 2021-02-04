@@ -1,0 +1,1589 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cross-Correlations, Fourier Transform, and Wavelet Transform &#8212; Time Series Analysis Handbook</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Final Handbook - Winningest Methods in Time Series Forecasting" href="../08_WinningestMethods/lightgbm_jena_forecasting.html" />
+    <link rel="prev" title="Applying CCM Using causal-ccm package" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Time Series Analysis Handbook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Time Series Handbook
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface - Advanced Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html">
+   Chapter 2: Linear, Trend, and Momentum Forecasting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
+   Convergent Cross Mapping / Sugihara Causality
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html">
+     Applying CCM Using causal-ccm package
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#cross-correlation-between-two-signals">
+   Cross-correlation Between Two Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#wavelet-transform">
+   Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#using-accelerometer-and-gyroscopic-data">
+   Using Accelerometer and Gyroscopic Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+   Final Handbook - Winningest Methods in Time Series Forecasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Final Handbook - Winningest Methods in Time Series Forecasting
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Data/README.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-correlation-between-two-signals">
+   Cross-correlation Between Two Signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noisy-signals">
+     Noisy Signals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jena-climate-data">
+     Jena Climate Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precipitation-and-stream-flow">
+     Precipitation and Stream Flow
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-fourier-series">
+     The Fourier Series:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-fourier-transform">
+     The Fourier Transform:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pure-signal">
+       Pure Signal
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mixed-signals">
+       Mixed Signals
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quick-exploration">
+       Quick exploration:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-domain-manipulation">
+     Frequency Domain Manipulation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noise-filtering">
+     Noise Filtering
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering-by-energy-level">
+       Filtering by Energy Level
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering-by-frequency">
+       Filtering by Frequency
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Jena Climate Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Quick exploration:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wavelet-transform">
+   Wavelet Transform
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-accelerometer-and-gyroscopic-data">
+   Using Accelerometer and Gyroscopic Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cross-correlations-fourier-transform-and-wavelet-transform">
+<h1>Cross-Correlations, Fourier Transform, and Wavelet Transform<a class="headerlink" href="#cross-correlations-fourier-transform-and-wavelet-transform" title="Permalink to this headline">¶</a></h1>
+<p>Gaining a deeper undersanding of causality, we look at time series forecasting through another lens.</p>
+<p>In this chapter, we will take a different approach to how we analzye time series that is complementary to forecasting. Previously, methods of explaining such as the Granger Causality, S-mapping, and Cross-mapping, focused on the time domain - the values of the time series when measured over time or in its phase space. While both are useful for many tasks, it can be often useful to transform these time domain measurements to unearth patterns which are difficult to tease out. Specifically, we want to look at the frequency domain to both analyze the dynamics and perform pre-processing techniques that may be used to modify real-world datasets.</p>
+<p>We will be analyzing the dynamics of time series not exactly to make forecasts, but to understand them in terms of their frequencies in complement to the previous methods of causality and explainability presented.</p>
+<p>We introduce three techniques:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) Cross-correlations
+
+2) Fourier Transform
+
+3) Wavelet Transform
+</pre></div>
+</div>
+<p>and test their use on the Jena Climate Dataset (2009-2016) along with a handful of other datasets. To understand</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">scp</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">repeat</span>
+<span class="kn">import</span> <span class="nn">pywt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crosscorr</span><span class="p">(</span><span class="n">datax</span><span class="p">,</span> <span class="n">datay</span><span class="p">,</span> <span class="n">lag</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Lag-N cross correlation. </span>
+<span class="sd">    Shifted data filled with NaNs </span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lag : int, default 0</span>
+<span class="sd">    datax, datay : pandas.Series objects of equal length</span>
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    crosscorr : float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">datax</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">datay</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()):</span>
+        <span class="n">datax</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">datax</span><span class="p">)</span>
+        <span class="n">datay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">datay</span><span class="p">)</span>
+<span class="c1">#     print(lag, end=&#39;\r&#39;)</span>
+    <span class="k">if</span> <span class="n">wrap</span> <span class="ow">and</span> <span class="n">lag</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">shiftedy</span> <span class="o">=</span> <span class="n">datay</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">lag</span><span class="p">)</span>
+        <span class="n">shiftedy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">lag</span><span class="p">]</span> <span class="o">=</span> <span class="n">datay</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">lag</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">return</span> <span class="n">datax</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">shiftedy</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="n">datax</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">datay</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">lag</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cross-correlation-between-two-signals">
+<h1>Cross-correlation Between Two Signals<a class="headerlink" href="#cross-correlation-between-two-signals" title="Permalink to this headline">¶</a></h1>
+<p>The cross-correlation between two signals <span class="math notranslate nohighlight">\(X_{1}\)</span> and <span class="math notranslate nohighlight">\(X_{2}\)</span> is given by:</p>
+<p>\begin{align} R_{2,1}(s) = E[(X_{1,t}-\mu_{1})*(X_{2,t+s}-\mu_{2})] \end{align}</p>
+<p>The normalized version is given by:</p>
+<p>\begin{align} \rho_{21}(s) = \frac{R_{2,1}(s)}{(R_{1,1}(0)R_{2,2}(0))^{\frac{1}{2}}}\end{align}</p>
+<p>The cross-correlation gives us the similarity of two time series at a given time lag <span class="math notranslate nohighlight">\(s\)</span>. By “sliding” <span class="math notranslate nohighlight">\(s\)</span>, we can find the correlation between two time series for all possible values of <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\rho_{2,1}(s)\)</span> can be interpreted as the regular Pearson correlation at the specific lag <span class="math notranslate nohighlight">\(s\)</span> with:</p>
+<ul class="simple">
+<li><p>A value of 1 having <span class="math notranslate nohighlight">\(X_{1}(t)\)</span> and <span class="math notranslate nohighlight">\(X_{2}(t)\)</span> being perfectly linearly correlated</p></li>
+<li><p>A value of 0 having <span class="math notranslate nohighlight">\(X_{1}(t)\)</span> and <span class="math notranslate nohighlight">\(X_{2}(t)\)</span> having no linear correlation with one another</p></li>
+<li><p>A value of -1 having <span class="math notranslate nohighlight">\(X_{1}(t)\)</span> and <span class="math notranslate nohighlight">\(X_{2}(t)\)</span> being perfectly negative linearly correlated</p></li>
+</ul>
+<div class="section" id="noisy-signals">
+<h2>Noisy Signals<a class="headerlink" href="#noisy-signals" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate this, we take the case of two simple yet noisy time series.</p>
+<p>We want to measure the shift between two periodic signals Two sine waves are generated that are identical in both amplitude and frequency but one is shifted forward in time. By taking the maximum of the cross-correlation, we should be able to retrieve how much one of the time series leads (or lags!) the other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sine_wave</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">shift</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+             <span class="n">noise</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span><span class="n">sample_rate</span><span class="o">*</span><span class="n">duration</span><span class="p">)</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">freq</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">frequencies</span> <span class="o">+</span> <span class="n">shift</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samp_rate</span> <span class="o">=</span> <span class="mi">100</span><span class="c1"># Sampling Frequency in Hertz</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Duration in Seconds</span>
+
+<span class="n">amp1</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Amplitude of Sine Wave 1</span>
+<span class="n">freq1</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Frequency of Sine Wave 1</span>
+
+<span class="n">amp2</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Amplitude of Sine Wave 2</span>
+<span class="n">freq2</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Frequency of Sine Wave 2</span>
+
+<span class="n">phase_shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="c1">#Phase shift of 45 degress or equivalent to 25 samples</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="p">)</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp1</span><span class="p">,</span> <span class="n">freq1</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span><span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="p">)</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp2</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span><span class="n">shift</span><span class="o">=</span><span class="n">phase_shift</span><span class="p">,</span><span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_9_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_9_0.png" />
+</div>
+</div>
+<p>By measuring the cross-correlation between these two signals we can find how far apart we should slide them (<span class="math notranslate nohighlight">\(s\)</span>) such that their linear relationship is maximized or minimized.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ccor</span> <span class="o">=</span> <span class="p">[</span><span class="n">crosscorr</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span><span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="p">,</span> <span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="n">ccor</span><span class="p">)</span>
+
+<span class="n">shift_0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ccor</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="n">samp_rate</span><span class="p">])</span>
+<span class="n">min_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="n">samp_rate</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">min_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Min&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag between $y2$ and $y1$ ($s$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">max_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Minimum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">min_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 24
+Minimum correlation at 75
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_11_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_11_1.png" />
+</div>
+</div>
+<p>We find that the maximum correlation between <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> occurs at 27 samples. This is very close to the theoretical value of 25 samples corresponding to a phase shift of <span class="math notranslate nohighlight">\(\frac{\pi}{2}\)</span> for a signal with 100 samples. Using only direct measurements from the data, albeit synthetic, we are able to retrieve a reasonable estimate of the lag and delay between them.</p>
+</div>
+<div class="section" id="jena-climate-data">
+<h2>Jena Climate Data<a class="headerlink" href="#jena-climate-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us look at how cross-correlations can be used to unearth relationships in real data. We will again use the Jena Climate Dataset to analyze the average temperature. This time, we will look at the relationship between daily temperature and daily wind speed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][::</span><span class="mi">144</span><span class="p">]</span>  <span class="c1">#Temperature (in degrees Celsius) at one sample/day</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">10</span><span class="p">][::</span><span class="mi">144</span><span class="p">]</span>  <span class="c1">#Wind Speed (in m/s) at one sample/day</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span> <span class="p">(</span><span class="n">temp</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wind</span><span class="p">)),</span> <span class="p">(</span><span class="n">wind</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wind</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">wind</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wind Velocity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_15_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_15_0.png" />
+</div>
+</div>
+<p>As standard procedure in using correlation functions, we test for the stationarity of both time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -3.937401
+p-value: 0.001776
+Critical Values:
+	1%: -3.433
+	5%: -2.863
+	10%: -2.567
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">wind</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -3.914097
+p-value: 0.001934
+Critical Values:
+	1%: -3.433
+	5%: -2.863
+	10%: -2.567
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given that the ADF statistics for both the temperature and wind measurements are more negative than the critical value for a 1% confidence interval, we reject the null hypothesis that there is a unit root in both series and adopt the alternative hypothesis that both series are stationary. We then proceed to perform the cross-correlation on the two series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samp_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Sampling Frequency in Days</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>  <span class="c1"># Duration in Days</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wind</span><span class="p">)</span>
+<span class="n">ccor</span> <span class="o">=</span> <span class="p">[</span><span class="n">crosscorr</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span> <span class="n">lag</span><span class="p">)</span> <span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="p">),</span>
+                                                   <span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="p">,</span> <span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="n">ccor</span><span class="p">)</span>
+
+<span class="n">shift_0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ccor</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="mi">365</span><span class="p">])</span>
+<span class="n">min_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="mi">365</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">min_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Min&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag between wind speed and temperature ($s$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">max_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Minimum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">min_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 178
+Minimum correlation at 0
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_20_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_20_1.png" />
+</div>
+</div>
+<p>We find that the shift maximizing the correlation between the daily values of temeperature and wind speed are 178 samples. An interesting result is that the correlation at <span class="math notranslate nohighlight">\(s=0\)</span> is at a minimum. Both of these suggest that temperature and wind speed are periodic functions mirror each other in that when one is maximized, the other is minimized. We estimate then that the wind speed leads the temperature values by 178 days.</p>
+<p>It should be noted that unlike Granger Causality which also draws relationships between multiple time series, cross-correlation does not provide us with the causality between the two. At best, cross-correlation shows the synchronocity between two time series.</p>
+</div>
+<div class="section" id="precipitation-and-stream-flow">
+<h2>Precipitation and Stream Flow<a class="headerlink" href="#precipitation-and-stream-flow" title="Permalink to this headline">¶</a></h2>
+<p>We apply cross-correlation analysis on the stream flow of a river and the precipitation in the surrounding area.</p>
+<p>To safely control the elecricity output of a run-of-the-river hydro-electric generator, operators must understand the relationship between the time it takes for rainfall to directly affect the stream’s flow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/cc/flowsud_2000.txt&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">flow_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USGS&#39;</span><span class="p">,</span><span class="s1">&#39;site_no&#39;</span><span class="p">,</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">]</span>
+<span class="n">flow_df</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stream Flow&#39;</span><span class="p">)</span>
+<span class="n">rain_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/cc/weather_2000.txt&#39;</span><span class="p">)</span>
+<span class="n">rain_df</span><span class="p">[</span><span class="s1">&#39;Prcp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rain_df</span><span class="p">[</span><span class="s1">&#39;Prcp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="mf">0.0005</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">rain_df</span><span class="p">[</span><span class="s1">&#39;Prcp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_24_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rain</span> <span class="o">=</span> <span class="n">rain_df</span><span class="p">[</span><span class="s1">&#39;Prcp&#39;</span><span class="p">]</span>
+<span class="n">flow</span> <span class="o">=</span> <span class="n">flow_df</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">200</span><span class="o">*</span><span class="n">rain</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Preciptation (exaggerated)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stream Flow&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Day of the Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_26_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_26_0.png" />
+</div>
+</div>
+<p>We perform the Augmented Dickey-Fuller test on the two time series to figure out if they are stationary. If they are indeed stationary, we can proceed to performing the cross-correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -3.878838
+p-value: 0.002196
+Critical Values:
+	1%: -3.448
+	5%: -2.870
+	10%: -2.571
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -18.494992
+p-value: 0.000000
+Critical Values:
+	1%: -3.448
+	5%: -2.869
+	10%: -2.571
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both time series are stationary and we proceed with the cross-correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samp_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Sampling Frequency in Days</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>  <span class="c1"># Total Duration in Days</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">wind</span><span class="p">)</span>
+<span class="n">ccor</span> <span class="o">=</span> <span class="p">[</span><span class="n">crosscorr</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span><span class="n">rain</span><span class="p">,</span> <span class="n">lag</span><span class="p">)</span> <span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="p">),</span>
+                                                   <span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="o">*</span><span class="n">samp_rate</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="p">,</span> <span class="n">samp_rate</span><span class="o">*</span><span class="n">dur</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="n">ccor</span><span class="p">)</span>
+
+<span class="n">shift_0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ccor</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="mi">30</span><span class="p">])</span>
+<span class="n">min_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">ccor</span><span class="p">[</span><span class="n">shift_0</span><span class="p">:</span><span class="n">shift_0</span><span class="o">+</span><span class="mi">30</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">min_ind</span> <span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Min&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag between precipitation and water flow ($s$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">max_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Minimum correlation at&#39;</span><span class="p">,</span><span class="n">lags</span><span class="p">[</span><span class="n">min_ind</span><span class="p">]</span><span class="o">+</span><span class="n">shift_0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 1
+Minimum correlation at 26
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_31_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_31_1.png" />
+</div>
+</div>
+<p>We find that the maximum correlation happens when precipitation leads water flow by 1 day. While cross-correlation alone cannot give us causality, understanding of the measurements involved can be used to argue such. In the case of rainfall and precipitation, there is established understanding that precipitation leads to increases in river flow. We can conclude with some confidence that precipitation will cause an increase in river flow after 1 day.</p>
+<p>To supplement our analysis, we move into the frequency domain with the Fourier Transform by first understanding the Fourier Series.</p>
+</div>
+<div class="section" id="the-fourier-series">
+<h2>The Fourier Series:<a class="headerlink" href="#the-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>Any periodic signal can be broken down into a summation of sine and cosine waves. A periodic time series <span class="math notranslate nohighlight">\(X(t)\)</span> can be broken down into fundamental frequencies given by the Fourier Series:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} X(t) = \frac{a_0}{2}  + \sum_{n=1}^{\infty}{a_n cos(nt)) + b_n sin(nt)} \end{align}\)</span></p>
+<p>Integrating both sides by <span class="math notranslate nohighlight">\(\int+{-\pi}^{\pi} cos(mt)dt\)</span> where <span class="math notranslate nohighlight">\(m\)</span> is an integer:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} \int_{-\pi}^{\pi}{X(t)cos(mt)dt} = \frac{1}{2} a_0 + \sum_{n=1}^{\infty}{\int_{-\pi}^{\pi}a_n cos(nt)cos(mt)dt + \sum_{n=1}^{\infty}\int_{-\pi}^{\pi}b_n sin(nt) cos(mt)dt} \end{align}\)</span></p>
+<p>Via orthogonality between <span class="math notranslate nohighlight">\(cos\)</span> and <span class="math notranslate nohighlight">\(sin\)</span> over <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} \int_{-\pi}^{\pi}{cos(nt)cos(mt)dt} = 0,   m\neq n \end{align}\)</span>
+<span class="math notranslate nohighlight">\(\begin{align} \int_{-\pi}^{\pi}{sin(nt)cos(mt)dt} = 0,   all m,n \end{align}\)</span>
+<span class="math notranslate nohighlight">\(\begin{align} \int_{-\pi}^{\pi}{cos(nt)sin(mt)dt} = 0,   m\neq n \end{align}\)</span></p>
+<p>Equation 4 reduces to:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} \int_{-\pi}^{\pi}{X(t)cos(mt)dt} = a_m \int_{-\pi}^{\pi}cos^{2}(mt)dt \end{align}\)</span></p>
+<p>Solving for this a_m, we find that:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} a_m = \frac{1}{\pi}\int_{-\pi}^{\pi}{X(t) cos(mt)dt} \end{align}\)</span></p>
+<p>Doing the same for b_m, we find the similar coefficient:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align} b_m = \frac{1}{\pi}\int_{-\pi}^{\pi}{X(t) sin(mt)dt} \end{align}\)</span></p>
+<p>for <span class="math notranslate nohighlight">\(n =0,1,2...,\)</span> where:</p>
+<p><span class="math notranslate nohighlight">\(n = 0\)</span> is the constant component of the signal</p>
+<p><span class="math notranslate nohighlight">\(n = 1\)</span> is the \textit{fundamental} corresponding to a sine/cosine wave whose period matches <span class="math notranslate nohighlight">\(X(t)\)</span>’s period exactly</p>
+<p><span class="math notranslate nohighlight">\(n = 2\)</span> is the first harmonic corresponding to a sine/cosine whose period matches <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> of <span class="math notranslate nohighlight">\(X(t)\)</span>’s period</p>
+<p><span class="math notranslate nohighlight">\(n = 3\)</span> is the second harmonic corresponding to a sine/cosine whose period matches <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> of <span class="math notranslate nohighlight">\(X(t)\)</span>’s period</p>
+<p>One useful quantity to look at is the energy of a signal as it tells us how “much” of a signal there is. As the time domain and the frequency domain are just representing the same signal, then the total energy for both must be the same (Parseval’s Relation). We define a single coefficient <span class="math notranslate nohighlight">\(c_n\)</span> to describe the “energy” of a signal at a specific frequency:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}c_0 = \frac{a_0}{2}\end{align}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{align}c_n = [\frac{1}{2}(a^2_n + b^2_n)]^{\frac{1}{2}}\end{align}\)</span></p>
+</div>
+<div class="section" id="the-fourier-transform">
+<h2>The Fourier Transform:<a class="headerlink" href="#the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>Transforming a signal in the time domain into the frequency (<span class="math notranslate nohighlight">\(\omega\)</span>) domain using this method is called the \textbf{Fourier Transform (FT)} given by:</p>
+<p>\begin{align} \hat{X}(\omega) = \int_{-\infty}^{\infty}{X(t)e^{-2\pi i \omega t}d\omega} \end{align}</p>
+<p>To better understand the FT, let us take a look at some of its applications.</p>
+<div class="section" id="pure-signal">
+<h3>Pure Signal<a class="headerlink" href="#pure-signal" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samp_rate</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Sampling Frequency in Hertz</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Duration in Seconds</span>
+<span class="n">amp</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Amplitude of Sine Wave</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#Frequency of Sine Wave</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_35_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_35_0.png" />
+</div>
+</div>
+<p>Let’s work with ideal conditions first. Let’s apply the Fourier Transform on the single sine wave with frequency of 5 Hz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fourier Coefficient&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peak at:&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">)</span><span class="o">/</span><span class="n">dur</span><span class="p">,</span> <span class="s1">&#39;Hz&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peak at: 5.0 Hz
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" />
+</div>
+</div>
+<p>We see two peaks when the frequency is 5 and -5.</p>
+<p>The left-hand side corresponds to negative frequencies. Physically, negative frequencies are not very meaningful but their presence is important in calculating for the Fourier Transform.</p>
+<p>By finding the peaks of the “energy” (coefficient), we can find what frequency is most prevalent.</p>
+<p>Additionally, the FT is a perfectly (to numerical precision) reversible process. This means that from just the Fourier coefficients, we can retrieve the original signal by performing an \textbf{Inverse Fourier Transform (IFT)}.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is close:&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft</span><span class="p">),</span> <span class="n">y</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is close: True
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_39_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_39_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="mixed-signals">
+<h3>Mixed Signals<a class="headerlink" href="#mixed-signals" title="Permalink to this headline">¶</a></h3>
+<p>An important use of the FT is analyzing signals with mixed frequencies. We can perform the above exercise on 2 combined waves (or even an arbitrary number of waves with differing frequencies!) to find which frequencies are present in our signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samp_rate</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Sampling Frequency in Hertz</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Duration in Seconds</span>
+
+<span class="n">amp1</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Amplitude of Sine Wave 1</span>
+<span class="n">freq1</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#Frequency of Sine Wave 1</span>
+
+<span class="n">amp2</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Amplitude of Sine Wave 2</span>
+<span class="n">freq2</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#Frequency of Sine Wave 2</span>
+
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp1</span><span class="p">,</span> <span class="n">freq1</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp2</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">y2</span> <span class="c1">#Simply overlapping the two signals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_42_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_42_0.png" />
+</div>
+</div>
+<p>Eyeballing the graph, it is challenging to determine its exact frequency make up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 5. 10.]
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_44_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_44_1.png" />
+</div>
+</div>
+<p>The FT makes it very easy to find the frequencies of the signal!</p>
+</div>
+<div class="section" id="quick-exploration">
+<h3>Quick exploration:<a class="headerlink" href="#quick-exploration" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. What do the heights of the peaks mean?
+    Hint: Play with the amplitudes and frequencies.
+    
+2. What happens when your frequency is higher than the sampling rate?
+    Hint: Nyquist frequency.
+
+3. What are the implications of 1. and 2. these when measuring or collecting data?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="frequency-domain-manipulation">
+<h2>Frequency Domain Manipulation<a class="headerlink" href="#frequency-domain-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>One of the more common uses of FT besides is its ability to let us manipulate time series in the frequency domain.</p>
+<p>To demonstrate this, we take the mixed signal from the previous example and add a constant term to it.
+We want to retrieve the original signal as that is where the interesting behavior lies.</p>
+<p><em>(not unlike a DC signal on top of an AC signal)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y_dc</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="n">dc</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y_dc</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_49_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_49_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y_dc</span><span class="p">)</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 5. 10.]
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_50_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_50_1.png" />
+</div>
+</div>
+<p>A constant term is equivalent to a sine wave with 0 frequency hence the presence of a very large spike at that position.</p>
+<p>While the other peaks can still be found, the constant term can affect stationarity and other statistics we may want to measure later on. To remove this constant term, we can process the coefficients of the Fourier transform to remove it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y_dc</span><span class="p">)</span>
+<span class="n">y_ft</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1">#We set the 0&#39;th frequency term to 0</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 5. 10.]
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_52_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_52_1.png" />
+</div>
+</div>
+<p>After setting the coefficient for the 0 frequency waves to 0, we eliminate the constant term. By performing the IFT, we can retrieve the original mixed signal with frequencies of 5 and 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_ft</span><span class="p">))),</span><span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_54_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_54_0.png" />
+</div>
+</div>
+<p>Admittedly, this is a fairly poor example as we can simply deduct the sample mean from the entire sample to achieve the same result making the need for FT and IFT moot. We will tackle more complicated uses down the line.</p>
+</div>
+<div class="section" id="noise-filtering">
+<h2>Noise Filtering<a class="headerlink" href="#noise-filtering" title="Permalink to this headline">¶</a></h2>
+<p>Real time series data are never free from noise making it tricky to find the real dynamics of whatever it is measuring. We may end up trying to model noise and end up overlooking the real behavior of the time series.</p>
+<p>Thankfully, we can manipulate time series data in the frequency domain to eliminate one of the most types of noise - white noise. White noise pervades time series data and by definition, has components across all frequencies. Usually, a time series with white noise is represented as:</p>
+<p>\begin{align} X(t) = s(t) + v(t) \end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(s(t)\)</span> is the true signal we want to retrieve from <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(v(t)\)</span> is white noise we want to eliminate. We simulate this below by adding a uniform random noise to the signal.</p>
+<div class="section" id="filtering-by-energy-level">
+<h3>Filtering by Energy Level<a class="headerlink" href="#filtering-by-energy-level" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-.</span><span class="mi">3</span><span class="p">,</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y_noisy</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="n">noise</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y_noisy</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_59_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_59_0.png" />
+</div>
+</div>
+<p>The resulting FT of the noisy signal results in multiple peaks being found. This poses a problem if we are trying to find the appropriate periodic trends in our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y_noisy</span><span class="p">)</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [1.000e-01 3.000e-01 6.000e-01 ... 4.989e+02 4.993e+02 4.996e+02]
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" />
+</div>
+</div>
+<p>In crude fashion, we can set a hard threshold wherein that makes coefficients of frequencies below a certain “energy” level 0. One way to accomplish this is by setting the cut-off as a multiple of the standard deviation.</p>
+<p>\textit{Conversely, we can perform the same method to eliminate high energy signals or even select those in a certain band}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">);</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  5.   10.  104.4 104.6 123.7 237.4 441.2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>By visual inspeciton and setting a threshold of 3x the standard deviaiton, we are able to retrieve a clear signal of the dominant frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft_denoised</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">threshold</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_ft</span><span class="p">]</span> <span class="c1">#Threshold by observation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y_denoised</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft_denoised</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y_denoised</span><span class="o">.</span><span class="n">real</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_65_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_65_0.png" />
+</div>
+</div>
+<p>After threhsold, look at 1-2 std of mean of filtered new signal.</p>
+</div>
+<div class="section" id="filtering-by-frequency">
+<h3>Filtering by Frequency<a class="headerlink" href="#filtering-by-frequency" title="Permalink to this headline">¶</a></h3>
+<p>Suppose that our measurement was performed in an environment wherein there is the presence of an external high frequency signal. We would want to retrieve the lower frequencies only because that is what is relevant to our study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hf_noise</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="n">samp_rate</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_hf_noisy</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="n">hf_noise</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_hf_noisy</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_69_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_69_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft_hf</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y_hf_noisy</span><span class="p">)</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft_hf</span><span class="p">))</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft_hf</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">peak_vals</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">dur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peaks at:&#39;</span><span class="p">,</span><span class="n">peak_vals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 5. 10. 45.]
+</pre></div>
+</div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_70_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_70_1.png" />
+</div>
+</div>
+<p>By observing the coefficients of the FT, we can eliminate frequencies that are higher than a specific frequency <span class="math notranslate nohighlight">\(f_{thresh}\)</span>. And thus retrieve the original signal.</p>
+<p>\textit{Conversely, we can do the same for low frequencies and those in a “band”.}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_thresh</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">samp_rate</span><span class="p">)</span>
+<span class="n">y_ft_hf_copy</span> <span class="o">=</span> <span class="n">y_ft_hf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_ft_hf_copy</span><span class="p">[(</span><span class="nb">abs</span><span class="p">(</span><span class="n">W</span><span class="p">)</span><span class="o">&gt;</span><span class="n">f_thresh</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft_hf_copy</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">peaks</span><span class="o">=</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+<span class="n">y_lf</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft_hf_copy</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_lf</span><span class="o">.</span><span class="n">real</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_72_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_72_0.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_72_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_72_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Jena Climate Data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Looking at climate information, we can glean insights into the seasonality of climate patterns. Let’s examine the mean daily temperature of the Jena climate dataset and apply FT to examine its seasonality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/fft/Jena.csv&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">],</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y %H:%M:%S&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="n">mean_temps</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date Time</th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+      <th>Tpot (K)</th>
+      <th>Tdew (degC)</th>
+      <th>rh (%)</th>
+      <th>VPmax (mbar)</th>
+      <th>VPact (mbar)</th>
+      <th>VPdef (mbar)</th>
+      <th>sh (g/kg)</th>
+      <th>H2OC (mmol/mol)</th>
+      <th>rho (g/m**3)</th>
+      <th>wv (m/s)</th>
+      <th>max. wv (m/s)</th>
+      <th>wd (deg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01.01.2009 00:10:00</td>
+      <td>996.52</td>
+      <td>-8.02</td>
+      <td>265.40</td>
+      <td>-8.90</td>
+      <td>93.3</td>
+      <td>3.33</td>
+      <td>3.11</td>
+      <td>0.22</td>
+      <td>1.94</td>
+      <td>3.12</td>
+      <td>1307.75</td>
+      <td>1.03</td>
+      <td>1.75</td>
+      <td>152.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01.01.2009 00:20:00</td>
+      <td>996.57</td>
+      <td>-8.41</td>
+      <td>265.01</td>
+      <td>-9.28</td>
+      <td>93.4</td>
+      <td>3.23</td>
+      <td>3.02</td>
+      <td>0.21</td>
+      <td>1.89</td>
+      <td>3.03</td>
+      <td>1309.80</td>
+      <td>0.72</td>
+      <td>1.50</td>
+      <td>136.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01.01.2009 00:30:00</td>
+      <td>996.53</td>
+      <td>-8.51</td>
+      <td>264.91</td>
+      <td>-9.31</td>
+      <td>93.9</td>
+      <td>3.21</td>
+      <td>3.01</td>
+      <td>0.20</td>
+      <td>1.88</td>
+      <td>3.02</td>
+      <td>1310.24</td>
+      <td>0.19</td>
+      <td>0.63</td>
+      <td>171.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01.01.2009 00:40:00</td>
+      <td>996.51</td>
+      <td>-8.31</td>
+      <td>265.12</td>
+      <td>-9.07</td>
+      <td>94.2</td>
+      <td>3.26</td>
+      <td>3.07</td>
+      <td>0.19</td>
+      <td>1.92</td>
+      <td>3.08</td>
+      <td>1309.19</td>
+      <td>0.34</td>
+      <td>0.50</td>
+      <td>198.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01.01.2009 00:50:00</td>
+      <td>996.51</td>
+      <td>-8.27</td>
+      <td>265.15</td>
+      <td>-9.04</td>
+      <td>94.1</td>
+      <td>3.27</td>
+      <td>3.08</td>
+      <td>0.19</td>
+      <td>1.92</td>
+      <td>3.09</td>
+      <td>1309.00</td>
+      <td>0.32</td>
+      <td>0.63</td>
+      <td>214.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_75_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_75_1.png" />
+</div>
+</div>
+<p>There is a very strong trend that can be seen every year. Suppose we want to examine trends that happen within the years, we filter out the frequency corresponding to 1 year by setting its magnitude to 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y_ft_copy</span> <span class="o">=</span> <span class="n">y_ft</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">y_ft_copy</span><span class="p">[(</span><span class="nb">abs</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">y_ft_copy</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_77_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_77_0.png" />
+</div>
+</div>
+<p>By removing all frequencies below 1 year, we obtain only the higher frequency values. With these values, we can have a better look at the sub-year dynamics of daily temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_hf</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">y_ft_copy</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># plt.title(&#39;Removing Yearly Cycle&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span><span class="n">y_hf</span><span class="o">.</span><span class="n">real</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_79_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_79_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Quick exploration:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. What other strategies can we adopt to filter signals from very noisy measurements?
+
+2. What other real world examples of noise have you experienced? How did you deal with them?
+
+3. How can applying these frequency domain applications improve time series predictions?
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="wavelet-transform">
+<h1>Wavelet Transform<a class="headerlink" href="#wavelet-transform" title="Permalink to this headline">¶</a></h1>
+<p>A wavelet transform (WT) allows you to measure how “much”of a certain type of wavelet there exists in a given signal. A key difference between a WT and an FT is that a WT gives you information about the time domain and not just in the frequency domain.</p>
+<p>This transformation is achieved by taking a wavelet with specified properties and sliding it across the entire signal both through time and through different scales to find where it matches with the signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rescale</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">factor</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">wav1</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">ContinuousWavelet</span><span class="p">(</span><span class="s1">&#39;gaus1&#39;</span><span class="p">)</span>
+<span class="n">wav2</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">ContinuousWavelet</span><span class="p">(</span><span class="s1">&#39;morl&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">int_psi1</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">integrate_wavelet</span><span class="p">(</span><span class="n">wav1</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">int_psi2</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">integrate_wavelet</span><span class="p">(</span><span class="n">wav2</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rescale</span><span class="p">(</span><span class="n">int_psi1</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">s</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Gaussian Mother Wavelet&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rescale</span><span class="p">(</span><span class="n">int_psi2</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">s</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Morlet Mother Wavelet&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_84_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_84_0.png" />
+</div>
+</div>
+<p>The wavelet transform of a time series X(t) is given by:</p>
+<p>\begin{align} CWT(X(t)) = \frac{1}{\sqrt{|\sigma|}}\int_{-\infty}^{\infty}X(t)\psi(\frac{t-S}{\sigma})dt \end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the scale, <span class="math notranslate nohighlight">\(s\)</span> is the time lag/translation, and <span class="math notranslate nohighlight">\(\psi\)</span> is the “mother” wavelet.</p>
+<p>The scaling transformation applied on the mother wavelet can be thought of as “stretching” it only without changing its frequency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">scp</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scale (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span><span class="n">wavelet</span><span class="o">=</span><span class="s1">&#39;gaus1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scale (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_86_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_86_0.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_86_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_86_1.png" />
+</div>
+</div>
+<p>Interpreting these results, we see the presence of gaussian waves across times and scales.</p>
+<p>The Morlet wavelet is commonly used on signals which have sinusoidal patterns. It is important to know when to use which mother wavelet on a signal as they will give rise to different results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sine5</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sine10</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sine_5_10</span> <span class="o">=</span> <span class="n">sine5</span><span class="o">+</span><span class="n">sine10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sine_5_10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">sine5</span><span class="o">+</span><span class="n">sine10</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span><span class="n">wavelet</span><span class="o">=</span><span class="s1">&#39;morl&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_88_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_88_0.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_88_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_88_1.png" />
+</div>
+</div>
+<p>By using the Morlet mother wavelet, we can clearly see two bands with different scales across time.</p>
+<p>However, if we were to apply a Gaussian mother wavelet for its WT, we get less clear results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sine5</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sine10</span> <span class="o">=</span> <span class="n">sine_wave</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sine_5_10</span> <span class="o">=</span> <span class="n">sine5</span><span class="o">+</span><span class="n">sine10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sine_5_10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">sine5</span><span class="o">+</span><span class="n">sine10</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span><span class="n">wavelet</span><span class="o">=</span><span class="s1">&#39;gaus1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_90_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_90_0.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_90_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_90_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="using-accelerometer-and-gyroscopic-data">
+<h1>Using Accelerometer and Gyroscopic Data<a class="headerlink" href="#using-accelerometer-and-gyroscopic-data" title="Permalink to this headline">¶</a></h1>
+<p>The following code is taken from:</p>
+<p><a class="reference external" href="https://towardsdatascience.com/multiple-time-series-classification-by-using-continuous-wavelet-transformation-d29df97c0442">https://towardsdatascience.com/multiple-time-series-classification-by-using-continuous-wavelet-transformation-d29df97c0442</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_y_data</span><span class="p">(</span><span class="n">y_path</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">y_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># change labels range from 1-6 t 0-5, this enables a sparse_categorical_crossentropy loss function</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">load_X_data</span><span class="p">(</span><span class="n">X_path</span><span class="p">):</span>
+    <span class="n">X_signal_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_path</span> <span class="o">+</span> <span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">X_path</span><span class="p">)]</span>
+    <span class="n">X_signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">X_signal_paths</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_signals</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;../data/cwt/&#39;</span>
+<span class="n">LABEL_NAMES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Walking&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking upstairs&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking downstairs&quot;</span><span class="p">,</span> <span class="s2">&quot;Sitting&quot;</span><span class="p">,</span> <span class="s2">&quot;Standing&quot;</span><span class="p">,</span> <span class="s2">&quot;Laying&quot;</span><span class="p">]</span>
+
+<span class="c1"># load X data</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">load_X_data</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;train/Inertial Signals/&#39;</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">load_X_data</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;test/Inertial Signals/&#39;</span><span class="p">)</span>
+<span class="c1"># load y label</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">load_y_data</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;train/y_train.txt&#39;</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">load_y_data</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;test/y_test.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="mi">79</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Walking&#39;</span><span class="p">);</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="mi">51</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Laying&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_94_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_94_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">split_indices_per_label</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">indicies_per_label</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)]</span>
+    <span class="c1"># loop over the six labels</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span> 
+        <span class="n">indicies_per_label</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">indicies_per_label</span>
+
+<span class="k">def</span> <span class="nf">plot_cwt_coeffs_per_label</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label_indicies</span><span class="p">,</span> <span class="n">label_names</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">):</span>
+    
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">label_indicies</span><span class="p">,</span> <span class="n">label_names</span><span class="p">):</span>
+        <span class="n">coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">sample</span><span class="p">],:,</span> <span class="n">signal</span><span class="p">],</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span> <span class="o">=</span> <span class="n">wavelet</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Scale&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">train_labels_indicies</span> <span class="o">=</span> <span class="n">split_indices_per_label</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#signal indicies: 0 = body acc x, 1 = body acc y, 2 = body acc z, 3 = body gyro x, 4 = body gyro y, 5 = body gyro z, 6 = total acc x, 7 = total acc y, 8 = total acc z</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># signal index</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># sample index of each label indicies list</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span> <span class="c1"># range of scales</span>
+<span class="n">wavelet</span> <span class="o">=</span> <span class="s1">&#39;morl&#39;</span> <span class="c1"># mother wavelet</span>
+
+<span class="n">plot_cwt_coeffs_per_label</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">train_labels_indicies</span><span class="p">,</span> <span class="n">LABEL_NAMES</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span>
+                          <span class="n">sample</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_95_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_95_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">plot_cwt_coeffs_per_label</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">train_labels_indicies</span><span class="p">,</span> <span class="n">LABEL_NAMES</span><span class="p">,</span>
+                              <span class="n">signal</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_0.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_0.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_1.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_2.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_2.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_3.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_3.png" />
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_4.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_96_4.png" />
+</div>
+</div>
+<p>Looking at the plots for each activity, we see can see some patterns between the images. By feeding these results into a convolutional neural network, we can create a classifier to classify time series into activities.</p>
+</div>
+<div class="section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>To summarize, using these techniques can extract valuable information about time series which are not readily available.</p>
+<p>Cross-correlations can give insights into the sychronicity of data. With careful analysis, these can even be used as a step towards a more holistic view of causality in conjunction with Granget Causality.</p>
+<p>Fourier Transformation allows us to view the time series in the frequency domain, allowing operations previously untenable in the time domain. Filtering is a common task where FT is useful as it lets us easily manipulate the data to remove noise or highlight aspects of interest within the time series.</p>
+<p>Wavelet Transformation lets us decompose time series more finely than the FT since we can define the “mother” wavelet to be our wavefunction of interest. By characterizing time series, we can quite literally, paint a picture of the time series that can be used to pick out specific waveforms in the time series.</p>
+<p>In the context of forecasting, all three techniques can be used to inform the modeler how to prepare their data. With cross-correlations, the best time lagged time series can be used to provide better information about the target. The Fourier Transform can be applied to denoise the data and remove certain trends. Wavelet Transforms can be used to classify time series allowing the modeler to include their classification as a feature for forecasting or creating separate models for each class of time series.</p>
+<p>The following chapter represents the culmination of all the forecasting concepts from previous sections. There is no better way to test your time series capabilities than with a competition. The next chapter discusses the best techniques which were utilized in the recently concluded M5 Competition. In it, the best models under some constraints, are pushed to the limit to perform time series forecasting.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07_CrosscorrelationsFourierTransformandWaveletTransform"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html" title="previous page">Applying CCM Using causal-ccm package</a>
+    <a class='right-next' id="next-link" href="../08_WinningestMethods/lightgbm_jena_forecasting.html" title="next page">Final Handbook - Winningest Methods in Time Series Forecasting</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Asian Institute of Management PhD in Data Science<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
