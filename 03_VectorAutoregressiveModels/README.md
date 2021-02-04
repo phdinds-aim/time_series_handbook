@@ -7,7 +7,7 @@ In this notebook, we extend the forecasting problem to a more generalized framew
 **multivariate time series**--time series which has more than one time-dependent variable. More specifically, 
 we introduce **vector autoregressive (VAR)** models and show how they can be used in forecasting mutivariate time series. 
 
-The notebook is outlined as follows: 
+The [notebook](03_VectorAutoregressiveMethods.ipynb) is outlined as follows: 
 * Multivariate Time Series model
 * Vector Autoregressive (VAR) Models
 * Building a VAR model
