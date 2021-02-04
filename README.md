@@ -13,7 +13,7 @@ This handbook contains a variety of techniques that you can use for time series 
 - Chapter 4: [Granger Causality](04_GrangerCausality)
 - Chapter 5: [Simplex and S-map Projections](05_SimplexandSmapProjections)
 - Chapter 6: [Convergent Cross Mapping and Sugihara Causality](06_ConvergentCrossMappingandSugiharaCausality)
-- Chapter 7: [Frequency Analysis](07_FrequencyAnalysis)
+- Chapter 7: [Cross-Correlations, Fourier Transform and Wavelet Transform](07_CrosscorrelationsFourierTransformandWaveletTransform)
 - Chapter 8: [Winningest Methods](08_WinningestMethods)
     
 
