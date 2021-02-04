@@ -12,11 +12,7 @@ This notebook will discuss:
 
 4. Implementation and Forecasting using ARIMA
 
-Dataset Description:
+#### Datasets used:
+- *Synthetic Data* (Filename: [`../data/wwwusage.csv`](https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv)) 
 
-- "Synthetic Data"
-Filename: "Data\wwwusage.csv"
-Source: https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv
-
-- "Climate Data"
-Filename: "Data\jena_climate_2009_2016.csv"
+- *Climate Data* (Filename: `../data/jena_climate_2009_2016.csv"`)
