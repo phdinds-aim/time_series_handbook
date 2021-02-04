@@ -15,3 +15,5 @@ We introduce three techniques:
 3. Wavelet Transform
 
 and test their use on the Jena Climate Dataset (2009-2016) along with a handful of other datasets.
+
+
