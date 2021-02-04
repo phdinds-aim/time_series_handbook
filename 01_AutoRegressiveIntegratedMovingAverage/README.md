@@ -1,4 +1,4 @@
-# Chapter 1 - AutoRegressive Integrated Moving Average (ARIMA)
+# Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
 
 In this notebook, we will introduce our first approach to time-series forecasting which is **ARIMA** or AutoRegressive Integrated Moving Average. ARIMA, or AutoRegressive Integrated Moving Average, is a set of models that explains a time series using its own previous values given by the lags (**A**uto**R**egressive) and lagged errors (**M**oving **A**verage) while considering stationarity corrected by differencing (oppossite of **I**ntegration.) In other words, ARIMA assumes that the time series is described by autocorrelations in the data rather than trends and seasonality.
 
