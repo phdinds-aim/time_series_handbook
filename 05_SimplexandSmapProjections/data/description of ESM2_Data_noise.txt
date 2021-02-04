@@ -1,0 +1,3 @@
+This csv file includes artificial time series of red noise and logistic map for the demonstration of simplex projection and S-map.
+
+"Empirical dynamic modeling for beginners", CW Chang, M Ushio, C Hsieh - Ecological Research, 2017 - Supplemental Data

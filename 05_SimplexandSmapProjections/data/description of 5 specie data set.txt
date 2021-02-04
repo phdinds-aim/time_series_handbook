@@ -1,0 +1,6 @@
+Model example of five-species resource–consumer–predator
+interaction. Resource, Consumer 1, Consumer 2, Predator 1, and
+Predator 2 are represented by R, C1, C2, P1, and P2, respectively
+
+"Empirical dynamic modeling for beginners", CW Chang, M Ushio, C Hsieh - Ecological Research, 2017 - Supplemental Data
+(see Deyle et al. 2016 Proceedings of the Royal Society B 283:20152258)
