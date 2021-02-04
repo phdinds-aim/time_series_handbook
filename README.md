@@ -52,8 +52,8 @@ When a notebook rendered in nbviewer appears differently from the one rendered g
 # Contributors
 - Benjur Emmanuel Borja
 - Gilbert Chua
-- Francis Corpuz
-- Vinni Dajac
+- Francis James Corpuz
+- Carlo Vincienzo Dajac
 - Sebastian Ibanez
 - Prince Javier
 - Marissa Pastor-Liponhay
