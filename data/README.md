@@ -9,3 +9,7 @@ US Treasury Rates | Weekly data of US Treasury rates from January 1982 to Decemb
 cc| Stream flow of a river and the precipitation in the surrounding area | 7
 fft | Jena climate dataset| 7
 cwt (UCI HAR dataset) | Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.| 7
+cage_drowning|Number of Nicolas Cage Films and drowing incidents in the US|6
+|Angat_dataset|Angat dam levels, rainfall, and irrigation water flow|4, 6
+Ipo_dataset|Ipo dam levels, rainfall, and irrigation water flow|4, 6
+co2_temp - combined|Global CO2, temperature change, and Arctic sea ice area data from NASA|6 
