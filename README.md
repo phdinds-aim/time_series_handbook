@@ -4,7 +4,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Outline 
 This handbook contains a variety of techniques that you can use for time series analysis -- from simple statistical models to some of the state-of-the-art algorithms as of writing. Here are the items that are covered in this material:
-- Chapter 1: [Autoregressive integrated moving average](01_ARIMAandExponentialSmoothing)
+- Preface: [Advanced Time Series Analysis](00_Preface)
+- Chapter 1: [Autoregressive integrated moving average](01_AutoRegressiveIntegratedMovingAverage)
 - Chapter 2: [Linear Trend and Momentum Forecasting](02_LinearForecastingTrendandMomentumForecasting)
 - Chapter 3: [Vector Autoregressive Methods](03_VectorAutoregressiveModels)
 - Chapter 4: [Granger Causality](04_GrangerCausality)
