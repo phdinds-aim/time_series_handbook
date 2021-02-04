@@ -52,7 +52,7 @@ When a notebook rendered in nbviewer appears differently from the one rendered g
 
 # Contributors
 - Benjur Emmanuel Borja
-- Gilbert Chua
+- Gilbert Michael Chua
 - Francis James Corpuz
 - Carlo Vincienzo Dajac
 - Sebastian Ibanez
