@@ -1,102 +1,87 @@
 Traceback (most recent call last):
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
     record_timing=False,
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
     return loop.run_until_complete(coro)
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+  File "/home/prince/anaconda3/lib/python3.7/asyncio/base_events.py", line 579, in run_until_complete
     return future.result()
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
     self._check_raise_for_error(cell, exec_reply)
-  File "/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+### HYPERPARAMETERS ###
+window_size = 240
+prediction_horizon = 1
 
-### CREATE X,Y ####
-def create_xy(series, window_size, prediction_horizon, shuffle = False):
-    x = []
-    y = []
-    for i in range(0, len(series)):
-        if len(series[(i + window_size):(i + window_size + prediction_horizon)]) < prediction_horizon:
-            break
-        x.append(series[i:(i + window_size)])
-        y.append(series[(i + window_size):(i + window_size + prediction_horizon)])
-    x = np.array(x)
-    y = np.array(y)
-    return x,y
+### TRAIN TEST VAL SPLIT ###
+train_series = series[:35045]
+val_series = series[35045:52569]
+test_series = series[52569:]
 
-plt.rcParams['figure.figsize'] = [15, 5]
+train_x, train_y = create_xy(train_series, window_size, prediction_horizon)
+val_x, val_y = create_xy(val_series, window_size, prediction_horizon)
+test_x, test_y = create_xy(test_series, window_size, prediction_horizon)
 
-np.set_printoptions(precision = 6, suppress = True)
+train_y = train_y.flatten()
+val_y = val_y.flatten()
+test_y = test_y.flatten()
 
-df = pd.read_csv('datasets/climate/jena_climate_2009_2016.csv')
+print(train_x.shape)
+print(train_y.shape)
+print(val_x.shape)
+print(val_y.shape)
+print(test_x.shape)
+print(test_y.shape)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-1-0371b3282efe>[0m in [0;36m<module>[0;34m[0m
-[1;32m     20[0m [0mnp[0m[0;34m.[0m[0mset_printoptions[0m[0;34m([0m[0mprecision[0m [0;34m=[0m [0;36m6[0m[0;34m,[0m [0msuppress[0m [0;34m=[0m [0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     21[0m [0;34m[0m[0m
-[0;32m---> 22[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m'datasets/climate/jena_climate_2009_2016.csv'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
-[1;32m    603[0m     [0mkwds[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0mkwds_defaults[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    604[0m [0;34m[0m[0m
-[0;32m--> 605[0;31m     [0;32mreturn[0m [0m_read[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    606[0m [0;34m[0m[0m
-[1;32m    607[0m [0;34m[0m[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m<ipython-input-5-800c7a1ce398>[0m in [0;36m<module>[0;34m[0m
+[1;32m      8[0m [0mtest_series[0m [0;34m=[0m [0mseries[0m[0;34m[[0m[0;36m52569[0m[0;34m:[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0;34m[0m[0m
+[0;32m---> 10[0;31m [0mtrain_x[0m[0;34m,[0m [0mtrain_y[0m [0;34m=[0m [0mcreate_xy[0m[0;34m([0m[0mtrain_series[0m[0;34m,[0m [0mwindow_size[0m[0;34m,[0m [0mprediction_horizon[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     11[0m [0mval_x[0m[0;34m,[0m [0mval_y[0m [0;34m=[0m [0mcreate_xy[0m[0;34m([0m[0mval_series[0m[0;34m,[0m [0mwindow_size[0m[0;34m,[0m [0mprediction_horizon[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     12[0m [0mtest_x[0m[0;34m,[0m [0mtest_y[0m [0;34m=[0m [0mcreate_xy[0m[0;34m([0m[0mtest_series[0m[0;34m,[0m [0mwindow_size[0m[0;34m,[0m [0mprediction_horizon[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    455[0m [0;34m[0m[0m
-[1;32m    456[0m     [0;31m# Create the parser.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 457[0;31m     [0mparser[0m [0;34m=[0m [0mTextFileReader[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    458[0m [0;34m[0m[0m
-[1;32m    459[0m     [0;32mif[0m [0mchunksize[0m [0;32mor[0m [0miterator[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-1-d009d80f52cb>[0m in [0;36mcreate_xy[0;34m(series, window_size, prediction_horizon, shuffle)[0m
+[1;32m     13[0m         [0my[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mseries[0m[0;34m[[0m[0;34m([0m[0mi[0m [0;34m+[0m [0mwindow_size[0m[0;34m)[0m[0;34m:[0m[0;34m([0m[0mi[0m [0;34m+[0m [0mwindow_size[0m [0;34m+[0m [0mprediction_horizon[0m[0;34m)[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     14[0m     [0mx[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0mx[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 15[0;31m     [0my[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0my[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     16[0m     [0;32mreturn[0m [0mx[0m[0;34m,[0m[0my[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     17[0m [0;34m[0m[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, f, engine, **kwds)[0m
-[1;32m    812[0m             [0mself[0m[0;34m.[0m[0moptions[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m [0;34m=[0m [0mkwds[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m    813[0m [0;34m[0m[0m
-[0;32m--> 814[0;31m         [0mself[0m[0;34m.[0m[0m_engine[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    815[0m [0;34m[0m[0m
-[1;32m    816[0m     [0;32mdef[0m [0mclose[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/core/series.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m   1066[0m         [0mkey[0m [0;34m=[0m [0mcom[0m[0;34m.[0m[0mapply_if_callable[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mself[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1067[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1068[0;31m             [0mresult[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mindex[0m[0;34m.[0m[0mget_value[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1069[0m [0;34m[0m[0m
+[1;32m   1070[0m             [0;32mif[0m [0;32mnot[0m [0mis_scalar[0m[0;34m([0m[0mresult[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m_make_engine[0;34m(self, engine)[0m
-[1;32m   1043[0m             )
-[1;32m   1044[0m         [0;31m# error: Too many arguments for "ParserBase"[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1045[0;31m         [0;32mreturn[0m [0mmapping[0m[0;34m[[0m[0mengine[0m[0;34m][0m[0;34m([0m[0mself[0m[0;34m.[0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mself[0m[0;34m.[0m[0moptions[0m[0;34m)[0m  [0;31m# type: ignore[call-arg][0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1046[0m [0;34m[0m[0m
-[1;32m   1047[0m     [0;32mdef[0m [0m_failover_to_python[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/core/indexes/base.py[0m in [0;36mget_value[0;34m(self, series, key)[0m
+[1;32m   4728[0m         [0mk[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_convert_scalar_indexer[0m[0;34m([0m[0mk[0m[0;34m,[0m [0mkind[0m[0;34m=[0m[0;34m"getitem"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   4729[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 4730[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_value[0m[0;34m([0m[0ms[0m[0;34m,[0m [0mk[0m[0;34m,[0m [0mtz[0m[0;34m=[0m[0mgetattr[0m[0;34m([0m[0mseries[0m[0;34m.[0m[0mdtype[0m[0;34m,[0m [0;34m"tz"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   4731[0m         [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0me1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   4732[0m             [0;32mif[0m [0mlen[0m[0;34m([0m[0mself[0m[0;34m)[0m [0;34m>[0m [0;36m0[0m [0;32mand[0m [0;34m([0m[0mself[0m[0;34m.[0m[0mholds_integer[0m[0;34m([0m[0;34m)[0m [0;32mor[0m [0mself[0m[0;34m.[0m[0mis_boolean[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, src, **kwds)[0m
-[1;32m   1860[0m [0;34m[0m[0m
-[1;32m   1861[0m         [0;31m# open handles[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1862[0;31m         [0mself[0m[0;34m.[0m[0m_open_handles[0m[0;34m([0m[0msrc[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1863[0m         [0;32massert[0m [0mself[0m[0;34m.[0m[0mhandles[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1864[0m         [0;32mfor[0m [0mkey[0m [0;32min[0m [0;34m([0m[0;34m"storage_options"[0m[0;34m,[0m [0;34m"encoding"[0m[0;34m,[0m [0;34m"memory_map"[0m[0;34m,[0m [0;34m"compression"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32mpandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_value[0;34m()[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m_open_handles[0;34m(self, src, kwds)[0m
-[1;32m   1361[0m             [0mcompression[0m[0;34m=[0m[0mkwds[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"compression"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1362[0m             [0mmemory_map[0m[0;34m=[0m[0mkwds[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"memory_map"[0m[0;34m,[0m [0;32mFalse[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1363[0;31m             [0mstorage_options[0m[0;34m=[0m[0mkwds[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"storage_options"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1364[0m         )
-[1;32m   1365[0m [0;34m[0m[0m
+[0;32mpandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_value[0;34m()[0m
 
-[0;32m~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/common.py[0m in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
-[1;32m    645[0m                 [0mencoding[0m[0;34m=[0m[0mioargs[0m[0;34m.[0m[0mencoding[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    646[0m                 [0merrors[0m[0;34m=[0m[0merrors[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 647[0;31m                 [0mnewline[0m[0;34m=[0m[0;34m""[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    648[0m             )
-[1;32m    649[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32mpandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'datasets/climate/jena_climate_2009_2016.csv'
-FileNotFoundError: [Errno 2] No such file or directory: 'datasets/climate/jena_climate_2009_2016.csv'
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.Int64HashTable.get_item[0;34m()[0m
+
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.Int64HashTable.get_item[0;34m()[0m
+
+[0;31mKeyError[0m: 0
+KeyError: 0
 

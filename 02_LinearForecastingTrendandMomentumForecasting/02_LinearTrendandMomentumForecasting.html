@@ -1,10 +1,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chapter 2: Linear, Trend, and Momentum Forecasting &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -25,8 +24,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,28 +35,29 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter 3: Vector Autoregressive Methods" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html" />
-    <link rel="prev" title="Preface - Advanced Time Series Analysis" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" />
+    <link rel="prev" title="Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -87,15 +87,15 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Time Series Handbook
+  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface: Advanced Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface - Advanced Time Series Analysis
+  <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
+   Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -109,13 +109,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
-   Takeaways
+  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
+   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping / Sugihara Causality
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -129,52 +129,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
-   Cross-Correlations, Fourier Transform, and Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#cross-correlation-between-two-signals">
-   Cross-correlation Between Two Signals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#wavelet-transform">
-   Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#using-accelerometer-and-gyroscopic-data">
-   Using Accelerometer and Gyroscopic Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#conclusion">
-   Conclusion
+   Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
-   Final Handbook - Winningest Methods in Time Series Forecasting
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+   Chapter 8: Winningest Methods in Time Series Forecasting
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Hyperparameter Tuning (Supplementary Notebook)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+     Temperature Forecasting (Supplementary Notebook)
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Data/README.html">
-   Datasets
-  </a>
  </li>
 </ul>
 
@@ -411,7 +386,7 @@
 <li><p><a class="reference external" href="https://stackabuse.com/linear-regression-in-python-with-scikit-learn/">https://stackabuse.com/linear-regression-in-python-with-scikit-learn/</a></p></li>
 <li><p><a class="reference external" href="https://corporatefinanceinstitute.com/resources/knowledge/trading-investing/momentum-investing/">https://corporatefinanceinstitute.com/resources/knowledge/trading-investing/momentum-investing/</a></p></li>
 </ol>
-<p>Organized by: Marissa P. Liponhay</p>
+<p>Prepared by: Marissa P. Liponhay</p>
 <div class="section" id="linear-regression-forecasting">
 <h2>Linear Regression Forecasting<a class="headerlink" href="#linear-regression-forecasting" title="Permalink to this headline">¶</a></h2>
 <p>Linear regression forecasting is used when forecasting a time series y with the assumption that it has a linear relationship with other time series x.</p>
@@ -447,12 +422,12 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">autocorrelation_plot</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="k">import</span> <span class="n">autocorrelation_plot</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">from</span> <span class="nn">statsmodels.graphics</span> <span class="kn">import</span> <span class="n">tsaplots</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics</span> <span class="k">import</span> <span class="n">tsaplots</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1">#from sklearn.model_selection </span>
@@ -462,7 +437,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/NFLX3.csv&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/NFLX3.csv&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 <span class="n">price</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">=</span><span class="n">price</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -495,7 +470,7 @@
 <p>p-value &gt; 0.05: The time series is non-stationary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="k">import</span> <span class="n">adfuller</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/NFLX3.csv&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
 <span class="c1"># series = read_csv(&#39;daily-total-female-births.csv&#39;, header=0, index_col=0, squeeze=True)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span>
@@ -509,12 +484,30 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -0.027586
-p-value: 0.956190
-Critical Values:
-	1%: -3.446
-	5%: -2.868
-	10%: -2.570
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">d3a873a1c972</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># series = read_csv(&#39;daily-total-female-births.csv&#39;, header=0, index_col=0, squeeze=True)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">X</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nn">~/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/stattools.py</span> in <span class="ni">adfuller</span><span class="nt">(x, maxlag, regression, autolag, store, regresults)</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>                          <span class="s1">&#39;deterministic regressors&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">xdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">236</span>     <span class="n">xdall</span> <span class="o">=</span> <span class="n">lagmat</span><span class="p">(</span><span class="n">xdiff</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">],</span> <span class="n">maxlag</span><span class="p">,</span> <span class="n">trim</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">original</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">nobs</span> <span class="o">=</span> <span class="n">xdall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span> 
+
+<span class="nn">~/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/tsatools.py</span> in <span class="ni">lagmat</span><span class="nt">(x, maxlag, trim, original, use_pandas)</span>
+<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="k">if</span> <span class="n">xa</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span>         <span class="n">xa</span> <span class="o">=</span> <span class="n">xa</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">404</span>     <span class="n">nobs</span><span class="p">,</span> <span class="n">nvar</span> <span class="o">=</span> <span class="n">xa</span><span class="o">.</span><span class="n">shape</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="k">if</span> <span class="n">original</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span> <span class="s1">&#39;sep&#39;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="n">dropidx</span> <span class="o">=</span> <span class="n">nvar</span>
+
+<span class="ne">ValueError</span>: too many values to unpack (expected 2)
 </pre></div>
 </div>
 </div>
@@ -544,7 +537,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Lag&#39;, ylabel=&#39;Autocorrelation&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc0a66e910&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_12_1.png" src="../_images/02_LinearTrendandMomentumForecasting_12_1.png" />
@@ -650,7 +643,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd7a86f1d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc11e11f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_22_1.png" src="../_images/02_LinearTrendandMomentumForecasting_22_1.png" />
@@ -699,7 +692,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcd7ab6f310&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbc0f7c4b20&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_25_1.png" src="../_images/02_LinearTrendandMomentumForecasting_25_1.png" />
@@ -720,7 +713,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd7abc6790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc10e5c0a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_27_1.png" src="../_images/02_LinearTrendandMomentumForecasting_27_1.png" />
@@ -740,7 +733,7 @@ Critical Values:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train set R^2:  0.7682299277930607
-Test set R^2:  0.9187750163794539
+Test set R^2:  0.9187750163794522
 </pre></div>
 </div>
 </div>
@@ -782,7 +775,7 @@ Test set R^2:  0.9187750163794539
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">linregress</span>
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x_forecast</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">lr_prediction2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -795,7 +788,7 @@ Test set R^2:  0.9187750163794539
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcd7a879a50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbc1217c1c0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_33_1.png" src="../_images/02_LinearTrendandMomentumForecasting_33_1.png" />
@@ -1006,7 +999,7 @@ Test set R^2:  0.9187750163794539
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 
 <span class="c1"># We will model C02 emission (as y variable) using the parameters volume and weight as predictors (x variable)</span>
 <span class="c1"># for a multi-variate linear regression</span>
@@ -1036,7 +1029,7 @@ Test set R^2:  0.9187750163794539
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate Linear Regression is given by: 
-CO2=  0.007805257527747128 x1 +  0.007550947270300682 x2 +  79.69471929115939
+CO2=  0.007805257527747122 x1 +  0.007550947270300685 x2 +  79.6947192911594
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([95.05092409])
@@ -1048,8 +1041,8 @@ CO2=  0.007805257527747128 x1 +  0.007550947270300682 x2 +  79.69471929115939
 <p>The slope for volume and weight of the cars are equal to 0.00781 and 0.00755, respectively. This means that for every 1 unit change in volume (weight) of cars, the expected increase in CO2 emission is 0.00781% (0.00755%).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">lrm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1061,9 +1054,9 @@ CO2=  0.007805257527747128 x1 +  0.007550947270300682 x2 +  79.69471929115939
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.670405502652304
-Mean Squared Error: 40.862824536801455
-Root Mean Squared Error: 6.392403658781371
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.67040550265231
+Mean Squared Error: 40.86282453680151
+Root Mean Squared Error: 6.392403658781375
 </pre></div>
 </div>
 </div>
@@ -1087,7 +1080,7 @@ Root Mean Squared Error: 6.392403658781371
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ridge Regularization... alpha=0 is equivalent to linear regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Ridge</span>
 <span class="n">ridgereg</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model2</span> <span class="o">=</span> <span class="n">ridgereg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -1102,15 +1095,15 @@ Root Mean Squared Error: 6.392403658781371
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate L2 Linear Regression is given by: 
-CO2=  0.007019810017740837 x1 +  0.007728894654883428 x2 +  80.73020505101512
+CO2=  0.007019810017740837 x1 +  0.007728894654883425 x2 +  80.73020505101513
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">ridgereg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1122,9 +1115,9 @@ CO2=  0.007019810017740837 x1 +  0.007728894654883428 x2 +  80.73020505101512
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.610220319986727
-Mean Squared Error: 41.14243508776425
-Root Mean Squared Error: 6.414236906114729
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.610220319986732
+Mean Squared Error: 41.142435087764326
+Root Mean Squared Error: 6.414236906114735
 </pre></div>
 </div>
 </div>
@@ -1132,7 +1125,7 @@ Root Mean Squared Error: 6.414236906114729
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lasso Regularization... alpha=0 is equivalent to linear regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
 <span class="n">lassoreg</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model3</span> <span class="o">=</span> <span class="n">lassoreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -1148,7 +1141,7 @@ Root Mean Squared Error: 6.414236906114729
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate L2 Linear Regression is given by: 
-CO2=  0.00771675835477406 x1 +  0.007406759259298179 x2 +  80.02363225450095
+CO2=  0.007716758354774066 x1 +  0.007406759259298172 x2 +  80.02363225450095
 </pre></div>
 </div>
 </div>
@@ -1533,7 +1526,7 @@ Root Mean Squared Error: 6.397275645641555
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.493283045210853
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.4932830452108559
 Mean Squared Error: 0.44533245141822714
 Root Mean Squared Error: 0.6673323395567062
 </pre></div>
@@ -1546,7 +1539,7 @@ Root Mean Squared Error: 0.6673323395567062
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ridge Regularization... alpha=0 is equivalent to linear regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Ridge</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
 <span class="n">ridgereg2</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model_temp</span> <span class="o">=</span> <span class="n">ridgereg2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1559,9 +1552,9 @@ Root Mean Squared Error: 0.6673323395567062
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5059669706097627
-Mean Squared Error: 0.49017952712142665
-Root Mean Squared Error: 0.7001282219146909
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5059669706097649
+Mean Squared Error: 0.4901795271214341
+Root Mean Squared Error: 0.7001282219146961
 </pre></div>
 </div>
 </div>
@@ -1573,7 +1566,7 @@ Root Mean Squared Error: 0.7001282219146909
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lasso Regularization... alpha=0 is equivalent to linear regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
 <span class="n">lassoreg2</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model_temp2</span> <span class="o">=</span> <span class="n">lassoreg2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1650,7 +1643,7 @@ Root Mean Squared Error: 8.437981297624082
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd7a4af450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc121929d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_66_1.png" src="../_images/02_LinearTrendandMomentumForecasting_66_1.png" />
@@ -1728,7 +1721,7 @@ Root Mean Squared Error: 8.437981297624082
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd6253e5d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbbf74abac0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_74_1.png" src="../_images/02_LinearTrendandMomentumForecasting_74_1.png" />
@@ -1811,7 +1804,7 @@ Date
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd62891a10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbbf7e2cb80&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_79_1.png" src="../_images/02_LinearTrendandMomentumForecasting_79_1.png" />
@@ -1916,7 +1909,7 @@ Date
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" title="previous page">Preface - Advanced Time Series Analysis</a>
+    <a class='left-prev' id="prev-link" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html" title="previous page">Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)</a>
     <a class='right-next' id="next-link" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html" title="next page">Chapter 3: Vector Autoregressive Methods</a>
 
     </div>

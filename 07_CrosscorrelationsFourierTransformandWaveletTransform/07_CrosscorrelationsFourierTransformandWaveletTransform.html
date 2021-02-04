@@ -1,11 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cross-Correlations, Fourier Transform, and Wavelet Transform &#8212; Time Series Analysis Handbook</title>
+    <title>Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -25,8 +24,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,27 +35,28 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Final Handbook - Winningest Methods in Time Series Forecasting" href="../08_WinningestMethods/lightgbm_jena_forecasting.html" />
+    <link rel="next" title="Chapter 8: Winningest Methods in Time Series Forecasting" href="../08_WinningestMethods/lightgbm_m5_forecasting.html" />
     <link rel="prev" title="Applying CCM Using causal-ccm package" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,15 +87,15 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Time Series Handbook
+  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface: Advanced Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface - Advanced Time Series Analysis
+  <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
+   Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
   </a>
  </li>
  <li class="toctree-l1">
@@ -109,13 +109,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
-   Takeaways
+  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
+   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping / Sugihara Causality
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -129,52 +129,27 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Cross-Correlations, Fourier Transform, and Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#cross-correlation-between-two-signals">
-   Cross-correlation Between Two Signals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#wavelet-transform">
-   Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#using-accelerometer-and-gyroscopic-data">
-   Using Accelerometer and Gyroscopic Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#conclusion">
-   Conclusion
+   Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
-   Final Handbook - Winningest Methods in Time Series Forecasting
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+   Chapter 8: Winningest Methods in Time Series Forecasting
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Hyperparameter Tuning (Supplementary Notebook)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+     Temperature Forecasting (Supplementary Notebook)
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Data/README.html">
-   Datasets
-  </a>
  </li>
 </ul>
 
@@ -279,103 +254,98 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Cross-Correlations, Fourier Transform, and Wavelet Transform
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cross-correlation-between-two-signals">
    Cross-correlation Between Two Signals
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#noisy-signals">
      Noisy Signals
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jena-climate-data">
      Jena Climate Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#precipitation-and-stream-flow">
      Precipitation and Stream Flow
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-fourier-series">
-     The Fourier Series:
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-fourier-series">
+   The Fourier Series:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-fourier-transform">
+   The Fourier Transform:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pure-signal">
+     Pure Signal
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-fourier-transform">
-     The Fourier Transform:
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pure-signal">
-       Pure Signal
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mixed-signals">
-       Mixed Signals
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#quick-exploration">
-       Quick exploration:
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#frequency-domain-manipulation">
-     Frequency Domain Manipulation
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixed-signals">
+     Mixed Signals
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#noise-filtering">
-     Noise Filtering
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-exploration">
+     Quick exploration:
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#filtering-by-energy-level">
-       Filtering by Energy Level
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#filtering-by-frequency">
-       Filtering by Frequency
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Jena Climate Data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Quick exploration:
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequency-domain-manipulation">
+   Frequency Domain Manipulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#noise-filtering">
+   Noise Filtering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-by-energy-level">
+     Filtering by Energy Level
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-by-frequency">
+     Filtering by Frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Jena Climate Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Quick exploration:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wavelet-transform">
    Wavelet Transform
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-accelerometer-and-gyroscopic-data">
    Using Accelerometer and Gyroscopic Data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
    Conclusion
   </a>
@@ -391,8 +361,8 @@
         
               <div>
                 
-  <div class="section" id="cross-correlations-fourier-transform-and-wavelet-transform">
-<h1>Cross-Correlations, Fourier Transform, and Wavelet Transform<a class="headerlink" href="#cross-correlations-fourier-transform-and-wavelet-transform" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chapter-7-cross-correlations-fourier-transform-and-wavelet-transform">
+<h1>Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform<a class="headerlink" href="#chapter-7-cross-correlations-fourier-transform-and-wavelet-transform" title="Permalink to this headline">¶</a></h1>
 <p>Gaining a deeper undersanding of causality, we look at time series forecasting through another lens.</p>
 <p>In this chapter, we will take a different approach to how we analzye time series that is complementary to forecasting. Previously, methods of explaining such as the Granger Causality, S-mapping, and Cross-mapping, focused on the time domain - the values of the time series when measured over time or in its phase space. While both are useful for many tasks, it can be often useful to transform these time domain measurements to unearth patterns which are difficult to tease out. Specifically, we want to look at the frequency domain to both analyze the dynamics and perform pre-processing techniques that may be used to modify real-world datasets.</p>
 <p>We will be analyzing the dynamics of time series not exactly to make forecasts, but to understand them in terms of their frequencies in complement to the previous methods of causality and explainability presented.</p>
@@ -404,7 +374,14 @@
 3) Wavelet Transform
 </pre></div>
 </div>
-<p>and test their use on the Jena Climate Dataset (2009-2016) along with a handful of other datasets. To understand</p>
+<p>and test their use on the Jena Climate Dataset (2009-2016) along with a handful of other datasets.</p>
+<p>The contents of this notebook are complied from the following references:</p>
+<ul class="simple">
+<li><p>Chapters 1-3 of Priestley, M.B. (1981). Spectral Analysis and Time Series, Vols. 1 and 2, Academic Press, New York.</p></li>
+<li><p><a href='https://towardsdatascience.com/multiple-time-series-classification-by-using-continuous-wavelet-transformation-d29df97c0442'>Multiple Time Series Classification by Using Continuous Wavelet Transformation</a></p></li>
+<li><p><a href='https://pywavelets.readthedocs.io/en/latest/'>PyWavelets Documentation</a></p></li>
+</ul>
+<p>Prepared by: Gilbert Michael Go Chua</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -412,11 +389,11 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">scp</span>
 <span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">repeat</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="k">import</span> <span class="n">adfuller</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">repeat</span>
 <span class="kn">import</span> <span class="nn">pywt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -453,11 +430,12 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="cross-correlation-between-two-signals">
-<h1>Cross-correlation Between Two Signals<a class="headerlink" href="#cross-correlation-between-two-signals" title="Permalink to this headline">¶</a></h1>
+<h2>Cross-correlation Between Two Signals<a class="headerlink" href="#cross-correlation-between-two-signals" title="Permalink to this headline">¶</a></h2>
+<p>Cross-correlation was discussed previously in the chapter on <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">Autoregressive</span> <span class="pre">Methods</span></code> in a more strict statistical light. This time, we will be using a slightly modified definition more apt for signals.</p>
 <p>The cross-correlation between two signals <span class="math notranslate nohighlight">\(X_{1}\)</span> and <span class="math notranslate nohighlight">\(X_{2}\)</span> is given by:</p>
 <p>\begin{align} R_{2,1}(s) = E[(X_{1,t}-\mu_{1})*(X_{2,t+s}-\mu_{2})] \end{align}</p>
+<p>which is essentially the expected value of the <a href='https://en.wikipedia.org/wiki/Convolution'>convolution</a> between the covariance of two signals <span class="math notranslate nohighlight">\(X_{1}\)</span> and <span class="math notranslate nohighlight">\(X_{2}\)</span>.</p>
 <p>The normalized version is given by:</p>
 <p>\begin{align} \rho_{21}(s) = \frac{R_{2,1}(s)}{(R_{1,1}(0)R_{2,2}(0))^{\frac{1}{2}}}\end{align}</p>
 <p>The cross-correlation gives us the similarity of two time series at a given time lag <span class="math notranslate nohighlight">\(s\)</span>. By “sliding” <span class="math notranslate nohighlight">\(s\)</span>, we can find the correlation between two time series for all possible values of <span class="math notranslate nohighlight">\(s\)</span>.</p>
@@ -468,7 +446,7 @@
 <li><p>A value of -1 having <span class="math notranslate nohighlight">\(X_{1}(t)\)</span> and <span class="math notranslate nohighlight">\(X_{2}(t)\)</span> being perfectly negative linearly correlated</p></li>
 </ul>
 <div class="section" id="noisy-signals">
-<h2>Noisy Signals<a class="headerlink" href="#noisy-signals" title="Permalink to this headline">¶</a></h2>
+<h3>Noisy Signals<a class="headerlink" href="#noisy-signals" title="Permalink to this headline">¶</a></h3>
 <p>To demonstrate this, we take the case of two simple yet noisy time series.</p>
 <p>We want to measure the shift between two periodic signals Two sine waves are generated that are identical in both amplitude and frequency but one is shifted forward in time. By taking the maximum of the cross-correlation, we should be able to retrieve how much one of the time series leads (or lags!) the other.</p>
 <div class="cell docutils container">
@@ -537,8 +515,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 24
-Minimum correlation at 75
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 25
+Minimum correlation at 74
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_11_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_11_1.png" />
@@ -547,7 +525,7 @@ Minimum correlation at 75
 <p>We find that the maximum correlation between <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> occurs at 27 samples. This is very close to the theoretical value of 25 samples corresponding to a phase shift of <span class="math notranslate nohighlight">\(\frac{\pi}{2}\)</span> for a signal with 100 samples. Using only direct measurements from the data, albeit synthetic, we are able to retrieve a reasonable estimate of the lag and delay between them.</p>
 </div>
 <div class="section" id="jena-climate-data">
-<h2>Jena Climate Data<a class="headerlink" href="#jena-climate-data" title="Permalink to this headline">¶</a></h2>
+<h3>Jena Climate Data<a class="headerlink" href="#jena-climate-data" title="Permalink to this headline">¶</a></h3>
 <p>Let us look at how cross-correlations can be used to unearth relationships in real data. We will again use the Jena Climate Dataset to analyze the average temperature. This time, we will look at the relationship between daily temperature and daily wind speed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,7 +628,7 @@ Minimum correlation at 0
 <p>It should be noted that unlike Granger Causality which also draws relationships between multiple time series, cross-correlation does not provide us with the causality between the two. At best, cross-correlation shows the synchronocity between two time series.</p>
 </div>
 <div class="section" id="precipitation-and-stream-flow">
-<h2>Precipitation and Stream Flow<a class="headerlink" href="#precipitation-and-stream-flow" title="Permalink to this headline">¶</a></h2>
+<h3>Precipitation and Stream Flow<a class="headerlink" href="#precipitation-and-stream-flow" title="Permalink to this headline">¶</a></h3>
 <p>We apply cross-correlation analysis on the stream flow of a river and the precipitation in the surrounding area.</p>
 <p>To safely control the elecricity output of a run-of-the-river hydro-electric generator, operators must understand the relationship between the time it takes for rainfall to directly affect the stream’s flow.</p>
 <div class="cell docutils container">
@@ -772,6 +750,7 @@ Minimum correlation at 26
 <p>We find that the maximum correlation happens when precipitation leads water flow by 1 day. While cross-correlation alone cannot give us causality, understanding of the measurements involved can be used to argue such. In the case of rainfall and precipitation, there is established understanding that precipitation leads to increases in river flow. We can conclude with some confidence that precipitation will cause an increase in river flow after 1 day.</p>
 <p>To supplement our analysis, we move into the frequency domain with the Fourier Transform by first understanding the Fourier Series.</p>
 </div>
+</div>
 <div class="section" id="the-fourier-series">
 <h2>The Fourier Series:<a class="headerlink" href="#the-fourier-series" title="Permalink to this headline">¶</a></h2>
 <p>Any periodic signal can be broken down into a summation of sine and cosine waves. A periodic time series <span class="math notranslate nohighlight">\(X(t)\)</span> can be broken down into fundamental frequencies given by the Fourier Series:</p>
@@ -831,10 +810,18 @@ Minimum correlation at 26
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peak at: 5.0 Hz
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">10</span><span class="n">b5ed290419</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fourier Coefficient&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;function&#39; object has no attribute &#39;fft&#39;
 </pre></div>
 </div>
-<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" />
 </div>
 </div>
 <p>We see two peaks when the frequency is 5 and -5.</p>
@@ -1031,7 +1018,7 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [1.000e-01 3.000e-01 6.000e-01 ... 4.989e+02 4.993e+02 4.996e+02]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [2.000e-01 5.000e-01 9.000e-01 ... 4.994e+02 4.996e+02 4.999e+02]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" />
@@ -1049,7 +1036,8 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  5.   10.  104.4 104.6 123.7 237.4 441.2]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  5.    5.2  10.  146.  157.7 175.6 202.  228.1 238.3 244.  357.4 385.2
+ 400.1]
 </pre></div>
 </div>
 </div>
@@ -1319,9 +1307,8 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="wavelet-transform">
-<h1>Wavelet Transform<a class="headerlink" href="#wavelet-transform" title="Permalink to this headline">¶</a></h1>
+<h2>Wavelet Transform<a class="headerlink" href="#wavelet-transform" title="Permalink to this headline">¶</a></h2>
 <p>A wavelet transform (WT) allows you to measure how “much”of a certain type of wavelet there exists in a given signal. A key difference between a WT and an FT is that a WT gives you information about the time domain and not just in the frequency domain.</p>
 <p>This transformation is achieved by taking a wavelet with specified properties and sliding it across the entire signal both through time and through different scales to find where it matches with the signal.</p>
 <div class="cell docutils container">
@@ -1424,7 +1411,7 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 <div class="section" id="using-accelerometer-and-gyroscopic-data">
-<h1>Using Accelerometer and Gyroscopic Data<a class="headerlink" href="#using-accelerometer-and-gyroscopic-data" title="Permalink to this headline">¶</a></h1>
+<h2>Using Accelerometer and Gyroscopic Data<a class="headerlink" href="#using-accelerometer-and-gyroscopic-data" title="Permalink to this headline">¶</a></h2>
 <p>The following code is taken from:</p>
 <p><a class="reference external" href="https://towardsdatascience.com/multiple-time-series-classification-by-using-continuous-wavelet-transformation-d29df97c0442">https://towardsdatascience.com/multiple-time-series-classification-by-using-continuous-wavelet-transformation-d29df97c0442</a></p>
 <div class="cell docutils container">
@@ -1523,13 +1510,14 @@ We want to retrieve the original signal as that is where the interesting behavio
 <p>Looking at the plots for each activity, we see can see some patterns between the images. By feeding these results into a convolutional neural network, we can create a classifier to classify time series into activities.</p>
 </div>
 <div class="section" id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>To summarize, using these techniques can extract valuable information about time series which are not readily available.</p>
 <p>Cross-correlations can give insights into the sychronicity of data. With careful analysis, these can even be used as a step towards a more holistic view of causality in conjunction with Granget Causality.</p>
 <p>Fourier Transformation allows us to view the time series in the frequency domain, allowing operations previously untenable in the time domain. Filtering is a common task where FT is useful as it lets us easily manipulate the data to remove noise or highlight aspects of interest within the time series.</p>
 <p>Wavelet Transformation lets us decompose time series more finely than the FT since we can define the “mother” wavelet to be our wavefunction of interest. By characterizing time series, we can quite literally, paint a picture of the time series that can be used to pick out specific waveforms in the time series.</p>
 <p>In the context of forecasting, all three techniques can be used to inform the modeler how to prepare their data. With cross-correlations, the best time lagged time series can be used to provide better information about the target. The Fourier Transform can be applied to denoise the data and remove certain trends. Wavelet Transforms can be used to classify time series allowing the modeler to include their classification as a feature for forecasting or creating separate models for each class of time series.</p>
 <p>The following chapter represents the culmination of all the forecasting concepts from previous sections. There is no better way to test your time series capabilities than with a competition. The next chapter discusses the best techniques which were utilized in the recently concluded M5 Competition. In it, the best models under some constraints, are pushed to the limit to perform time series forecasting.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1561,7 +1549,7 @@ We want to retrieve the original signal as that is where the interesting behavio
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html" title="previous page">Applying CCM Using causal-ccm package</a>
-    <a class='right-next' id="next-link" href="../08_WinningestMethods/lightgbm_jena_forecasting.html" title="next page">Final Handbook - Winningest Methods in Time Series Forecasting</a>
+    <a class='right-next' id="next-link" href="../08_WinningestMethods/lightgbm_m5_forecasting.html" title="next page">Chapter 8: Winningest Methods in Time Series Forecasting</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

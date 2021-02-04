@@ -1,11 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convergent Cross Mapping / Sugihara Causality &#8212; Time Series Analysis Handbook</title>
+    <title>Chapter 6: Convergent Cross Mapping / Sugihara Causality &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -25,8 +24,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,28 +35,29 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Applying CCM Using causal-ccm package" href="using_causal_ccm_package.html" />
-    <link rel="prev" title="Chapter 3: Vector Autoregressive Methods" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html" />
+    <link rel="prev" title="Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -87,15 +87,15 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Time Series Handbook
+  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
+   Preface: Advanced Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface - Advanced Time Series Analysis
+  <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
+   Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
   </a>
  </li>
  <li class="toctree-l1">
@@ -109,13 +109,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html#takeaways">
-   Takeaways
+  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
+   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping / Sugihara Causality
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -129,52 +129,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
-   Cross-Correlations, Fourier Transform, and Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#cross-correlation-between-two-signals">
-   Cross-correlation Between Two Signals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#wavelet-transform">
-   Wavelet Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#using-accelerometer-and-gyroscopic-data">
-   Using Accelerometer and Gyroscopic Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html#conclusion">
-   Conclusion
+   Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
-   Final Handbook - Winningest Methods in Time Series Forecasting
+  <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
+   Chapter 8: Winningest Methods in Time Series Forecasting
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_forecasting.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
+     Hyperparameter Tuning (Supplementary Notebook)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08_WinningestMethods/lightgbm_m5_tuning.html">
-     Final Handbook - Winningest Methods in Time Series Forecasting
+    <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html">
+     Temperature Forecasting (Supplementary Notebook)
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Data/README.html">
-   Datasets
-  </a>
  </li>
 </ul>
 
@@ -484,11 +459,11 @@
         
               <div>
                 
-  <div class="section" id="convergent-cross-mapping-sugihara-causality">
-<h1>Convergent Cross Mapping / Sugihara Causality<a class="headerlink" href="#convergent-cross-mapping-sugihara-causality" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chapter-6-convergent-cross-mapping-sugihara-causality">
+<h1>Chapter 6: Convergent Cross Mapping / Sugihara Causality<a class="headerlink" href="#chapter-6-convergent-cross-mapping-sugihara-causality" title="Permalink to this headline">¶</a></h1>
 <p>In the previous chapters we talked about Simplex Projection, a forecasting technique that looks for similar trends in the past to forecast the future by computing for nearest neighbors on an embedding. In this chapter, we discuss  Convergent Cross Mapping (CCM) also formulated by <a class="reference external" href="https://science.sciencemag.org/content/338/6106/496">Sugihara et al., 2012</a> as a methodology that uses ideas from Simplex Projection to identify causality between variables in a complex dynamical system (e.g. ecosystem) using just time series data.</p>
 <p>We will go through the key ideas of CCM, how it addresses, and the algorithm behind it. We will then test the CCM framework on simulated data where we will deliberately adjust the influence of one variable over the other. Finally, we will apply CCM on some real world data to infer the relationships between variables in a system.</p>
-<p>Organized by: Prince Joseph Erneszer Javier</p>
+<p>Prepared by: Prince Joseph Erneszer Javier</p>
 <div class="section" id="causal-ccm-package">
 <h2>causal-ccm Package<a class="headerlink" href="#causal-ccm-package" title="Permalink to this headline">¶</a></h2>
 <p>This chapter explains the CCM methodology in detail. If you wish to apply this in your own projects, install the framework using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">causal-ccm</span></code>. See <code class="docutils literal notranslate"><span class="pre">using_causal_ccm_package.ipynb</span></code> notebook for details how to use.</p>
@@ -522,20 +497,20 @@
 <div class="section" id="attractors">
 <h3>Attractors<a class="headerlink" href="#attractors" title="Permalink to this headline">¶</a></h3>
 <img src=https://fromsystosys.netlify.com/img/lorenz_custom_pers_small.gif>
-An attractor is a "space" of states that the system tends to get attracted to as time goes on. When attractors can be thought of as curved spaces, they are called "manifolds." I like to think of attractors as a way to summarize our system, like an embedding layer in a neural network architecture. 
+<p>An attractor is a “space” of states that the system tends to get attracted to as time goes on. When attractors can be thought of as curved spaces, they are called “manifolds.” I like to think of attractors as a way to summarize our system, like an embedding layer in a neural network architecture.</p>
 <p><em>Q: What do you think is the simplest type of attractor?</em></p>
 </div>
 <div class="section" id="takens-embedding-theorem-and-shadow-manifolds">
 <h3>Takens’ Embedding Theorem and Shadow Manifolds<a class="headerlink" href="#takens-embedding-theorem-and-shadow-manifolds" title="Permalink to this headline">¶</a></h3>
 <img src = https://www.researchgate.net/profile/Pablo_Verdes/publication/51595532/figure/fig4/AS:305687352627206@1449892952960/Color-online-Schematic-representation-of-the-measurement-process-and-reconstruction-of.png width=500>
-Uzal, Lucas & Grinblat, G & Verdes, Pablo. (2011). Optimal reconstruction of dynamical systems: A noise amplification approach. Physical review. E, Statistical, nonlinear, and soft matter physics. 84. 016223. 10.1103/PhysRevE.84.016223. 
+<p>Uzal, Lucas &amp; Grinblat, G &amp; Verdes, Pablo. (2011). Optimal reconstruction of dynamical systems: A noise amplification approach. Physical review. E, Statistical, nonlinear, and soft matter physics. 84. 016223. 10.1103/PhysRevE.84.016223.</p>
 <p>From the term “shadow”, shadow manifolds are “projections” of the true system manifold on some variable <span class="math notranslate nohighlight">\(X\)</span>. What Takens’ theorem tells us is if <span class="math notranslate nohighlight">\(X\)</span> belongs to a system <span class="math notranslate nohighlight">\(S\)</span> then we can generate a shadow manifold of the true manifold <span class="math notranslate nohighlight">\(M_s\)</span> using vectors of lagged (historical) values of <span class="math notranslate nohighlight">\(X\)</span>. The points in this shadow manifold <span class="math notranslate nohighlight">\(M_x\)</span> will have a 1:1 correspondence with the points in the true (unknown) manifold <span class="math notranslate nohighlight">\(M_s\)</span>.</p>
 </div>
 </div>
 <div class="section" id="how-and-why-does-ccm-work">
 <h2>How and why does CCM work?<a class="headerlink" href="#how-and-why-does-ccm-work" title="Permalink to this headline">¶</a></h2>
 <img src=https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-319-58895-7_27/MediaObjects/429072_1_En_27_Fig1_HTML.gif width=400>
-Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: Theory and an Example. In: Tsonis A. (eds) Advances in Nonlinear Geosciences. Springer, Cham. https://doi.org/10.1007/978-3-319-58895-7_27
+<p>Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: Theory and an Example. In: Tsonis A. (eds) Advances in Nonlinear Geosciences. Springer, Cham. <a class="reference external" href="https://doi.org/10.1007/978-3-319-58895-7_27">https://doi.org/10.1007/978-3-319-58895-7_27</a></p>
 <div class="section" id="why-cross-mapping">
 <h3>Why Cross Mapping?<a class="headerlink" href="#why-cross-mapping" title="Permalink to this headline">¶</a></h3>
 <p>In a system <span class="math notranslate nohighlight">\(Y=f(X,Y)\)</span>, cross Mapping means given the points on the manifold of one variable <span class="math notranslate nohighlight">\(M_y\)</span>, we look for the corresponding points on <span class="math notranslate nohighlight">\(M_x\)</span>, i.e. points at the same time <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -566,10 +541,10 @@ Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: The
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">make_interp_spline</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># for showing progress bar in for loops</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="k">import</span> <span class="n">distance</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">make_interp_spline</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span> <span class="c1"># for showing progress bar in for loops</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">pearsonr</span>
 </pre></div>
 </div>
 </div>
@@ -618,7 +593,7 @@ Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: The
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f811d0da910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7b11c7890&gt;
 </pre></div>
 </div>
 <img alt="../_images/ccm_sugihara_11_1.png" src="../_images/ccm_sugihara_11_1.png" />
@@ -645,7 +620,7 @@ Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: The
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/ccm_sugihara_13_0.png" src="../_images/ccm_sugihara_13_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.005395539983091767, 0.8646878689811068)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.00539553998309176, 0.8646878689811068)
 </pre></div>
 </div>
 </div>
@@ -661,11 +636,11 @@ Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: The
 <ol class="simple">
 <li><p>Given two time series</p></li>
 </ol>
-<center>$X = \{X(1), X(2), ..., X(L)\}$ and $Y = \{Y(1), Y(2), ..., Y(L)\}$ where $L$ is time series length</center>
+<p><span class="math notranslate nohighlight">\(X = \{X(1), X(2), ..., X(L)\}\)</span> and <span class="math notranslate nohighlight">\(Y = \{Y(1), Y(2), ..., Y(L)\}\)</span> where <span class="math notranslate nohighlight">\(L\)</span> is time series length</p>
 <ol class="simple">
 <li><p>Compute lagged-coordinate vectors where <span class="math notranslate nohighlight">\(E\)</span> is an “embedding” dimension. Search algorithms e.g. grid search can be used to identify what the best <span class="math notranslate nohighlight">\(E\)</span> value is. <span class="math notranslate nohighlight">\(\tau\)</span> is the lag step.</p></li>
 </ol>
-<center>$\underline{x}(t) = <X(t), X(t-\tau), X(t-2\tau), ..., X(t-(E-1)\tau)>$ for $t \in [1+(E-1)\tau, L]$</center>
+<p><span class="math notranslate nohighlight">\(\underline{x}(t) = &lt;X(t), X(t-\tau), X(t-2\tau), ..., X(t-(E-1)\tau)&gt;\)</span> for <span class="math notranslate nohighlight">\(t \in [1+(E-1)\tau, L]\)</span></p>
 <ol class="simple">
 <li><p>Define the “shadow (attractor) manifold” <span class="math notranslate nohighlight">\(M_x = \{\underline{x}(t) \text{ for each } t \in [1+(E-1)\tau, L]\}\)</span></p></li>
 <li><p>At <span class="math notranslate nohighlight">\(t\)</span>, locate <span class="math notranslate nohighlight">\(\underline{x}(t)\)</span> in <span class="math notranslate nohighlight">\(M_x\)</span></p></li>
@@ -687,7 +662,7 @@ Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: The
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Computing &quot;Causality&quot; (Correlation between True and Predictions)</span>
 
 <span class="k">class</span> <span class="nc">ccm</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        X: timeseries for variable X that could cause Y</span>
 <span class="sd">        Y: timeseries for variable Y that could be caused by X</span>
@@ -1058,7 +1033,7 @@ def plot_ccm_correls(self):
 <span class="n">E</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1075,61 +1050,10 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7b02b8d50&gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▎        | 2/16 [00:00&lt;00:01, 11.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:02,  4.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███▏      | 5/16 [00:01&lt;00:03,  2.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:02&lt;00:04,  2.19it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 7/16 [00:03&lt;00:05,  1.69it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 8/16 [00:04&lt;00:06,  1.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 9/16 [00:05&lt;00:06,  1.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:07&lt;00:06,  1.11s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 11/16 [00:09&lt;00:06,  1.36s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:11&lt;00:06,  1.56s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████▏ | 13/16 [00:13&lt;00:05,  1.81s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:16&lt;00:04,  2.02s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 15/16 [00:18&lt;00:02,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:21&lt;00:00,  2.48s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:21&lt;00:00,  1.36s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f811e0a3e50&gt;
-</pre></div>
-</div>
-<img alt="../_images/ccm_sugihara_34_18.png" src="../_images/ccm_sugihara_34_18.png" />
+<img alt="../_images/ccm_sugihara_34_1.png" src="../_images/ccm_sugihara_34_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1156,7 +1080,7 @@ def plot_ccm_correls(self):
 <span class="n">correl_diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">)))</span> <span class="c1"># correlation list</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">ind_B_xy</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">))):</span> <span class="c1"># effect on x given y (effect of y on x)</span>
+<span class="k">for</span> <span class="n">ind_B_xy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">)):</span> <span class="c1"># effect on x given y (effect of y on x)</span>
     <span class="k">for</span> <span class="n">ind_B_yx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">)):</span> <span class="c1"># effect on y given x (effect of x on y)</span>
         
         <span class="n">r_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span> <span class="c1"># paper implies random sampling</span>
@@ -1192,88 +1116,16 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/21 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: overflow encountered in double_scalars
   
-/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: invalid value encountered in double_scalars
+/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: invalid value encountered in double_scalars
   
-/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/ipykernel_launcher.py:15: RuntimeWarning: invalid value encountered in true_divide
+/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:15: RuntimeWarning: invalid value encountered in true_divide
   from ipykernel import kernelapp as app
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▍         | 1/21 [00:00&lt;00:18,  1.09it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/scipy/stats/stats.py:3929: RuntimeWarning: invalid value encountered in subtract
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/scipy/stats/stats.py:3415: RuntimeWarning: invalid value encountered in subtract
   xm = x.astype(dtype) - xmean
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|▉         | 2/21 [00:01&lt;00:17,  1.11it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 3/21 [00:02&lt;00:16,  1.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▉        | 4/21 [00:03&lt;00:16,  1.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▍       | 5/21 [00:04&lt;00:15,  1.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▊       | 6/21 [00:05&lt;00:15,  1.00s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 7/21 [00:06&lt;00:13,  1.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 8/21 [00:07&lt;00:12,  1.02it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 9/21 [00:08&lt;00:11,  1.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 10/21 [00:09&lt;00:10,  1.09it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 11/21 [00:10&lt;00:08,  1.14it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 12/21 [00:11&lt;00:08,  1.07it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 13/21 [00:12&lt;00:07,  1.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 14/21 [00:13&lt;00:06,  1.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████▏  | 15/21 [00:14&lt;00:05,  1.05it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▌  | 16/21 [00:15&lt;00:04,  1.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████  | 17/21 [00:16&lt;00:03,  1.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 18/21 [00:17&lt;00:02,  1.05it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 19/21 [00:18&lt;00:01,  1.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|█████████▌| 20/21 [00:19&lt;00:01,  1.01s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 21/21 [00:20&lt;00:00,  1.06s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 21/21 [00:20&lt;00:00,  1.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1294,7 +1146,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/ipykernel_launcher.py:9: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:9: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   if __name__ == &#39;__main__&#39;:
 </pre></div>
 </div>
@@ -1351,7 +1203,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f80d3c8ce50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7b0236390&gt;
 </pre></div>
 </div>
 <img alt="../_images/ccm_sugihara_42_1.png" src="../_images/ccm_sugihara_42_1.png" />
@@ -1425,7 +1277,7 @@ def plot_ccm_correls(self):
 <span class="n">E</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1445,100 +1297,13 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/30 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 3/30 [00:00&lt;00:01, 17.85it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 5/30 [00:00&lt;00:02,  9.42it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 7/30 [00:00&lt;00:03,  5.97it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 8/30 [00:01&lt;00:04,  4.84it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 9/30 [00:01&lt;00:05,  3.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 10/30 [00:02&lt;00:06,  3.20it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███▋      | 11/30 [00:02&lt;00:06,  2.73it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 12/30 [00:03&lt;00:07,  2.35it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 13/30 [00:03&lt;00:08,  2.02it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 14/30 [00:04&lt;00:09,  1.74it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 15/30 [00:05&lt;00:09,  1.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 16/30 [00:06&lt;00:09,  1.41it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 17/30 [00:07&lt;00:10,  1.28it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 18/30 [00:08&lt;00:10,  1.17it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 19/30 [00:09&lt;00:10,  1.07it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 20/30 [00:10&lt;00:10,  1.02s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 21/30 [00:12&lt;00:09,  1.10s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|███████▎  | 22/30 [00:13&lt;00:09,  1.18s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████▋  | 23/30 [00:14&lt;00:08,  1.27s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 24/30 [00:16&lt;00:08,  1.37s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|████████▎ | 25/30 [00:18&lt;00:07,  1.49s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 26/30 [00:20&lt;00:06,  1.59s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 27/30 [00:21&lt;00:04,  1.67s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████▎| 28/30 [00:23&lt;00:03,  1.76s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████▋| 29/30 [00:26&lt;00:01,  1.88s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 30/30 [00:28&lt;00:00,  1.97s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 30/30 [00:28&lt;00:00,  1.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.99 p value 0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Y-&gt;X r 0.09 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_47_31.png" src="../_images/ccm_sugihara_47_31.png" />
+<img alt="../_images/ccm_sugihara_47_2.png" src="../_images/ccm_sugihara_47_2.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1599,7 +1364,7 @@ def plot_ccm_correls(self):
 <span class="n">Xhat_My_list</span> <span class="o">=</span> <span class="p">[]</span>
 
 
-<span class="k">for</span> <span class="n">B_yx</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">B_yx_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<span class="k">for</span> <span class="n">B_yx</span> <span class="ow">in</span> <span class="n">B_yx_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">B_yx_dict</span><span class="p">[</span><span class="n">B_yx</span><span class="p">][</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">B_yx_dict</span><span class="p">[</span><span class="n">B_yx</span><span class="p">][</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>    
 
@@ -1614,15 +1379,10 @@ def plot_ccm_correls(self):
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 8/8 [00:10&lt;00:00,  1.36s/it]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
@@ -1677,7 +1437,7 @@ def plot_ccm_correls(self):
     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val2_name</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">val2_name</span><span class="p">)</span>    
     <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>        
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val1_name</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">val2_name</span><span class="si">}</span><span class="s2">, correlation coefficient: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{val1_name}</span><span class="s2"> and </span><span class="si">{val2_name}</span><span class="s2">, correlation coefficient: </span><span class="si">{r}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1689,7 +1449,7 @@ def plot_ccm_correls(self):
 <p>We check how much the number of drowned victims in the US affect the number of Nicolas Cage Films for the year and vice versa. Do we expect these two to be causally linked?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/cage_drowning.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/cage_drowning.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1999</span><span class="p">,</span> <span class="mi">2010</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;num.drowned&#39;</span><span class="p">,</span> <span class="s1">&#39;num.cage.films&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1715,7 +1475,7 @@ def plot_ccm_correls(self):
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1735,14 +1495,11 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 9/9 [00:00&lt;00:00, 1116.63it/s]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.21 p value 0.55
 Y-&gt;X r -0.11 p value 0.77
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_58_2.png" src="../_images/ccm_sugihara_58_2.png" />
+<img alt="../_images/ccm_sugihara_58_1.png" src="../_images/ccm_sugihara_58_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1756,7 +1513,7 @@ Y-&gt;X r -0.11 p value 0.77
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Num Angat Dam Level vs NIA (what is NIA?)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Angat_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Angat_dataset.csv&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1781,7 +1538,7 @@ Y-&gt;X r -0.11 p value 0.77
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1800,16 +1557,6 @@ Y-&gt;X r -0.11 p value 0.77
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 71/71 [02:26&lt;00:00,  2.07s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.25 p value 0.0
-Y-&gt;X r 0.17 p value 0.0
-</pre></div>
-</div>
-<img alt="../_images/ccm_sugihara_63_2.png" src="../_images/ccm_sugihara_63_2.png" />
-</div>
 </div>
 <p><strong>Discussion</strong></p>
 <p>Rain’s effect on dam levels shows some convergence as we increase the time period <span class="math notranslate nohighlight">\(L\)</span>. However, convergence is not clear on the effect of dam level on rain.</p>
@@ -1819,7 +1566,7 @@ Y-&gt;X r 0.17 p value 0.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Num Angat Dam Level vs NIA (what is NIA?)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Angat_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Angat_dataset.csv&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1844,7 +1591,7 @@ Y-&gt;X r 0.17 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1864,14 +1611,11 @@ Y-&gt;X r 0.17 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 71/71 [02:32&lt;00:00,  2.15s/it]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.59 p value 0.0
 Y-&gt;X r 0.65 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_67_2.png" src="../_images/ccm_sugihara_67_2.png" />
+<img alt="../_images/ccm_sugihara_67_1.png" src="../_images/ccm_sugihara_67_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1882,7 +1626,7 @@ Y-&gt;X r 0.65 p value 0.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Num Ipo Dam Level vs NIA (what is NIA?)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Ipo_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Ipo_dataset.csv&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1907,7 +1651,7 @@ Y-&gt;X r 0.65 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1927,14 +1671,11 @@ Y-&gt;X r 0.65 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 71/71 [02:37&lt;00:00,  2.22s/it]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.3 p value 0.0
 Y-&gt;X r 0.05 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_71_2.png" src="../_images/ccm_sugihara_71_2.png" />
+<img alt="../_images/ccm_sugihara_71_1.png" src="../_images/ccm_sugihara_71_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1945,7 +1686,7 @@ Y-&gt;X r 0.05 p value 0.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Num Ipo Dam Level vs NIA (what is NIA?)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Ipo_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Ipo_dataset.csv&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1970,7 +1711,7 @@ Y-&gt;X r 0.05 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -1990,14 +1731,11 @@ Y-&gt;X r 0.05 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 71/71 [02:43&lt;00:00,  2.30s/it]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.31 p value 0.0
 Y-&gt;X r 0.21 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_75_2.png" src="../_images/ccm_sugihara_75_2.png" />
+<img alt="../_images/ccm_sugihara_75_1.png" src="../_images/ccm_sugihara_75_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -2008,9 +1746,9 @@ Y-&gt;X r 0.21 p value 0.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Num Ipo Dam Level vs Angat Dam Level</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Ipo_dataset.csv&#39;</span><span class="p">)[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]]</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Ipo_dataset.csv&#39;</span><span class="p">)[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]]</span>
 <span class="n">df1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Dam&#39;</span><span class="p">:</span><span class="s1">&#39;Ipo_Dam&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Angat_dataset.csv&#39;</span><span class="p">)[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Angat_dataset.csv&#39;</span><span class="p">)[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]]</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Dam&#39;</span><span class="p">:</span><span class="s1">&#39;Angat_Dam&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Ipo_Dam&#39;</span><span class="p">,</span> <span class="s1">&#39;Angat_Dam&#39;</span><span class="p">)</span>
@@ -2037,7 +1775,7 @@ Y-&gt;X r 0.21 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -2057,14 +1795,11 @@ Y-&gt;X r 0.21 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 71/71 [02:42&lt;00:00,  2.29s/it]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.33 p value 0.0
 Y-&gt;X r 0.2 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_79_2.png" src="../_images/ccm_sugihara_79_2.png" />
+<img alt="../_images/ccm_sugihara_79_1.png" src="../_images/ccm_sugihara_79_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -2074,14 +1809,14 @@ Y-&gt;X r 0.2 p value 0.0
 <div class="section" id="dam-system-inferred-causal-relationships">
 <h3>Dam System Inferred Causal Relationships<a class="headerlink" href="#dam-system-inferred-causal-relationships" title="Permalink to this headline">¶</a></h3>
 <p>Based on the results above, we can infer a network of causal relationships. Relationships with unclear convergence are shown in broken lines while relationships with clear convergence are shown in solid lines.
-<img src='media/dam_inferred_causality.png' width=400></p>
+<img src='media/dam_inferred_causality.png' width="400"/></p>
 </div>
 <div class="section" id="jena-climate-data">
 <h3>Jena climate data<a class="headerlink" href="#jena-climate-data" title="Permalink to this headline">¶</a></h3>
 <p>Here, we look at at some climate data taken from the Max Planck Institute for Biogeochemistry in Jena, Germany from 2009 to 2016</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;p (mbar)&#39;</span><span class="p">,</span> <span class="s1">&#39;T (degC)&#39;</span><span class="p">)</span> <span class="c1"># plot pressure vs Temperature</span>
 </pre></div>
@@ -2102,9 +1837,9 @@ Y-&gt;X r 0.2 p value 0.0
 <span class="n">Y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># Looking at &quot;convergence&quot;</span>
-<span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># L values to test</span>
+<span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -2124,14 +1859,11 @@ Y-&gt;X r 0.2 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 998/998 [07:31&lt;00:00,  2.21it/s]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.7 p value 0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.73 p value 0.0
 Y-&gt;X r 0.52 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_84_2.png" src="../_images/ccm_sugihara_84_2.png" />
+<img alt="../_images/ccm_sugihara_84_1.png" src="../_images/ccm_sugihara_84_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong>
@@ -2144,7 +1876,7 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 <h4>CO2 emissions, global temperature, and arctic ice area (Non-ecological)<a class="headerlink" href="#co2-emissions-global-temperature-and-arctic-ice-area-non-ecological" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/co2_temp - combined.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/co2_temp - combined.csv&#39;</span><span class="p">)</span>
 <span class="n">make_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;co2_avg&#39;</span><span class="p">,</span> <span class="s1">&#39;diff_temp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2166,7 +1898,7 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -2186,14 +1918,11 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 60/60 [00:00&lt;00:00, 249.06it/s]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.96 p value 0.0
 Y-&gt;X r 0.95 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_89_2.png" src="../_images/ccm_sugihara_89_2.png" />
+<img alt="../_images/ccm_sugihara_89_1.png" src="../_images/ccm_sugihara_89_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2220,7 +1949,7 @@ Y-&gt;X r 0.95 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -2240,14 +1969,11 @@ Y-&gt;X r 0.95 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 39/39 [00:00&lt;00:00, 448.92it/s]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.76 p value 0.0
 Y-&gt;X r 0.8 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_91_2.png" src="../_images/ccm_sugihara_91_2.png" />
+<img alt="../_images/ccm_sugihara_91_1.png" src="../_images/ccm_sugihara_91_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2274,7 +2000,7 @@ Y-&gt;X r 0.8 p value 0.0
 <span class="c1"># Looking at &quot;convergence&quot;</span>
 <span class="n">L_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># L values to test</span>
 <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">Yhat_Mx</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># correlation list</span>
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">L_range</span><span class="p">):</span> 
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">L_range</span><span class="p">:</span> 
     <span class="n">ccm_XY</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for X -&gt; Y</span>
     <span class="n">ccm_YX</span> <span class="o">=</span> <span class="n">ccm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># define new ccm object # Testing for Y -&gt; X    </span>
     <span class="n">Xhat_My</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
@@ -2294,14 +2020,11 @@ Y-&gt;X r 0.8 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 39/39 [00:00&lt;00:00, 459.25it/s]
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X-&gt;Y r 0.58 p value 0.0
 Y-&gt;X r 0.69 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_93_2.png" src="../_images/ccm_sugihara_93_2.png" />
+<img alt="../_images/ccm_sugihara_93_1.png" src="../_images/ccm_sugihara_93_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -2314,8 +2037,8 @@ Y-&gt;X r 0.69 p value 0.0
 </div>
 <div class="section" id="inferred-climate-system-causal-relationships">
 <h3>Inferred Climate System Causal Relationships<a class="headerlink" href="#inferred-climate-system-causal-relationships" title="Permalink to this headline">¶</a></h3>
-<img src='media/climate_causality.png' width=400>
-Based on the results above, we can infer a network of causal relationships. There seems to be a strong feedback loops between all three elements in the system. Upon checking past researches on the topic, we find that there are papers that support the seemingly unintuitive interactions in the inferred causal network:
+<img src='media/climate_causality.png' width="400"/>
+<p>Based on the results above, we can infer a network of causal relationships. There seems to be a strong feedback loops between all three elements in the system. Upon checking past researches on the topic, we find that there are papers that support the seemingly unintuitive interactions in the inferred causal network:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.pnas.org/content/113/3/514">Evolution of South Atlantic density and chemical stratification across the last deglaciation</a></p></li>
 <li><p><a class="reference external" href="https://www.sciencedaily.com/releases/2014/09/140922110424.htm">Arctic sea ice helps remove carbon dioxide from atmosphere, study shows</a></p></li>
@@ -2392,7 +2115,7 @@ A test of Convergent Cross-Mapping. arXiv</a></p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html" title="previous page">Chapter 3: Vector Autoregressive Methods</a>
+    <a class='left-prev' id="prev-link" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html" title="previous page">Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)</a>
     <a class='right-next' id="next-link" href="using_causal_ccm_package.html" title="next page">Applying CCM Using causal-ccm package</a>
 
     </div>
