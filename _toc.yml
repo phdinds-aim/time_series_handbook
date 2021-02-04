@@ -15,5 +15,5 @@
   sections:
     - file: 08_WinningestMethods/lightgbm_m5_tuning
     - file: 08_WinningestMethods/lightgbm_jena_forecasting
-- file: Data/README
+- file: data/README
 # exclude_patterns: [*/README.md]
