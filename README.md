@@ -15,7 +15,7 @@ This handbook contains a variety of techniques that you can use for time series 
     
 
 # How to use this reference
-Insert instructions here
+Each of the chapters mentioned above includes Jupyter notebook/s that contain/s the discussion of each topic (background, limitations, applications). Most of the datasets used in the handbook are included in this repository, and the details of each are described in the [data folder](data). 
 
 ## Setting up your virtual environment
 To be able to run the contents of this repository, it is advised that you setup a virtual environment. You can install one via Anaconda or via Python's native `venv` module. 
