@@ -30,25 +30,14 @@ To set up a virtual environment called `atsa`, run the following in your termina
 conda create -n atsa
 ```
 
-To activate and enter the environment, run `conda activate atsa`. To deactivate the environment, either run `conda deactivate atsa` or exit the terminal. 
-
-```bash
-# sanity check that the path to the python
-# binary matches that of the anaconda env
-# after you activate it
-which python
-# for example, on my machine, this prints
-# $ '/Users/kevin/anaconda3/envs/sci/bin/python'
-```
-
-For more information on setting up your virtual evironment using Anaconda, please visit [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+To activate and enter the environment, run `conda activate atsa`. To deactivate the environment, either run `conda deactivate atsa` or exit the terminal. For more information on setting up your virtual evironment using Anaconda, please visit [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 #### Python venv
 To set up a virtual environment called `atsa`, run the following in your terminal:
 
 ```bash
 # this will create a virtual environment
-# called cs231n in your home directory
+# called atsa in your home directory
 python3 -m venv ~/atsa
 ```
 
