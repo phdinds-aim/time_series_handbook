@@ -1,0 +1,28 @@
+VAR references
+
+Lütkepohl, H. (2005). Introduction. New Introduction to Multiple Time Series Analysis, 1-7. doi:10.1007/978-3-540-27752-1_1
+https://www.fil.ion.ucl.ac.uk/~wpenny/course/array.pdf
+https://towardsdatascience.com/simple-multivariate-time-series-forecasting-7fa0e05579b2
+https://arxiv.org/pdf/1302.6613.pdf
+https://towardsdatascience.com/vector-autoregressions-vector-error-correction-multivariate-model-a69daf6ab618
+https://www.analyticsvidhya.com/blog/2018/09/multivariate-time-series-guide-forecasting-modeling-python-codes/#:~:text=A%20Multivariate%20time%20series%20has,used%20for%20forecasting%20future%20values.&text=In%20this%20case%2C%20there%20are,considered%20to%20optimally%20predict%20temperature.
+https://rstudio-pubs-static.s3.amazonaws.com/270271_9fbb9b0f8f0c41e6b7e06b0dc2b13b62.html
+http://www.phdeconomics.sssup.it/documents/Lesson17.pdf
+https://www.sas.upenn.edu/~fdiebold/Teaching104/Ch14_slides.pdf
+https://towardsdatascience.com/vector-autoregressive-for-forecasting-time-series-a60e6f168c70
+http://www.ams.sunysb.edu/~zhu/ams586/VAR_Lecture2.pdf
+https://otexts.com/fpp2/VAR.html
+https://online.stat.psu.edu/stat510/lesson/11/11.2
+http://conference.scipy.org/scipy2011/slides/mckinney_time_series.pdf
+https://www.reed.edu/economics/parker/311/VAR-readings.pdf
+https://stats.stackexchange.com/questions/342898/interpretation-of-impulse-response-and-variance-decomposition-graphs
+https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+https://faculty.washington.edu/ezivot/econ582/multivariatetimeseriesslides.pdf
+https://www.statsmodels.org/dev/vector_ar.html#statistical-tests
+https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.adfuller.html
+https://www.statsmodels.org/dev/vector_ar.html?highlight=impulse#impulse-response-analysis
+http://web.pdx.edu/~crkl/ceR/Python/example14_3.py
+https://medium.com/@seemakurthi.teja.1999/vector-auto-regression-time-series-model-d7ed5cb943f2
+https://www.reed.edu/economics/parker/s10/312/notes/Notes12.pdf
+https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
+http://statmath.wu.ac.at/~hauser/LVs/FinEtricsQF/FEtrics_Chp4.pdf
