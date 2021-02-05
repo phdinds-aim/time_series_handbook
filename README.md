@@ -1,6 +1,8 @@
 # Time Series Handbook
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This handbook extensively covers time series analysis and forecasting, delving from the most fundamental methods to the state-of-the-art. The handbook is designed such that readers can both learn the theory and apply them to real-world problems. Although chapters were made to be stand alone, it is recommended that readers go through the first few chapters to be able to fully appreciate the latter chapters.
+
+The handbook is structured as follows: in the first part, classical forecasting methods are discussed in detail. The subsequent part is then dedicated to dynamical forecasting methods and as well as causality and correlations, topics that are particularly essential in understanding the intricacies of time series forecasting. Finally, the last chapter shows a glimpse into the current trends in time series forecasting and modeling.
 
 ## Outline 
 This handbook contains a variety of techniques that you can use for time series analysis -- from simple statistical models to some of the state-of-the-art algorithms as of writing. Here are the items that are covered in this material:
