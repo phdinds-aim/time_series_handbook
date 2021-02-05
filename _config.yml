@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Time Series Analysis Handbook
-author: Asian Institute of Management PhD in Data Science
+author: By students of PhD in Data Science Batch 2023 at the Asian Institute of Management
 # logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -26,7 +26,7 @@ repository:
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
-# See https://github.com/PrinceJavier/time_series_handbook #add-a-link-to-your-repository
+# See https://github.com/phdinds-aim/time_series_handbook #add-a-link-to-your-repository
 html:
   use_issues_button: true
   use_repository_button: true
