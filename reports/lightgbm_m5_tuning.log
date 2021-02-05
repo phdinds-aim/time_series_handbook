@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 609, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 85, in ensure_async
+    result = await obj
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/home/prince/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
     record_timing=False,
   File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
@@ -11,111 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import lightgbm as lgb
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import RepeatedKFold
-
-plt.rcParams['figure.figsize'] = [15, 5]
-
-np.set_printoptions(precision = 6, suppress = True)
-
-### CREATE X,Y ####
-def create_xy(series, window_size, prediction_horizon, shuffle = False):
-    x = []
-    y = []
-    for i in range(0, len(series)):
-        if len(series[(i + window_size):(i + window_size + prediction_horizon)]) < prediction_horizon:
-            break
-        x.append(series[i:(i + window_size)])
-        y.append(series[(i + window_size):(i + window_size + prediction_horizon)])
-    x = np.array(x)
-    y = np.array(y)
-    return x,y
-
-date_list = [d.strftime('%Y-%m-%d') for d in pd.date_range(start = '2011-01-29', end = '2016-04-24')]
-
-df_sales = pd.read_csv('datasets/m5/sales_train_validation.csv')
-df_sales.rename(columns = dict(zip(df_sales.columns[6:], date_list)), inplace = True)
-
-df_sales_total_by_store = df_sales.groupby(['store_id']).sum()
-
-series = df_sales_total_by_store.iloc[0]
-
-### HYPERPARAMETERS ###
-window_size = 365
-prediction_horizon = 1
-
-### TRAIN VAL SPLIT ### (include shuffling later)
-test_size = 28
-split_time = len(series) - test_size
-
-train_series = series[:split_time]
-test_series = series[split_time - window_size:]
-
-train_x, train_y = create_xy(train_series, window_size, prediction_horizon)
-test_x, test_y = create_xy(test_series, window_size, prediction_horizon)
-
-train_y = train_y.flatten()
-test_y = test_y.flatten()
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-1-a388807bba14>[0m in [0;36m<module>[0;34m[0m
-[1;32m     25[0m [0mdate_list[0m [0;34m=[0m [0;34m[[0m[0md[0m[0;34m.[0m[0mstrftime[0m[0;34m([0m[0;34m'%Y-%m-%d'[0m[0;34m)[0m [0;32mfor[0m [0md[0m [0;32min[0m [0mpd[0m[0;34m.[0m[0mdate_range[0m[0;34m([0m[0mstart[0m [0;34m=[0m [0;34m'2011-01-29'[0m[0;34m,[0m [0mend[0m [0;34m=[0m [0;34m'2016-04-24'[0m[0;34m)[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m     26[0m [0;34m[0m[0m
-[0;32m---> 27[0;31m [0mdf_sales[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m'datasets/m5/sales_train_validation.csv'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     28[0m [0mdf_sales[0m[0;34m.[0m[0mrename[0m[0;34m([0m[0mcolumns[0m [0;34m=[0m [0mdict[0m[0;34m([0m[0mzip[0m[0;34m([0m[0mdf_sales[0m[0;34m.[0m[0mcolumns[0m[0;34m[[0m[0;36m6[0m[0;34m:[0m[0;34m][0m[0;34m,[0m [0mdate_list[0m[0;34m)[0m[0;34m)[0m[0;34m,[0m [0minplace[0m [0;34m=[0m [0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     29[0m [0;34m[0m[0m
-
-[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36mparser_f[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)[0m
-[1;32m    683[0m         )
-[1;32m    684[0m [0;34m[0m[0m
-[0;32m--> 685[0;31m         [0;32mreturn[0m [0m_read[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    686[0m [0;34m[0m[0m
-[1;32m    687[0m     [0mparser_f[0m[0;34m.[0m[0m__name__[0m [0;34m=[0m [0mname[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    455[0m [0;34m[0m[0m
-[1;32m    456[0m     [0;31m# Create the parser.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 457[0;31m     [0mparser[0m [0;34m=[0m [0mTextFileReader[0m[0;34m([0m[0mfp_or_buf[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    458[0m [0;34m[0m[0m
-[1;32m    459[0m     [0;32mif[0m [0mchunksize[0m [0;32mor[0m [0miterator[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, f, engine, **kwds)[0m
-[1;32m    893[0m             [0mself[0m[0;34m.[0m[0moptions[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m [0;34m=[0m [0mkwds[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m    894[0m [0;34m[0m[0m
-[0;32m--> 895[0;31m         [0mself[0m[0;34m.[0m[0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    896[0m [0;34m[0m[0m
-[1;32m    897[0m     [0;32mdef[0m [0mclose[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m_make_engine[0;34m(self, engine)[0m
-[1;32m   1133[0m     [0;32mdef[0m [0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mengine[0m[0;34m=[0m[0;34m"c"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1134[0m         [0;32mif[0m [0mengine[0m [0;34m==[0m [0;34m"c"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1135[0;31m             [0mself[0m[0;34m.[0m[0m_engine[0m [0;34m=[0m [0mCParserWrapper[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mself[0m[0;34m.[0m[0moptions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1136[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1137[0m             [0;32mif[0m [0mengine[0m [0;34m==[0m [0;34m"python"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, src, **kwds)[0m
-[1;32m   1915[0m         [0mkwds[0m[0;34m[[0m[0;34m"usecols"[0m[0;34m][0m [0;34m=[0m [0mself[0m[0;34m.[0m[0musecols[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1916[0m [0;34m[0m[0m
-[0;32m-> 1917[0;31m         [0mself[0m[0;34m.[0m[0m_reader[0m [0;34m=[0m [0mparsers[0m[0;34m.[0m[0mTextReader[0m[0;34m([0m[0msrc[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1918[0m         [0mself[0m[0;34m.[0m[0munnamed_cols[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_reader[0m[0;34m.[0m[0munnamed_cols[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1919[0m [0;34m[0m[0m
-
-[0;32mpandas/_libs/parsers.pyx[0m in [0;36mpandas._libs.parsers.TextReader.__cinit__[0;34m()[0m
-
-[0;32mpandas/_libs/parsers.pyx[0m in [0;36mpandas._libs.parsers.TextReader._setup_parser_source[0;34m()[0m
-
-[0;31mFileNotFoundError[0m: [Errno 2] File b'datasets/m5/sales_train_validation.csv' does not exist: b'datasets/m5/sales_train_validation.csv'
-FileNotFoundError: [Errno 2] File b'datasets/m5/sales_train_validation.csv' does not exist: b'datasets/m5/sales_train_validation.csv'
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 816, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 633, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/home/prince/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 684, in _async_handle_timeout
+    "Cell execution timed out", timeout, cell
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['trees = [10, 50, 100, 500, 1000, 2000]', '', 'results = []', 'names = []', 'for i in trees:']
+...
+['    names.append(i)', "    print('%3d --- MAE: %.3f (%.3f)' % (i, np.mean(scores), np.std(scores)))", '', 'plt.boxplot(results, labels = names, showmeans = True)', 'plt.show()']
+-------------------
 

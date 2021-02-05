@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 3: Vector Autoregressive Methods &#8212; Time Series Analysis Handbook</title>
+    <title>Chapter 4: Granger Causality Test &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -102,12 +102,12 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_VectorAutoregressiveMethods.html">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html">
    Chapter 3: Vector Autoregressive Methods
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_GrangerCausality/04_GrangerCausality.html">
+  <a class="reference internal" href="04_GrangerCausality.html">
    Chapter 4: Granger Causality Test
   </a>
  </li>
@@ -199,7 +199,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/03_VectorAutoregressiveModels/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/04_GrangerCausality/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -219,7 +219,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/phdinds-aim/time_series_handbook/issues/new?title=Issue%20on%20page%20%2F03_VectorAutoregressiveModels/README.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/phdinds-aim/time_series_handbook/issues/new?title=Issue%20on%20page%20%2F04_GrangerCausality/README.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -247,21 +247,9 @@
         
               <div>
                 
-  <div class="section" id="chapter-3-vector-autoregressive-methods">
-<h1>Chapter 3: Vector Autoregressive Methods<a class="headerlink" href="#chapter-3-vector-autoregressive-methods" title="Permalink to this headline">¶</a></h1>
-<p>Previously, we have introduced the classical approaches in forecasting single/univariate time series like the
-Autoregressive-Moving-Average (ARIMA) model and the simple linear regression model. We learned that stationarity
-is a condition that is necessary when using ARIMA while this need not be imposed when using the linear regression model.
-In this notebook, we extend the forecasting problem to a more generalized framework where we deal with
-<strong>multivariate time series</strong>–time series which has more than one time-dependent variable. More specifically,
-we introduce <strong>vector autoregressive (VAR)</strong> models and show how they can be used in forecasting mutivariate time series.</p>
-<p>The <a class="reference internal" href="03_VectorAutoregressiveMethods.html"><span class="doc std std-doc">notebook</span></a> is outlined as follows:</p>
-<ul class="simple">
-<li><p>Multivariate Time Series model</p></li>
-<li><p>Vector Autoregressive (VAR) Models</p></li>
-<li><p>Building a VAR model</p></li>
-<li><p>Structural Analysis</p></li>
-</ul>
+  <div class="section" id="chapter-4-granger-causality-test">
+<h1>Chapter 4: Granger Causality Test<a class="headerlink" href="#chapter-4-granger-causality-test" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we introduce the notion of causality and describe a test for linear models. The VAR model discussed in the previous chapter will be applied here.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -277,7 +265,7 @@ we introduce <strong>vector autoregressive (VAR)</strong> models and show how th
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03_VectorAutoregressiveModels"
+            path: "./04_GrangerCausality"
         },
         predefinedOutput: true
     }

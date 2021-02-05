@@ -109,6 +109,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../04_GrangerCausality/04_GrangerCausality.html">
+   Chapter 4: Granger Causality Test
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
    Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
@@ -409,62 +414,9 @@
 
 <span class="n">date_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2011-01-29&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2016-04-24&#39;</span><span class="p">)]</span>
 
-<span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/calendar.csv&#39;</span><span class="p">)</span>
-<span class="n">df_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/sell_prices.csv&#39;</span><span class="p">)</span>
-<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/sales_train_validation.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">66285e53</span><span class="n">d243</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">date_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2011-01-29&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2016-04-24&#39;</span><span class="p">)]</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/calendar.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">df_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/sell_prices.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/m5/sales_train_validation.csv&#39;</span><span class="p">)</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">parser_f</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">684</span> 
-<span class="ne">--&gt; </span><span class="mi">685</span>         <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">686</span> 
-<span class="g g-Whitespace">    </span><span class="mi">687</span>     <span class="n">parser_f</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">name</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span> 
-<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">457</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span> 
-<span class="g g-Whitespace">    </span><span class="mi">459</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span> 
-<span class="ne">--&gt; </span><span class="mi">895</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">896</span> 
-<span class="g g-Whitespace">    </span><span class="mi">897</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1133</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1134</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1135</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1136</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1137</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1915</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
-<span class="g g-Whitespace">   </span><span class="mi">1916</span> 
-<span class="ne">-&gt; </span><span class="mi">1917</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1918</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
-<span class="g g-Whitespace">   </span><span class="mi">1919</span> 
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] File b&#39;datasets/m5/calendar.csv&#39; does not exist: b&#39;datasets/m5/calendar.csv&#39;
+<span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/calendar.csv&#39;</span><span class="p">)</span>
+<span class="n">df_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sell_prices.csv&#39;</span><span class="p">)</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sales_train_validation.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -521,7 +473,7 @@
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>HOBBIES_1_001_CA_1_validation</td>
       <td>HOBBIES_1_001</td>
       <td>HOBBIES_1</td>
@@ -545,7 +497,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>HOBBIES_1_002_CA_1_validation</td>
       <td>HOBBIES_1_002</td>
       <td>HOBBIES_1</td>
@@ -569,7 +521,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>HOBBIES_1_003_CA_1_validation</td>
       <td>HOBBIES_1_003</td>
       <td>HOBBIES_1</td>
@@ -593,7 +545,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>HOBBIES_1_004_CA_1_validation</td>
       <td>HOBBIES_1_004</td>
       <td>HOBBIES_1</td>
@@ -617,7 +569,7 @@
       <td>2</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>HOBBIES_1_005_CA_1_validation</td>
       <td>HOBBIES_1_005</td>
       <td>HOBBIES_1</td>
@@ -641,7 +593,7 @@
       <td>4</td>
     </tr>
     <tr>
-      <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -665,7 +617,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>30485</th>
+      <td>30485</td>
       <td>FOODS_3_823_WI_3_validation</td>
       <td>FOODS_3_823</td>
       <td>FOODS_3</td>
@@ -689,7 +641,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <th>30486</th>
+      <td>30486</td>
       <td>FOODS_3_824_WI_3_validation</td>
       <td>FOODS_3_824</td>
       <td>FOODS_3</td>
@@ -713,7 +665,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>30487</th>
+      <td>30487</td>
       <td>FOODS_3_825_WI_3_validation</td>
       <td>FOODS_3_825</td>
       <td>FOODS_3</td>
@@ -737,7 +689,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>30488</th>
+      <td>30488</td>
       <td>FOODS_3_826_WI_3_validation</td>
       <td>FOODS_3_826</td>
       <td>FOODS_3</td>
@@ -761,7 +713,7 @@
       <td>3</td>
     </tr>
     <tr>
-      <th>30489</th>
+      <td>30489</td>
       <td>FOODS_3_827_WI_3_validation</td>
       <td>FOODS_3_827</td>
       <td>FOODS_3</td>
@@ -832,7 +784,7 @@
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>2011-01-29</td>
       <td>11101</td>
       <td>Saturday</td>
@@ -849,7 +801,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>2011-01-30</td>
       <td>11101</td>
       <td>Sunday</td>
@@ -866,7 +818,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>2011-01-31</td>
       <td>11101</td>
       <td>Monday</td>
@@ -883,7 +835,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>2011-02-01</td>
       <td>11101</td>
       <td>Tuesday</td>
@@ -900,7 +852,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>2011-02-02</td>
       <td>11101</td>
       <td>Wednesday</td>
@@ -917,7 +869,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -934,7 +886,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>1964</th>
+      <td>1964</td>
       <td>2016-06-15</td>
       <td>11620</td>
       <td>Wednesday</td>
@@ -951,7 +903,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <th>1965</th>
+      <td>1965</td>
       <td>2016-06-16</td>
       <td>11620</td>
       <td>Thursday</td>
@@ -968,7 +920,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>1966</th>
+      <td>1966</td>
       <td>2016-06-17</td>
       <td>11620</td>
       <td>Friday</td>
@@ -985,7 +937,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>1967</th>
+      <td>1967</td>
       <td>2016-06-18</td>
       <td>11621</td>
       <td>Saturday</td>
@@ -1002,7 +954,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <th>1968</th>
+      <td>1968</td>
       <td>2016-06-19</td>
       <td>11621</td>
       <td>Sunday</td>
@@ -1056,77 +1008,77 @@
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11325</td>
       <td>9.58</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11326</td>
       <td>9.58</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11327</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11328</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11329</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
     </tr>
     <tr>
-      <th>6841116</th>
+      <td>6841116</td>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11617</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <th>6841117</th>
+      <td>6841117</td>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11618</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <th>6841118</th>
+      <td>6841118</td>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11619</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <th>6841119</th>
+      <td>6841119</td>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11620</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <th>6841120</th>
+      <td>6841120</td>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11621</td>
@@ -1256,7 +1208,7 @@ Name: 3, Length: 1919, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>CA_1</th>
+      <td>CA_1</td>
       <td>4337</td>
       <td>4155</td>
       <td>2816</td>
@@ -1280,7 +1232,7 @@ Name: 3, Length: 1919, dtype: object
       <td>6113</td>
     </tr>
     <tr>
-      <th>CA_2</th>
+      <td>CA_2</td>
       <td>3494</td>
       <td>3046</td>
       <td>2121</td>
@@ -1304,7 +1256,7 @@ Name: 3, Length: 1919, dtype: object
       <td>6082</td>
     </tr>
     <tr>
-      <th>CA_3</th>
+      <td>CA_3</td>
       <td>4739</td>
       <td>4827</td>
       <td>3785</td>
@@ -1328,7 +1280,7 @@ Name: 3, Length: 1919, dtype: object
       <td>7721</td>
     </tr>
     <tr>
-      <th>CA_4</th>
+      <td>CA_4</td>
       <td>1625</td>
       <td>1777</td>
       <td>1386</td>
@@ -1352,7 +1304,7 @@ Name: 3, Length: 1919, dtype: object
       <td>3271</td>
     </tr>
     <tr>
-      <th>TX_1</th>
+      <td>TX_1</td>
       <td>2556</td>
       <td>2687</td>
       <td>1822</td>
@@ -1376,7 +1328,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4033</td>
     </tr>
     <tr>
-      <th>TX_2</th>
+      <td>TX_2</td>
       <td>3852</td>
       <td>3937</td>
       <td>2731</td>
@@ -1400,7 +1352,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4292</td>
     </tr>
     <tr>
-      <th>TX_3</th>
+      <td>TX_3</td>
       <td>3030</td>
       <td>3006</td>
       <td>2225</td>
@@ -1424,7 +1376,7 @@ Name: 3, Length: 1919, dtype: object
       <td>3957</td>
     </tr>
     <tr>
-      <th>WI_1</th>
+      <td>WI_1</td>
       <td>2704</td>
       <td>2194</td>
       <td>1562</td>
@@ -1448,7 +1400,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4874</td>
     </tr>
     <tr>
-      <th>WI_2</th>
+      <td>WI_2</td>
       <td>2256</td>
       <td>1922</td>
       <td>2018</td>
@@ -1472,7 +1424,7 @@ Name: 3, Length: 1919, dtype: object
       <td>5127</td>
     </tr>
     <tr>
-      <th>WI_3</th>
+      <td>WI_3</td>
       <td>4038</td>
       <td>4198</td>
       <td>3317</td>
@@ -1828,12 +1780,17 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/sibanez/.local/lib/python3.8/site-packages/lightgbm/callback.py:186: UserWarning: Early stopping is not available in dart mode
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/lightgbm/callback.py:186: UserWarning: Early stopping is not available in dart mode
   warnings.warn(&#39;Early stopping is not available in dart mode&#39;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, first_metric_only=True, max_depth=4,
-              n_estimators=3000, num_leaves=16)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, class_weight=None, colsample_bytree=1.0,
+              first_metric_only=True, importance_type=&#39;split&#39;,
+              learning_rate=0.1, max_depth=4, min_child_samples=20,
+              min_child_weight=0.001, min_split_gain=0.0, n_estimators=3000,
+              n_jobs=-1, num_leaves=16, objective=None, random_state=None,
+              reg_alpha=0.0, reg_lambda=0.0, silent=True, subsample=1.0,
+              subsample_for_bin=200000, subsample_freq=0)
 </pre></div>
 </div>
 </div>
