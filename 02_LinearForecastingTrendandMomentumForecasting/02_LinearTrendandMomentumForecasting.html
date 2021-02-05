@@ -494,30 +494,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">d3a873a1c972</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># series = read_csv(&#39;daily-total-female-births.csv&#39;, header=0, index_col=0, squeeze=True)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">X</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/stattools.py</span> in <span class="ni">adfuller</span><span class="nt">(x, maxlag, regression, autolag, store, regresults)</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>                          <span class="s1">&#39;deterministic regressors&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">xdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">236</span>     <span class="n">xdall</span> <span class="o">=</span> <span class="n">lagmat</span><span class="p">(</span><span class="n">xdiff</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">],</span> <span class="n">maxlag</span><span class="p">,</span> <span class="n">trim</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">original</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">nobs</span> <span class="o">=</span> <span class="n">xdall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span> 
-
-<span class="nn">~/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/tsatools.py</span> in <span class="ni">lagmat</span><span class="nt">(x, maxlag, trim, original, use_pandas)</span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="k">if</span> <span class="n">xa</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">403</span>         <span class="n">xa</span> <span class="o">=</span> <span class="n">xa</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">404</span>     <span class="n">nobs</span><span class="p">,</span> <span class="n">nvar</span> <span class="o">=</span> <span class="n">xa</span><span class="o">.</span><span class="n">shape</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="k">if</span> <span class="n">original</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span> <span class="s1">&#39;sep&#39;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="n">dropidx</span> <span class="o">=</span> <span class="n">nvar</span>
-
-<span class="ne">ValueError</span>: too many values to unpack (expected 2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -0.027586
+p-value: 0.956190
+Critical Values:
+	1%: -3.446
+	5%: -2.868
+	10%: -2.570
 </pre></div>
 </div>
 </div>
@@ -547,7 +529,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc0a66e910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f66f3958210&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_12_1.png" src="../_images/02_LinearTrendandMomentumForecasting_12_1.png" />
@@ -622,7 +604,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </pre></div>
 </div>
 </div>
@@ -636,7 +618,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lr confidence:  0.720499481096278
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lr confidence:  0.7204994810962779
 </pre></div>
 </div>
 </div>
@@ -653,7 +635,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc11e11f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f66f36bdd10&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_22_1.png" src="../_images/02_LinearTrendandMomentumForecasting_22_1.png" />
@@ -702,7 +684,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbc0f7c4b20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f66f356f9d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_25_1.png" src="../_images/02_LinearTrendandMomentumForecasting_25_1.png" />
@@ -723,7 +705,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc10e5c0a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f66f35f09d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_27_1.png" src="../_images/02_LinearTrendandMomentumForecasting_27_1.png" />
@@ -743,7 +725,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train set R^2:  0.7682299277930607
-Test set R^2:  0.9187750163794522
+Test set R^2:  0.9187750163794509
 </pre></div>
 </div>
 </div>
@@ -798,7 +780,7 @@ Test set R^2:  0.9187750163794522
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbc1217c1c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f66f34a25d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_33_1.png" src="../_images/02_LinearTrendandMomentumForecasting_33_1.png" />
@@ -881,7 +863,7 @@ Test set R^2:  0.9187750163794522
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>Toyoty</td>
       <td>Aygo</td>
       <td>1000</td>
@@ -889,7 +871,7 @@ Test set R^2:  0.9187750163794522
       <td>99</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>Mitsubishi</td>
       <td>Space Star</td>
       <td>1200</td>
@@ -897,7 +879,7 @@ Test set R^2:  0.9187750163794522
       <td>95</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>Skoda</td>
       <td>Citigo</td>
       <td>1000</td>
@@ -905,7 +887,7 @@ Test set R^2:  0.9187750163794522
       <td>95</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>Fiat</td>
       <td>500</td>
       <td>900</td>
@@ -913,7 +895,7 @@ Test set R^2:  0.9187750163794522
       <td>90</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>Mini</td>
       <td>Cooper</td>
       <td>1500</td>
@@ -956,49 +938,49 @@ Test set R^2:  0.9187750163794522
   </thead>
   <tbody>
     <tr>
-      <th>count</th>
+      <td>count</td>
       <td>36.000000</td>
       <td>36.000000</td>
       <td>36.000000</td>
     </tr>
     <tr>
-      <th>mean</th>
+      <td>mean</td>
       <td>1611.111111</td>
       <td>1292.277778</td>
       <td>102.027778</td>
     </tr>
     <tr>
-      <th>std</th>
+      <td>std</td>
       <td>388.975047</td>
       <td>242.123889</td>
       <td>7.454571</td>
     </tr>
     <tr>
-      <th>min</th>
+      <td>min</td>
       <td>900.000000</td>
       <td>790.000000</td>
       <td>90.000000</td>
     </tr>
     <tr>
-      <th>25%</th>
+      <td>25%</td>
       <td>1475.000000</td>
       <td>1117.250000</td>
       <td>97.750000</td>
     </tr>
     <tr>
-      <th>50%</th>
+      <td>50%</td>
       <td>1600.000000</td>
       <td>1329.000000</td>
       <td>99.000000</td>
     </tr>
     <tr>
-      <th>75%</th>
+      <td>75%</td>
       <td>2000.000000</td>
       <td>1418.250000</td>
       <td>105.000000</td>
     </tr>
     <tr>
-      <th>max</th>
+      <td>max</td>
       <td>2500.000000</td>
       <td>1746.000000</td>
       <td>120.000000</td>
@@ -1039,7 +1021,7 @@ Test set R^2:  0.9187750163794522
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate Linear Regression is given by: 
-CO2=  0.007805257527747122 x1 +  0.007550947270300685 x2 +  79.6947192911594
+CO2=  0.007805257527747133 x1 +  0.007550947270300687 x2 +  79.69471929115937
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([95.05092409])
@@ -1064,9 +1046,9 @@ CO2=  0.007805257527747122 x1 +  0.007550947270300685 x2 +  79.6947192911594
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.67040550265231
-Mean Squared Error: 40.86282453680151
-Root Mean Squared Error: 6.392403658781375
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.670405502652304
+Mean Squared Error: 40.86282453680142
+Root Mean Squared Error: 6.392403658781368
 </pre></div>
 </div>
 </div>
@@ -1105,7 +1087,7 @@ Root Mean Squared Error: 6.392403658781375
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate L2 Linear Regression is given by: 
-CO2=  0.007019810017740837 x1 +  0.007728894654883425 x2 +  80.73020505101513
+CO2=  0.007019810017740835 x1 +  0.007728894654883425 x2 +  80.73020505101513
 </pre></div>
 </div>
 </div>
@@ -1125,9 +1107,9 @@ CO2=  0.007019810017740837 x1 +  0.007728894654883425 x2 +  80.73020505101513
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.610220319986732
-Mean Squared Error: 41.142435087764326
-Root Mean Squared Error: 6.414236906114735
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.610220319986727
+Mean Squared Error: 41.14243508776426
+Root Mean Squared Error: 6.41423690611473
 </pre></div>
 </div>
 </div>
@@ -1151,7 +1133,7 @@ Root Mean Squared Error: 6.414236906114735
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model using Multivariate L2 Linear Regression is given by: 
-CO2=  0.007716758354774066 x1 +  0.007406759259298172 x2 +  80.02363225450095
+CO2=  0.007716758354774065 x1 +  0.00740675925929817 x2 +  80.02363225450097
 </pre></div>
 </div>
 </div>
@@ -1166,9 +1148,9 @@ CO2=  0.007716758354774066 x1 +  0.007406759259298172 x2 +  80.02363225450095
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.65574080048904
-Mean Squared Error: 40.92513568631857
-Root Mean Squared Error: 6.397275645641555
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 5.6557408004890455
+Mean Squared Error: 40.92513568631867
+Root Mean Squared Error: 6.397275645641562
 </pre></div>
 </div>
 </div>
@@ -1223,7 +1205,7 @@ Root Mean Squared Error: 6.397275645641555
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>01.01.2009 00:10:00</td>
       <td>996.52</td>
       <td>-8.02</td>
@@ -1241,7 +1223,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>152.3</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>01.01.2009 00:20:00</td>
       <td>996.57</td>
       <td>-8.41</td>
@@ -1259,7 +1241,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>136.1</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>01.01.2009 00:30:00</td>
       <td>996.53</td>
       <td>-8.51</td>
@@ -1277,7 +1259,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>171.6</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>01.01.2009 00:40:00</td>
       <td>996.51</td>
       <td>-8.31</td>
@@ -1295,7 +1277,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>198.0</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>01.01.2009 00:50:00</td>
       <td>996.51</td>
       <td>-8.27</td>
@@ -1359,7 +1341,7 @@ Root Mean Squared Error: 6.397275645641555
   </thead>
   <tbody>
     <tr>
-      <th>count</th>
+      <td>count</td>
       <td>420551.000000</td>
       <td>420551.000000</td>
       <td>420551.000000</td>
@@ -1376,7 +1358,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>420551.000000</td>
     </tr>
     <tr>
-      <th>mean</th>
+      <td>mean</td>
       <td>989.212776</td>
       <td>9.450147</td>
       <td>283.492743</td>
@@ -1393,7 +1375,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>174.743738</td>
     </tr>
     <tr>
-      <th>std</th>
+      <td>std</td>
       <td>8.358481</td>
       <td>8.423365</td>
       <td>8.504471</td>
@@ -1410,7 +1392,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>86.681693</td>
     </tr>
     <tr>
-      <th>min</th>
+      <td>min</td>
       <td>913.600000</td>
       <td>-23.010000</td>
       <td>250.600000</td>
@@ -1427,7 +1409,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>25%</th>
+      <td>25%</td>
       <td>984.200000</td>
       <td>3.360000</td>
       <td>277.430000</td>
@@ -1444,7 +1426,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>124.900000</td>
     </tr>
     <tr>
-      <th>50%</th>
+      <td>50%</td>
       <td>989.580000</td>
       <td>9.420000</td>
       <td>283.470000</td>
@@ -1461,7 +1443,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>198.100000</td>
     </tr>
     <tr>
-      <th>75%</th>
+      <td>75%</td>
       <td>994.720000</td>
       <td>15.470000</td>
       <td>289.530000</td>
@@ -1478,7 +1460,7 @@ Root Mean Squared Error: 6.397275645641555
       <td>234.100000</td>
     </tr>
     <tr>
-      <th>max</th>
+      <td>max</td>
       <td>1015.350000</td>
       <td>37.280000</td>
       <td>311.340000</td>
@@ -1515,7 +1497,7 @@ Root Mean Squared Error: 6.397275645641555
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </pre></div>
 </div>
 </div>
@@ -1536,8 +1518,8 @@ Root Mean Squared Error: 6.397275645641555
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.4932830452108559
-Mean Squared Error: 0.44533245141822714
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.4932830452108572
+Mean Squared Error: 0.4453324514182271
 Root Mean Squared Error: 0.6673323395567062
 </pre></div>
 </div>
@@ -1562,9 +1544,9 @@ Root Mean Squared Error: 0.6673323395567062
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5059669706097649
-Mean Squared Error: 0.4901795271214341
-Root Mean Squared Error: 0.7001282219146961
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5059669706097937
+Mean Squared Error: 0.4901795271215825
+Root Mean Squared Error: 0.7001282219148022
 </pre></div>
 </div>
 </div>
@@ -1653,7 +1635,7 @@ Root Mean Squared Error: 8.437981297624082
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbc121929d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f66eace9bd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_66_1.png" src="../_images/02_LinearTrendandMomentumForecasting_66_1.png" />
@@ -1731,7 +1713,7 @@ Root Mean Squared Error: 8.437981297624082
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbbf74abac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f66f36d2390&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_74_1.png" src="../_images/02_LinearTrendandMomentumForecasting_74_1.png" />
@@ -1814,7 +1796,7 @@ Date
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbbf7e2cb80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f66f37ebbd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_LinearTrendandMomentumForecasting_79_1.png" src="../_images/02_LinearTrendandMomentumForecasting_79_1.png" />

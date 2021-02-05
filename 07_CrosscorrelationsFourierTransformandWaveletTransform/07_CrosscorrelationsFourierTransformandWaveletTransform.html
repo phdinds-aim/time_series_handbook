@@ -525,7 +525,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 28
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum correlation at 25
 Minimum correlation at 75
 </pre></div>
 </div>
@@ -820,18 +820,10 @@ Minimum correlation at 26
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">10</span><span class="n">b5ed290419</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y_ft</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">scp</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">samp_rate</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_ft</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fourier Coefficient&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (in Hz)&#39;</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;function&#39; object has no attribute &#39;fft&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peak at: 5.0 Hz
 </pre></div>
 </div>
+<img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_37_1.png" />
 </div>
 </div>
 <p>We see two peaks when the frequency is 5 and -5.</p>
@@ -1028,7 +1020,7 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [2.000e-01 5.000e-01 9.000e-01 ... 4.994e+02 4.996e+02 4.999e+02]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [2.000e-01 5.000e-01 8.000e-01 ... 4.994e+02 4.997e+02 4.999e+02]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_61_1.png" />
@@ -1046,8 +1038,7 @@ We want to retrieve the original signal as that is where the interesting behavio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  5.    5.2  10.  146.  157.7 175.6 202.  228.1 238.3 244.  357.4 385.2
- 400.1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  5.   10.   57.1  96.9 186.2 189.8 268.6 282.6 306.3 311.4 385.6]
 </pre></div>
 </div>
 </div>
@@ -1182,7 +1173,7 @@ We want to retrieve the original signal as that is where the interesting behavio
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <td>0</td>
       <td>01.01.2009 00:10:00</td>
       <td>996.52</td>
       <td>-8.02</td>
@@ -1200,7 +1191,7 @@ We want to retrieve the original signal as that is where the interesting behavio
       <td>152.3</td>
     </tr>
     <tr>
-      <th>1</th>
+      <td>1</td>
       <td>01.01.2009 00:20:00</td>
       <td>996.57</td>
       <td>-8.41</td>
@@ -1218,7 +1209,7 @@ We want to retrieve the original signal as that is where the interesting behavio
       <td>136.1</td>
     </tr>
     <tr>
-      <th>2</th>
+      <td>2</td>
       <td>01.01.2009 00:30:00</td>
       <td>996.53</td>
       <td>-8.51</td>
@@ -1236,7 +1227,7 @@ We want to retrieve the original signal as that is where the interesting behavio
       <td>171.6</td>
     </tr>
     <tr>
-      <th>3</th>
+      <td>3</td>
       <td>01.01.2009 00:40:00</td>
       <td>996.51</td>
       <td>-8.31</td>
@@ -1254,7 +1245,7 @@ We want to retrieve the original signal as that is where the interesting behavio
       <td>198.0</td>
     </tr>
     <tr>
-      <th>4</th>
+      <td>4</td>
       <td>01.01.2009 00:50:00</td>
       <td>996.51</td>
       <td>-8.27</td>
