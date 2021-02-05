@@ -57,7 +57,7 @@ When a notebook rendered in nbviewer appears differently from the one rendered g
 - Gilbert Michael Chua
 - Francis James Corpuz
 - Carlo Vincienzo Dajac
-- Sebastian Ibanez
+- Sebastian C. Ibañez
 - Prince Joseph Erneszer Javier
 - Marissa Pastor-Liponhay
 - Maria Eloisa Ventura
