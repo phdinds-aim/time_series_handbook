@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import lightgbm as lgb', '', 'params = {', "    'n_estimators': 3000,", "    'max_depth': 4,"]
+['from sklearn.model_selection import cross_val_score', 'from sklearn.model_selection import RepeatedKFold', '', 'params = {', "    'n_estimators': 2000,"]
 ...
-['model.fit(train_x, train_y,', "          eval_metric = 'l1', ", '          eval_set = [(test_x, test_y)],', '          early_stopping_rounds = 10,', '          verbose = 0)']
+['    names.append(w)', "    print('%3d --- MAE: %.3f (%.3f)' % (w, np.mean(scores), np.std(scores)))", '', 'plt.boxplot(results, labels = names, showmeans = True)', 'plt.show()']
 -------------------
 
