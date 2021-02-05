@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Time Series Analysis Handbook
-author: By students of PhD in Data Science Batch 2023 at the Asian Institute of Management
+author: students of PhD in Data Science Batch 2023 at the Asian Institute of Management
 # logo: logo.png
 
 # Force re-execution of notebooks on each build.
