@@ -1641,8 +1641,8 @@ $<span class="math notranslate nohighlight">\((M)\operatorname{HQIC} = \operator
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 222 ms, sys: 0 ns, total: 222 ms
-Wall time: 52.6 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 244 ms, sys: 0 ns, total: 244 ms
+Wall time: 49 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Summary of Regression Results   
@@ -1650,7 +1650,7 @@ Wall time: 52.6 ms
 Model:                         VAR
 Method:                        OLS
 Date:           Fri, 05, Feb, 2021
-Time:                     15:52:36
+Time:                     18:10:09
 --------------------------------------------------------------------
 No. of Equations:         3.00000    BIC:                    7.42533
 Nobs:                     4405.00    HQIC:                   7.21123
@@ -1984,8 +1984,8 @@ RH         0.151890  0.080412  1.000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 56.1 s, sys: 964 ms, total: 57.1 s
-Wall time: 16.3 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 53.8 s, sys: 972 ms, total: 54.8 s
+Wall time: 15.3 s
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -2291,8 +2291,8 @@ u_{3,t-i}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 40.3 s, sys: 9.89 s, total: 50.2 s
-Wall time: 10.1 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.3 s, sys: 816 ms, total: 16.1 s
+Wall time: 2.69 s
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -2465,8 +2465,8 @@ dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.37 ms, sys: 184 µs, total: 2.56 ms
-Wall time: 515 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.07 ms, sys: 47 µs, total: 2.11 ms
+Wall time: 355 µs
 </pre></div>
 </div>
 </div>
@@ -2522,8 +2522,8 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 318 ms, sys: 67.7 ms, total: 385 ms
-Wall time: 93.7 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 43.5 ms, sys: 0 ns, total: 43.5 ms
+Wall time: 22.3 ms
 </pre></div>
 </div>
 </div>
@@ -2567,6 +2567,99 @@ Wall time: 93.7 ms
 <img alt="../_images/03_VectorAutoregressiveMethods_108_11.png" src="../_images/03_VectorAutoregressiveMethods_108_11.png" />
 <img alt="../_images/03_VectorAutoregressiveMethods_108_12.png" src="../_images/03_VectorAutoregressiveMethods_108_12.png" />
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">test_performance_metrics</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">forecast_var</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;-VAR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T (degC)-VAR</th>
+      <th>Tpot (K)-VAR</th>
+      <th>Tdew (degC)-VAR</th>
+      <th>rh (%)-VAR</th>
+      <th>VPmax (mbar)-VAR</th>
+      <th>VPact (mbar)-VAR</th>
+      <th>VPdef (mbar)-VAR</th>
+      <th>sh (g/kg)-VAR</th>
+      <th>H2OC (mmol/mol)-VAR</th>
+      <th>rho (g/m**3)-VAR</th>
+      <th>wv (m/s)-VAR</th>
+      <th>max. wv (m/s)-VAR</th>
+      <th>wd (deg)-VAR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MAE</td>
+      <td>2.292635</td>
+      <td>2.291919</td>
+      <td>1.975916</td>
+      <td>11.822325</td>
+      <td>0.925449</td>
+      <td>0.600680</td>
+      <td>0.688951</td>
+      <td>0.366852</td>
+      <td>0.587636</td>
+      <td>12.231235</td>
+      <td>0.510983</td>
+      <td>0.757384</td>
+      <td>42.771166</td>
+    </tr>
+    <tr>
+      <td>MSE</td>
+      <td>8.999428</td>
+      <td>9.690842</td>
+      <td>5.431729</td>
+      <td>200.859958</td>
+      <td>1.620147</td>
+      <td>0.491925</td>
+      <td>1.119863</td>
+      <td>0.182679</td>
+      <td>0.468760</td>
+      <td>289.708881</td>
+      <td>0.361360</td>
+      <td>0.779419</td>
+      <td>3357.543785</td>
+    </tr>
+    <tr>
+      <td>MAPE</td>
+      <td>136.294726</td>
+      <td>0.841055</td>
+      <td>28.169982</td>
+      <td>17.646228</td>
+      <td>16.422789</td>
+      <td>17.343261</td>
+      <td>36.754304</td>
+      <td>17.062372</td>
+      <td>17.018862</td>
+      <td>0.957861</td>
+      <td>102.551197</td>
+      <td>74.595076</td>
+      <td>79.960587</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 </div>

@@ -55,6 +55,7 @@ When a notebook rendered in nbviewer appears differently from the one rendered g
 ## Jupyterbook
 To view all the chapters of this handbook, please visit this link: [Time Series Analysis Handbook](https://phdinds-aim.github.io/time_series_handbook/)
 
+![Screenshot](jupyterbook_handbook.png)
 
 
 # Contributors
