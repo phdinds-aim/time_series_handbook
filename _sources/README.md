@@ -46,11 +46,16 @@ python3 -m venv ~/atsa
 To activate and enter the environment, run `source ~/atsa/bin/activate`. To deactivate the environment, either run `deactivate` or exit the terminal. Note that every time you want to work on the assignment, you should rerun `source ~/atsa/bin/activate`.
 
 ## Rendering the notebooks
-To view the notebooks outside of Github without setting up a repository or installing any software, you may use [The Jupyter Notebook Viewer](https://nbviewer.jupyter.org/).  
+To view the individual notebooks outside of Github without setting up a repository or installing any software, you may use [The Jupyter Notebook Viewer](https://nbviewer.jupyter.org/).  
 - Open `https://nbviewer.jupyter.org/`
 - Paste the link to the notebook. 
 
 When a notebook rendered in nbviewer appears differently from the one rendered github, just append `?flush_cache=true` to the end of the nbviewer URL to force it to rerender.
+
+## Jupyterbook
+To view all the chapters of this handbook, please visit this link: [Time Series Analysis Handbook](https://phdinds-aim.github.io/time_series_handbook/)
+
+
 
 # Contributors
 - Benjur Emmanuel Borja
