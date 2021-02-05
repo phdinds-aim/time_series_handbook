@@ -54,11 +54,11 @@ When a notebook rendered in nbviewer appears differently from the one rendered g
 
 # Contributors
 - Benjur Emmanuel Borja
-- Gilbert Michael Chua
+- Gilbert Michael G. Chua
 - Francis James Corpuz
 - Carlo Vincienzo Dajac
-- Sebastian Ibanez
+- Sebastian C. Ibañez
 - Prince Joseph Erneszer Javier
-- Marissa Pastor-Liponhay
-- Maria Eloisa Ventura
+- Marissa P. Liponhay
+- Maria Eloisa M. Ventura
 
