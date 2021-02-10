@@ -16,3 +16,17 @@ Please access the notebooks in this sequence:
 The M5 dataset consists of Walmart sales data. Specifically, daily unit sales of 3,049 products, classified in 3 product categories (Hobbies, Foods, and Household), and 7 product departments in which the previously mentioned categories are disaggregated. The products are sold across 10 stores, located in 3 States (California, Texas, and Wisconsin).
 
 To download the dataset, you may do so at the following link: https://www.kaggle.com/c/m5-forecasting-accuracy
+
+### Chapter Outline
+
+1. M5 Dataset
+
+2. Pre-processing
+
+3. One-Step Prediction
+
+4. Multi-Step Prediction
+
+5. Feature Importance
+
+6. Summary
