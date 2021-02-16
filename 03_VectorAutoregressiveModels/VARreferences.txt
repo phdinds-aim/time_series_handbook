@@ -1,6 +1,11 @@
 VAR references
 
+Main References
 Lütkepohl, H. (2005). Introduction. New Introduction to Multiple Time Series Analysis, 1-7. doi:10.1007/978-3-540-27752-1_1
+Kilian, L., & Lütkepohl, H. (2018). Structural vector autoregressive analysis. Cambridge: Cambridge University Press.
+
+Supplementary References
+https://sccn.ucsd.edu/wiki/Chapter_3.5._Model_order_selection
 https://www.fil.ion.ucl.ac.uk/~wpenny/course/array.pdf
 https://towardsdatascience.com/simple-multivariate-time-series-forecasting-7fa0e05579b2
 https://arxiv.org/pdf/1302.6613.pdf
@@ -26,3 +31,4 @@ https://medium.com/@seemakurthi.teja.1999/vector-auto-regression-time-series-mod
 https://www.reed.edu/economics/parker/s10/312/notes/Notes12.pdf
 https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
 http://statmath.wu.ac.at/~hauser/LVs/FinEtricsQF/FEtrics_Chp4.pdf
+
