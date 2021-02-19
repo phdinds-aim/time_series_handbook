@@ -3,7 +3,6 @@
 Name | Desciption | Chapter
 ------------ | ------------- | -------------
 Jena Climate | Timeseries recorded at the Weather Station at the Max Planck Institute for Biogeochemistry in Jena, Germany from 2009 to 2016. It contains 14 different quantities (such air temperature, atmospheric pressure, humidity, wind direction, and so on) were recorded every 10 minutes.| 1 to 8
-wwwusage| Synthetic data| 1
 train_series/train_series_datetime | Training data based on Jena Climate dataset containing hourly samples| 1 to 8
 val_series/val_series_datetime | Validation data based on Jena Climate dataset containing hourly samples| 1 to 8
 test_series/test_series_datetime | Test data based on Jena Climate dataset containing hourly samples| 1 to 8
