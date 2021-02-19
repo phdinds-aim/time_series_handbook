@@ -1,6 +1,6 @@
 # Chapter 4: Granger Causality Test
 
-In this chapter, we introduce the notion of causality and describe a test for linear models. The VAR model discussed in the previous chapter will be applied here.
+In the first three chapters, we discussed the classical methods for both univariate and multivariate time series forecasting. We now introduce the notion of causality and its implications on time series analysis in general. We also describe a test for the linear VAR model discussed in the previous chapter.
 
 The [notebook](04_GrangerCausality.ipynb) is outlined as follows: 
 * Notations 
