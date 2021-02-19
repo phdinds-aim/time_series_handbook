@@ -13,7 +13,7 @@ The [notebook](04_GrangerCausality.ipynb) is outlined as follows:
   * La Mesa Dam Dataset 
     * Causality between Rainfall and La Mesa Dam Water Level 
     * Causality between NIA Release Flow and La Mesa Dam Water Level 
-* Jena Climate Data 
+  * Jena Climate Data 
     * Causality between Pressure and Temperature 
 * Summary 
 * References
