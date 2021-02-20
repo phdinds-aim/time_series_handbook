@@ -171,4 +171,5 @@ dependencies:
     - widgetsnbextension==3.5.1
     - xlrd==2.0.1
     - yfinance==0.1.55
+    - multiprocessing
 prefix: /Users/prince.javier/opt/anaconda3/envs/atsa
