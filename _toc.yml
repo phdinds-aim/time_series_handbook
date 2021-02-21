@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: Preface/Preface
-  numbered: true
+  numbered: false
 - file: 00_Introduction/00_Introduction
 - file: 01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage
 - file: 02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting
