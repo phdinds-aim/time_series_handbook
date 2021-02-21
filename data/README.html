@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Datasets &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -24,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,25 +36,24 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Temperature Forecasting (Supplementary Notebook)" href="../08_WinningestMethods/lightgbm_jena_forecasting.html" />
@@ -86,12 +86,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface: Advanced Time Series Analysis
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
    Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
@@ -113,13 +118,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
-   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Chapter 6: Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -258,67 +263,79 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Jena Weather</p></td>
-<td><p>Weather timeseries recorded at the Weather Station at the Max Planck Institute for Biogeochemistry in Jena, Germany from 2009 to 2016. It contains 14 different quantities (such air temperature, atmospheric pressure, humidity, wind direction, and so on) were recorded every 10 minutes.</p></td>
+<tr class="row-even"><td><p>Jena Climate</p></td>
+<td><p>Timeseries recorded at the Weather Station at the Max Planck Institute for Biogeochemistry in Jena, Germany from 2009 to 2016. It contains 14 different quantities (such air temperature, atmospheric pressure, humidity, wind direction, and so on) were recorded every 10 minutes.</p></td>
 <td><p>1 to 8</p></td>
 </tr>
-<tr class="row-odd"><td><p>wwwusage</p></td>
+<tr class="row-odd"><td><p>train_series/train_series_datetime</p></td>
+<td><p>Training data based on Jena Climate dataset containing hourly samples</p></td>
+<td><p>1 to 8</p></td>
+</tr>
+<tr class="row-even"><td><p>val_series/val_series_datetime</p></td>
+<td><p>Validation data based on Jena Climate dataset containing hourly samples</p></td>
+<td><p>1 to 8</p></td>
+</tr>
+<tr class="row-odd"><td><p>test_series/test_series_datetime</p></td>
+<td><p>Test data based on Jena Climate dataset containing hourly samples</p></td>
+<td><p>1 to 8</p></td>
+</tr>
+<tr class="row-even"><td><p>wwwusage</p></td>
 <td><p>Synthetic data</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>NFLX3</p></td>
+<tr class="row-odd"><td><p>NFLX3</p></td>
 <td><p>Truncated daily closing prices of the stock NFLX in 2020, downloaded from yahoo finance</p></td>
 <td><p>2</p></td>
 </tr>
-<tr class="row-odd"><td><p>Cars</p></td>
-<td><p>Simple demonstrative data on cars (from <a class="reference external" href="http://w3schools.com">w3schools.com</a>) with car model, volume, weight, and CO2 emission included</p></td>
+<tr class="row-even"><td><p>Cars</p></td>
+<td><p>Simple demonstrative data on cars (from w3schools.com) with car model, volume, weight, and CO2 emission included</p></td>
 <td><p>2</p></td>
 </tr>
-<tr class="row-even"><td><p>Air Quality</p></td>
+<tr class="row-odd"><td><p>Air Quality</p></td>
 <td><p>Hourly averaged measurements obtained from an Air Quality Chemical Multisensor Device which was located on the field of polluted area at an Italian city.</p></td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td><p>Global Health</p></td>
+<tr class="row-even"><td><p>Global Health</p></td>
 <td><p>Key health statistics from a variety of sources to provide a look at global health and population trends. It includes information on nutrition, reproductive health, education, immunization, and diseases from over 200 countries.</p></td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-even"><td><p>US Treasury Rates</p></td>
+<tr class="row-odd"><td><p>US Treasury Rates</p></td>
 <td><p>Weekly data of US Treasury rates from January 1982 to December 2016</p></td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td><p>5 species data set</p></td>
+<tr class="row-even"><td><p>5 species data set</p></td>
 <td><p>Model example of five-species resource–consumer–predator interaction. Resource, Consumer 1, Consumer 2, Predator 1, and Predator 2 are represented by R, C1, C2, P1, and P2, respectively</p></td>
 <td><p>5</p></td>
 </tr>
-<tr class="row-even"><td><p>ESM 2 Data Noise</p></td>
+<tr class="row-odd"><td><p>ESM 2 Data Noise</p></td>
 <td><p>Artificial time series of red noise and logistic map for the demonstration of simplex projection and S-map.</p></td>
 <td><p>5</p></td>
 </tr>
-<tr class="row-odd"><td><p>cage_drowning</p></td>
+<tr class="row-even"><td><p>cage_drowning</p></td>
 <td><p>Number of Nicolas Cage Films and drowing incidents in the US</p></td>
 <td><p>6</p></td>
 </tr>
-<tr class="row-even"><td><p>Angat_dataset</p></td>
+<tr class="row-odd"><td><p>Angat_dataset</p></td>
 <td><p>Angat dam levels, rainfall, and irrigation water flow</p></td>
 <td><p>4, 6</p></td>
 </tr>
-<tr class="row-odd"><td><p>Ipo_dataset</p></td>
+<tr class="row-even"><td><p>Ipo_dataset</p></td>
 <td><p>Ipo dam levels, rainfall, and irrigation water flow</p></td>
 <td><p>4, 6</p></td>
 </tr>
-<tr class="row-even"><td><p>co2_temp - combined</p></td>
+<tr class="row-odd"><td><p>co2_temp - combined</p></td>
 <td><p>Global CO2, temperature change, and Arctic sea ice area data from NASA</p></td>
 <td><p>6</p></td>
 </tr>
-<tr class="row-odd"><td><p>cc</p></td>
+<tr class="row-even"><td><p>cc</p></td>
 <td><p>Stream flow of a river and the precipitation in the surrounding area</p></td>
 <td><p>7</p></td>
 </tr>
-<tr class="row-even"><td><p>fft</p></td>
+<tr class="row-odd"><td><p>fft</p></td>
 <td><p>Jena climate dataset</p></td>
 <td><p>7</p></td>
 </tr>
-<tr class="row-odd"><td><p>cwt (UCI HAR dataset)</p></td>
+<tr class="row-even"><td><p>cwt (UCI HAR dataset)</p></td>
 <td><p>Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.</p></td>
 <td><p>7</p></td>
 </tr>

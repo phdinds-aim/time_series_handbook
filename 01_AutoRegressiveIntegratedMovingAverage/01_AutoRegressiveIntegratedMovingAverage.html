@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chapter 1: AutoRegressive Integrated Moving Average (ARIMA) &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -24,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,29 +36,28 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter 2: Linear, Trend, and Momentum Forecasting" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" />
-    <link rel="prev" title="Preface: Advanced Time Series Analysis" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" />
+    <link rel="prev" title="Chapter 0: Advanced Time Series Analysis" href="../00_Introduction/00_Introduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -87,12 +87,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface: Advanced Time Series Analysis
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
@@ -114,13 +119,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
-   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Chapter 6: Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -266,57 +271,123 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction-to-arima">
-   1. Introduction to ARIMA
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#p-d-and-q-and-special-cases">
-   2.
-   <em>
-    p, d, and q
-   </em>
-   and Special Cases
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#determining-p-d-and-q">
-   3. Determining p, d, and q
+   Introduction to ARIMA
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finding-the-order-differencing-d">
-     Finding the order differencing
-     <em>
-      d
-     </em>
+    <a class="reference internal nav-link" href="#example-1-stationary-and-non-stationary-univartiate-time-series">
+     Example 1: Stationary and Non-Stationary Univartiate Time Series
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finding-the-order-of-the-autoregressive-term-p">
-     Finding the order of the AutoRegressive term
-     <em>
-      p
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finding-the-order-of-the-moving-average-term-q">
-     Finding the order of the Moving Average term
-     <em>
-      q
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-the-arima-model">
-     Building the ARIMA model
+    <a class="reference internal nav-link" href="#model-components">
+     Model Components
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-parameters-p-d-and-q-and-special-cases">
+   Model parameters
+   <em>
+    p, d, and q
+   </em>
+   and Special Cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#determining-p-d-and-q">
+     Determining
+     <em>
+      p
+     </em>
+     ,
+     <em>
+      d
+     </em>
+     , and
+     <em>
+      q
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finding-the-order-differencing-d">
+       Finding the order differencing
+       <em>
+        d
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finding-the-order-of-the-autoregressive-term-p">
+       Finding the order of the AutoRegressive term
+       <em>
+        p
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finding-the-order-of-the-moving-average-term-q">
+       Finding the order of the Moving Average term
+       <em>
+        q
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-the-arima-model">
+   Building the ARIMA model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementation-and-forecasting-using-arima">
-   4. Implementation and Forecasting using ARIMA
+   Implementation and Forecasting using ARIMA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-forecasting-temperature-in-jena-climate-data">
+     Example 2: Forecasting Temperature in Jena Climate Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-order-selection-hyperparameter-tuning">
+       Model order selection (hyperparameter tuning)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#evaluate-model-performance-on-test-set">
+       Evaluate model performance on test set
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#forecast-24-hours-beyond-test-set">
+         Forecast 24 hours beyond test set
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-using-arima-for-multivariate-time-series">
+     Example 3: Using ARIMA for Multivariate Time Series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preview-to-the-next-chapter">
+   Preview to the next Chapter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
  </li>
 </ul>
@@ -332,6 +403,7 @@
                 
   <div class="section" id="chapter-1-autoregressive-integrated-moving-average-arima">
 <h1>Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)<a class="headerlink" href="#chapter-1-autoregressive-integrated-moving-average-arima" title="Permalink to this headline">¶</a></h1>
+<p>Prepared by: Benjur Emmanuel L. Borja and Maria Eloisa M. Ventura</p>
 <p>In this notebook, we will introduce our first approach to time-series forecasting which is <strong>ARIMA</strong> or AutoRegressive Integrated Moving Average. This notebook will discuss:</p>
 <ol class="simple">
 <li><p>Definition and Formulation of ARIMA models</p></li>
@@ -339,32 +411,19 @@
 <li><p>Model Statistics and How to Interpret</p></li>
 <li><p>Implementation and Forecasting using ARIMA</p></li>
 </ol>
-<p>The contents of this notebook is compiled from the following references:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/">https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/</a></p></li>
-<li><p><a class="reference external" href="https://otexts.com/fpp2/arima.html">https://otexts.com/fpp2/arima.html</a></p></li>
-<li><p><a class="reference external" href="https://people.duke.edu/~rnau/411arim.htm">https://people.duke.edu/~rnau/411arim.htm</a></p></li>
-<li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/">https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/</a></p></li>
-<li><p><a class="reference external" href="https://machinelearningmastery.com/time-series-forecast-study-python-monthly-sales-french-champagne/">https://machinelearningmastery.com/time-series-forecast-study-python-monthly-sales-french-champagne/</a></p></li>
-<li><p><a class="reference external" href="https://medium.com/&#64;josemarcialportilla/using-python-and-auto-arima-to-forecast-seasonal-time-series-90877adff03c">https://medium.com/&#64;josemarcialportilla/using-python-and-auto-arima-to-forecast-seasonal-time-series-90877adff03c</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average</a></p></li>
-<li><p>C.Monterola, <em>“Notebook 10 Time Series Forecasting Method — ARIMA MSDS2021”</em></p></li>
-<li><p>Hyndman, R. J., &amp; Khandakar, Y. (2008). Automatic time series forecasting: The forecast package for R. Journal of Statistical Software, 27(1), 1–22. <a class="reference external" href="https://doi.org/10.18637/jss.v027.i03">https://doi.org/10.18637/jss.v027.i03</a></p></li>
-</ul>
-<p>Prepared by:
-Benjur Emmanuel L. Borja</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import required Libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="k">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="k">import</span> <span class="n">adfuller</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">log</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_model</span> <span class="k">import</span> <span class="n">ARIMA</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">read_csv</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">read_csv</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
 
 <span class="c1">### Just to remove warnings to prettify the notebook. </span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -374,17 +433,29 @@ Benjur Emmanuel L. Borja</p>
 </div>
 </div>
 <div class="section" id="introduction-to-arima">
-<h2>1. Introduction to ARIMA<a class="headerlink" href="#introduction-to-arima" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction to ARIMA<a class="headerlink" href="#introduction-to-arima" title="Permalink to this headline">¶</a></h2>
 <p>ARIMA, or AutoRegressive Integrated Moving Average, is a set of models that explains a time series using its own previous values given by the lags (<strong>A</strong>uto<strong>R</strong>egressive) and lagged errors (<strong>M</strong>oving <strong>A</strong>verage) while considering stationarity corrected by differencing (oppossite of <strong>I</strong>ntegration.) In other words, ARIMA assumes that the time series is described by autocorrelations in the data rather than trends and seasonality. In these context, we define trends and seasonality as the following:</p>
 <ul class="simple">
 <li><p><strong>Trend</strong>: A time series has a trend if there is a overlying long term increase or decrease in the data, which is not necessarily linear.</p></li>
 <li><p><strong>Seasonality</strong>: A time series data has seasonality when it is affected by seasonal factors such as the time of the year or the day of the week. The seasonality of data is apparent as there is a fixed frequency of pattern occurence.</p></li>
 </ul>
-<p>To illustrate, lets look at the following examples:
-<img alt="stationary-1.png" src="../_images/stationary-1.png" />
-<strong>Figure 1. Which of these series are stationary?</strong> (a) Google stock price for 200 consecutive days; (b) Daily change in the Google stock price for 200 consecutive days; (c) Annual number of strikes in the US; (d) Monthly sales of new one-family houses sold in the US; (e) Annual price of a dozen eggs in the US (constant dollars); (f) Monthly total of pigs slaughtered in Victoria, Australia; (g) Annual total of lynx trapped in the McKenzie River district of north-west Canada; (h) Monthly Australian beer production; (i) Monthly Australian electricity production.*<a class="reference external" href="https://otexts.com/fpp2/fpp_files/figure-html/stationary-1.png">https://otexts.com/fpp2/fpp_files/figure-html/stationary-1.png</a></p>
+<div class="section" id="example-1-stationary-and-non-stationary-univartiate-time-series">
+<h3>Example 1: Stationary and Non-Stationary Univartiate Time Series<a class="headerlink" href="#example-1-stationary-and-non-stationary-univartiate-time-series" title="Permalink to this headline">¶</a></h3>
+<p>To illustrate, lets look at the following examples of time series (<strong><a class="reference external" href="https://otexts.com/fpp2/fpp_files/figure-html/stationary-1.png">source</a></strong>):</p>
+<p>(a) Google stock price for 200 consecutive days</p>
+<p>(b) Daily change in the Google stock price for 200 consecutive days</p>
+<p>(c) Annual number of strikes in the US</p>
+<p>(d) Monthly sales of new one-family houses sold in the US; (e) Annual price of a dozen eggs in the US (constant dollars)</p>
+<p>(f) Monthly total of pigs slaughtered in Victoria, Australia</p>
+<p>(g) Annual total of lynx trapped in the McKenzie River district of north-west Canada; (h) Monthly Australian beer production</p>
+<p>(i) Monthly Australian electricity production.</p>
+<p><img alt="stationary-1.png" src="../_images/stationary-1.png" /></p>
+<p><strong>Which of these series are stationary?</strong></p>
 <p>Obvious seasonality rules out series (d), (h) and (i). Trends and changing levels rules out series (a), (c), (e), (f) and (i). Increasing variance also rules out (i). That leaves only (b) and (g) as stationary series. At a first glance, (g) might seem non-stationary but these cycles are aperiodic, and is dependedent on the complex interactions between lynx population and the availability of the food source. The timing of these cycles is unpredictable hence, this time series is non-stationary.</p>
 <p>Now notice the Google Stock Price (a) and the daily change in the Google Stock Price (b). These time-series came from the same system, but exhibits different dynamics. This illustrates that we can make non-stationary time-series stationary by taking the difference between consecutive observations - or <strong>Differencing</strong>. Differencing stabilizes our time-series by removing changes in the level of our time series, therefore reducing trends and seasonality.</p>
+</div>
+<div class="section" id="model-components">
+<h3>Model Components<a class="headerlink" href="#model-components" title="Permalink to this headline">¶</a></h3>
 <p>As previously mentioned, ARIMA models are built given the following key aspects:</p>
 <p><strong>AR</strong>: Autoregression. A model that uses the dependent relationship between an observation and some number of lagged observations.<br />
 <strong>I</strong>: Integrated. The use of differencing of raw observations (e.g. subtracting an observation from an observation at the previous time step) in order to make the time series stationary.<br />
@@ -394,50 +465,58 @@ Benjur Emmanuel L. Borja</p>
 <strong>d</strong>: The number of times that the raw observations are differenced, also called the degree of differencing (<em>deals with order of <strong>differencing</strong> of <span class="math notranslate nohighlight">\(X_t\)</span></em>)<br />
 <strong>q</strong>: The size of the moving average window, also called the order of moving average (<em>deals with <strong>residuals</strong></em>)</p>
 <p>Given this, the general case of <em><strong>ARIMA(p,d,q)</strong></em> can be written as:</p>
-<p>\begin{equation}
-X_{t} = \alpha <em>{1}X</em>{t-1} + \dots + \alpha <em>{p}X</em>{t-p} + \varepsilon <em>{t}+\theta</em>{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
-\end{equation}</p>
-<p>Or in words : <strong>Predicted Xt</strong> = Constant + Linear combination <strong>Lags of X (upto p lags)</strong> + Linear Combination of <strong>Lagged forecast errors (up to q lags)</strong>. Provided that the time-series is already <strong>differenced (up to d terms)</strong> to ensure stationarity.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-64c65f3e-410a-431f-99a2-7276bb57d9f7">
+<span class="eqno">(1)<a class="headerlink" href="#equation-64c65f3e-410a-431f-99a2-7276bb57d9f7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t} = \alpha _{1}X_{t-1} + \dots + \alpha _{p}X_{t-p} + \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
+\end{equation}\]</div>
+<p>Or in words :</p>
+<p><strong>Predicted <span class="math notranslate nohighlight">\(X_t\)</span></strong> = Constant + Linear combination of <strong>Lags of <span class="math notranslate nohighlight">\(X\)</span> (up to <span class="math notranslate nohighlight">\(p\)</span> lags)</strong> + Linear Combination of <strong>Lagged forecast errors (up to q lags)</strong>. Provided that the time-series is already <strong>differenced (up to d terms)</strong> to ensure stationarity.</p>
 </div>
-<div class="section" id="p-d-and-q-and-special-cases">
-<h2>2. <em>p, d, and q</em> and Special Cases<a class="headerlink" href="#p-d-and-q-and-special-cases" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="model-parameters-p-d-and-q-and-special-cases">
+<h2>Model parameters <em>p, d, and q</em> and Special Cases<a class="headerlink" href="#model-parameters-p-d-and-q-and-special-cases" title="Permalink to this headline">¶</a></h2>
 <p>Before we discuss how we determine p, d, and q that are best to represent a time series, let’s first take a look at special cases of ARIMA models that should help us illustrate the formulation of the ARIMA equation.</p>
 <p><strong>Case 1: ARIMA(p,0,0) = autoregressive model</strong>: if the series is stationary and autocorrelated, perhaps it can be predicted as a multiple of its own previous value, plus a constant.</p>
 <p>The forecasting equation for ARIMA(1,0,0) is:</p>
-<p>\begin{equation}
-X_{t}  =  \mu  + \alpha <em>{1}X</em>{t-1}
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fbc6d67d-0e9e-4c45-a65e-94ec382ad903">
+<span class="eqno">(2)<a class="headerlink" href="#equation-fbc6d67d-0e9e-4c45-a65e-94ec382ad903" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t}  =  \mu  + \alpha _{1}X_{t-1}
+\end{equation}\]</div>
 <p>while ARIMA(2,0,0)</p>
-<p>\begin{equation}
-X_{t}  =  \mu  + \alpha <em>{1}X</em>{t-1} +  \alpha <em>{2}X</em>{t-2}
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-75b89923-01e4-4264-a130-c73d8c56f1c0">
+<span class="eqno">(3)<a class="headerlink" href="#equation-75b89923-01e4-4264-a130-c73d8c56f1c0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t}  =  \mu  + \alpha _{1}X_{t-1} +  \alpha _{2}X_{t-2}
+\end{equation}\]</div>
 <p>or in general ARIMA(p,0,0)</p>
-<p>\begin{equation}
-X_{t}  =  \mu  + \alpha <em>{1}X</em>{t-1} +  \alpha <em>{2}X</em>{t-2} \dots + \alpha <em>{p}X</em>{t-p}
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-adc7af31-f208-4b8e-9fa5-7a0111895cd7">
+<span class="eqno">(4)<a class="headerlink" href="#equation-adc7af31-f208-4b8e-9fa5-7a0111895cd7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t}  =  \mu  + \alpha _{1}X_{t-1} +  \alpha _{2}X_{t-2} \dots + \alpha _{p}X_{t-p}
+\end{equation}\]</div>
 <p><strong>Case 2: ARIMA(0,0,q) = moving average model</strong>: if the series is stationary but is correlated to the errors of previous values, we can regress using the past forecast errors.</p>
 <p>The forecasting equation for this is ARIMA(0,0,1) given by:</p>
-<p>\begin{equation}
-X_{t} = \varepsilon <em>{t}+\theta</em>{1}\varepsilon _{t-1}
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-28c51415-b3e2-449c-93d5-df899f27c89d">
+<span class="eqno">(5)<a class="headerlink" href="#equation-28c51415-b3e2-449c-93d5-df899f27c89d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t} = \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}
+\end{equation}\]</div>
 <p>or in simillar fashion to p, this can be generalized to ARIMA(0,0,q):</p>
-<p>\begin{equation}
-X_{t} = \varepsilon <em>{t}+\theta</em>{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-93d25e1f-a55a-41f2-ac5c-02dd4a702fd0">
+<span class="eqno">(6)<a class="headerlink" href="#equation-93d25e1f-a55a-41f2-ac5c-02dd4a702fd0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+X_{t} = \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta_{q}\)</span> is the coefficient at time <span class="math notranslate nohighlight">\(t-q\)</span> of the residual <span class="math notranslate nohighlight">\(\varepsilon _{t-q}\)</span>.</p>
 <p><strong>Case 3: ARIMA(0,1,0) = Random Walk</strong>: if the series is non-stationary then the simplest model that we can use is a random walk model, which is given by:</p>
-<p>\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-510fc4e5-b6ad-4b75-a495-34189a6991fc">
+<span class="eqno">(7)<a class="headerlink" href="#equation-510fc4e5-b6ad-4b75-a495-34189a6991fc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t}  =  \mu  + X_{t-1}
-\end{equation}</p>
+\end{equation}\]</div>
 <p><em>This can then further be generalized to ARIMA(0,d,0) simillar to the first two cases.</em></p>
 <p>As shown in our cases, we can use value of 0 for a parameter, which indicates to not use that element of the model. This way, the ARIMA model can be configured to perform the function of an ARMA model, and even a simple AR, I, or MA model. <strong>It is good to note that the case ARIMA(0,1,1) is a Simple Exponential Smoothing model</strong> but we’ll leave that in another discussion.</p>
 <p>Implementing an ARIMA model for a time series assumes that the observations is an ARIMA process. To implement ARIMA, a linear regression model is constructed including the specified number and type of terms, and the data is prepared by a degree of differencing in order to make it stationary, i.e. to remove trend and seasonal structures that negatively affect the regression model.</p>
-</div>
 <div class="section" id="determining-p-d-and-q">
-<h2>3. Determining p, d, and q<a class="headerlink" href="#determining-p-d-and-q" title="Permalink to this headline">¶</a></h2>
+<h3>Determining <em>p</em>, <em>d</em>, and <em>q</em><a class="headerlink" href="#determining-p-d-and-q" title="Permalink to this headline">¶</a></h3>
 <p>We need to explicitly indicate p, d, and q when implementing ARIMA models. Selecting appropriate p, d, and q can be difficult but there are several methods of automating this process. For example, we can use grid search in python to scan through different values and check which model would be optimal (will be discussed later.) R uses the auto.arima() function to do this automatically. For our case, we will look at the Augmented-Dickey Fuller Test (ADF), AutoCorrelation Function (ACF), and Partial Autocorrelation Function (PACF) to determine our model parameters.</p>
 <div class="section" id="finding-the-order-differencing-d">
-<h3>Finding the order differencing <em>d</em><a class="headerlink" href="#finding-the-order-differencing-d" title="Permalink to this headline">¶</a></h3>
+<h4>Finding the order differencing <em>d</em><a class="headerlink" href="#finding-the-order-differencing-d" title="Permalink to this headline">¶</a></h4>
 <p>As stated before, ARIMA models are assumed to be stationary. Implementing differencing may induce stationarity for various time series. The quickest way to determine <em>d</em> for our models is to difference and simply run ADF to check for stationarity. We can also look at the PACF and ACF to see if our time series is stationary after <em>d</em> differencing.</p>
 <p>To illustrate, let’s take a look at the following example:</p>
 <div class="cell docutils container">
@@ -445,7 +524,7 @@ X_{t}  =  \mu  + X_{t-1}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;re using a sample data from https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv</span>
 <span class="c1"># Import data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/wwwusage.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Series&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
@@ -455,7 +534,7 @@ X_{t}  =  \mu  + X_{t-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_7_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_7_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_12_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_12_0.png" />
 </div>
 </div>
 <p>Initial eyeballing shows that there is a trend for this time series and is non-stationary. Checking using ADF:</p>
@@ -475,10 +554,10 @@ p-value: 0.124419
 </div>
 </div>
 <p>The null hypothesis of the ADF test is that the time series is non-stationary. So, if the p-value of the test is less than the significance level (0.05) then you reject the null hypothesis and infer that the time series is indeed stationary. For our example, we fail to reject the null hypothesis.</p>
-<p>Next we difference our time series and check the results of ADF, we’ll also look at the ACF.</p>
+<p>Next we difference our time series and check the results of the ADF test. We will also look at the ACF.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
 
 <span class="c1"># Original Series</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -501,7 +580,7 @@ p-value: 0.124419
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> ADF Statistic for 2nd Order Differencing&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
@@ -509,12 +588,12 @@ p-value: 0.124419
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_11_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_11_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_16_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_16_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic for 1st Order Differencing
 ADF Statistic: -2.722238
 p-value: 0.070268
@@ -537,12 +616,12 @@ Critical Values:
 <p>Given the results of our ACF and ADF, we can see that our time series reachees stationarity after two orders of differencing. However, the ACF of the 2nd order differencing goes into the negative zone fairly quick. This can indicates that the series might have been over differenced. It is now up to us if we want consider the first or second order differencing for our ARIMA models.</p>
 </div>
 <div class="section" id="finding-the-order-of-the-autoregressive-term-p">
-<h3>Finding the order of the AutoRegressive term <em>p</em><a class="headerlink" href="#finding-the-order-of-the-autoregressive-term-p" title="Permalink to this headline">¶</a></h3>
+<h4>Finding the order of the AutoRegressive term <em>p</em><a class="headerlink" href="#finding-the-order-of-the-autoregressive-term-p" title="Permalink to this headline">¶</a></h4>
 <p>As we have discussed previously, we can look at the PACF plot to determine the lag for our AR terms. Partial autocorrelation can be imagined as the correlation between the series and its lag, after excluding the contributions from the intermediate lags. So, PACF sort of conveys the pure correlation between a lag and the series. That way, we will know if that lag is needed in the AR term or not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PACF plot of 1st differenced series</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mf">2.5</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">diff</span><span class="p">());</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;1st Differencing&#39;</span><span class="p">)</span>
@@ -554,19 +633,19 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_14_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_14_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_19_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_19_0.png" />
 </div>
 </div>
-<p>Immediately, we can observed that our PACF returns sigificance at Lag 1 and Lag 2, meaning it crosses the significance limit (blue region). We can also observe significance at higher order terms but note that given the amount of lag that we are testing, it is statistically probable to see random spikes in our PACF and ACF plots. <em>Although this can also be attributed to Seasonality which will be tackled separately.</em></p>
-<p>With this, we can now decide to use p = 2 for our ARIMA model.</p>
+<p>Immediately, we can observe that our PACF returns sigificance at Lag 1 and Lag 2, meaning it crosses the significance limit (blue region). We can also observe significance at higher order terms but note that given the amount of lag that we are testing, it is statistically probable to see random spikes in our PACF and ACF plots. <em>Although this can also be attributed to Seasonality which will be tackled separately.</em></p>
+<p>With this, we can now decide to use <span class="math notranslate nohighlight">\(p = 2\)</span> for our ARIMA model.</p>
 </div>
 <div class="section" id="finding-the-order-of-the-moving-average-term-q">
-<h3>Finding the order of the Moving Average term <em>q</em><a class="headerlink" href="#finding-the-order-of-the-moving-average-term-q" title="Permalink to this headline">¶</a></h3>
-<p>Simillar to how we determined p, we will now look at the ACF to determine the q terms to be considered for our MA. The ACF tells how many MA terms are required to remove any autocorrelation in the stationary series.</p>
+<h4>Finding the order of the Moving Average term <em>q</em><a class="headerlink" href="#finding-the-order-of-the-moving-average-term-q" title="Permalink to this headline">¶</a></h4>
+<p>Simillar to how we determined <span class="math notranslate nohighlight">\(p\)</span>, we will now look at the ACF to determine the <span class="math notranslate nohighlight">\(q\)</span> terms to be considered for our MA. The ACF tells how many MA terms are required to remove any autocorrelation in the stationary series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ACF plot of 1st differenced series</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">diff</span><span class="p">());</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;1st Differencing&#39;</span><span class="p">)</span>
@@ -578,13 +657,15 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_17_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_17_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_22_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_22_0.png" />
 </div>
 </div>
-<p>Our results for the ACF is not as apparent compared to our PCF. We can observed several ACF terms that is above our significance level. This may be  attritbuted to the fact that our model has a weak stationarity. This may also be caused by the fact that our time series is not perfectly MA and is an ARIMA model. For now, let’s consider q = 3.</p>
+<p>Our results for the ACF is not as apparent compared to our PCF. We can observed several ACF terms that is above our significance level. This may be  attritbuted to the fact that our model has a weak stationarity. This may also be caused by the fact that our time series is not perfectly MA and is an ARIMA model. For now, let’s consider <span class="math notranslate nohighlight">\(q = 3\)</span>.</p>
+</div>
+</div>
 </div>
 <div class="section" id="building-the-arima-model">
-<h3>Building the ARIMA model<a class="headerlink" href="#building-the-arima-model" title="Permalink to this headline">¶</a></h3>
+<h2>Building the ARIMA model<a class="headerlink" href="#building-the-arima-model" title="Permalink to this headline">¶</a></h2>
 <p>Now that we’ve determined the values of p, d and q, we have everything needed to fit the ARIMA model. Let’s implement using this dataset first before we move on to a deeper look at the implementation of ARIMA in the next section. Let’s use the ARIMA() implementation in statsmodels package. As computed, we will use ARIMA(2,1,3):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -600,8 +681,8 @@ Critical Values:
 Dep. Variable:                D.value   No. Observations:                   99
 Model:                 ARIMA(2, 1, 3)   Log Likelihood                -251.701
 Method:                       css-mle   S.D. of innovations              3.050
-Date:                Fri, 05 Feb 2021   AIC                            517.402
-Time:                        15:51:11   BIC                            535.568
+Date:                Mon, 22 Feb 2021   AIC                            517.402
+Time:                        02:49:41   BIC                            535.568
 Sample:                             1   HQIC                           524.752
                                                                               
 =================================================================================
@@ -642,8 +723,8 @@ MA.3           -1.1296           +0.7624j            1.3628            0.4055
 Dep. Variable:                D.value   No. Observations:                   99
 Model:                 ARIMA(1, 1, 1)   Log Likelihood                -253.790
 Method:                       css-mle   S.D. of innovations              3.119
-Date:                Fri, 05 Feb 2021   AIC                            515.579
-Time:                        15:51:11   BIC                            525.960
+Date:                Mon, 22 Feb 2021   AIC                            515.579
+Time:                        02:49:41   BIC                            525.960
 Sample:                             1   HQIC                           519.779
                                                                               
 =================================================================================
@@ -668,7 +749,7 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot residual errors</span>
 <span class="n">residuals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
 <span class="n">residuals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Residuals&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">residuals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -676,14 +757,14 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_24_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_24_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_29_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_29_0.png" />
 </div>
 </div>
 <p>The residuals is a good final check for our ARIMA models. Ideally, the residual errors should be a Gaussian with a zero mean and uniform variance. With this, we can now proceed with fitting our initial time series with our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Actual vs Fitted</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">plot_predict</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">plot_insample</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -691,7 +772,7 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_26_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_26_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_31_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_31_0.png" />
 </div>
 </div>
 <p>When we set dynamic=False the in-sample lagged values are used for prediction. That is, the model gets trained up until the previous value to make the next prediction. We can also call this as a <strong>walk-forward</strong> or <strong>one-step ahead</strong> prediction.</p>
@@ -704,7 +785,7 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Actual vs Fitted</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">plot_predict</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">plot_insample</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -712,15 +793,14 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_28_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_28_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_33_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_33_0.png" />
 </div>
 </div>
 <p>Notice that our confidence interval is now increasing as we go farther our given data set since we will be compounding errors given by out forecasted values. Also note that generally, our ARIMA model captured the direction of the trend of our time series but is consistently lower than the actual values. We can correct this by varying the parameters of our ARIMA models and validating using performance metrics.</p>
 </div>
-</div>
 <div class="section" id="implementation-and-forecasting-using-arima">
-<h2>4. Implementation and Forecasting using ARIMA<a class="headerlink" href="#implementation-and-forecasting-using-arima" title="Permalink to this headline">¶</a></h2>
-<p>Given the steps discussed in the first three sections of this notebook, we can now create a framework of how we can approach ARIMA models in general. We can use a modified version of the Hyndman-Khandakar algorithm (Hyndman &amp; Khandakar, 2008), which combines unit root tests, minimisation of the AIC and MLE to obtain an ARIMA model.</p>
+<h2>Implementation and Forecasting using ARIMA<a class="headerlink" href="#implementation-and-forecasting-using-arima" title="Permalink to this headline">¶</a></h2>
+<p>Given the steps discussed in the first three sections of this notebook, we can now create a framework of how we can approach ARIMA models in general. We can use a modified version of the Hyndman-Khandakar algorithm (Hyndman &amp; Khandakar, 2008), which combines unit root tests, minimisation of the AIC and MLE to obtain an ARIMA model. The steps are outlined below:</p>
 <ol class="simple">
 <li><p>The differencing term d is determined using repeated ADF tests.</p></li>
 <li><p>The values of p and q are chosen based on the AIC, ACF, and PACF of our differenced time series.</p></li>
@@ -746,10 +826,13 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
     <span class="k">return</span> <span class="n">yhat</span> <span class="o">+</span> <span class="n">history</span><span class="p">[</span><span class="o">-</span><span class="n">interval</span><span class="p">]</span>
 
 <span class="c1"># evaluate an ARIMA model for a given order (p,d,q) and return RMSE</span>
-<span class="k">def</span> <span class="nf">evaluate_arima_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arima_order</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">evaluate_arima_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arima_order</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="c1"># prepare training dataset</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
-    <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.50</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">train_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.50</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">train_size</span><span class="p">)</span>
     <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
     <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train</span><span class="p">]</span>
     <span class="c1"># make predictions</span>
@@ -764,9 +847,9 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
         <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yhat</span><span class="p">)</span>
         <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
     <span class="c1"># calculate out of sample error</span>
-    <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-    <span class="n">rmse</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rmse</span>
+    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mae</span>
+
 
 <span class="c1"># evaluate combinations of p, d and q values for an ARIMA model</span>
 <span class="k">def</span> <span class="nf">evaluate_models</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">p_values</span><span class="p">,</span> <span class="n">d_values</span><span class="p">,</span> <span class="n">q_values</span><span class="p">):</span>
@@ -788,207 +871,506 @@ MA.1           -1.8879           +0.0000j            1.8879            0.5000
 </div>
 </div>
 </div>
-<p>Let’s use the temperature data introduce in our preface.</p>
+<div class="section" id="example-2-forecasting-temperature-in-jena-climate-data">
+<h3>Example 2: Forecasting Temperature in Jena Climate Data<a class="headerlink" href="#example-2-forecasting-temperature-in-jena-climate-data" title="Permalink to this headline">¶</a></h3>
+<p>We now use the method above to perform <strong>multi-step forecasting</strong> (24-step) in the Jena temperature data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1">#temperature (in degrees Celsius)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/train_series.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]]</span>
+<span class="n">val_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/val_series.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]]</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_data</span><span class="p">,</span> <span class="n">val_data</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>  <span class="c1">#temperature (in degrees Celsius)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span> <span class="n">temp</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degree Celcius)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (every 10 mins)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature </span><span class="se">\n</span><span class="s1">(degree Celcius)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (every hour)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time (every 10 mins)&#39;)
-</pre></div>
-</div>
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_34_1.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_34_1.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_40_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_40_0.png" />
 </div>
 </div>
-<p>In this case, we’ll use a more narrow plot of the first 1 day of temperature data. Because the data is recorded every 10 minutes, you get 144 data points per day.</p>
+<div class="section" id="model-order-selection-hyperparameter-tuning">
+<h4>Model order selection (hyperparameter tuning)<a class="headerlink" href="#model-order-selection-hyperparameter-tuning" title="Permalink to this headline">¶</a></h4>
+<p>Before we proceed with the grid-search algorithm, we perform some preliminary tests on the time series to narrow down our parameter search. We can start by checking the stationarity of the signal to estimate <span class="math notranslate nohighlight">\(d\)</span>. Then, we plot the PACF and ACF of the time series to estimate <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[:</span><span class="mi">144</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">144</span><span class="p">),</span> <span class="n">series</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degree Celcius)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (every 10 mins)&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time (every 10 mins)&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -7.958617
+p-value: 0.000000
+Critical Values:
+	1%: -3.430
+	5%: -2.862
+	10%: -2.567
 </pre></div>
 </div>
-<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_36_1.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_36_1.png" />
+</div>
+</div>
+<p><strong>Observation</strong>: Based on the results of the ADF test, the signal is stationary. This implies that <span class="math notranslate nohighlight">\(d=0\)</span> so we no longer need to perform differencing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mf">2.5</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature Signal&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">plot_pacf</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_45_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_45_0.png" />
+</div>
+</div>
+<p><strong>Observation</strong>: Based on the plot of the PACF, we can see that the function drops to a value of almost zero for lags &gt; 2. So, we can set <span class="math notranslate nohighlight">\(p\)</span> to be from 0 to 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mf">2.5</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature Signal&#39;</span><span class="p">)</span>
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">flatten</span><span class="p">()),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_47_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_47_0.png" />
+</div>
+</div>
+<p><strong>Observation</strong>: Unlike the PACF which displayed a sharp cutoff, the ACF decays more slowly. We can say that the  series has an <em>autoregressive signature</em> which means that the autocorrelation pattern can be explained more easily by adding AR terms than by adding MA terms. Let’s test for values <span class="math notranslate nohighlight">\(q\)</span> from 0 to <span class="math notranslate nohighlight">\(5\)</span>.</p>
+<p>Due to constraints in computing resources, we will limit the length of the training data (from 35045 to 17524). We will also reduce the number of folds to be used (from 730 to 20).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate an ARIMA model for a given order (p,d,q) and return RMSE</span>
+<span class="k">def</span> <span class="nf">evaluate_arima_jena_24hrstep</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arima_order</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">35045</span><span class="p">):</span>
+    <span class="c1"># prepare training dataset</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:])</span><span class="o">%</span><span class="k">24</span>]
+    <span class="n">test_24</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="n">mae_cv</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># There are 730 folds (24 hr chunks), for faster computation, we limit the number of folds to 20 only</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_24</span><span class="p">))[::</span><span class="mi">37</span><span class="p">]:</span>
+        <span class="n">x_cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">history</span><span class="p">,</span> <span class="n">test_24</span><span class="p">[:</span><span class="n">t</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+        <span class="n">y_cv</span> <span class="o">=</span> <span class="n">test_24</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">x_cv</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">arima_order</span><span class="p">)</span>
+        <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mae_cv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_cv</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
+    <span class="n">mean_mae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mae_cv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_mae</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate parameters</span>
-<span class="n">p_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">d_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">q_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="n">evaluate_models</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">p_values</span><span class="p">,</span> <span class="n">d_values</span><span class="p">,</span> <span class="n">q_values</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 0, 1) RMSE=0.096
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 0, 2) RMSE=0.095
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 0, 3) RMSE=0.096
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 0, 4) RMSE=0.096
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 0, 5) RMSE=0.097
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 1, 1) RMSE=0.098
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 1, 2) RMSE=0.095
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 1, 3) RMSE=0.094
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 1, 4) RMSE=0.094
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 1, 5) RMSE=0.095
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 2, 1) RMSE=0.119
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(0, 2, 2) RMSE=0.101
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Uncomment the lines to perform model order selection</span>
+<span class="c1"># arima_orders = [(0, 0, 0), </span>
+<span class="c1">#                 (1, 0, 0), </span>
+<span class="c1">#                 (0, 0, 1),</span>
+<span class="c1">#                 (2, 0, 0),</span>
+<span class="c1">#                 (1, 0, 1), </span>
+<span class="c1">#                 (1, 0, 2), </span>
+<span class="c1">#                 (2, 0, 1), </span>
+<span class="c1">#                 (2, 0, 2)]</span>
+<span class="c1"># mae_ao_list = []</span>
+<span class="c1"># for ao in arima_orders:</span>
+<span class="c1">#     mae_ao = evaluate_arima_jena_24hrstep(temp[-2*len(val_data):], </span>
+<span class="c1">#                                           arima_order=ao, </span>
+<span class="c1">#                                           train_size=len(val_data))</span>
+<span class="c1">#     mae_ao_list.append((ao, mae_ao))</span>
+<span class="c1">#     print(ao, mae_ao)</span>
+    
+<span class="c1"># selected_order, best_mae = np.array(mae_ao_list)[np.argmin(np.array(mae_ao_list)[:,-1])]</span>
+<span class="c1"># print(f&#39;Selected order: {selected_order}, MAE: {best_mae}&#39;)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Here, we use Root-Mean Square Error (RMSE) to evaluate the performance of our model. This will give more weight to predictions that are grossly wrong and will have the same units as the original data. Any transforms to the data must be reversed before the RMSE is calculated and reported to make the performance between different methods directly comparable. We calculated the RMSE using the helper function from the scikit-learn library mean_squared_error() that calculates the mean squared error between a list of expected values (the test set) and the list of predictions. We can then take the square root of this value to give us an RMSE score.</p>
-<p>However, we’re still not sure if the RMSE that we got is good enough. We need a baseline to compare our results with. The most basic baseline that we can use is simply use the one-step forward forecasting. The RMSE of 1 step time ahead is like the proportional chance criterion ratio for time series foreacasting. You must beat the accuracy of prediction by assuming the next “time step is just equal to the current time step”.</p>
-<p>Let’s find our baseline:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data</span>
-<span class="n">series</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[:</span><span class="mi">144</span><span class="p">]</span>
-<span class="c1"># prepare data</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">series</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.50</span><span class="p">)</span>
-<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
-<span class="c1"># walk-forward validation</span>
-<span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train</span><span class="p">]</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)):</span>
-	<span class="c1"># predict</span>
-	<span class="n">yhat</span> <span class="o">=</span> <span class="n">history</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-	<span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yhat</span><span class="p">)</span>
-	<span class="c1"># observation</span>
-	<span class="n">obs</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-	<span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;Predicted=</span><span class="si">%.3f</span><span class="s1">, Expected=%3.f&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">yhat</span><span class="p">,</span> <span class="n">obs</span><span class="p">))</span>
-<span class="c1"># report performance</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-<span class="n">rmse</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Expected results from code above: </span>
+<span class="c1">## (p, d, q) MAE</span>
+<span class="c1">## ---------------------------</span>
+<span class="c1">## (0, 0, 0) 6.035602297003233</span>
+<span class="c1">## (1, 0, 0) 3.025640357465662</span>
+<span class="c1">## (0, 0, 1) 5.922866295058727</span>
+<span class="c1">## (2, 0, 0) 3.124825200033295</span>
+<span class="c1">## (1, 0, 1) 2.967933864811228</span>
+<span class="c1">## (1, 0, 2) 2.9481444828018253 </span>
+<span class="c1">## (2, 0, 1) 3.5091372748649037</span>
+<span class="c1">## (2, 0, 2) 3.4143813707023325</span>
+<span class="c1">## Selected order: (1, 0, 2), MAE: 2.9481444828018253</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_order</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="evaluate-model-performance-on-test-set">
+<h4>Evaluate model performance on test set<a class="headerlink" href="#evaluate-model-performance-on-test-set" title="Permalink to this headline">¶</a></h4>
+<p>We use the multiprocessing package which supports spawning processes using an API similar to the threading module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrapper_fit_arima</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#     print(len(x_vals))</span>
+    <span class="k">return</span> <span class="n">y_hat</span>
+
+<span class="k">def</span> <span class="nf">evaluate_arima_jena_mp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arima_order</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">35045</span><span class="p">):</span>
+    <span class="c1"># prepare training dataset</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:])</span><span class="o">%</span><span class="k">24</span>]
+    <span class="n">test_24</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    
+    <span class="n">X_cv</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">Y_cv</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_24</span><span class="p">)):</span>
+        <span class="n">x_cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">history</span><span class="p">,</span> <span class="n">test_24</span><span class="p">[:</span><span class="n">t</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+        <span class="n">y_cv</span> <span class="o">=</span> <span class="n">test_24</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">X_cv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_cv</span><span class="p">)</span>
+        <span class="n">Y_cv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_cv</span><span class="p">)</span>
+
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">y_hats</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">wrapper_fit_arima</span><span class="p">,</span> <span class="n">X_cv</span><span class="p">)</span>        
+    
+    <span class="n">mae_cv</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_24</span><span class="p">)):</span>
+        <span class="n">mae_cv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">Y_cv</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">y_hats</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+    <span class="n">mean_mae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mae_cv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_mae</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load test data</span>
+<span class="n">test_data</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/test_series.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]]</span>
+<span class="n">temp2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">val_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>  <span class="c1">#temperature (in degrees Celsius)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We fit the ARIMA(1,0,2) model using the validation set to predict the 24-hour chunks of temperature measurements in the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Uncomment code below to fit and predict temperature values in the test set</span>
+<span class="c1">## By using CPU count of 28, the code ran for about 70 mins. </span>
+<span class="c1"># MAE = evaluate_arima_jena_mp(temp2, arima_order=selected_order, train_size=len(val_data))</span>
+<span class="c1"># print(f&#39;ARIMA MAE: {np.mean(MAE)}&#39;) </span>
+
+<span class="c1">## Expected result from running the code above:</span>
+<span class="c1">## ARIMA MAE: 3.191548582794122</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ARIMA MAE for Jena test data: 3.191548582794122&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;Predicted=-6.870, Expected= -7
-&gt;Predicted=-6.770, Expected= -7
-&gt;Predicted=-6.700, Expected= -7
-&gt;Predicted=-6.610, Expected= -7
-&gt;Predicted=-6.510, Expected= -6
-&gt;Predicted=-6.210, Expected= -6
-&gt;Predicted=-5.890, Expected= -6
-&gt;Predicted=-5.830, Expected= -6
-&gt;Predicted=-5.760, Expected= -6
-&gt;Predicted=-5.900, Expected= -6
-&gt;Predicted=-5.970, Expected= -6
-&gt;Predicted=-5.880, Expected= -6
-&gt;Predicted=-5.940, Expected= -6
-&gt;Predicted=-5.840, Expected= -6
-&gt;Predicted=-5.760, Expected= -6
-&gt;Predicted=-5.750, Expected= -6
-&gt;Predicted=-5.760, Expected= -6
-&gt;Predicted=-5.730, Expected= -6
-&gt;Predicted=-5.690, Expected= -6
-&gt;Predicted=-5.530, Expected= -6
-&gt;Predicted=-5.570, Expected= -5
-&gt;Predicted=-5.430, Expected= -5
-&gt;Predicted=-5.320, Expected= -5
-&gt;Predicted=-5.360, Expected= -5
-&gt;Predicted=-5.400, Expected= -5
-&gt;Predicted=-5.310, Expected= -5
-&gt;Predicted=-5.280, Expected= -5
-&gt;Predicted=-5.320, Expected= -5
-&gt;Predicted=-5.290, Expected= -5
-&gt;Predicted=-5.330, Expected= -5
-&gt;Predicted=-5.370, Expected= -5
-&gt;Predicted=-5.430, Expected= -5
-&gt;Predicted=-5.280, Expected= -5
-&gt;Predicted=-5.210, Expected= -5
-&gt;Predicted=-5.210, Expected= -5
-&gt;Predicted=-5.240, Expected= -5
-&gt;Predicted=-5.250, Expected= -5
-&gt;Predicted=-5.160, Expected= -5
-&gt;Predicted=-5.120, Expected= -5
-&gt;Predicted=-5.040, Expected= -5
-&gt;Predicted=-5.010, Expected= -5
-&gt;Predicted=-5.120, Expected= -5
-&gt;Predicted=-5.110, Expected= -5
-&gt;Predicted=-4.900, Expected= -5
-&gt;Predicted=-4.860, Expected= -5
-&gt;Predicted=-4.900, Expected= -5
-&gt;Predicted=-4.970, Expected= -5
-&gt;Predicted=-4.990, Expected= -5
-&gt;Predicted=-4.900, Expected= -5
-&gt;Predicted=-4.930, Expected= -5
-&gt;Predicted=-4.890, Expected= -5
-&gt;Predicted=-4.930, Expected= -5
-&gt;Predicted=-5.000, Expected= -5
-&gt;Predicted=-4.900, Expected= -5
-&gt;Predicted=-4.800, Expected= -5
-&gt;Predicted=-4.840, Expected= -5
-&gt;Predicted=-4.900, Expected= -5
-&gt;Predicted=-4.860, Expected= -5
-&gt;Predicted=-4.760, Expected= -5
-&gt;Predicted=-4.610, Expected= -4
-&gt;Predicted=-4.500, Expected= -4
-&gt;Predicted=-4.410, Expected= -4
-&gt;Predicted=-4.400, Expected= -4
-&gt;Predicted=-4.320, Expected= -4
-&gt;Predicted=-4.170, Expected= -4
-&gt;Predicted=-4.300, Expected= -4
-&gt;Predicted=-4.470, Expected= -4
-&gt;Predicted=-4.500, Expected= -5
-&gt;Predicted=-4.510, Expected= -4
-&gt;Predicted=-4.330, Expected= -4
-&gt;Predicted=-4.330, Expected= -5
-&gt;Predicted=-4.580, Expected= -5
-RMSE: 0.102
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA MAE for Jena test data: 3.191548582794122
 </pre></div>
 </div>
 </div>
 </div>
-<p>The RMSE of our 1-step ahead forecast is 0.102 which is greater than our best performing ARIMA model with RMSE = 0.094. This means that our temperature forecast is good, at least compared to our baseline. However, ARIMA model is just one of the many algorithms that we will discuss. We can see the inherent limitations of ARIMA. In particular, we are not considering:</p>
+<p><strong>Observation/s</strong>: The ARIMA(1,0,2) model had a poorer performance (ARIMA MAE: 3.19) on the test set compared to our <a class="reference internal" href="../08_WinningestMethods/lightgbm_jena_forecasting.html"><span class="doc std std-doc">baseline models</span></a> (naive MAE: 3.18, seasonal naive MAE: 2.61).</p>
+<div class="section" id="forecast-24-hours-beyond-test-set">
+<h5>Forecast 24 hours beyond test set<a class="headerlink" href="#forecast-24-hours-beyond-test-set" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">future_data</span> <span class="o">=</span> <span class="n">wrapper_fit_arima</span><span class="p">(</span><span class="n">temp2</span><span class="p">)</span>
+<span class="n">future_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp2</span><span class="p">[</span><span class="o">-</span><span class="mi">500</span><span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">+</span><span class="mi">500</span><span class="p">,</span> <span class="n">future_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;forecast&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degree Celsius)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_63_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_63_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-3-using-arima-for-multivariate-time-series">
+<h3>Example 3: Using ARIMA for Multivariate Time Series<a class="headerlink" href="#example-3-using-arima-for-multivariate-time-series" title="Permalink to this headline">¶</a></h3>
+<p>In this final example, we use ARIMA to forecast different time series signals from an Air Quality Dataset measured in a polluted area at an Italian City. To illustrate, we forecast the data for the last 24 hours for CO, and NO2. The following figure shows the training data for each of these parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_aq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/AirQualityUCI/train_data.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date_Time&#39;</span><span class="p">)</span>
+<span class="n">test_aq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/AirQualityUCI/test_data.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date_Time&#39;</span><span class="p">)</span>
+<span class="n">train_aq</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO(GT)</th>
+      <th>NO2(GT)</th>
+      <th>RH</th>
+    </tr>
+    <tr>
+      <th>Date_Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2004-10-01 01:00:00</th>
+      <td>1.6</td>
+      <td>74.0</td>
+      <td>69.275002</td>
+    </tr>
+    <tr>
+      <th>2004-10-01 02:00:00</th>
+      <td>1.3</td>
+      <td>69.0</td>
+      <td>70.775000</td>
+    </tr>
+    <tr>
+      <th>2004-10-01 03:00:00</th>
+      <td>0.8</td>
+      <td>61.5</td>
+      <td>65.833332</td>
+    </tr>
+    <tr>
+      <th>2004-10-01 04:00:00</th>
+      <td>0.6</td>
+      <td>54.0</td>
+      <td>67.174999</td>
+    </tr>
+    <tr>
+      <th>2004-10-01 05:00:00</th>
+      <td>0.7</td>
+      <td>60.0</td>
+      <td>70.275000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">train_aq</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_67_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_67_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_arima_multistep</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arima_order</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># prepare training dataset</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">train_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.50</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">train_size</span><span class="p">)</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train</span><span class="p">]</span>
+    <span class="c1"># make predictions</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">arima_order</span><span class="p">)</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">yhat</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">yhat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">evaluate_models_mae</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">p_values</span><span class="p">,</span> <span class="n">d_values</span><span class="p">,</span> <span class="n">q_values</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">best_score</span><span class="p">,</span> <span class="n">best_cfg</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">d_values</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">q_values</span><span class="p">:</span>
+                <span class="n">order</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">mae</span> <span class="o">=</span> <span class="n">evaluate_arima_model_mae</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">mae</span> <span class="o">&lt;</span> <span class="n">best_score</span><span class="p">:</span>
+                        <span class="n">best_score</span><span class="p">,</span> <span class="n">best_cfg</span> <span class="o">=</span> <span class="n">mae</span><span class="p">,</span> <span class="n">order</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ARIMA</span><span class="si">%s</span><span class="s1"> MAE=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">order</span><span class="p">,</span><span class="n">mae</span><span class="p">))</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best ARIMA</span><span class="si">%s</span><span class="s1"> AME=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">best_cfg</span><span class="p">,</span> <span class="n">best_score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make predictions, we train 3 ARIMA models—one for CO, one for NO2, and one for RH. We perform grid search for the following parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">d_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">q_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">arima_orders</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">d_values</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">q_values</span><span class="p">:</span>
+            <span class="n">arima_orders</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_col</span> <span class="o">=</span> <span class="n">train_aq</span><span class="o">.</span><span class="n">columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var_col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;CO(GT)&#39;, &#39;NO2(GT)&#39;, &#39;RH&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">var_col</span><span class="p">:</span> 
+    <span class="n">df_var</span> <span class="o">=</span> <span class="n">train_aq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">mae_order_list_var</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ao</span> <span class="ow">in</span> <span class="n">arima_orders</span><span class="p">:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="n">evaluate_arima_multistep</span><span class="p">(</span><span class="n">df_var</span><span class="p">,</span> <span class="n">arima_order</span><span class="o">=</span><span class="n">ao</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">train_aq</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">test_aq</span><span class="p">))</span>
+        <span class="n">mae_order_list_var</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ao</span><span class="p">,</span> <span class="n">metric</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mae_order_list_var</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mae_order_list_var</span><span class="p">)[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CO(GT): [(0, 1, 0) 0.23812050839538637]
+NO2(GT): [(0, 1, 0) 20.849329460041616]
+RH: [(3, 1, 1) 9.583232972711079]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For model order selection, refer to Chapter 1</span>
+<span class="n">selected_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CO(GT)&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
+                  <span class="s1">&#39;NO2(GT)&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
+                  <span class="s1">&#39;RH&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">forecast_arima</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">var_col</span><span class="p">:</span>    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">train_aq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">selected_order</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_aq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_aq</span><span class="p">))</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">train_aq</span><span class="p">),</span> <span class="n">test_aq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_aq</span><span class="p">))</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">train_aq</span><span class="p">),</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mi">3500</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">4460</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_74_0.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_74_0.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_74_1.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_74_1.png" />
+<img alt="../_images/01_AutoRegressiveIntegratedMovingAverage_74_2.png" src="../_images/01_AutoRegressiveIntegratedMovingAverage_74_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.32 s, sys: 192 ms, total: 6.52 s
+Wall time: 1.9 s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preview-to-the-next-chapter">
+<h2>Preview to the next Chapter<a class="headerlink" href="#preview-to-the-next-chapter" title="Permalink to this headline">¶</a></h2>
+<p>ARIMA model is just one of the many algorithms that we will discuss. We can see the inherent limitations of ARIMA. In particular, we are not considering:</p>
 <ol class="simple">
 <li><p>Trends and seasonality</p></li>
 <li><p>Long-range dependence</p></li>
 <li><p>Multi-variate time series</p></li>
 </ol>
-<p>These factors are generally more frequent and will be important in several applications. For example, trend is important in technical analysis in stock trading. This can be solved using Momentum Forecasting which will be discussed in the next chapter, among other methods.</p>
+<p>These factors are generally more frequent and will be important in several applications. For example, trend is important in technical analysis in stock trading. This can be solved using Momentum Forecasting which will be discussed in Chapter 2, among other methods.</p>
+<p>In Chapter 3, we will revisit the Air Quality example and use a multivariate approach.  We’ll introduce vector autoregressive (VAR) methods—a family of models that expresses each variable as a linear function of past lags and past lags of the other variables—and show that we can improve the forecasts by extending this to a multivariate time series problem.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>The contents of this notebook is compiled from the following sources:</p>
+<ul class="simple">
+<li><p>https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/</p></li>
+<li><p>https://otexts.com/fpp2/arima.html</p></li>
+<li><p>https://people.duke.edu/~rnau/411arim.htm</p></li>
+<li><p>https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/</p></li>
+<li><p>https://machinelearningmastery.com/time-series-forecast-study-python-monthly-sales-french-champagne/</p></li>
+<li><p>https://medium.com/&#64;josemarcialportilla/using-python-and-auto-arima-to-forecast-seasonal-time-series-90877adff03c</p></li>
+<li><p>https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average</p></li>
+<li><p>C.Monterola, <em>“Notebook 10 Time Series Forecasting Method — ARIMA MSDS2021”</em></p></li>
+<li><p>Hyndman, R. J., &amp; Khandakar, Y. (2008). Automatic time series forecasting: The forecast package for R. Journal of Statistical Software, 27(1), 1–22. https://doi.org/10.18637/jss.v027.i03</p></li>
+</ul>
 </div>
 </div>
 
@@ -1020,7 +1402,7 @@ RMSE: 0.102
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html" title="previous page">Preface: Advanced Time Series Analysis</a>
+    <a class='left-prev' id="prev-link" href="../00_Introduction/00_Introduction.html" title="previous page">Chapter 0: Advanced Time Series Analysis</a>
     <a class='right-next' id="next-link" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html" title="next page">Chapter 2: Linear, Trend, and Momentum Forecasting</a>
 
     </div>

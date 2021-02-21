@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Temperature Forecasting (Supplementary Notebook) &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -24,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,25 +36,24 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datasets" href="../data/README.html" />
@@ -87,12 +87,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface: Advanced Time Series Analysis
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
    Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
@@ -114,13 +119,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
-   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Chapter 6: Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -295,7 +300,6 @@
   <div class="section" id="temperature-forecasting-supplementary-notebook">
 <h1>Temperature Forecasting (Supplementary Notebook)<a class="headerlink" href="#temperature-forecasting-supplementary-notebook" title="Permalink to this headline">¶</a></h1>
 <p>Similar to what was done in previous sections, this notebook applies the methodology used in the M5 Forecasting notebook to the Jena Climate dataset. Specifically, we will be forecasting the temperature variable.</p>
-<p>Prepared by: Sebastian C. Ibañez</p>
 <div class="section" id="jena-climate-dataset">
 <h2>1. Jena Climate Dataset<a class="headerlink" href="#jena-climate-dataset" title="Permalink to this headline">¶</a></h2>
 <p>Let’s load the dataset and examine it.</p>
@@ -323,6 +327,12 @@
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">suppress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(420551, 15)
 </pre></div>
 </div>
 </div>
@@ -371,7 +381,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <th>0</th>
       <td>01.01.2009 00:10:00</td>
       <td>996.52</td>
       <td>-8.02</td>
@@ -389,7 +399,7 @@
       <td>152.3</td>
     </tr>
     <tr>
-      <td>1</td>
+      <th>1</th>
       <td>01.01.2009 00:20:00</td>
       <td>996.57</td>
       <td>-8.41</td>
@@ -407,7 +417,7 @@
       <td>136.1</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th>2</th>
       <td>01.01.2009 00:30:00</td>
       <td>996.53</td>
       <td>-8.51</td>
@@ -425,7 +435,7 @@
       <td>171.6</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th>3</th>
       <td>01.01.2009 00:40:00</td>
       <td>996.51</td>
       <td>-8.31</td>
@@ -443,7 +453,7 @@
       <td>198.0</td>
     </tr>
     <tr>
-      <td>4</td>
+      <th>4</th>
       <td>01.01.2009 00:50:00</td>
       <td>996.51</td>
       <td>-8.27</td>
@@ -461,7 +471,7 @@
       <td>214.3</td>
     </tr>
     <tr>
-      <td>5</td>
+      <th>5</th>
       <td>01.01.2009 01:00:00</td>
       <td>996.50</td>
       <td>-8.05</td>
@@ -479,7 +489,7 @@
       <td>192.7</td>
     </tr>
     <tr>
-      <td>6</td>
+      <th>6</th>
       <td>01.01.2009 01:10:00</td>
       <td>996.50</td>
       <td>-7.62</td>
@@ -497,7 +507,7 @@
       <td>166.5</td>
     </tr>
     <tr>
-      <td>7</td>
+      <th>7</th>
       <td>01.01.2009 01:20:00</td>
       <td>996.50</td>
       <td>-7.62</td>
@@ -515,7 +525,7 @@
       <td>118.6</td>
     </tr>
     <tr>
-      <td>8</td>
+      <th>8</th>
       <td>01.01.2009 01:30:00</td>
       <td>996.50</td>
       <td>-7.91</td>
@@ -533,7 +543,7 @@
       <td>188.5</td>
     </tr>
     <tr>
-      <td>9</td>
+      <th>9</th>
       <td>01.01.2009 01:40:00</td>
       <td>996.53</td>
       <td>-8.43</td>
@@ -590,14 +600,249 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+      <th>Tpot (K)</th>
+      <th>Tdew (degC)</th>
+      <th>rh (%)</th>
+      <th>VPmax (mbar)</th>
+      <th>VPact (mbar)</th>
+      <th>VPdef (mbar)</th>
+      <th>sh (g/kg)</th>
+      <th>H2OC (mmol/mol)</th>
+      <th>rho (g/m**3)</th>
+      <th>wv (m/s)</th>
+      <th>max. wv (m/s)</th>
+      <th>wd (deg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>996.52</td>
+      <td>-8.02</td>
+      <td>265.40</td>
+      <td>-8.90</td>
+      <td>93.30</td>
+      <td>3.33</td>
+      <td>3.11</td>
+      <td>0.22</td>
+      <td>1.94</td>
+      <td>3.12</td>
+      <td>1307.75</td>
+      <td>1.03</td>
+      <td>1.75</td>
+      <td>152.3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>996.50</td>
+      <td>-7.62</td>
+      <td>265.81</td>
+      <td>-8.30</td>
+      <td>94.80</td>
+      <td>3.44</td>
+      <td>3.26</td>
+      <td>0.18</td>
+      <td>2.04</td>
+      <td>3.27</td>
+      <td>1305.68</td>
+      <td>0.18</td>
+      <td>0.63</td>
+      <td>166.5</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>996.63</td>
+      <td>-8.85</td>
+      <td>264.57</td>
+      <td>-9.70</td>
+      <td>93.50</td>
+      <td>3.12</td>
+      <td>2.92</td>
+      <td>0.20</td>
+      <td>1.82</td>
+      <td>2.93</td>
+      <td>1312.11</td>
+      <td>0.16</td>
+      <td>0.50</td>
+      <td>158.3</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>996.87</td>
+      <td>-8.84</td>
+      <td>264.56</td>
+      <td>-9.69</td>
+      <td>93.50</td>
+      <td>3.13</td>
+      <td>2.92</td>
+      <td>0.20</td>
+      <td>1.83</td>
+      <td>2.93</td>
+      <td>1312.37</td>
+      <td>0.07</td>
+      <td>0.25</td>
+      <td>129.3</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>997.05</td>
+      <td>-9.23</td>
+      <td>264.15</td>
+      <td>-10.25</td>
+      <td>92.20</td>
+      <td>3.03</td>
+      <td>2.79</td>
+      <td>0.24</td>
+      <td>1.74</td>
+      <td>2.80</td>
+      <td>1314.62</td>
+      <td>0.10</td>
+      <td>0.38</td>
+      <td>203.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>420522</th>
+      <td>1002.08</td>
+      <td>-1.40</td>
+      <td>271.59</td>
+      <td>-6.10</td>
+      <td>70.20</td>
+      <td>5.51</td>
+      <td>3.87</td>
+      <td>1.64</td>
+      <td>2.40</td>
+      <td>3.86</td>
+      <td>1282.68</td>
+      <td>1.08</td>
+      <td>1.68</td>
+      <td>207.5</td>
+    </tr>
+    <tr>
+      <th>420528</th>
+      <td>1001.42</td>
+      <td>-2.15</td>
+      <td>270.90</td>
+      <td>-7.08</td>
+      <td>68.77</td>
+      <td>5.21</td>
+      <td>3.59</td>
+      <td>1.63</td>
+      <td>2.23</td>
+      <td>3.58</td>
+      <td>1285.50</td>
+      <td>0.79</td>
+      <td>1.24</td>
+      <td>184.3</td>
+    </tr>
+    <tr>
+      <th>420534</th>
+      <td>1001.05</td>
+      <td>-2.61</td>
+      <td>270.47</td>
+      <td>-6.97</td>
+      <td>71.80</td>
+      <td>5.04</td>
+      <td>3.62</td>
+      <td>1.42</td>
+      <td>2.25</td>
+      <td>3.61</td>
+      <td>1287.20</td>
+      <td>0.77</td>
+      <td>1.64</td>
+      <td>129.1</td>
+    </tr>
+    <tr>
+      <th>420540</th>
+      <td>1000.51</td>
+      <td>-3.22</td>
+      <td>269.90</td>
+      <td>-7.63</td>
+      <td>71.40</td>
+      <td>4.81</td>
+      <td>3.44</td>
+      <td>1.38</td>
+      <td>2.14</td>
+      <td>3.44</td>
+      <td>1289.50</td>
+      <td>0.85</td>
+      <td>1.54</td>
+      <td>207.8</td>
+    </tr>
+    <tr>
+      <th>420546</th>
+      <td>1000.07</td>
+      <td>-4.05</td>
+      <td>269.10</td>
+      <td>-8.13</td>
+      <td>73.10</td>
+      <td>4.52</td>
+      <td>3.30</td>
+      <td>1.22</td>
+      <td>2.06</td>
+      <td>3.30</td>
+      <td>1292.98</td>
+      <td>0.67</td>
+      <td>1.52</td>
+      <td>240.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>70092 rows × 14 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
 <span class="n">window_size</span> <span class="o">=</span> <span class="mi">240</span>
 <span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">### TRAIN TEST VAL SPLIT ###</span>
-<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="mi">35045</span><span class="p">]</span>
-<span class="n">val_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">35045</span><span class="p">:</span><span class="mi">52569</span><span class="p">]</span>
-<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">52569</span><span class="p">:]</span>
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">35045</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">val_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">35045</span><span class="p">:</span><span class="mi">52569</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">52569</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
 <span class="n">val_x</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">val_series</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
@@ -621,8 +866,8 @@
 (34805,)
 (17284, 240)
 (17284,)
-(17282, 240)
-(17282,)
+(17283, 240)
+(17283,)
 </pre></div>
 </div>
 </div>
@@ -635,7 +880,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lightgbm_jena_forecasting_7_0.png" src="../_images/lightgbm_jena_forecasting_7_0.png" />
+<img alt="../_images/lightgbm_jena_forecasting_8_0.png" src="../_images/lightgbm_jena_forecasting_8_0.png" />
 </div>
 </div>
 <div class="section" id="lightgbm">
@@ -655,12 +900,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;gbdt&#39;, class_weight=None, colsample_bytree=1.0,
-              importance_type=&#39;split&#39;, learning_rate=0.1, max_depth=-1,
-              min_child_samples=20, min_child_weight=0.001, min_split_gain=0.0,
-              n_estimators=100, n_jobs=-1, num_leaves=31, objective=None,
-              random_state=None, reg_alpha=0.0, reg_lambda=0.0, silent=True,
-              subsample=1.0, subsample_for_bin=200000, subsample_freq=0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor()
 </pre></div>
 </div>
 </div>
@@ -677,7 +917,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  LightGBM MAE: 0.5256
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  LightGBM MAE: 0.5319
 </pre></div>
 </div>
 </div>
@@ -688,10 +928,10 @@
 <span class="n">window_size</span> <span class="o">=</span> <span class="mi">240</span>
 <span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">24</span>
 
-<span class="c1">### TRAIN VAL TEST SPLIT ###</span>
-<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="mi">35045</span><span class="p">]</span>
-<span class="n">val_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">35045</span><span class="p">:</span><span class="mi">52569</span><span class="p">]</span>
-<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">52569</span><span class="p">:]</span>
+<span class="c1">### TRAIN TEST VAL SPLIT ###</span>
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">35045</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">val_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">35045</span><span class="p">:</span><span class="mi">52569</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">52569</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
 <span class="n">val_x</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">val_series</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
@@ -711,27 +951,65 @@
 (34782, 24)
 (17261, 240)
 (17261, 24)
-(17259, 240)
-(17259, 24)
+(17260, 240)
+(17260, 24)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recursive_x</span> <span class="o">=</span> <span class="n">test_x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### LightGBM</span>
+
+<span class="n">recursive_x</span> <span class="o">=</span> <span class="n">test_x</span>
 <span class="n">forecast_ms</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">prediction_horizon</span><span class="p">):</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">recursive_x</span><span class="p">)</span>
     <span class="n">recursive_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">recursive_x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">pred</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]))</span>
     <span class="n">forecast_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
 <span class="n">forecast_ms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">forecast_ms</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">test_y</span> <span class="o">-</span> <span class="n">forecast_ms</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LightGBM&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MAE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">test_y</span> <span class="o">-</span> <span class="n">forecast_ms</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">test_y</span> <span class="o">-</span> <span class="n">forecast_ms</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1">### Naive</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">test_y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_forecast</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">n_forecast</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="n">n_forecast</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">n_forecast</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Naive&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MAE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">test_y</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">n_forecast</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">test_y</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">n_forecast</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+<span class="c1">### S.Naive</span>
+
+<span class="n">new_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">test_series</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="mi">3</span><span class="p">:],</span> <span class="mi">730</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Seasonal Naive&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MAE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">new_test</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">new_test</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">new_test</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">new_test</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0830415023892113
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LightGBM
+MAE: 2.083323119819872
+RMSE: 2.7826767013777443
+
+Naive
+MAE: 3.184767754022055
+RMSE: 4.457663461439199
+
+Seasonal Naive
+MAE: 2.613232738911751
+RMSE: 3.4171095400347133
 </pre></div>
 </div>
 </div>

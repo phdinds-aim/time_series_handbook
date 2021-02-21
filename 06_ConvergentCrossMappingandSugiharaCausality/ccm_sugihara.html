@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Chapter 6: Convergent Cross Mapping / Sugihara Causality &#8212; Time Series Analysis Handbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 6: Convergent Cross Mapping &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -24,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,29 +36,28 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Applying CCM Using causal-ccm package" href="using_causal_ccm_package.html" />
-    <link rel="prev" title="Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html" />
+    <link rel="prev" title="Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -87,12 +87,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface: Advanced Time Series Analysis
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
    Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
@@ -114,13 +119,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
-   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   Chapter 6: Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -265,24 +270,31 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#causal-ccm-package">
-   causal-ccm Package
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-understand-causality">
-   Why understand causality?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations-of-granger-causality">
-   Limitations of Granger Causality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ccm-addresses-limits-of-granger-s-causality">
-   CCM addresses limits of Granger’s causality
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#causal-ccm-package">
+     causal-ccm Package
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importance-of-understanding-causality">
+     Importance of Understanding Causality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limitations-of-granger-causality">
+     Limitations of Granger Causality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ccm-addresses-limits-of-granger-causality">
+     CCM addresses limits of Granger causality
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#related-concepts">
@@ -307,18 +319,18 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-and-why-does-ccm-work">
-   How and why does CCM work?
+  <a class="reference internal nav-link" href="#overview-of-ccm">
+   Overview of CCM
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-cross-mapping">
-     Why Cross Mapping?
+    <a class="reference internal nav-link" href="#cross-mapping">
+     Cross Mapping
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-convergence">
-     Why Convergence?
+    <a class="reference internal nav-link" href="#convergence">
+     Convergence
     </a>
    </li>
   </ul>
@@ -444,13 +456,13 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
+  <a class="reference internal nav-link" href="#limitation">
+   Limitation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preview-to-the-next-chapter">
-   Preview to the Next Chapter
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -469,17 +481,19 @@
         
               <div>
                 
-  <div class="section" id="chapter-6-convergent-cross-mapping-sugihara-causality">
-<h1>Chapter 6: Convergent Cross Mapping / Sugihara Causality<a class="headerlink" href="#chapter-6-convergent-cross-mapping-sugihara-causality" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chapter-6-convergent-cross-mapping">
+<h1>Chapter 6: Convergent Cross Mapping<a class="headerlink" href="#chapter-6-convergent-cross-mapping" title="Permalink to this headline">¶</a></h1>
+<p>Prepared by: Prince Joseph Erneszer Javier</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In the previous chapters we talked about Simplex Projection, a forecasting technique that looks for similar trends in the past to forecast the future by computing for nearest neighbors on an embedding. In this chapter, we discuss  Convergent Cross Mapping (CCM) also formulated by <a class="reference external" href="https://science.sciencemag.org/content/338/6106/496">Sugihara et al., 2012</a> as a methodology that uses ideas from Simplex Projection to identify causality between variables in a complex dynamical system (e.g. ecosystem) using just time series data.</p>
 <p>We will go through the key ideas of CCM, how it addresses the limitations of Granger causality, and the algorithm behind it. We will then test the CCM framework on simulated data where we will deliberately adjust the influence of one variable over the other. Finally, we will apply CCM on some real world data to infer the relationships between variables in a system.</p>
-<p>Prepared by: Prince Joseph Erneszer Javier</p>
 <div class="section" id="causal-ccm-package">
-<h2>causal-ccm Package<a class="headerlink" href="#causal-ccm-package" title="Permalink to this headline">¶</a></h2>
+<h3>causal-ccm Package<a class="headerlink" href="#causal-ccm-package" title="Permalink to this headline">¶</a></h3>
 <p>This chapter explains the CCM methodology in detail. If you wish to apply this in your own projects, install the framework using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">causal-ccm</span></code>. See <code class="docutils literal notranslate"><span class="pre">using_causal_ccm_package.ipynb</span></code> notebook for details how to use.</p>
 </div>
-<div class="section" id="why-understand-causality">
-<h2>Why understand causality?<a class="headerlink" href="#why-understand-causality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importance-of-understanding-causality">
+<h3>Importance of Understanding Causality<a class="headerlink" href="#importance-of-understanding-causality" title="Permalink to this headline">¶</a></h3>
 <p>We define causality as the influence of one variable on another. Understanding causality is important because it allows us to:</p>
 <ul class="simple">
 <li><p>Explain phenomena that they are not necessarily supernatural/paranormal</p></li>
@@ -488,18 +502,19 @@
 </ul>
 </div>
 <div class="section" id="limitations-of-granger-causality">
-<h2>Limitations of Granger Causality<a class="headerlink" href="#limitations-of-granger-causality" title="Permalink to this headline">¶</a></h2>
+<h3>Limitations of Granger Causality<a class="headerlink" href="#limitations-of-granger-causality" title="Permalink to this headline">¶</a></h3>
 <p>In chapter 4, we talked about a framework for establishing causality in a system called Granger Causality. However Granger Causality has its limitations.</p>
 <p>The intuition behind Granger causality is that a variable A causes B if we have a model that improves prediction of B if we include A. This framework assumes that we can “separate” the information about A from the rest of the system. However, in many systems that have interacting parts, information about a variable may not necessarily be removable from the rest of the system. They are integrated or in other words, not separable.</p>
 <p>Granger causality framework does not apply to cases where information about variables are not separable from the rest of the system especially for those whose causalities are weak to moderate (like in our test systems in the following sections). Finally, Granger Causality is dependent on the performance of a linear predictive model that assumes linear combination of variables. This model may not perform well for some systems that need nonlinear models to improve predictions.</p>
 </div>
-<div class="section" id="ccm-addresses-limits-of-granger-s-causality">
-<h2>CCM addresses limits of Granger’s causality<a class="headerlink" href="#ccm-addresses-limits-of-granger-s-causality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ccm-addresses-limits-of-granger-causality">
+<h3>CCM addresses limits of Granger causality<a class="headerlink" href="#ccm-addresses-limits-of-granger-causality" title="Permalink to this headline">¶</a></h3>
 <p>Convergent Cross Mapping is designed to identify and quantify causalities in systems whose variables are not separable. Beyond this, it is designed to identify and quantify weak to moderate causalities, which Granger Causality may miss. Finally, CCM is independent of a predictive model so we’re not at the mercy of model performance.</p>
+</div>
 </div>
 <div class="section" id="related-concepts">
 <h2>Related Concepts<a class="headerlink" href="#related-concepts" title="Permalink to this headline">¶</a></h2>
-<p>We briefly discuss key concepts related to CCM.</p>
+<p>We briefly discuss key concepts related to CCM. Many of these concepts have been tackled in depth in the previous chapter: Dynamical Forecasting Methods</p>
 <div class="section" id="deterministic-dynamical-systems">
 <h3>Deterministic Dynamical Systems<a class="headerlink" href="#deterministic-dynamical-systems" title="Permalink to this headline">¶</a></h3>
 <p>“Deterministic” means there’s no randomness in the system (even if it may look random, e.g. chaos). “Dynamical” means the values or “states” of the system change over time. “System” means it’s a set of things that interact with each other.</p>
@@ -517,19 +532,19 @@
 <p>From the term “shadow”, shadow manifolds are “projections” of the true system manifold on some variable <span class="math notranslate nohighlight">\(X\)</span>. What Takens’ theorem tells us is if <span class="math notranslate nohighlight">\(X\)</span> belongs to a system <span class="math notranslate nohighlight">\(S\)</span> then we can generate a shadow manifold of the true manifold <span class="math notranslate nohighlight">\(M_s\)</span> using vectors of lagged (historical) values of <span class="math notranslate nohighlight">\(X\)</span>. The points in this shadow manifold <span class="math notranslate nohighlight">\(M_x\)</span> will have a 1:1 correspondence with the points in the true (unknown) manifold <span class="math notranslate nohighlight">\(M_s\)</span>.</p>
 </div>
 </div>
-<div class="section" id="how-and-why-does-ccm-work">
-<h2>How and why does CCM work?<a class="headerlink" href="#how-and-why-does-ccm-work" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview-of-ccm">
+<h2>Overview of CCM<a class="headerlink" href="#overview-of-ccm" title="Permalink to this headline">¶</a></h2>
 <img src=https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-319-58895-7_27/MediaObjects/429072_1_En_27_Fig1_HTML.gif width=400>
-<p>Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: Theory and an Example. In: Tsonis A. (eds) Advances in Nonlinear Geosciences. Springer, Cham. <a class="reference external" href="https://doi.org/10.1007/978-3-319-58895-7_27">https://doi.org/10.1007/978-3-319-58895-7_27</a></p>
-<div class="section" id="why-cross-mapping">
-<h3>Why Cross Mapping?<a class="headerlink" href="#why-cross-mapping" title="Permalink to this headline">¶</a></h3>
+<p>Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: Theory and an Example. In: Tsonis A. (eds) Advances in Nonlinear Geosciences. Springer, Cham. https://doi.org/10.1007/978-3-319-58895-7_27</p>
+<div class="section" id="cross-mapping">
+<h3>Cross Mapping<a class="headerlink" href="#cross-mapping" title="Permalink to this headline">¶</a></h3>
 <p>In a system <span class="math notranslate nohighlight">\(Y=f(X,Y)\)</span>, cross Mapping means given the points on the manifold of one variable <span class="math notranslate nohighlight">\(M_y\)</span>, we look for the corresponding points on <span class="math notranslate nohighlight">\(M_x\)</span>, i.e. points at the same time <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(X\)</span> causes <span class="math notranslate nohighlight">\(Y\)</span>, then we say some information about <span class="math notranslate nohighlight">\(X\)</span> gets stored in <span class="math notranslate nohighlight">\(Y\)</span>. If this is the case, then we can predict the values of <span class="math notranslate nohighlight">\(X\)</span> given values from <span class="math notranslate nohighlight">\(Y\)</span>. Note that this sounds counter intuitive. We contrast this with Granger causality which says that <span class="math notranslate nohighlight">\(X\)</span> causes <span class="math notranslate nohighlight">\(Y\)</span> if we can predict <span class="math notranslate nohighlight">\(Y\)</span> better given <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>We use shadow manifolds because we do not know the true manifold of the system. Given Takens’ theorem however, we can say that we can compute shadow manifolds <span class="math notranslate nohighlight">\(M_x\)</span> and <span class="math notranslate nohighlight">\(M_y\)</span> which then cross map with 1:1 correspondence to the true manifold of the system.</p>
 <p>If we use the analogy that manifolds are “summaries” of system, we can think of <span class="math notranslate nohighlight">\(M_x\)</span> and <span class="math notranslate nohighlight">\(M_y\)</span> as summaries of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. If <span class="math notranslate nohighlight">\(X\)</span> causes <span class="math notranslate nohighlight">\(Y\)</span>, information from <span class="math notranslate nohighlight">\(X\)</span> gets embedded in <span class="math notranslate nohighlight">\(Y\)</span>. It follows that we can then use <span class="math notranslate nohighlight">\(M_x\)</span> to predict <span class="math notranslate nohighlight">\(Y\)</span>, i.e. <span class="math notranslate nohighlight">\(\hat{Y}|M_x\)</span>. Finally, we can use the “accuracy” (MAE, MSE, or correlation) of this prediction as our metric for causality.</p>
 </div>
-<div class="section" id="why-convergence">
-<h3>Why Convergence?<a class="headerlink" href="#why-convergence" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="convergence">
+<h3>Convergence<a class="headerlink" href="#convergence" title="Permalink to this headline">¶</a></h3>
 <p>Convergence in CCM means that for variables with causalities, the longer our observation period (or more data we gather), the better we can predict one variable using the other. In the attractor example above, we can imagine the attractor will get denser as time goes on since our system will eventually fill in some of the gaps in the manifold. Stated another way, more defined manifolds imply that for variables with causalities, we can expect the accuracy of <span class="math notranslate nohighlight">\(\hat{Y}|M_x\)</span> to improve. If two variables have no causal link, then improving their manifolds will not translate to improvement in predictions.</p>
 <p>Cross mapping and convergence are two requirements in the CCM framework that we need to satisfy to consider the possiblity of causality between variables.</p>
 </div>
@@ -551,10 +566,14 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="k">import</span> <span class="n">distance</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">make_interp_spline</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span> <span class="c1"># for showing progress bar in for loops</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">pearsonr</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">make_interp_spline</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># for showing progress bar in for loops</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+
+<span class="c1">### Just to remove warnings to prettify the notebook. </span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -592,36 +611,31 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">max_t</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;timestep&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;value of X or Y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;timestep&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;value of X or Y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb8e3f99c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9567a14e90&gt;
 </pre></div>
 </div>
 <img alt="../_images/ccm_sugihara_11_1.png" src="../_images/ccm_sugihara_11_1.png" />
 </div>
 </div>
-<p><strong>Discussion</strong></p>
-<ul class="simple">
-<li><p>Is the system chaotic or random? Say got these data the first time without knowing the equations, which tests can we apply to check if the system is chaotic or random?</p></li>
-<li><p>What conclusions about causality can we infer from this plot?</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correlations in the first 1000 time steps</span>
 <span class="n">max_t</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">r</span><span class="p">,</span> <span class="n">p</span>
@@ -629,8 +643,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_13_0.png" src="../_images/ccm_sugihara_13_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.00539553998309176, 0.8646878689811068)
+<img alt="../_images/ccm_sugihara_12_0.png" src="../_images/ccm_sugihara_12_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.005395539983091767, 0.8646878689811068)
 </pre></div>
 </div>
 </div>
@@ -638,7 +652,7 @@
 <p><strong>Discussion</strong></p>
 <ul class="simple">
 <li><p>Though we explicitly defined <span class="math notranslate nohighlight">\(Y\)</span> to be a function of <span class="math notranslate nohighlight">\(X\)</span> (<span class="math notranslate nohighlight">\(X\)</span> influences <span class="math notranslate nohighlight">\(Y\)</span>), we find no correlation between them in the long term.</p></li>
-<li><p>Based on this correlation value, what can we conclude about the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> (e.g. whether or not <span class="math notranslate nohighlight">\(X\)</span> influences <span class="math notranslate nohighlight">\(Y\)</span> or vice versa)?</p></li>
+<li><p>It’s hard to conclude the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> (e.g. whether or not <span class="math notranslate nohighlight">\(X\)</span> influences <span class="math notranslate nohighlight">\(Y\)</span> or vice versa) based on the correlation plot and correlation value.</p></li>
 </ul>
 </div>
 <div class="section" id="ccm-algorithm">
@@ -670,9 +684,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Computing &quot;Causality&quot; (Correlation between True and Predictions)</span>
-
 <span class="k">class</span> <span class="nc">ccm</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        X: timeseries for variable X that could cause Y</span>
 <span class="sd">        Y: timeseries for variable Y that could be caused by X</span>
@@ -942,16 +955,16 @@ def plot_ccm_correls(self):
     r, p = np.round(pearsonr(X_My_true, X_My_pred), 4)
     
     axs[0].scatter(X_My_true, X_My_pred, s=10)
-    axs[0].set_xlabel(&#39;$X(t)$ (observed)&#39;, size=15)
-    axs[0].set_ylabel(&#39;$\hat{X}(t)|M_y$ (estimated)&#39;, size=15)
+    axs[0].set_xlabel(&#39;$X(t)$ (observed)&#39;, size=12)
+    axs[0].set_ylabel(&#39;$\hat{X}(t)|M_y$ (estimated)&#39;, size=12)
     axs[0].set_title(f&#39;tau={tau}, E={E}, L={L}, Correlation coeff = {r}&#39;)
 
     # predicting Y from Mx
     r, p = np.round(pearsonr(Y_Mx_true, Y_Mx_pred), 4)
     
     axs[1].scatter(Y_Mx_true, Y_Mx_pred, s=10)
-    axs[1].set_xlabel(&#39;$Y(t)$ (observed)&#39;, size=15)
-    axs[1].set_ylabel(&#39;$\hat{Y}(t)|M_x$ (estimated)&#39;, size=15)
+    axs[1].set_xlabel(&#39;$Y(t)$ (observed)&#39;, size=12)
+    axs[1].set_ylabel(&#39;$\hat{Y}(t)|M_x$ (estimated)&#39;, size=12)
     axs[1].set_title(f&#39;tau={tau}, E={E}, L={L}, Correlation coeff = {r}&#39;)
     plt.show()
 </pre></div>
@@ -1007,14 +1020,15 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_30_0.png" src="../_images/ccm_sugihara_30_0.png" />
+<img alt="../_images/ccm_sugihara_29_0.png" src="../_images/ccm_sugihara_29_0.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
 <ul class="simple">
 <li><p>In the shadow manifolds above, we show the cross mapping of points from one manifold (blue box) to the corresponding points on the other manifold (red star)</p></li>
 <li><p>If values from one manifold e.g. <span class="math notranslate nohighlight">\(M_x\)</span> make a spread out cross mapping to values on another manifold e.g. <span class="math notranslate nohighlight">\(M_y\)</span>, this means that we are not able to precisely predict <span class="math notranslate nohighlight">\(M_y\)</span> or <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(M_x\)</span>. This implies that not much information from <span class="math notranslate nohighlight">\(Y\)</span> is transferred to <span class="math notranslate nohighlight">\(X\)</span> to make highly precise predictions. In other words, <span class="math notranslate nohighlight">\(Y\)</span> may drive <span class="math notranslate nohighlight">\(X\)</span> but not by much.</p></li>
-<li><p>What is the implication on causality if the cross mapping is more narrow, e.g. cross mapping <span class="math notranslate nohighlight">\(M_x\)</span> from <span class="math notranslate nohighlight">\(M_y\)</span> (left chart)</p></li>
+<li><p>The stronger the causality between variables, the more narrow the cross mapping is more narrow, e.g. cross mapping <span class="math notranslate nohighlight">\(M_x\)</span> from <span class="math notranslate nohighlight">\(M_y\)</span> (left chart) has a relatively narrow cross mapping which may imply that <span class="math notranslate nohighlight">\(X\)</span> influences <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>While narrow cross convergence may indicate causality, this is just one of two criteria to conclude causality. We also need to satisfy convergence which we will discuss next.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1027,13 +1041,14 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_32_0.png" src="../_images/ccm_sugihara_32_0.png" />
+<img alt="../_images/ccm_sugihara_31_0.png" src="../_images/ccm_sugihara_31_0.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
 <ul class="simple">
-<li><p>Based on these plots which variable has more influence over the other i.e. causes the other more?</p></li>
-<li><p>We have shown cross-mapping in both directions though one direction is stronger. However, in the CCM framework, the existence of cross-mapping from say X to Y or Y to X is not sufficient to establish causality. We also need to satisfy convergence which we will discuss next.</p></li>
+<li><p>We measure cross mapping using correlation. A stronger correlation is one indicator of stronger causality.</p></li>
+<li><p>The left chart shows the performance of the cross mapping from <span class="math notranslate nohighlight">\(M_y\)</span> to <span class="math notranslate nohighlight">\(M_x\)</span> to predict <span class="math notranslate nohighlight">\(X(t)\)</span>. This means we can predict <span class="math notranslate nohighlight">\(X\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> which happens if <span class="math notranslate nohighlight">\(Y\)</span> has enough information about <span class="math notranslate nohighlight">\(X\)</span>. We say that <span class="math notranslate nohighlight">\(X\)</span> strongly influences or causes <span class="math notranslate nohighlight">\(Y\)</span>. Remember the intuition that if <span class="math notranslate nohighlight">\(X\)</span> causes <span class="math notranslate nohighlight">\(Y\)</span>, then information from <span class="math notranslate nohighlight">\(X\)</span> gets transferred to <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>We have shown cross-mapping in both directions though one direction is stronger.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1052,18 +1067,18 @@ def plot_ccm_correls(self):
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb8ceb52a10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9552ac0bd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_34_1.png" src="../_images/ccm_sugihara_34_1.png" />
+<img alt="../_images/ccm_sugihara_33_1.png" src="../_images/ccm_sugihara_33_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1125,28 +1140,14 @@ def plot_ccm_correls(self):
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: overflow encountered in double_scalars
-  
-/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:2: RuntimeWarning: invalid value encountered in double_scalars
-  
-/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:15: RuntimeWarning: invalid value encountered in true_divide
-  from ipykernel import kernelapp as app
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/scipy/stats/stats.py:3929: RuntimeWarning: invalid value encountered in subtract
-  xm = x.astype(dtype) - xmean
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">correl_diffs</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">fignum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Beta_x_y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Beta_y_x&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$correl(\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x) - correl(\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Beta_x_y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Beta_y_x&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$correl(\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x) - correl(\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="c1"># plt.xticks(range(len(range_)), np.round(range_, 2), rotation=90)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">range_</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -1156,11 +1157,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:9: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  if __name__ == &#39;__main__&#39;:
-</pre></div>
-</div>
-<img alt="../_images/ccm_sugihara_38_1.png" src="../_images/ccm_sugihara_38_1.png" />
+<img alt="../_images/ccm_sugihara_37_0.png" src="../_images/ccm_sugihara_37_0.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1202,21 +1199,21 @@ def plot_ccm_correls(self):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">max_t</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;timestep&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;value of X or Y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;timestep&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;value of X or Y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb8ce7a8f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9552a2b950&gt;
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_42_1.png" src="../_images/ccm_sugihara_42_1.png" />
+<img alt="../_images/ccm_sugihara_41_1.png" src="../_images/ccm_sugihara_41_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1225,8 +1222,8 @@ def plot_ccm_correls(self):
 <span class="n">max_t</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">max_t</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:</span><span class="n">max_t</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y(t)&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="c1"># np.corrcoef(x, y)[0][1]</span>
 <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1235,7 +1232,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_43_0.png" src="../_images/ccm_sugihara_43_0.png" />
+<img alt="../_images/ccm_sugihara_42_0.png" src="../_images/ccm_sugihara_42_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.24813484131913205, 1.6963889777956713e-15)
 </pre></div>
 </div>
@@ -1257,7 +1254,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_44_0.png" src="../_images/ccm_sugihara_44_0.png" />
+<img alt="../_images/ccm_sugihara_43_0.png" src="../_images/ccm_sugihara_43_0.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1276,7 +1273,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_46_0.png" src="../_images/ccm_sugihara_46_0.png" />
+<img alt="../_images/ccm_sugihara_45_0.png" src="../_images/ccm_sugihara_45_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1296,10 +1293,10 @@ def plot_ccm_correls(self):
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>   
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1313,7 +1310,7 @@ def plot_ccm_correls(self):
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Y-&gt;X r 0.09 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_47_2.png" src="../_images/ccm_sugihara_47_2.png" />
+<img alt="../_images/ccm_sugihara_46_2.png" src="../_images/ccm_sugihara_46_2.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1392,8 +1389,8 @@ def plot_ccm_correls(self):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L_list</span><span class="p">)</span>
@@ -1401,16 +1398,16 @@ def plot_ccm_correls(self):
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Yhat_Mx_list</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot_trisurf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$B_</span><span class="si">{yx}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;correl $\hat</span><span class="si">{Y}</span><span class="s1">|M_x$&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$B_</span><span class="si">{yx}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;correl $\hat</span><span class="si">{Y}</span><span class="s1">|M_x$&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_52_0.png" src="../_images/ccm_sugihara_52_0.png" />
+<img alt="../_images/ccm_sugihara_51_0.png" src="../_images/ccm_sugihara_51_0.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1429,25 +1426,15 @@ def plot_ccm_correls(self):
     <span class="c1"># drop nulls</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">val1_name</span><span class="p">,</span> <span class="n">val2_name</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     
-    <span class="c1"># smoothen</span>
-    <span class="n">date_smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">dt_name</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="n">dt_name</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span> 
-    <span class="n">spl</span> <span class="o">=</span> <span class="n">make_interp_spline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">dt_name</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">val1_name</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">val1</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">date_smooth</span><span class="p">)</span>
-    <span class="n">spl</span> <span class="o">=</span> <span class="n">make_interp_spline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">dt_name</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">val2_name</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">val2</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">date_smooth</span><span class="p">)</span>    
-    <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">val1_name</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">val2_name</span><span class="p">]),</span> <span class="mi">4</span><span class="p">)</span>
-    
     <span class="c1"># plot</span>
-    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_smooth</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val1_name</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val1_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">val1_name</span><span class="p">)</span>
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_smooth</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val2_name</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dt_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val2_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">val2_name</span><span class="p">)</span>    
-    <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>        
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{val1_name}</span><span class="s2"> and </span><span class="si">{val2_name}</span><span class="s2">, correlation coefficient: </span><span class="si">{r}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="c1">#     ax.figure.legend()        </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val1_name</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">val2_name</span><span class="si">}</span><span class="s2">, correlation coefficient: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1466,7 +1453,7 @@ def plot_ccm_correls(self):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_57_0.png" src="../_images/ccm_sugihara_57_0.png" />
+<img alt="../_images/ccm_sugihara_56_0.png" src="../_images/ccm_sugihara_56_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1494,10 +1481,10 @@ def plot_ccm_correls(self):
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>  
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1509,7 +1496,7 @@ def plot_ccm_correls(self):
 Y-&gt;X r -0.11 p value 0.77
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_58_1.png" src="../_images/ccm_sugihara_58_1.png" />
+<img alt="../_images/ccm_sugihara_57_1.png" src="../_images/ccm_sugihara_57_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1529,7 +1516,7 @@ Y-&gt;X r -0.11 p value 0.77
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_62_0.png" src="../_images/ccm_sugihara_62_0.png" />
+<img alt="../_images/ccm_sugihara_61_0.png" src="../_images/ccm_sugihara_61_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1557,10 +1544,10 @@ Y-&gt;X r -0.11 p value 0.77
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>   
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">))</span>
@@ -1582,7 +1569,7 @@ Y-&gt;X r -0.11 p value 0.77
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_66_0.png" src="../_images/ccm_sugihara_66_0.png" />
+<img alt="../_images/ccm_sugihara_65_0.png" src="../_images/ccm_sugihara_65_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1610,10 +1597,10 @@ Y-&gt;X r -0.11 p value 0.77
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1625,7 +1612,7 @@ Y-&gt;X r -0.11 p value 0.77
 Y-&gt;X r 0.65 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_67_1.png" src="../_images/ccm_sugihara_67_1.png" />
+<img alt="../_images/ccm_sugihara_66_1.png" src="../_images/ccm_sugihara_66_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1642,7 +1629,7 @@ Y-&gt;X r 0.65 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_70_0.png" src="../_images/ccm_sugihara_70_0.png" />
+<img alt="../_images/ccm_sugihara_69_0.png" src="../_images/ccm_sugihara_69_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1670,10 +1657,10 @@ Y-&gt;X r 0.65 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1685,7 +1672,7 @@ Y-&gt;X r 0.65 p value 0.0
 Y-&gt;X r 0.05 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_71_1.png" src="../_images/ccm_sugihara_71_1.png" />
+<img alt="../_images/ccm_sugihara_70_1.png" src="../_images/ccm_sugihara_70_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1702,7 +1689,7 @@ Y-&gt;X r 0.05 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_74_0.png" src="../_images/ccm_sugihara_74_0.png" />
+<img alt="../_images/ccm_sugihara_73_0.png" src="../_images/ccm_sugihara_73_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1730,10 +1717,10 @@ Y-&gt;X r 0.05 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1745,7 +1732,7 @@ Y-&gt;X r 0.05 p value 0.0
 Y-&gt;X r 0.21 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_75_1.png" src="../_images/ccm_sugihara_75_1.png" />
+<img alt="../_images/ccm_sugihara_74_1.png" src="../_images/ccm_sugihara_74_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1766,7 +1753,7 @@ Y-&gt;X r 0.21 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_78_0.png" src="../_images/ccm_sugihara_78_0.png" />
+<img alt="../_images/ccm_sugihara_77_0.png" src="../_images/ccm_sugihara_77_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1794,10 +1781,10 @@ Y-&gt;X r 0.21 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>   
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1809,7 +1796,7 @@ Y-&gt;X r 0.21 p value 0.0
 Y-&gt;X r 0.2 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_79_1.png" src="../_images/ccm_sugihara_79_1.png" />
+<img alt="../_images/ccm_sugihara_78_1.png" src="../_images/ccm_sugihara_78_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -1833,7 +1820,7 @@ Y-&gt;X r 0.2 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_83_0.png" src="../_images/ccm_sugihara_83_0.png" />
+<img alt="../_images/ccm_sugihara_82_0.png" src="../_images/ccm_sugihara_82_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1858,10 +1845,10 @@ Y-&gt;X r 0.2 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>    
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1873,7 +1860,7 @@ Y-&gt;X r 0.2 p value 0.0
 Y-&gt;X r 0.52 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_84_1.png" src="../_images/ccm_sugihara_84_1.png" />
+<img alt="../_images/ccm_sugihara_83_1.png" src="../_images/ccm_sugihara_83_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong>
@@ -1881,7 +1868,7 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 </div>
 <div class="section" id="climate-change">
 <h3>Climate change<a class="headerlink" href="#climate-change" title="Permalink to this headline">¶</a></h3>
-<p>Here, we look at climate data taken from <a class="reference external" href="http://climate.nasa.gov">climate.nasa.gov</a>.</p>
+<p>Here, we look at climate data taken from climate.nasa.gov.</p>
 <div class="section" id="co2-emissions-global-temperature-and-arctic-ice-area-non-ecological">
 <h4>CO2 emissions, global temperature, and arctic ice area (Non-ecological)<a class="headerlink" href="#co2-emissions-global-temperature-and-arctic-ice-area-non-ecological" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
@@ -1892,7 +1879,7 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_88_0.png" src="../_images/ccm_sugihara_88_0.png" />
+<img alt="../_images/ccm_sugihara_87_0.png" src="../_images/ccm_sugihara_87_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1917,10 +1904,10 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>    
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1932,7 +1919,7 @@ It seems there is bidirectional (assuming no strong forcing) relationship betwee
 Y-&gt;X r 0.95 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_89_1.png" src="../_images/ccm_sugihara_89_1.png" />
+<img alt="../_images/ccm_sugihara_88_1.png" src="../_images/ccm_sugihara_88_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1943,7 +1930,7 @@ Y-&gt;X r 0.95 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_90_0.png" src="../_images/ccm_sugihara_90_0.png" />
+<img alt="../_images/ccm_sugihara_89_0.png" src="../_images/ccm_sugihara_89_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1968,10 +1955,10 @@ Y-&gt;X r 0.95 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>   
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -1983,7 +1970,7 @@ Y-&gt;X r 0.95 p value 0.0
 Y-&gt;X r 0.8 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_91_1.png" src="../_images/ccm_sugihara_91_1.png" />
+<img alt="../_images/ccm_sugihara_90_1.png" src="../_images/ccm_sugihara_90_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1994,7 +1981,7 @@ Y-&gt;X r 0.8 p value 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ccm_sugihara_92_0.png" src="../_images/ccm_sugihara_92_0.png" />
+<img alt="../_images/ccm_sugihara_91_0.png" src="../_images/ccm_sugihara_91_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2019,10 +2006,10 @@ Y-&gt;X r 0.8 p value 0.0
 <span class="c1"># plot convergence as L-&gt;inf. Convergence is necessary to conclude causality</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Xhat_My</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{X}</span><span class="s1">(t)|M_y$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_range</span><span class="p">,</span> <span class="n">Yhat_Mx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat</span><span class="si">{Y}</span><span class="s1">(t)|M_x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;correl&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X-&gt;Y r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Xhat_My</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_XY</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y-&gt;X r&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Yhat_Mx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;p value&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ccm_YX</span><span class="o">.</span><span class="n">causality</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
@@ -2034,7 +2021,7 @@ Y-&gt;X r 0.8 p value 0.0
 Y-&gt;X r 0.69 p value 0.0
 </pre></div>
 </div>
-<img alt="../_images/ccm_sugihara_93_1.png" src="../_images/ccm_sugihara_93_1.png" />
+<img alt="../_images/ccm_sugihara_92_1.png" src="../_images/ccm_sugihara_92_1.png" />
 </div>
 </div>
 <p><strong>Discussion</strong></p>
@@ -2057,18 +2044,13 @@ Y-&gt;X r 0.69 p value 0.0
 </ul>
 </div>
 </div>
-<div class="section" id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>We have shown how CCM can be a powerful tool for quantifying causalities between variables by using just time series data. However, the CCM has some limitations that we need to acknowledge:</p>
-<ul class="simple">
-<li><p>The methodology was formulated assuming we are dealing with deterministic systems (no randomness involved)</p></li>
-<li><p>The real world can be noisy and we rarely encounter systems that are exactly like their mathematical formulations, so results from the model is better understood as approximations than precise values but precision can improve with more data (increasing <span class="math notranslate nohighlight">\(L\)</span>)</p></li>
-<li><p>When “strong forcing” exists between two variables, bidirectional convergent cross mapping may still happen despite lack of causality. We must rule out strong forcing before we can explore if two variables have causality.</p></li>
-</ul>
+<div class="section" id="limitation">
+<h2>Limitation<a class="headerlink" href="#limitation" title="Permalink to this headline">¶</a></h2>
+<p>We have shown how CCM can be a powerful tool for quantifying causalities between variables by using just time series data. However, the CCM has a limitation that we need to acknowledge: when “strong forcing” exists between two variables, bidirectional convergent cross mapping may still happen even with unidirectional causality. We must rule out strong forcing before we can explore if two variables have bidirectional causality.</p>
 </div>
-<div class="section" id="preview-to-the-next-chapter">
-<h2>Preview to the Next Chapter<a class="headerlink" href="#preview-to-the-next-chapter" title="Permalink to this headline">¶</a></h2>
-<p>In this chapter we discussed the theory and algorithm behind Convergent Cross Mapping methodology and applied it on simulated and real world data. In the next chapter we will discuss techniques for finding pattens in time series data namely cross correlation, Fourier transform, and Wavelet transform.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter we discussed the theory and algorithm behind Convergent Cross Mapping methodology to infer causality between variables using time series data. We then applied it on simulated and real world data. In the next chapter we will discuss techniques for finding pattens in time series data namely cross correlation, Fourier transform, and Wavelet transform.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
@@ -2086,6 +2068,8 @@ Y-&gt;X r 0.69 p value 0.0
 A test of Convergent Cross-Mapping. arXiv</a></p></li>
 <li><p><a class="reference external" href="https://web.iitd.ac.in/~sumeet/Sahil_Parul_btp_thesis.pdf">Sahil Loomba &amp; Parul Jain. 2016. Causal Computational Models for Gene Regulatory Networks</a></p></li>
 <li><p><a class="reference external" href="http://www.scholarpedia.org/article/Attractor_reconstruction">Sauer, T., 2021. Attractor Reconstruction. Scholarpedia.org</a></p></li>
+<li><p>Uzal, Lucas &amp; Grinblat, G &amp; Verdes, Pablo. (2011). Optimal reconstruction of dynamical systems: A noise amplification approach. Physical review. E, Statistical, nonlinear, and soft matter physics. 84. 016223. 10.1103/PhysRevE.84.016223.</p></li>
+<li><p>Tsonis A.A., Deyle E.R., Ye H., Sugihara G. (2018) Convergent Cross Mapping: Theory and an Example. In: Tsonis A. (eds) Advances in Nonlinear Geosciences. Springer, Cham. https://doi.org/10.1007/978-3-319-58895-7_27</p></li>
 </ul>
 <p><strong>Datasets</strong></p>
 <ul class="simple">
@@ -2125,7 +2109,7 @@ A test of Convergent Cross-Mapping. arXiv</a></p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html" title="previous page">Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)</a>
+    <a class='left-prev' id="prev-link" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html" title="previous page">Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)</a>
     <a class='right-next' id="next-link" href="using_causal_ccm_package.html" title="next page">Applying CCM Using causal-ccm package</a>
 
     </div>

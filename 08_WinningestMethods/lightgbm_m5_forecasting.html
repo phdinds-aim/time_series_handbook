@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chapter 8: Winningest Methods in Time Series Forecasting &#8212; Time Series Analysis Handbook</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -24,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,25 +36,24 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hyperparameter Tuning (Supplementary Notebook)" href="lightgbm_m5_tuning.html" />
@@ -87,12 +87,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Preface/Preface_AdvancedTimeSeriesAnalysis.html">
-   Preface: Advanced Time Series Analysis
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
   </a>
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
    Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
@@ -114,13 +119,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections).html">
-   Chapter 5: Dynamical Forecasting Methods (Simplex and SMap Projections)
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
-   Chapter 6: Convergent Cross Mapping / Sugihara Causality
+   Chapter 6: Convergent Cross Mapping
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -395,9 +400,9 @@
                 
   <div class="section" id="chapter-8-winningest-methods-in-time-series-forecasting">
 <h1>Chapter 8: Winningest Methods in Time Series Forecasting<a class="headerlink" href="#chapter-8-winningest-methods-in-time-series-forecasting" title="Permalink to this headline">¶</a></h1>
+<p>Compiled by: Sebastian C. Ibañez</p>
 <p>In previous sections, we examined several models used in time series forecasting such as ARIMA, VAR, and Exponential Smoothing methods. While the main advantage of traditional statistical methods is their ability to perform more sophisticated inference tasks directly (e.g. hypothesis testing on parameters, causality testing), they usually lack predictive power because of their rigid assumptions. That is not to say that they are <i>necessarily</i> inferior when it comes to forecasting, but rather they are typically used as performance benchmarks.</p>
 <p>In this section, we demonstrate several of the fundamental ideas and approaches used in the recently concluded <a class="reference external" href="https://mofc.unic.ac.cy/m5-competition/"><code class="docutils literal notranslate"><span class="pre">M5</span> <span class="pre">Competition</span></code></a> where challengers from all over the world competed in building time series forecasting models for both <a class="reference external" href="https://www.kaggle.com/c/m5-forecasting-accuracy"><code class="docutils literal notranslate"><span class="pre">accuracy</span></code></a> and <a class="reference external" href="https://www.kaggle.com/c/m5-forecasting-uncertainty"><code class="docutils literal notranslate"><span class="pre">uncertainty</span></code></a> prediction tasks. Specifically, we explore the machine learning model that majority of the competition’s winners utilized: <a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">LightGBM</span></code></a>, a tree-based gradient boosting framework designed for speed and efficiency.</p>
-<p>Prepared by: Sebastian C. Ibañez</p>
 <div class="section" id="m5-dataset">
 <h2>1. M5 Dataset<a class="headerlink" href="#m5-dataset" title="Permalink to this headline">¶</a></h2>
 <p>You can download the M5 dataset from the Kaggle links above.</p>
@@ -408,7 +413,8 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">plot_x_size</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">plot_y_size</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">suppress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
@@ -424,7 +430,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df_sales</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">date_list</span><span class="p">)),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
 <span class="n">df_sales</span>
 </pre></div>
 </div>
@@ -473,7 +478,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <th>0</th>
       <td>HOBBIES_1_001_CA_1_validation</td>
       <td>HOBBIES_1_001</td>
       <td>HOBBIES_1</td>
@@ -497,7 +502,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <td>1</td>
+      <th>1</th>
       <td>HOBBIES_1_002_CA_1_validation</td>
       <td>HOBBIES_1_002</td>
       <td>HOBBIES_1</td>
@@ -521,7 +526,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th>2</th>
       <td>HOBBIES_1_003_CA_1_validation</td>
       <td>HOBBIES_1_003</td>
       <td>HOBBIES_1</td>
@@ -545,7 +550,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th>3</th>
       <td>HOBBIES_1_004_CA_1_validation</td>
       <td>HOBBIES_1_004</td>
       <td>HOBBIES_1</td>
@@ -569,7 +574,7 @@
       <td>2</td>
     </tr>
     <tr>
-      <td>4</td>
+      <th>4</th>
       <td>HOBBIES_1_005_CA_1_validation</td>
       <td>HOBBIES_1_005</td>
       <td>HOBBIES_1</td>
@@ -593,7 +598,7 @@
       <td>4</td>
     </tr>
     <tr>
-      <td>...</td>
+      <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -617,7 +622,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <td>30485</td>
+      <th>30485</th>
       <td>FOODS_3_823_WI_3_validation</td>
       <td>FOODS_3_823</td>
       <td>FOODS_3</td>
@@ -641,7 +646,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <td>30486</td>
+      <th>30486</th>
       <td>FOODS_3_824_WI_3_validation</td>
       <td>FOODS_3_824</td>
       <td>FOODS_3</td>
@@ -665,7 +670,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>30487</td>
+      <th>30487</th>
       <td>FOODS_3_825_WI_3_validation</td>
       <td>FOODS_3_825</td>
       <td>FOODS_3</td>
@@ -689,7 +694,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>30488</td>
+      <th>30488</th>
       <td>FOODS_3_826_WI_3_validation</td>
       <td>FOODS_3_826</td>
       <td>FOODS_3</td>
@@ -713,7 +718,7 @@
       <td>3</td>
     </tr>
     <tr>
-      <td>30489</td>
+      <th>30489</th>
       <td>FOODS_3_827_WI_3_validation</td>
       <td>FOODS_3_827</td>
       <td>FOODS_3</td>
@@ -784,7 +789,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <th>0</th>
       <td>2011-01-29</td>
       <td>11101</td>
       <td>Saturday</td>
@@ -801,7 +806,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>1</td>
+      <th>1</th>
       <td>2011-01-30</td>
       <td>11101</td>
       <td>Sunday</td>
@@ -818,7 +823,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th>2</th>
       <td>2011-01-31</td>
       <td>11101</td>
       <td>Monday</td>
@@ -835,7 +840,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th>3</th>
       <td>2011-02-01</td>
       <td>11101</td>
       <td>Tuesday</td>
@@ -852,7 +857,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>4</td>
+      <th>4</th>
       <td>2011-02-02</td>
       <td>11101</td>
       <td>Wednesday</td>
@@ -869,7 +874,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <td>...</td>
+      <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -886,7 +891,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <td>1964</td>
+      <th>1964</th>
       <td>2016-06-15</td>
       <td>11620</td>
       <td>Wednesday</td>
@@ -903,7 +908,7 @@
       <td>1</td>
     </tr>
     <tr>
-      <td>1965</td>
+      <th>1965</th>
       <td>2016-06-16</td>
       <td>11620</td>
       <td>Thursday</td>
@@ -920,7 +925,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>1966</td>
+      <th>1966</th>
       <td>2016-06-17</td>
       <td>11620</td>
       <td>Friday</td>
@@ -937,7 +942,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>1967</td>
+      <th>1967</th>
       <td>2016-06-18</td>
       <td>11621</td>
       <td>Saturday</td>
@@ -954,7 +959,7 @@
       <td>0</td>
     </tr>
     <tr>
-      <td>1968</td>
+      <th>1968</th>
       <td>2016-06-19</td>
       <td>11621</td>
       <td>Sunday</td>
@@ -1008,77 +1013,77 @@
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <th>0</th>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11325</td>
       <td>9.58</td>
     </tr>
     <tr>
-      <td>1</td>
+      <th>1</th>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11326</td>
       <td>9.58</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th>2</th>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11327</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th>3</th>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11328</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <td>4</td>
+      <th>4</th>
       <td>CA_1</td>
       <td>HOBBIES_1_001</td>
       <td>11329</td>
       <td>8.26</td>
     </tr>
     <tr>
-      <td>...</td>
+      <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
     </tr>
     <tr>
-      <td>6841116</td>
+      <th>6841116</th>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11617</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <td>6841117</td>
+      <th>6841117</th>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11618</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <td>6841118</td>
+      <th>6841118</th>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11619</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <td>6841119</td>
+      <th>6841119</th>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11620</td>
       <td>1.00</td>
     </tr>
     <tr>
-      <td>6841120</td>
+      <th>6841120</th>
       <td>WI_3</td>
       <td>FOODS_3_827</td>
       <td>11621</td>
@@ -1120,7 +1125,10 @@ Name: 3, Length: 1919, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_sample</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series_sample</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1208,7 +1216,7 @@ Name: 3, Length: 1919, dtype: object
   </thead>
   <tbody>
     <tr>
-      <td>CA_1</td>
+      <th>CA_1</th>
       <td>4337</td>
       <td>4155</td>
       <td>2816</td>
@@ -1232,7 +1240,7 @@ Name: 3, Length: 1919, dtype: object
       <td>6113</td>
     </tr>
     <tr>
-      <td>CA_2</td>
+      <th>CA_2</th>
       <td>3494</td>
       <td>3046</td>
       <td>2121</td>
@@ -1256,7 +1264,7 @@ Name: 3, Length: 1919, dtype: object
       <td>6082</td>
     </tr>
     <tr>
-      <td>CA_3</td>
+      <th>CA_3</th>
       <td>4739</td>
       <td>4827</td>
       <td>3785</td>
@@ -1280,7 +1288,7 @@ Name: 3, Length: 1919, dtype: object
       <td>7721</td>
     </tr>
     <tr>
-      <td>CA_4</td>
+      <th>CA_4</th>
       <td>1625</td>
       <td>1777</td>
       <td>1386</td>
@@ -1304,7 +1312,7 @@ Name: 3, Length: 1919, dtype: object
       <td>3271</td>
     </tr>
     <tr>
-      <td>TX_1</td>
+      <th>TX_1</th>
       <td>2556</td>
       <td>2687</td>
       <td>1822</td>
@@ -1328,7 +1336,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4033</td>
     </tr>
     <tr>
-      <td>TX_2</td>
+      <th>TX_2</th>
       <td>3852</td>
       <td>3937</td>
       <td>2731</td>
@@ -1352,7 +1360,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4292</td>
     </tr>
     <tr>
-      <td>TX_3</td>
+      <th>TX_3</th>
       <td>3030</td>
       <td>3006</td>
       <td>2225</td>
@@ -1376,7 +1384,7 @@ Name: 3, Length: 1919, dtype: object
       <td>3957</td>
     </tr>
     <tr>
-      <td>WI_1</td>
+      <th>WI_1</th>
       <td>2704</td>
       <td>2194</td>
       <td>1562</td>
@@ -1400,7 +1408,7 @@ Name: 3, Length: 1919, dtype: object
       <td>4874</td>
     </tr>
     <tr>
-      <td>WI_2</td>
+      <th>WI_2</th>
       <td>2256</td>
       <td>1922</td>
       <td>2018</td>
@@ -1424,7 +1432,7 @@ Name: 3, Length: 1919, dtype: object
       <td>5127</td>
     </tr>
     <tr>
-      <td>WI_3</td>
+      <th>WI_3</th>
       <td>4038</td>
       <td>4198</td>
       <td>3317</td>
@@ -1454,7 +1462,9 @@ Name: 3, Length: 1919, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales_total_by_store</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">df_sales_total_by_store</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1469,7 +1479,10 @@ Name: 3, Length: 1919, dtype: object
 <span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min Dates:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">series</span> <span class="o">==</span> <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
 <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1492,7 +1505,7 @@ Min Dates:[&#39;2011-12-25&#39;, &#39;2012-12-25&#39;, &#39;2013-12-25&#39;, &#3
 <p>Let’s check.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="k">import</span> <span class="n">adfuller</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
 
@@ -1561,7 +1574,9 @@ Critical Values:
 <p>Let’s check.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="k">import</span> <span class="n">plot_acf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
 
 <span class="n">plot_acf</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1584,6 +1599,8 @@ Critical Values:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7</span> <span class="o">=</span> <span class="n">difference</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
 <span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -1600,6 +1617,8 @@ Critical Values:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7_d30</span> <span class="o">=</span> <span class="n">difference</span><span class="p">(</span><span class="n">series_d7</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
 
 <span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1642,7 +1661,11 @@ Critical Values:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7_d30</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">)</span>
 <span class="n">series_d7_d30</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">date_list</span><span class="p">[</span><span class="mi">37</span><span class="p">:]</span>
-<span class="n">series_d7_d30</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series_d7_d30</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Differenced Series&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1731,7 +1754,10 @@ Critical Values:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;CA_1 Test Series&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1740,29 +1766,20 @@ Critical Values:
 <img alt="../_images/lightgbm_m5_forecasting_29_0.png" src="../_images/lightgbm_m5_forecasting_29_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="lightgbm">
 <h3>LightGBM<a class="headerlink" href="#lightgbm" title="Permalink to this headline">¶</a></h3>
 <p>Now we can build a LightGBM model to forecast our time series.</p>
+<p>Gradient boosting is an ensemble method that combines multiple weak models to produce a single strong prediction model. The method involves constructing the model (called a <i>gradient boosting machine</i>) in a serial stage-wise manner by sequentially optimizing a differentiable loss function at each stage. Much like other boosting algorithms, the residual errors are passed to the next weak learner and trained.</p>
+<p>For this work, we use LightGBM, a gradient boosting framework designed for speed and efficiency. Specifically, the framework uses tree-based learning algorithms.</p>
+<p>To tune the model’s hyperparameters, we use a combination of grid search and repeated k-fold cross validation, with some manual tuning. For more details, see the Hyperparameter Tuning notebook.</p>
 <p>Now we train the model on the full dataset and test it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
     <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span>
     <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -1774,23 +1791,14 @@ Critical Values:
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
           <span class="n">eval_metric</span> <span class="o">=</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> 
           <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
-          <span class="n">early_stopping_rounds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="c1">#early_stopping_rounds = 10,</span>
           <span class="n">verbose</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/prince/anaconda3/lib/python3.7/site-packages/lightgbm/callback.py:186: UserWarning: Early stopping is not available in dart mode
-  warnings.warn(&#39;Early stopping is not available in dart mode&#39;)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, class_weight=None, colsample_bytree=1.0,
-              first_metric_only=True, importance_type=&#39;split&#39;,
-              learning_rate=0.1, max_depth=4, min_child_samples=20,
-              min_child_weight=0.001, min_split_gain=0.0, n_estimators=3000,
-              n_jobs=-1, num_leaves=16, objective=None, random_state=None,
-              reg_alpha=0.0, reg_lambda=0.0, silent=True, subsample=1.0,
-              subsample_for_bin=200000, subsample_freq=0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, first_metric_only=True, max_depth=4,
+              n_estimators=2000, num_leaves=16)
 </pre></div>
 </div>
 </div>
@@ -1809,8 +1817,11 @@ Critical Values:
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s365-Naive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s365_naive</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  LightGBM MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 
-<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1820,10 +1831,10 @@ Critical Values:
   s7-Naive MAE: 372.2857
  s30-Naive MAE: 330.8214
 s365-Naive MAE: 247.9286
-  LightGBM MAE: 205.4656
+  LightGBM MAE: 200.5037
 </pre></div>
 </div>
-<img alt="../_images/lightgbm_m5_forecasting_34_1.png" src="../_images/lightgbm_m5_forecasting_34_1.png" />
+<img alt="../_images/lightgbm_m5_forecasting_33_1.png" src="../_images/lightgbm_m5_forecasting_33_1.png" />
 </div>
 </div>
 </div>
@@ -1832,8 +1843,8 @@ s365-Naive MAE: 247.9286
 <p>How does our metric change as we extend the window size?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">RepeatedKFold</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedKFold</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
@@ -1861,13 +1872,10 @@ s365-Naive MAE: 247.9286
     <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3d</span><span class="s1"> --- MAE: </span><span class="si">%.3f</span><span class="s1"> (</span><span class="si">%.3f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)))</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>    
+    
 <span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">names</span><span class="p">,</span> <span class="n">showmeans</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7 --- MAE: -333.105 (21.291)
 </pre></div>
 </div>
 </div>
@@ -1884,8 +1892,8 @@ s365-Naive MAE: 247.9286
 <span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
 <span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">### TRAIN VAL SPLIT ### (include shuffling later)</span>
-<span class="n">test_size</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="c1">### TRAIN VAL SPLIT ###</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
 
 <span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
@@ -1946,19 +1954,22 @@ s365-Naive MAE: 247.9286
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  One-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_os</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multi-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_rec</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 
-<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_rec</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_rec</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Multi-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast One-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 255.2456
-Multi-Step MAE: 279.9243
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 200.5037
+Multi-Step MAE: 214.8020
 </pre></div>
 </div>
-<img alt="../_images/lightgbm_m5_forecasting_41_1.png" src="../_images/lightgbm_m5_forecasting_41_1.png" />
+<img alt="../_images/lightgbm_m5_forecasting_40_1.png" src="../_images/lightgbm_m5_forecasting_40_1.png" />
 </div>
 </div>
 </div>
@@ -1970,10 +1981,10 @@ Multi-Step MAE: 279.9243
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
 <span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
-<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">28</span>
 
-<span class="c1">### TRAIN VAL SPLIT ### (include shuffling later)</span>
-<span class="n">test_size</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="c1">### TRAIN VAL SPLIT ###</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
 
 <span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
@@ -1987,7 +1998,7 @@ Multi-Step MAE: 279.9243
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multioutput</span> <span class="k">import</span> <span class="n">MultiOutputRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multioutput</span> <span class="kn">import</span> <span class="n">MultiOutputRegressor</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">MultiOutputRegressor</span><span class="p">(</span><span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(),</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -2008,19 +2019,22 @@ Multi-Step MAE: 279.9243
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  One-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_os</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multi-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_dir</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 
-<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_dir</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_dir</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Multi-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast One-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 255.2456
-Multi-Step MAE: 268.9530
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 200.5037
+Multi-Step MAE: 233.6326
 </pre></div>
 </div>
-<img alt="../_images/lightgbm_m5_forecasting_45_1.png" src="../_images/lightgbm_m5_forecasting_45_1.png" />
+<img alt="../_images/lightgbm_m5_forecasting_44_1.png" src="../_images/lightgbm_m5_forecasting_44_1.png" />
 </div>
 </div>
 </div>
@@ -2040,19 +2054,19 @@ Multi-Step MAE: 268.9530
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     Direct MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_dir</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Combination MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_comb</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
 
-<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_comb</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_comb</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Combination&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Recursive MAE: 279.9243
-     Direct MAE: 268.9530
-Combination MAE: 267.2301
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Recursive MAE: 214.8020
+     Direct MAE: 233.6326
+Combination MAE: 217.0313
 </pre></div>
 </div>
-<img alt="../_images/lightgbm_m5_forecasting_48_1.png" src="../_images/lightgbm_m5_forecasting_48_1.png" />
+<img alt="../_images/lightgbm_m5_forecasting_47_1.png" src="../_images/lightgbm_m5_forecasting_47_1.png" />
 </div>
 </div>
 </div>
@@ -2066,7 +2080,7 @@ Combination MAE: 267.2301
 <span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
 <span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">### TRAIN VAL SPLIT ### (include shuffling later)</span>
+<span class="c1">### TRAIN VAL SPLIT ###</span>
 <span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
 
@@ -2109,15 +2123,15 @@ Combination MAE: 267.2301
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-<span class="n">lgb</span><span class="o">.</span><span class="n">plot_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">max_num_features</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">importance_type</span> <span class="o">=</span> <span class="s1">&#39;split&#39;</span><span class="p">)</span>
+<span class="n">lgb</span><span class="o">.</span><span class="n">plot_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">max_num_features</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">importance_type</span> <span class="o">=</span> <span class="s1">&#39;split&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lightgbm_m5_forecasting_51_0.png" src="../_images/lightgbm_m5_forecasting_51_0.png" />
+<img alt="../_images/lightgbm_m5_forecasting_50_0.png" src="../_images/lightgbm_m5_forecasting_50_0.png" />
 </div>
 </div>
 </div>

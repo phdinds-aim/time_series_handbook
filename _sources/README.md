@@ -1,12 +1,16 @@
 # Time Series Handbook
 
-This handbook extensively covers time series analysis and forecasting, delving from the most fundamental methods to the state-of-the-art. The handbook is designed such that readers can both learn the theory and apply them to real-world problems. Although chapters were made to be stand alone, it is recommended that readers go through the first few chapters to be able to fully appreciate the latter chapters.
+This handbook extensively covers time series analysis and forecasting, delving from the most fundamental methods to the state-of-the-art. The handbook was made in Python and is designed such that readers can both learn the theory and apply them to real-world problems. Although chapters were made to be stand alone, it is recommended that readers go through the first few chapters to be able to fully appreciate the latter chapters. Moreover, the 
+[Jena climate dataset](https://www.kaggle.com/stytch16/jena-climate-2009-2016) is used across several chapters, with a summary of the performance of the models used at the end.
 
-The handbook is structured as follows: in the first part, classical forecasting methods are discussed in detail. The subsequent part is then dedicated to dynamical forecasting methods and as well as causality and correlations, topics that are particularly essential in understanding the intricacies of time series forecasting. Finally, the last chapter shows a glimpse into the current trends in time series forecasting and modeling.
+The handbook is structured as follows: in the first part, classical forecasting methods are discussed in detail. The middle part is then dedicated to dynamical forecasting methods and as well as causality and correlations, topics that are particularly essential in understanding the intricacies of time series forecasting. Finally, the last part shows a glimpse into the current trends and open problems in time series forecasting and modeling.
+
+The aim of this handbook is to serve as a practitioner’s guide to forecasting, enabling them to better understand relationships in signals. It is made for an audience with a solid background in Statistics and Mathematics, as well as a basic knowledge of Python. Familiarity with Machine Learning methods is a plus, especially for the later chapters. 
+
 
 ## Outline 
 This handbook contains a variety of techniques that you can use for time series analysis -- from simple statistical models to some of the state-of-the-art algorithms as of writing. Here are the items that are covered in this material:
-- Preface: [Advanced Time Series Analysis](00_Preface)
+- Chapter 0: [Introduction to Time Series Analysis](00_Introduction)
 - Chapter 1: [Autoregressive integrated moving average](01_AutoRegressiveIntegratedMovingAverage)
 - Chapter 2: [Linear Trend and Momentum Forecasting](02_LinearForecastingTrendandMomentumForecasting)
 - Chapter 3: [Vector Autoregressive Methods](03_VectorAutoregressiveModels)

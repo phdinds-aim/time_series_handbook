@@ -9,6 +9,17 @@ we introduce **vector autoregressive (VAR)** models and show how they can be use
 
 The [notebook](03_VectorAutoregressiveMethods.ipynb) is outlined as follows: 
 * Multivariate Time Series model
+    * Motivation
+    * Univariate VS Multivariate Time Series
+    * Examples
+    * Foundations
 * Vector Autoregressive (VAR) Models
+    * VAR(1) model
+    * VAR(*p*) model
+    * Choosing the order *p*
 * Building a VAR model
 * Structural Analysis
+    * Impulse Response Function
+    * Forecast Error Variance Decomposition 
+* Takeaways
+* References
