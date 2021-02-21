@@ -8,7 +8,7 @@
 - file: 02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting
 - file: 03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods
 - file: 04_GrangerCausality/04_GrangerCausality
-- file: 05_SimplexandSmapProjections/Chapter 5 - Empirical Dynamic Modelling (Simplex and SMap_Projections)
+- file: 05_SimplexandSmapProjections/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)
 - file: 06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara
   sections:
     - file: 06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package
