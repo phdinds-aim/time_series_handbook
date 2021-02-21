@@ -1,0 +1,2291 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 8: Winningest Methods in Time Series Forecasting &#8212; Time Series Analysis Handbook</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hyperparameter Tuning (Supplementary Notebook)" href="lightgbm_m5_tuning.html" />
+    <link rel="prev" title="Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Time Series Analysis Handbook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Preface/Preface.html">
+   Preface: Introduction to Time Series Analysis
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Introduction/00_Introduction.html">
+   Chapter 0: Advanced Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_AutoRegressiveIntegratedMovingAverage/01_AutoRegressiveIntegratedMovingAverage.html">
+   Chapter 1: AutoRegressive Integrated Moving Average (ARIMA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_LinearForecastingTrendandMomentumForecasting/02_LinearTrendandMomentumForecasting.html">
+   Chapter 2: Linear, Trend, and Momentum Forecasting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_VectorAutoregressiveModels/03_VectorAutoregressiveMethods.html">
+   Chapter 3: Vector Autoregressive Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_GrangerCausality/04_GrangerCausality.html">
+   Chapter 4: Granger Causality Test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_SimplexandSmapProjections/05_Empirical%20Dynamic%20Modelling%20%28Simplex%20and%20SMap_Projections%29.html">
+   Chapter 5 : Dynamical Forecasting Methods (Simplex and SMap Projections)
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/ccm_sugihara.html">
+   Chapter 6: Convergent Cross Mapping
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_ConvergentCrossMappingandSugiharaCausality/using_causal_ccm_package.html">
+     Applying CCM Using causal-ccm package
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html">
+   Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
+   Chapter 8: Winningest Methods in Time Series Forecasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lightgbm_m5_tuning.html">
+     Hyperparameter Tuning (Supplementary Notebook)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lightgbm_jena_forecasting.html">
+     Temperature Forecasting (Supplementary Notebook)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/README.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/08_WinningestMethods/lightgbm_m5_forecasting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/phdinds-aim/time_series_handbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/phdinds-aim/time_series_handbook/issues/new?title=Issue%20on%20page%20%2F08_WinningestMethods/lightgbm_m5_forecasting.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/phdinds-aim/time_series_handbook/main?urlpath=tree/08_WinningestMethods/lightgbm_m5_forecasting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#m5-dataset">
+   1. M5 Dataset
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-product">
+     Sample Product
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pick-a-time-series">
+     Pick a Time Series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-processing">
+   2. Pre-processing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-the-series-non-stationary">
+     Is the series non-stationary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-differencing-make-the-series-stationary">
+     Does differencing make the series stationary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-the-series-seasonal">
+     Is the series seasonal?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-remove-the-seasonality">
+     Can we remove the seasonality?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-now">
+     What now?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-step-prediction">
+   3. One-Step Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-far-do-we-lookback">
+     How far do we lookback?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-set">
+     Test Set
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lightgbm">
+     LightGBM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuning-window-size">
+     Tuning Window Size
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-step-prediction">
+   4. Multi-Step Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recursive-forecasting">
+     Recursive Forecasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#direct-forecasting">
+     Direct Forecasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-shot-forecasting">
+     Single-Shot Forecasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forecast-combination">
+     Forecast Combination
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-importance">
+   5. Feature Importance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-8-winningest-methods-in-time-series-forecasting">
+<h1>Chapter 8: Winningest Methods in Time Series Forecasting<a class="headerlink" href="#chapter-8-winningest-methods-in-time-series-forecasting" title="Permalink to this headline">¶</a></h1>
+<p>Compiled by: Sebastian C. Ibañez</p>
+<p>In previous sections, we examined several models used in time series forecasting such as ARIMA, VAR, and Exponential Smoothing methods. While the main advantage of traditional statistical methods is their ability to perform more sophisticated inference tasks directly (e.g. hypothesis testing on parameters, causality testing), they usually lack predictive power because of their rigid assumptions. That is not to say that they are <i>necessarily</i> inferior when it comes to forecasting, but rather they are typically used as performance benchmarks.</p>
+<p>In this section, we demonstrate several of the fundamental ideas and approaches used in the recently concluded <a class="reference external" href="https://mofc.unic.ac.cy/m5-competition/"><code class="docutils literal notranslate"><span class="pre">M5</span> <span class="pre">Competition</span></code></a> where challengers from all over the world competed in building time series forecasting models for both <a class="reference external" href="https://www.kaggle.com/c/m5-forecasting-accuracy"><code class="docutils literal notranslate"><span class="pre">accuracy</span></code></a> and <a class="reference external" href="https://www.kaggle.com/c/m5-forecasting-uncertainty"><code class="docutils literal notranslate"><span class="pre">uncertainty</span></code></a> prediction tasks. Specifically, we explore the machine learning model that majority of the competition’s winners utilized: <a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">LightGBM</span></code></a>, a tree-based gradient boosting framework designed for speed and efficiency.</p>
+<div class="section" id="m5-dataset">
+<h2>1. M5 Dataset<a class="headerlink" href="#m5-dataset" title="Permalink to this headline">¶</a></h2>
+<p>You can download the M5 dataset from the Kaggle links above.</p>
+<p>Let’s load the dataset and examine it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plot_x_size</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">plot_y_size</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">suppress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">date_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2011-01-29&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2016-04-24&#39;</span><span class="p">)]</span>
+
+<span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/calendar.csv&#39;</span><span class="p">)</span>
+<span class="n">df_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sell_prices.csv&#39;</span><span class="p">)</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sales_train_validation.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">06</span><span class="n">bc3b6f7185</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">date_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;2011-01-29&#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2016-04-24&#39;</span><span class="p">)]</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/calendar.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">df_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sell_prices.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/m5/sales_train_validation.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span> 
+<span class="ne">--&gt; </span><span class="mi">610</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span> 
+<span class="g g-Whitespace">    </span><span class="mi">612</span> 
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span> 
+<span class="g g-Whitespace">    </span><span class="mi">461</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">462</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span> 
+<span class="g g-Whitespace">    </span><span class="mi">464</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">817</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">818</span> 
+<span class="ne">--&gt; </span><span class="mi">819</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">820</span> 
+<span class="g g-Whitespace">    </span><span class="mi">821</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1050</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1865</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1866</span>         <span class="c1"># open handles</span>
+<span class="ne">-&gt; </span><span class="mi">1867</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1868</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1869</span>         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="s2">&quot;compression&quot;</span><span class="p">):</span>
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1366</span>             <span class="n">compression</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1367</span>             <span class="n">memory_map</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="ne">-&gt; </span><span class="mi">1368</span>             <span class="n">storage_options</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1369</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1370</span> 
+
+<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span>                 <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">646</span>                 <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">647</span>                 <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>             <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span>         <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../data/m5/calendar.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df_sales</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">date_list</span><span class="p">)),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df_sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>item_id</th>
+      <th>dept_id</th>
+      <th>cat_id</th>
+      <th>store_id</th>
+      <th>state_id</th>
+      <th>2011-01-29</th>
+      <th>2011-01-30</th>
+      <th>2011-01-31</th>
+      <th>2011-02-01</th>
+      <th>...</th>
+      <th>2016-04-15</th>
+      <th>2016-04-16</th>
+      <th>2016-04-17</th>
+      <th>2016-04-18</th>
+      <th>2016-04-19</th>
+      <th>2016-04-20</th>
+      <th>2016-04-21</th>
+      <th>2016-04-22</th>
+      <th>2016-04-23</th>
+      <th>2016-04-24</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>HOBBIES_1_001_CA_1_validation</td>
+      <td>HOBBIES_1_001</td>
+      <td>HOBBIES_1</td>
+      <td>HOBBIES</td>
+      <td>CA_1</td>
+      <td>CA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>HOBBIES_1_002_CA_1_validation</td>
+      <td>HOBBIES_1_002</td>
+      <td>HOBBIES_1</td>
+      <td>HOBBIES</td>
+      <td>CA_1</td>
+      <td>CA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>HOBBIES_1_003_CA_1_validation</td>
+      <td>HOBBIES_1_003</td>
+      <td>HOBBIES_1</td>
+      <td>HOBBIES</td>
+      <td>CA_1</td>
+      <td>CA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>HOBBIES_1_004_CA_1_validation</td>
+      <td>HOBBIES_1_004</td>
+      <td>HOBBIES_1</td>
+      <td>HOBBIES</td>
+      <td>CA_1</td>
+      <td>CA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>HOBBIES_1_005_CA_1_validation</td>
+      <td>HOBBIES_1_005</td>
+      <td>HOBBIES_1</td>
+      <td>HOBBIES</td>
+      <td>CA_1</td>
+      <td>CA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>30485</th>
+      <td>FOODS_3_823_WI_3_validation</td>
+      <td>FOODS_3_823</td>
+      <td>FOODS_3</td>
+      <td>FOODS</td>
+      <td>WI_3</td>
+      <td>WI</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>...</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>30486</th>
+      <td>FOODS_3_824_WI_3_validation</td>
+      <td>FOODS_3_824</td>
+      <td>FOODS_3</td>
+      <td>FOODS</td>
+      <td>WI_3</td>
+      <td>WI</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>30487</th>
+      <td>FOODS_3_825_WI_3_validation</td>
+      <td>FOODS_3_825</td>
+      <td>FOODS_3</td>
+      <td>FOODS</td>
+      <td>WI_3</td>
+      <td>WI</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>30488</th>
+      <td>FOODS_3_826_WI_3_validation</td>
+      <td>FOODS_3_826</td>
+      <td>FOODS_3</td>
+      <td>FOODS</td>
+      <td>WI_3</td>
+      <td>WI</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>30489</th>
+      <td>FOODS_3_827_WI_3_validation</td>
+      <td>FOODS_3_827</td>
+      <td>FOODS_3</td>
+      <td>FOODS</td>
+      <td>WI_3</td>
+      <td>WI</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>30490 rows × 1919 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_calendar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>wm_yr_wk</th>
+      <th>weekday</th>
+      <th>wday</th>
+      <th>month</th>
+      <th>year</th>
+      <th>d</th>
+      <th>event_name_1</th>
+      <th>event_type_1</th>
+      <th>event_name_2</th>
+      <th>event_type_2</th>
+      <th>snap_CA</th>
+      <th>snap_TX</th>
+      <th>snap_WI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2011-01-29</td>
+      <td>11101</td>
+      <td>Saturday</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2011</td>
+      <td>d_1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2011-01-30</td>
+      <td>11101</td>
+      <td>Sunday</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2011</td>
+      <td>d_2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2011-01-31</td>
+      <td>11101</td>
+      <td>Monday</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2011</td>
+      <td>d_3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2011-02-01</td>
+      <td>11101</td>
+      <td>Tuesday</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2011</td>
+      <td>d_4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2011-02-02</td>
+      <td>11101</td>
+      <td>Wednesday</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2011</td>
+      <td>d_5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1964</th>
+      <td>2016-06-15</td>
+      <td>11620</td>
+      <td>Wednesday</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2016</td>
+      <td>d_1965</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1965</th>
+      <td>2016-06-16</td>
+      <td>11620</td>
+      <td>Thursday</td>
+      <td>6</td>
+      <td>6</td>
+      <td>2016</td>
+      <td>d_1966</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1966</th>
+      <td>2016-06-17</td>
+      <td>11620</td>
+      <td>Friday</td>
+      <td>7</td>
+      <td>6</td>
+      <td>2016</td>
+      <td>d_1967</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1967</th>
+      <td>2016-06-18</td>
+      <td>11621</td>
+      <td>Saturday</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2016</td>
+      <td>d_1968</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1968</th>
+      <td>2016-06-19</td>
+      <td>11621</td>
+      <td>Sunday</td>
+      <td>2</td>
+      <td>6</td>
+      <td>2016</td>
+      <td>d_1969</td>
+      <td>NBAFinalsEnd</td>
+      <td>Sporting</td>
+      <td>Father's day</td>
+      <td>Cultural</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1969 rows × 14 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_price</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>store_id</th>
+      <th>item_id</th>
+      <th>wm_yr_wk</th>
+      <th>sell_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CA_1</td>
+      <td>HOBBIES_1_001</td>
+      <td>11325</td>
+      <td>9.58</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CA_1</td>
+      <td>HOBBIES_1_001</td>
+      <td>11326</td>
+      <td>9.58</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CA_1</td>
+      <td>HOBBIES_1_001</td>
+      <td>11327</td>
+      <td>8.26</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CA_1</td>
+      <td>HOBBIES_1_001</td>
+      <td>11328</td>
+      <td>8.26</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA_1</td>
+      <td>HOBBIES_1_001</td>
+      <td>11329</td>
+      <td>8.26</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6841116</th>
+      <td>WI_3</td>
+      <td>FOODS_3_827</td>
+      <td>11617</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>6841117</th>
+      <td>WI_3</td>
+      <td>FOODS_3_827</td>
+      <td>11618</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>6841118</th>
+      <td>WI_3</td>
+      <td>FOODS_3_827</td>
+      <td>11619</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>6841119</th>
+      <td>WI_3</td>
+      <td>FOODS_3_827</td>
+      <td>11620</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>6841120</th>
+      <td>WI_3</td>
+      <td>FOODS_3_827</td>
+      <td>11621</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>6841121 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="sample-product">
+<h3>Sample Product<a class="headerlink" href="#sample-product" title="Permalink to this headline">¶</a></h3>
+<p>Let’s choose a random product and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample</span> <span class="o">=</span> <span class="n">df_sales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">series_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+
+<span class="n">df_sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id            HOBBIES_1_004_CA_1_validation
+item_id                       HOBBIES_1_004
+dept_id                           HOBBIES_1
+cat_id                              HOBBIES
+store_id                               CA_1
+                          ...              
+2016-04-20                                0
+2016-04-21                                1
+2016-04-22                                3
+2016-04-23                                7
+2016-04-24                                2
+Name: 3, Length: 1919, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series_sample</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_8_0.png" src="../_images/lightgbm_m5_forecasting_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pick-a-time-series">
+<h3>Pick a Time Series<a class="headerlink" href="#pick-a-time-series" title="Permalink to this headline">¶</a></h3>
+<p>Let’s try and find an interesting time series to forecast.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales_total_by_store</span> <span class="o">=</span> <span class="n">df_sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;store_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_sales_total_by_store</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2011-01-29</th>
+      <th>2011-01-30</th>
+      <th>2011-01-31</th>
+      <th>2011-02-01</th>
+      <th>2011-02-02</th>
+      <th>2011-02-03</th>
+      <th>2011-02-04</th>
+      <th>2011-02-05</th>
+      <th>2011-02-06</th>
+      <th>2011-02-07</th>
+      <th>...</th>
+      <th>2016-04-15</th>
+      <th>2016-04-16</th>
+      <th>2016-04-17</th>
+      <th>2016-04-18</th>
+      <th>2016-04-19</th>
+      <th>2016-04-20</th>
+      <th>2016-04-21</th>
+      <th>2016-04-22</th>
+      <th>2016-04-23</th>
+      <th>2016-04-24</th>
+    </tr>
+    <tr>
+      <th>store_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CA_1</th>
+      <td>4337</td>
+      <td>4155</td>
+      <td>2816</td>
+      <td>3051</td>
+      <td>2630</td>
+      <td>3276</td>
+      <td>3450</td>
+      <td>5437</td>
+      <td>4340</td>
+      <td>3157</td>
+      <td>...</td>
+      <td>3982</td>
+      <td>5437</td>
+      <td>5954</td>
+      <td>4345</td>
+      <td>3793</td>
+      <td>3722</td>
+      <td>3709</td>
+      <td>4387</td>
+      <td>5577</td>
+      <td>6113</td>
+    </tr>
+    <tr>
+      <th>CA_2</th>
+      <td>3494</td>
+      <td>3046</td>
+      <td>2121</td>
+      <td>2324</td>
+      <td>1942</td>
+      <td>2288</td>
+      <td>2629</td>
+      <td>3729</td>
+      <td>2957</td>
+      <td>2218</td>
+      <td>...</td>
+      <td>4440</td>
+      <td>5352</td>
+      <td>5760</td>
+      <td>3830</td>
+      <td>3631</td>
+      <td>3691</td>
+      <td>3303</td>
+      <td>4457</td>
+      <td>5884</td>
+      <td>6082</td>
+    </tr>
+    <tr>
+      <th>CA_3</th>
+      <td>4739</td>
+      <td>4827</td>
+      <td>3785</td>
+      <td>4232</td>
+      <td>3817</td>
+      <td>4369</td>
+      <td>4703</td>
+      <td>5456</td>
+      <td>5581</td>
+      <td>4912</td>
+      <td>...</td>
+      <td>5337</td>
+      <td>6936</td>
+      <td>8271</td>
+      <td>6068</td>
+      <td>5683</td>
+      <td>5235</td>
+      <td>5018</td>
+      <td>5623</td>
+      <td>7419</td>
+      <td>7721</td>
+    </tr>
+    <tr>
+      <th>CA_4</th>
+      <td>1625</td>
+      <td>1777</td>
+      <td>1386</td>
+      <td>1440</td>
+      <td>1536</td>
+      <td>1389</td>
+      <td>1469</td>
+      <td>1988</td>
+      <td>1818</td>
+      <td>1535</td>
+      <td>...</td>
+      <td>2496</td>
+      <td>2839</td>
+      <td>3047</td>
+      <td>2809</td>
+      <td>2677</td>
+      <td>2500</td>
+      <td>2458</td>
+      <td>2628</td>
+      <td>2954</td>
+      <td>3271</td>
+    </tr>
+    <tr>
+      <th>TX_1</th>
+      <td>2556</td>
+      <td>2687</td>
+      <td>1822</td>
+      <td>2258</td>
+      <td>1694</td>
+      <td>2734</td>
+      <td>1691</td>
+      <td>2820</td>
+      <td>2887</td>
+      <td>2174</td>
+      <td>...</td>
+      <td>3084</td>
+      <td>3724</td>
+      <td>4192</td>
+      <td>3410</td>
+      <td>3257</td>
+      <td>2901</td>
+      <td>2776</td>
+      <td>3022</td>
+      <td>3700</td>
+      <td>4033</td>
+    </tr>
+    <tr>
+      <th>TX_2</th>
+      <td>3852</td>
+      <td>3937</td>
+      <td>2731</td>
+      <td>2954</td>
+      <td>2492</td>
+      <td>3439</td>
+      <td>2588</td>
+      <td>3772</td>
+      <td>3657</td>
+      <td>2932</td>
+      <td>...</td>
+      <td>3897</td>
+      <td>4475</td>
+      <td>4998</td>
+      <td>3311</td>
+      <td>3727</td>
+      <td>3384</td>
+      <td>3446</td>
+      <td>3902</td>
+      <td>4483</td>
+      <td>4292</td>
+    </tr>
+    <tr>
+      <th>TX_3</th>
+      <td>3030</td>
+      <td>3006</td>
+      <td>2225</td>
+      <td>2169</td>
+      <td>1726</td>
+      <td>2833</td>
+      <td>1947</td>
+      <td>2848</td>
+      <td>2832</td>
+      <td>2213</td>
+      <td>...</td>
+      <td>3819</td>
+      <td>4261</td>
+      <td>4519</td>
+      <td>3147</td>
+      <td>3938</td>
+      <td>3315</td>
+      <td>3380</td>
+      <td>3691</td>
+      <td>4083</td>
+      <td>3957</td>
+    </tr>
+    <tr>
+      <th>WI_1</th>
+      <td>2704</td>
+      <td>2194</td>
+      <td>1562</td>
+      <td>1251</td>
+      <td>2</td>
+      <td>2049</td>
+      <td>2815</td>
+      <td>3248</td>
+      <td>1674</td>
+      <td>1355</td>
+      <td>...</td>
+      <td>3862</td>
+      <td>4862</td>
+      <td>4812</td>
+      <td>3236</td>
+      <td>3069</td>
+      <td>3242</td>
+      <td>3324</td>
+      <td>3991</td>
+      <td>4772</td>
+      <td>4874</td>
+    </tr>
+    <tr>
+      <th>WI_2</th>
+      <td>2256</td>
+      <td>1922</td>
+      <td>2018</td>
+      <td>2522</td>
+      <td>1175</td>
+      <td>2244</td>
+      <td>2232</td>
+      <td>2643</td>
+      <td>2140</td>
+      <td>1836</td>
+      <td>...</td>
+      <td>6259</td>
+      <td>5579</td>
+      <td>5566</td>
+      <td>4347</td>
+      <td>4464</td>
+      <td>4194</td>
+      <td>4393</td>
+      <td>4988</td>
+      <td>5404</td>
+      <td>5127</td>
+    </tr>
+    <tr>
+      <th>WI_3</th>
+      <td>4038</td>
+      <td>4198</td>
+      <td>3317</td>
+      <td>3211</td>
+      <td>2132</td>
+      <td>4590</td>
+      <td>4486</td>
+      <td>5991</td>
+      <td>4850</td>
+      <td>3240</td>
+      <td>...</td>
+      <td>4613</td>
+      <td>4897</td>
+      <td>4521</td>
+      <td>3556</td>
+      <td>3331</td>
+      <td>3159</td>
+      <td>3226</td>
+      <td>3828</td>
+      <td>4686</td>
+      <td>4325</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 1913 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">df_sales_total_by_store</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_11_0.png" src="../_images/lightgbm_m5_forecasting_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">df_sales_total_by_store</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min Dates:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">series</span> <span class="o">==</span> <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CA_1
+Min Dates:[&#39;2011-12-25&#39;, &#39;2012-12-25&#39;, &#39;2013-12-25&#39;, &#39;2014-12-25&#39;, &#39;2015-12-25&#39;]
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_12_1.png" src="../_images/lightgbm_m5_forecasting_12_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pre-processing">
+<h2>2. Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">¶</a></h2>
+<p>Before we build a forecasting model, let’s check some properties of our time series.</p>
+<div class="section" id="is-the-series-non-stationary">
+<h3>Is the series non-stationary?<a class="headerlink" href="#is-the-series-non-stationary" title="Permalink to this headline">¶</a></h3>
+<p>Let’s check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -2.035408
+p-value: 0.271267
+Critical Values:
+	1%: -3.434
+	5%: -2.863
+	10%: -2.568
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="does-differencing-make-the-series-stationary">
+<h3>Does differencing make the series stationary?<a class="headerlink" href="#does-differencing-make-the-series-stationary" title="Permalink to this headline">¶</a></h3>
+<p>Let’s check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">difference</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">interval</span><span class="p">]</span>
+        <span class="n">diff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">inverse_difference</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">yhat</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">yhat</span> <span class="o">+</span> <span class="n">history</span><span class="p">[</span><span class="o">-</span><span class="n">interval</span><span class="p">]</span>
+
+<span class="n">series_d1</span> <span class="o">=</span> <span class="n">difference</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">series_d1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -20.626012
+p-value: 0.000000
+Critical Values:
+	1%: -3.434
+	5%: -2.863
+	10%: -2.568
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="is-the-series-seasonal">
+<h3>Is the series seasonal?<a class="headerlink" href="#is-the-series-seasonal" title="Permalink to this headline">¶</a></h3>
+<p>Let’s check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">lags</span> <span class="o">=</span> <span class="mi">730</span><span class="p">,</span> <span class="n">use_vlines</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_19_0.png" src="../_images/lightgbm_m5_forecasting_19_0.png" />
+<img alt="../_images/lightgbm_m5_forecasting_19_1.png" src="../_images/lightgbm_m5_forecasting_19_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="can-we-remove-the-seasonality">
+<h3>Can we remove the seasonality?<a class="headerlink" href="#can-we-remove-the-seasonality" title="Permalink to this headline">¶</a></h3>
+<p>Let’s check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7</span> <span class="o">=</span> <span class="n">difference</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7</span><span class="p">,</span> <span class="n">lags</span> <span class="o">=</span> <span class="mi">730</span><span class="p">,</span> <span class="n">use_vlines</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_21_0.png" src="../_images/lightgbm_m5_forecasting_21_0.png" />
+<img alt="../_images/lightgbm_m5_forecasting_21_1.png" src="../_images/lightgbm_m5_forecasting_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7_d30</span> <span class="o">=</span> <span class="n">difference</span><span class="p">(</span><span class="n">series_d7</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">,</span> <span class="n">lags</span> <span class="o">=</span> <span class="mi">730</span><span class="p">,</span> <span class="n">use_vlines</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_22_0.png" src="../_images/lightgbm_m5_forecasting_22_0.png" />
+<img alt="../_images/lightgbm_m5_forecasting_22_1.png" src="../_images/lightgbm_m5_forecasting_22_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -8.405429
+p-value: 0.000000
+Critical Values:
+	1%: -3.434
+	5%: -2.863
+	10%: -2.568
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_d7_d30</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">series_d7_d30</span><span class="p">)</span>
+<span class="n">series_d7_d30</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">date_list</span><span class="p">[</span><span class="mi">37</span><span class="p">:]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series_d7_d30</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Differenced Series&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_24_0.png" src="../_images/lightgbm_m5_forecasting_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="what-now">
+<h3>What now?<a class="headerlink" href="#what-now" title="Permalink to this headline">¶</a></h3>
+<p>At this point we have two options:</p>
+<ul class="simple">
+<li><p>Model the seasonally differenced series, then reverse the differencing after making predictions.</p></li>
+<li><p>Model the original series directly.</p></li>
+</ul>
+<p>While (vanilla) ARIMA requires a non-stationary and non-seasonal time series, these properties are not necessary for most non-parametric ML models.</p>
+</div>
+</div>
+<div class="section" id="one-step-prediction">
+<h2>3. One-Step Prediction<a class="headerlink" href="#one-step-prediction" title="Permalink to this headline">¶</a></h2>
+<p>Let’s build a model for making one-step forecasts.</p>
+<p>To do this, we first need to transform the time series data into a supervised learning dataset.</p>
+<p>In other words, we need to create a new dataset consisting of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> variables, where <span class="math notranslate nohighlight">\(X\)</span> refers to the features and <span class="math notranslate nohighlight">\(Y\)</span> refers to the target.</p>
+<div class="section" id="how-far-do-we-lookback">
+<h3>How far do we lookback?<a class="headerlink" href="#how-far-do-we-lookback" title="Permalink to this headline">¶</a></h3>
+<p>To create the new <span class="math notranslate nohighlight">\((X,Y)\)</span> dataset, we first need to decide what the <span class="math notranslate nohighlight">\(X\)</span> features are.</p>
+<p>For the moment, let’s ignore any exogenous variables. In this case, what determines the <span class="math notranslate nohighlight">\(X\)</span>s is how far we <i>lookback</i>. In general, we can treat the lookback as a hyperparameter, which we will call <code class="docutils literal notranslate"><span class="pre">window_size</span></code>.</p>
+<p><i>Advanced note:</i> Technically, we could build an entire methodology for feature engineering <span class="math notranslate nohighlight">\(X\)</span>.</p>
+</div>
+<div class="section" id="test-set">
+<h3>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
+<p>To test our model we will use the last 28 days of the series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### CREATE X,Y ####</span>
+<span class="k">def</span> <span class="nf">create_xy</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">):(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="n">prediction_horizon</span><span class="p">)])</span> <span class="o">&lt;</span> <span class="n">prediction_horizon</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">)])</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">):(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="n">prediction_horizon</span><span class="p">)])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">### TRAIN VAL SPLIT ### (include shuffling later)</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
+
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">split_time</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">:]</span>
+
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">test_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">test_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1520, 365)
+(1520,)
+(28, 365)
+(28,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;CA_1 Test Series&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_29_0.png" src="../_images/lightgbm_m5_forecasting_29_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="lightgbm">
+<h3>LightGBM<a class="headerlink" href="#lightgbm" title="Permalink to this headline">¶</a></h3>
+<p>Now we can build a LightGBM model to forecast our time series.</p>
+<p>Gradient boosting is an ensemble method that combines multiple weak models to produce a single strong prediction model. The method involves constructing the model (called a <i>gradient boosting machine</i>) in a serial stage-wise manner by sequentially optimizing a differentiable loss function at each stage. Much like other boosting algorithms, the residual errors are passed to the next weak learner and trained.</p>
+<p>For this work, we use LightGBM, a gradient boosting framework designed for speed and efficiency. Specifically, the framework uses tree-based learning algorithms.</p>
+<p>To tune the model’s hyperparameters, we use a combination of grid search and repeated k-fold cross validation, with some manual tuning. For more details, see the Hyperparameter Tuning notebook.</p>
+<p>Now we train the model on the full dataset and test it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s1">&#39;boosting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;dart&#39;</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(</span><span class="n">first_metric_only</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
+          <span class="n">eval_metric</span> <span class="o">=</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> 
+          <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
+          <span class="c1">#early_stopping_rounds = 10,</span>
+          <span class="n">verbose</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, first_metric_only=True, max_depth=4,
+              n_estimators=2000, num_leaves=16)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+<span class="n">s1_naive</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">s7_naive</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">s30_naive</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">56</span><span class="p">:</span><span class="o">-</span><span class="mi">28</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">s365_naive</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">364</span><span class="p">:</span><span class="o">-</span><span class="mi">336</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     Naive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s1_naive</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  s7-Naive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s7_naive</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; s30-Naive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s30_naive</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s365-Naive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s365_naive</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  LightGBM MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Naive MAE: 698.0000
+  s7-Naive MAE: 372.2857
+ s30-Naive MAE: 330.8214
+s365-Naive MAE: 247.9286
+  LightGBM MAE: 200.5037
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_33_1.png" src="../_images/lightgbm_m5_forecasting_33_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="tuning-window-size">
+<h3>Tuning Window Size<a class="headerlink" href="#tuning-window-size" title="Permalink to this headline">¶</a></h3>
+<p>How does our metric change as we extend the window size?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedKFold</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s1">&#39;boosting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;dart&#39;</span>
+<span class="p">}</span>
+
+<span class="n">windows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">545</span><span class="p">,</span> <span class="mi">730</span><span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">windows</span><span class="p">:</span>
+
+    <span class="n">window_size</span> <span class="o">=</span> <span class="n">w</span>
+
+    <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+
+    <span class="n">train_y</span> <span class="o">=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">RepeatedKFold</span><span class="p">(</span><span class="n">n_splits</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">123</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">),</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3d</span><span class="s1"> --- MAE: </span><span class="si">%.3f</span><span class="s1"> (</span><span class="si">%.3f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>    
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">names</span><span class="p">,</span> <span class="n">showmeans</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7 --- MAE: -333.105 (21.291)
+ 30 --- MAE: -307.008 (21.648)
+180 --- MAE: -291.474 (22.537)
+365 --- MAE: -275.644 (17.895)
+545 --- MAE: -277.332 (20.982)
+730 --- MAE: -275.664 (23.006)
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_35_1.png" src="../_images/lightgbm_m5_forecasting_35_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multi-step-prediction">
+<h2>4. Multi-Step Prediction<a class="headerlink" href="#multi-step-prediction" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we were interested in forecasting the next <span class="math notranslate nohighlight">\(n\)</span>-days instead of just the next day.</p>
+<p>There are several approaches we can take to solve this problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">### TRAIN VAL SPLIT ###</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
+
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">split_time</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">:]</span>
+
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">test_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">test_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recursive-forecasting">
+<h3>Recursive Forecasting<a class="headerlink" href="#recursive-forecasting" title="Permalink to this headline">¶</a></h3>
+<p>In recursive forecasting, we first train a one-step model then generate a multi-step forecast by recursively feeding our predictions back into the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s1">&#39;boosting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;dart&#39;</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(</span><span class="n">first_metric_only</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
+          <span class="n">eval_metric</span> <span class="o">=</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> 
+          <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
+          <span class="c1">#early_stopping_rounds = 10,</span>
+          <span class="n">verbose</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, first_metric_only=True, max_depth=4,
+              n_estimators=2000, num_leaves=16)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recursive_x</span> <span class="o">=</span> <span class="n">test_x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="n">forecast_ms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">recursive_x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">recursive_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="n">recursive_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recursive_x</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="n">forecast_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+    
+<span class="n">forecast_ms_rec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">forecast_ms</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">forecast_os</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  One-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_os</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multi-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_rec</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_rec</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Multi-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast One-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 200.5037
+Multi-Step MAE: 214.8020
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_40_1.png" src="../_images/lightgbm_m5_forecasting_40_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="direct-forecasting">
+<h3>Direct Forecasting<a class="headerlink" href="#direct-forecasting" title="Permalink to this headline">¶</a></h3>
+<p>In direct forecasting, we train <span class="math notranslate nohighlight">\(n\)</span> independent models and generate a multi-step forecast by concatenating the <span class="math notranslate nohighlight">\(n\)</span> predictions.</p>
+<p>For this implementation, we need to create a new <span class="math notranslate nohighlight">\((X,Y)\)</span> dataset, where <span class="math notranslate nohighlight">\(Y\)</span> is now a vector of <span class="math notranslate nohighlight">\(n\)</span> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">28</span>
+
+<span class="c1">### TRAIN VAL SPLIT ###</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
+
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">split_time</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">:]</span>
+
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">test_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multioutput</span> <span class="kn">import</span> <span class="n">MultiOutputRegressor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MultiOutputRegressor</span><span class="p">(</span><span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(),</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiOutputRegressor(estimator=LGBMRegressor(), n_jobs=-1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ms_dir</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  One-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_os</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multi-Step MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_dir</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">plot_x_size</span><span class="p">,</span> <span class="n">plot_y_size</span><span class="p">]</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_dir</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Multi-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_os</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast One-Step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  One-Step MAE: 200.5037
+Multi-Step MAE: 233.6326
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_44_1.png" src="../_images/lightgbm_m5_forecasting_44_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="single-shot-forecasting">
+<h3>Single-Shot Forecasting<a class="headerlink" href="#single-shot-forecasting" title="Permalink to this headline">¶</a></h3>
+<p>In single-shot forecasting, we create a model that attempts to predict all <span class="math notranslate nohighlight">\(n\)</span>-steps simultaneously.</p>
+<p>Unfortunately, LightGBM (tree-based methods in general) does not support multi-output models.</p>
+</div>
+<div class="section" id="forecast-combination">
+<h3>Forecast Combination<a class="headerlink" href="#forecast-combination" title="Permalink to this headline">¶</a></h3>
+<p>An easy way to improve forecast accuracy is to use several different methods on the same time series, and to average the resulting forecasts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ms_comb</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">forecast_ms_dir</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">forecast_ms_rec</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  Recursive MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_rec</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     Direct MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_dir</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Combination MAE: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">forecast_ms_comb</span> <span class="o">-</span> <span class="n">test_y</span><span class="p">))))</span>
+
+<span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecast_ms_comb</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Forecast Combination&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Recursive MAE: 214.8020
+     Direct MAE: 233.6326
+Combination MAE: 217.0313
+</pre></div>
+</div>
+<img alt="../_images/lightgbm_m5_forecasting_47_1.png" src="../_images/lightgbm_m5_forecasting_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-importance">
+<h2>5. Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
+<p>One advantage of GBM models is that it can generate feature importance metrics based on the quality of the splits (or information gain).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### HYPERPARAMETERS ###</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">prediction_horizon</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">### TRAIN VAL SPLIT ###</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">split_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">test_size</span>
+
+<span class="n">train_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="n">split_time</span><span class="p">]</span>
+<span class="n">test_series</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="n">split_time</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">:]</span>
+
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">train_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">create_xy</span><span class="p">(</span><span class="n">test_series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">prediction_horizon</span><span class="p">)</span>
+
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">test_y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s1">&#39;boosting_type&#39;</span><span class="p">:</span> <span class="s1">&#39;dart&#39;</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(</span><span class="n">first_metric_only</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">feature_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lag_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">window_size</span><span class="p">)]</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
+          <span class="n">eval_metric</span> <span class="o">=</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> 
+          <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
+          <span class="c1">#early_stopping_rounds = 10,</span>
+          <span class="n">feature_name</span> <span class="o">=</span> <span class="n">feature_name_list</span><span class="p">,</span>
+          <span class="n">verbose</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LGBMRegressor(boosting_type=&#39;dart&#39;, first_metric_only=True, max_depth=4,
+              n_estimators=2000, num_leaves=16)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">lgb</span><span class="o">.</span><span class="n">plot_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">max_num_features</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">importance_type</span> <span class="o">=</span> <span class="s1">&#39;split&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lightgbm_m5_forecasting_50_0.png" src="../_images/lightgbm_m5_forecasting_50_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In summary, this section has shown the following:</p>
+<ul class="simple">
+<li><p>A quick exploration of the M5 dataset and its salient features</p></li>
+<li><p>Checking the usual assumptions for classical time series analysis</p></li>
+<li><p>Demonstrating the ‘out-of-the-box’ performance of LightGBM models</p></li>
+<li><p>Demonstrating how tuning the lookback window can effect forecasting performance</p></li>
+<li><p>Demonstrating how tuning the hyperparameters of a LightGBM model can improve performance</p></li>
+<li><p>Summarizing the different approaches to multi-step forecasting</p></li>
+<li><p>Illustrating that gradient boosting methods can measure feature importance</p></li>
+</ul>
+<p>Many of the methods and approaches shown above are easily extendable. Of note, because of the non-parametric nature of most machine learning models, performing classical inference tasks like hypothesis testing is more challenging. However, trends in ML research have been moving towards greater interpretability of so-called ‘black box’ models, such as SHAP for feature importance and even Bayesian approaches to neural networks for causality inference.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] S. Makridakis, E. Spiliotis, and V. Assimakopoulos. The M5 Accuracy competition: Results, findings and conlusions. 2020.</p>
+<p>[2] S. Makridakis, E. Spiliotis, V. Assimakopoulos, Z. Chen, A. Gaba, I. Tsetlin, and R. Winkler. The M5 Uncertainty competition: Results, findings and conlusions. 2020.</p>
+<p>[3] V. Jose, and R. Winkler. Evaluating quantile assessments. Operations research, 2009.</p>
+<p>[4] A. Gaba, I. Tsetlin, and R. Winkler. Combining interval forecasts. Decision Analysis, 2017.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./08_WinningestMethods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../07_CrosscorrelationsFourierTransformandWaveletTransform/07_CrosscorrelationsFourierTransformandWaveletTransform.html" title="previous page">Chapter 7: Cross-Correlations, Fourier Transform, and Wavelet Transform</a>
+    <a class='right-next' id="next-link" href="lightgbm_m5_tuning.html" title="next page">Hyperparameter Tuning (Supplementary Notebook)</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By students of PhD in Data Science Batch 2023 at the Asian Institute of Management<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
