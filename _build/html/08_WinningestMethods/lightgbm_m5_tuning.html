@@ -375,57 +375,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">f8af59ced7b0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedKFold</span>
-
-<span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">atsa</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">lightgbm</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.basic</span> <span class="kn">import</span> <span class="n">Booster</span><span class="p">,</span> <span class="n">Dataset</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.callback</span> <span class="kn">import</span> <span class="p">(</span><span class="n">early_stopping</span><span class="p">,</span> <span class="n">print_evaluation</span><span class="p">,</span> <span class="n">record_evaluation</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>                        <span class="n">reset_parameter</span><span class="p">)</span>
-
-<span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">atsa</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">lightgbm</span><span class="o">/</span><span class="n">basic</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-<span class="g g-Whitespace">     </span><span class="mi">42</span> 
-<span class="ne">---&gt; </span><span class="mi">43</span> <span class="n">_LIB</span> <span class="o">=</span> <span class="n">_load_lib</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> 
-<span class="g g-Whitespace">     </span><span class="mi">45</span> 
-
-<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/basic.py</span> in <span class="ni">_load_lib</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lib_path</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="k">return</span> <span class="kc">None</span>
-<span class="ne">---&gt; </span><span class="mi">34</span>     <span class="n">lib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="n">lib_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">lib</span><span class="o">.</span><span class="n">LGBM_GetLastError</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">callback</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CFUNCTYPE</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">)</span>
-
-<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/ctypes/__init__.py</span> in <span class="ni">LoadLibrary</span><span class="nt">(self, name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span> 
-<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="k">def</span> <span class="nf">LoadLibrary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">442</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlltype</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span> 
-<span class="g g-Whitespace">    </span><span class="mi">444</span> <span class="n">cdll</span> <span class="o">=</span> <span class="n">LibraryLoader</span><span class="p">(</span><span class="n">CDLL</span><span class="p">)</span>
-
-<span class="nn">~/opt/anaconda3/envs/atsa/lib/python3.7/ctypes/__init__.py</span> in <span class="ni">__init__</span><span class="nt">(self, name, mode, handle, use_errno, use_last_error)</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span> 
-<span class="g g-Whitespace">    </span><span class="mi">363</span>         <span class="k">if</span> <span class="n">handle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">364</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">_dlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
-
-<span class="ne">OSError</span>: dlopen(/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so, 6): Library not loaded: /usr/local/opt/libomp/lib/libomp.dylib
-  <span class="n">Referenced</span> <span class="n">from</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">prince</span><span class="o">.</span><span class="n">javier</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">atsa</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">lightgbm</span><span class="o">/</span><span class="n">lib_lightgbm</span><span class="o">.</span><span class="n">so</span>
-  <span class="n">Reason</span><span class="p">:</span> <span class="n">image</span> <span class="ow">not</span> <span class="n">found</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -495,14 +444,11 @@ s365-Naive MAE: 247.9286
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10 --- MAE: -385.639 (31.537)
- 50 --- MAE: -283.540 (21.324)
-100 --- MAE: -285.091 (21.551)
-500 --- MAE: -288.237 (21.803)
-1000 --- MAE: -288.672 (21.822)
-2000 --- MAE: -288.734 (21.844)
 </pre></div>
 </div>
-<img alt="../_images/lightgbm_m5_tuning_5_1.png" src="../_images/lightgbm_m5_tuning_5_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50 --- MAE: -283.540 (21.324)
+</pre></div>
+</div>
 </div>
 </div>
 </div>
