@@ -319,8 +319,25 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#benchmark-methods">
+   4. Benchmark Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-method">
+     Naïve Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seasonal-naive-method">
+     Seasonal Naïve Method
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluation-metrics-for-forecast-accuracy">
-   3. Evaluation Metrics for Forecast Accuracy
+   5. Evaluation Metrics for Forecast Accuracy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -344,6 +361,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-forecast-accuracy-for-jena-climate-dataset">
+   6. Summary of Forecast Accuracy for Jena Climate Dataset
+  </a>
  </li>
 </ul>
 
@@ -381,6 +403,8 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="k">as</span> <span class="nn">tg</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -709,8 +733,31 @@
 <p>with the characteristic polynomials as defined above.</p>
 </div>
 </div>
+<div class="section" id="benchmark-methods">
+<h2>4. Benchmark Methods<a class="headerlink" href="#benchmark-methods" title="Permalink to this headline">¶</a></h2>
+<p>In order to properly measure the performance of a forecasting model, we first need to establish several baselines. This section introduces several methods that will serve as benchmarks. Obviously, any forecasting method we develop must beat these benchmarks. Otherwise, the new method is not even worth considering.</p>
+<p>In the notation below, <span class="math notranslate nohighlight">\(T\)</span> refers to the length of the time series and <span class="math notranslate nohighlight">\(h\)</span> refers to the prediction horizon.</p>
+<div class="section" id="naive-method">
+<h3>Naïve Method<a class="headerlink" href="#naive-method" title="Permalink to this headline">¶</a></h3>
+<p>Forecasts of all future values are equal to the last observation.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \hat{y}_{T+h} &amp;= y_T
+\end{align*}\]</div>
+</div>
+<div class="section" id="seasonal-naive-method">
+<h3>Seasonal Naïve Method<a class="headerlink" href="#seasonal-naive-method" title="Permalink to this headline">¶</a></h3>
+<p>Forecasts are equal to the last observed value from the same season of the year (e.g. the same month of the previous year).</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \hat{y}_{T+h} &amp;= y_{T+h-m(k+1)}
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the seasonal period and <span class="math notranslate nohighlight">\(k\)</span> is the integer part of <span class="math notranslate nohighlight">\((h-1)/m\)</span> (i.e. the number of complete years in the forecast period prior to time <span class="math notranslate nohighlight">\(T+h\)</span>).</p>
+<p>As an example, if we were forecasting a monthly time series, the forecast for all future February values is simply equal to the last observed February value. With weekly data, the forecast of all future Friday values is equal to the last observed Friday value. And so on.</p>
+</div>
+</div>
 <div class="section" id="evaluation-metrics-for-forecast-accuracy">
-<h2>3. Evaluation Metrics for Forecast Accuracy<a class="headerlink" href="#evaluation-metrics-for-forecast-accuracy" title="Permalink to this headline">¶</a></h2>
+<h2>5. Evaluation Metrics for Forecast Accuracy<a class="headerlink" href="#evaluation-metrics-for-forecast-accuracy" title="Permalink to this headline">¶</a></h2>
 <p>Forecasting is one of the most common inference tasks in time series analysis. In order to properly gauge the performance of a time series model, it is common practice to divide the dataset into two parts: training and test data. Model parameters are estimated using training data, then the models are used to generate forecasts that are evaluated against the test data.</p>
 <p>Error statistics come in different flavors, each with their own advantages and disadvantages.</p>
 <div class="section" id="mean-absolute-error">
@@ -746,6 +793,47 @@
 \end{align*}\]</div>
 </div>
 </div>
+<div class="section" id="summary-of-forecast-accuracy-for-jena-climate-dataset">
+<h2>6. Summary of Forecast Accuracy for Jena Climate Dataset<a class="headerlink" href="#summary-of-forecast-accuracy-for-jena-climate-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The handbook goes over several time series forecasting methods and compares performance of said models on the Jena Climate Dataset. Specifically, each method attempts to forecast the temperature variable (in Celsius). A summary of the forecast accuracy for each model is shown below.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Average MAE (Celsius)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naive</td>
+      <td>3.18</td>
+    </tr>
+    <tr>
+      <td>Seasonal Naive</td>
+      <td>2.61</td>
+    </tr>
+      <tr>
+      <td>Linear Regression</td>
+      <td>2.86</td>
+    </tr>
+      <tr>
+      <td>ARIMA</td>
+      <td>3.19</td>
+    </tr>
+      <tr>
+      <td>VAR</td>
+      <td>2.54</td>
+    </tr>
+      <tr>
+      <td>Simplex Method (pending validation)</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <td>LightGBM</td>
+      <td>2.08</td>
+    </tr>
+  </tbody>
+</table></div>
 </div>
 
     <script type="text/x-thebe-config">
