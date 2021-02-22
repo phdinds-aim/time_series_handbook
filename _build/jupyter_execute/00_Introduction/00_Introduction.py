@@ -23,6 +23,8 @@ import matplotlib.pyplot as plt
 import statsmodels.graphics.tsaplots as tg
 %matplotlib inline
 
+plt.rcParams['figure.figsize'] = [15, 2]
+
 ## 1. General Introduction
 
 Most of us would have heard about the new buzz in the market i.e. Cryptocurrency. Many of us would have invested in their coins too. But, is investing money in such a volatile currency safe? How can we make sure that investing in these coins now would surely generate a healthy profit in the future? We can’t be sure but we can surely generate an approximate value based on the previous prices. Time series models is one way to predict them.  
@@ -322,7 +324,33 @@ $\phi(\mathbf{B})X_t = \theta(\mathbf{B})\epsilon_t$,
 
 with the characteristic polynomials as defined above.
 
-## 3. Evaluation Metrics for Forecast Accuracy
+## 4. Benchmark Methods
+
+In order to properly measure the performance of a forecasting model, we first need to establish several baselines. This section introduces several methods that will serve as benchmarks. Obviously, any forecasting method we develop must beat these benchmarks. Otherwise, the new method is not even worth considering.
+
+In the notation below, $T$ refers to the length of the time series and $h$ refers to the prediction horizon.
+
+### Naïve Method
+
+Forecasts of all future values are equal to the last observation.
+
+\begin{align*}
+    \hat{y}_{T+h} &= y_T
+\end{align*}
+
+### Seasonal Naïve Method
+
+Forecasts are equal to the last observed value from the same season of the year (e.g. the same month of the previous year). 
+
+\begin{align*}
+    \hat{y}_{T+h} &= y_{T+h-m(k+1)}
+\end{align*}
+
+where $m$ is the seasonal period and $k$ is the integer part of $(h-1)/m$ (i.e. the number of complete years in the forecast period prior to time $T+h$).
+
+As an example, if we were forecasting a monthly time series, the forecast for all future February values is simply equal to the last observed February value. With weekly data, the forecast of all future Friday values is equal to the last observed Friday value. And so on.
+
+## 5. Evaluation Metrics for Forecast Accuracy
 
 Forecasting is one of the most common inference tasks in time series analysis. In order to properly gauge the performance of a time series model, it is common practice to divide the dataset into two parts: training and test data. Model parameters are estimated using training data, then the models are used to generate forecasts that are evaluated against the test data.
 
@@ -359,4 +387,47 @@ One particular disadvantage of MAPE is that it puts a larger penalty on negative
 \begin{align*}
     \text{SMAPE} &= \frac{1}{n}\sum_{t=1}^{n} \frac{|\hat{y}_t - y_t|}{|y_t| + |\hat{y}_t|}
 \end{align*}
+
+## 6. Summary of Forecast Accuracy for Jena Climate Dataset
+
+The handbook goes over several time series forecasting methods and compares performance of said models on the Jena Climate Dataset. Specifically, each method attempts to forecast the temperature variable (in Celsius). A summary of the forecast accuracy for each model is shown below.
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Average MAE (Celsius)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naive</td>
+      <td>3.18</td>
+    </tr>
+    <tr>
+      <td>Seasonal Naive</td>
+      <td>2.61</td>
+    </tr>
+      <tr>
+      <td>Linear Regression</td>
+      <td>2.86</td>
+    </tr>
+      <tr>
+      <td>ARIMA</td>
+      <td>3.19</td>
+    </tr>
+      <tr>
+      <td>VAR</td>
+      <td>2.54</td>
+    </tr>
+      <tr>
+      <td>Simplex Method (pending validation)</td>
+      <td>1.53</td>
+    </tr>
+    <tr>
+      <td>LightGBM</td>
+      <td>2.08</td>
+    </tr>
+  </tbody>
+</table>
 
