@@ -487,17 +487,18 @@
 <h3>Visualization of EDM Prediction with a  Chaotic Time Series<a class="headerlink" href="#visualization-of-edm-prediction-with-a-chaotic-time-series" title="Permalink to this headline">¶</a></h3>
 <p>Given a chaotic time series, the following sets of images visualize how Empirical Dynamic Modelling tries to predict future values using the whole dataset rather that creating a parametrized equation. Let’s look at the following <a class="reference external" href="http://opetchey.github.io/RREEBES/Sugihara_and_May_1990_Nature/Simplex_projection_walkthrough.html">walkthrough</a>. [Petchey, O. 2020]</p>
 <p>Given the Time Series below, let’s try to predict the possible value or location of the pink dot (the succeeding dot in the time series) in the image below.</p>
-<img src="./figures/pic1.jpg" style="width:800px">
+<img alt="../_images/pic1.jpg" src="../_images/pic1.jpg" />
 <p>Since this is an empirical way of looking at data, (no-prior domain knowledge models, no parametrized equations), we will look at the prior dynamics that happened just before the pink dot (the few data points highlighted by the red lines)</p>
-<img src="./figures/pic2.jpg" style="width:800px">
+<img alt="../_images/pic2.jpg" src="../_images/pic2.jpg" />
 <p>Given that short history of the dynamics, we will look at the “past library” of dynamics using the whole dataset and pick those that look similar to the current dynamics that we have (the most similar ones highlighted by the blue lines)</p>
-<img src="./figures/pic3.jpg" style="width:800px">
+<img alt="../_images/pic3.jpg" src="../_images/pic3.jpg" />
 <p>The succeeding point of the selected prior dynamics with similar pattern or trajectory (blue lines) will have their next point in sequence (highlighted by the green dots)</p>
-<img src="./figures/pic4.jpg" style="width:800px">
+<img alt="../_images/pic4.jpg" src="../_images/pic4.jpg" />
 <p>This green dots will then produce valuable information that the system can infer where the next value in the whole sequence (pink dot) might be be located. One way of doing this is to project the values or the location of the green dots towards the front of the sequence. The correct location is Pink dot, Green dot denotes mean location of past values)</p>
-<img src="./figures/pic5.jpg" style="width:800px">
+<img alt="../_images/pic5.jpg" src="../_images/pic5.jpg" />
 <p>Using a time-shifted representation of the system above, using the lagged values corresponding to the number of points used as history, the red line would represent the latest movement of the dynamics and the blue lines would correspond to the most similar ones that can give valuable information for the prediction.</p>
-<img src="./figures/pic6.jpg" style="width:800px"></div>
+<img alt="../_images/pic6.jpg" src="../_images/pic6.jpg" />
+</div>
 <div class="section" id="lorenz-attractor">
 <h3>Lorenz Attractor<a class="headerlink" href="#lorenz-attractor" title="Permalink to this headline">¶</a></h3>
 <p>Now let’s define a specific chaotic system that we can use as an example in the succeeding discussions.</p>
@@ -505,12 +506,12 @@
 The Lorenz system is notable for having chaotic solutions for certain parameter values and initial conditions. (“Butterfly Effect”). The term “Butterfly Effect” both signifies the characteristic of the Lorenz system of having possibly huge divergent values even with very small perturbations (“the flaps of a butterfly caused a tornado in the other side of the planet”) and the visual look of the system which looks like butterfly wings at certain angles.</p>
 <p>It’s a coupled dynamic system consisting of 3 differential equations (think of the axes as variables in a dynamic system).
 In an ecological examples, it could be a Resource-Prey-Predator dynamic system.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea930747-5618-44dd-afbc-8b79b4a32e4e">
-<span class="eqno">(8)<a class="headerlink" href="#equation-ea930747-5618-44dd-afbc-8b79b4a32e4e" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dX}{dt} = \alpha Y - \alpha X   \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-3e1e06ba-0480-4cc3-ad20-08738b4478da">
-<span class="eqno">(9)<a class="headerlink" href="#equation-3e1e06ba-0480-4cc3-ad20-08738b4478da" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dY}{dt} = -XZ + \rho X - Y  \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ededbd03-8cb5-4afb-8efa-eebd6ac20f8b">
-<span class="eqno">(10)<a class="headerlink" href="#equation-ededbd03-8cb5-4afb-8efa-eebd6ac20f8b" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dZ}{dt} =  XY - \beta Z \end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-58145e9d-c307-46ef-9ee4-528338c0d631">
+<span class="eqno">(8)<a class="headerlink" href="#equation-58145e9d-c307-46ef-9ee4-528338c0d631" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dX}{dt} = \alpha Y - \alpha X   \end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-ba8301e7-7293-4b39-b7a6-96012d598c1d">
+<span class="eqno">(9)<a class="headerlink" href="#equation-ba8301e7-7293-4b39-b7a6-96012d598c1d" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dY}{dt} = -XZ + \rho X - Y  \end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-b6b43485-944a-4255-a3f9-1ab70f041f14">
+<span class="eqno">(10)<a class="headerlink" href="#equation-b6b43485-944a-4255-a3f9-1ab70f041f14" title="Permalink to this equation">¶</a></span>\[\begin{align} \frac{dZ}{dt} =  XY - \beta Z \end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Lorenz Attractor [Piziniacco. L, 2020]</span>
@@ -571,9 +572,10 @@ In an ecological examples, it could be a Resource-Prey-Predator dynamic system.<
 <p>In the visualization above, we see the that dynamic system (Lorenz) was plotted using the each of the point (or system states) computed from the differential equations. From here, we can define system states as points in a high-dimensional system.</p>
 <p>Conversely, given a graph of a dynamic system, we can also extract the individual components or states of the system by projecting the dynamic system into on the axes. The axes can be thought as the fundamental state variables in a dynamic system. In an ecosystem, for example, these variables can correspond to population abundances, resources, or environmental conditions.</p>
 <p>As an illustration, we can “extract” the values of the time series in one of the states (the Z-component for example) in the Lorenz Attractor above by projecting the 3D plot into just the Z-axis (which would just be similar to the <strong>z_out</strong> component in the code. Although time-series can represent independent state variables, in general, each time series is an observation function of the system state that can convolve several different state variables.</p>
-<img src="./figures/projection1.jpg" style="width:600px">
+<img alt="../_images/projection1.jpg" src="../_images/projection1.jpg" />
 <p>We can also extend the same concept to other state variables by projecting the high-dimensional graph into its individual axes.</p>
-<img src="./figures/projection3.jpg" style="width:800px"></div>
+<img alt="../_images/projection3.jpg" src="../_images/projection3.jpg" />
+</div>
 </div>
 <div class="section" id="takens-theorem-state-space-reconstruction-ssr">
 <h2>Takens’ Theorem / State-Space Reconstruction (SSR)<a class="headerlink" href="#takens-theorem-state-space-reconstruction-ssr" title="Permalink to this headline">¶</a></h2>
@@ -637,7 +639,8 @@ Taken’s Theorem states that Mx preserves a number of important characteristics
 <li><p>the Lyanpunov exponents</p></li>
 </ul>
 <p>There is also a 1-to-1 mapping betweent the original manifold and the shadow manifold. These enables us to reconstruct some of the properties of the original manifold by only using a lagged-time series of one of the axes/state variables</p>
-<img src="./figures/takens reconstruction.jpg" style="width:300px"></div>
+<img alt="05_SimplexandSmapProjections/./figures/takensreconstruction.jpg" src="05_SimplexandSmapProjections/./figures/takensreconstruction.jpg" />
+</div>
 <div class="section" id="simplex-projection">
 <h2>Simplex Projection<a class="headerlink" href="#simplex-projection" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -688,7 +691,8 @@ such as:</p>
 <li><p>mean absolute error (MAE) between the observation</p></li>
 <li><p>forecast results (i.e., comparing <span class="math notranslate nohighlight">\(Y(\mathbf{t_k} + 1)\)</span> with <span class="math notranslate nohighlight">\(\hat{Y}(\mathbf{t_k} +1)) \)</span></p></li>
 </ul>
-<img src="./figures/simplex.jpg" style="width:300px"></div>
+<img alt="../_images/simplex.jpg" src="../_images/simplex.jpg" />
+</div>
 <div class="section" id="example-1-prediction-with-the-simplex-algorithm-chaotic-map-data">
 <h3>Example 1: Prediction with the Simplex Algorithm (Chaotic Map Data)<a class="headerlink" href="#example-1-prediction-with-the-simplex-algorithm-chaotic-map-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -700,15 +704,17 @@ such as:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyEDM in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (1.7.5.0)
+Requirement already satisfied: pybind11&gt;=2.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from pyEDM) (2.6.2)
 Requirement already satisfied: pandas&gt;=0.20.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from pyEDM) (1.2.2)
 Requirement already satisfied: matplotlib&gt;=2.2 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from pyEDM) (3.3.4)
-Requirement already satisfied: pybind11&gt;=2.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from pyEDM) (2.6.2)
-Requirement already satisfied: numpy&gt;=1.15 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (1.20.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (2.4.7)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (0.10.0)
-Requirement already satisfied: pillow&gt;=6.2.0 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (8.1.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (1.3.1)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (2.8.1)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (0.10.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (2.4.7)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (1.3.1)
+Requirement already satisfied: numpy&gt;=1.15 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (1.20.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from matplotlib&gt;=2.2-&gt;pyEDM) (8.1.0)
 Requirement already satisfied: six in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from cycler&gt;=0.10-&gt;matplotlib&gt;=2.2-&gt;pyEDM) (1.15.0)
 Requirement already satisfied: pytz&gt;=2017.3 in /Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages (from pandas&gt;=0.20.3-&gt;pyEDM) (2021.1)
 </pre></div>
@@ -736,8 +742,8 @@ Requirement already satisfied: pytz&gt;=2017.3 in /Users/prince.javier/opt/anaco
 <div class="section" id="chaotic-tentmap-data-generation">
 <h3>Chaotic TentMap Data Generation<a class="headerlink" href="#chaotic-tentmap-data-generation" title="Permalink to this headline">¶</a></h3>
 <p>TentMap generated from the following function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d14e57c4-7b57-4543-a6c7-666672717317">
-<span class="eqno">(11)<a class="headerlink" href="#equation-d14e57c4-7b57-4543-a6c7-666672717317" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0cbdb4a4-29eb-4568-ba12-b019df1e7e78">
+<span class="eqno">(11)<a class="headerlink" href="#equation-0cbdb4a4-29eb-4568-ba12-b019df1e7e78" title="Permalink to this equation">¶</a></span>\[\begin{equation}
         \mathbf{x_\mathbf{(t+1)}}=
         \begin{cases}
             2\mathbf{x_t} &amp; 0.5 &gt; \mathbf{x_t} &gt; 0  \\
@@ -746,7 +752,8 @@ Requirement already satisfied: pytz&gt;=2017.3 in /Users/prince.javier/opt/anaco
     \end{equation}\]</div>
 <p>First difference was taken: <span class="math notranslate nohighlight">\(\mathbf{\triangle_t} = \mathbf{x_\mathbf{(t+1)}}- \mathbf{x_t} \)</span></p>
 <p>Sample visualization of a tentmap is shown below: [11]</p>
-<img src="./figures/tentmap.jpg" style="width:350px"><div class="cell docutils container">
+<img alt="../_images/tentmap.jpg" src="../_images/tentmap.jpg" />
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate TentMap timeseries</span>
 
@@ -800,27 +807,27 @@ Requirement already satisfied: pytz&gt;=2017.3 in /Users/prince.javier/opt/anaco
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.436724</td>
+      <td>-0.317929</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>-0.621780</td>
+      <td>0.454183</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.251853</td>
+      <td>-0.726555</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.487632</td>
+      <td>0.182084</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>-0.974777</td>
+      <td>0.363986</td>
     </tr>
   </tbody>
 </table>
@@ -858,11 +865,11 @@ Requirement already satisfied: pytz&gt;=2017.3 in /Users/prince.javier/opt/anaco
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -12.471919
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -11.825553
 p-value: 0.000000
 Critical Values:
 	1%: -3.437
-	5%: -2.864
+	5%: -2.865
 	10%: -2.568
 </pre></div>
 </div>
@@ -1078,16 +1085,16 @@ Important properties of many natural systems is that nearby trajectories eventua
 <div class="cell_output docutils container">
 <img alt="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_32_0.png" src="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_32_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      E       rho
-0   1.0  0.749869
-1   2.0  0.994908
-2   3.0  0.987766
-3   4.0  0.972111
-4   5.0  0.925278
-5   6.0  0.804946
-6   7.0  0.713870
-7   8.0  0.653457
-8   9.0  0.578866
-9  10.0  0.534057
+0   1.0  0.812343
+1   2.0  0.996088
+2   3.0  0.980800
+3   4.0  0.947798
+4   5.0  0.863612
+5   6.0  0.766514
+6   7.0  0.579716
+7   8.0  0.504249
+8   9.0  0.475404
+9  10.0  0.402229
 </pre></div>
 </div>
 </div>
@@ -1174,16 +1181,16 @@ In the plot below, using Optimal Embedding E=2, we can plot the decreasing predi
 <div class="cell_output docutils container">
 <img alt="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_40_0.png" src="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_40_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      E       rho
-0   1.0 -0.017961
-1   2.0 -0.002996
-2   3.0  0.000203
-3   4.0  0.055508
-4   5.0  0.092762
-5   6.0  0.088180
-6   7.0  0.043276
-7   8.0  0.067235
-8   9.0  0.009978
-9  10.0  0.004450
+0   1.0 -0.013664
+1   2.0 -0.035236
+2   3.0  0.013915
+3   4.0  0.007673
+4   5.0  0.040837
+5   6.0 -0.020455
+6   7.0 -0.012874
+7   8.0  0.003359
+8   9.0  0.020575
+9  10.0  0.033107
 </pre></div>
 </div>
 </div>
@@ -1225,7 +1232,8 @@ comparing the performance of equivalent linear
 (h = 0) and nonlinear (h &gt; 0) S-map models, one can
 distinguish nonlinear dynamical systems from linear
 stochastic systems.</p>
-<img src="./figures/smap.jpg" style="width:500px"><div class="section" id="compare-s-map-performance-of-a-logistic-map-chaotic-and-gaussian-red-noise">
+<img alt="../_images/smap.jpg" src="../_images/smap.jpg" />
+<div class="section" id="compare-s-map-performance-of-a-logistic-map-chaotic-and-gaussian-red-noise">
 <h3>Compare S-Map Performance of a Logistic Map (Chaotic) and Gaussian Red Noise<a class="headerlink" href="#compare-s-map-performance-of-a-logistic-map-chaotic-and-gaussian-red-noise" title="Permalink to this headline">¶</a></h3>
 <p>In the steps below, we will try to distinguish differences between Chaotic Signals and Gaussian Red Noise, which may look similar visually.</p>
 <div class="cell docutils container">
@@ -1251,7 +1259,7 @@ stochastic systems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc3db6295d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc6e7191590&gt;
 </pre></div>
 </div>
 <img alt="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_44_1.png" src="../_images/05_Empirical Dynamic Modelling (Simplex and SMap_Projections)_44_1.png" />
@@ -1731,7 +1739,7 @@ sufficient</p></li>
 <ul class="simple">
 <li><p>top k = <span class="math notranslate nohighlight">\(\sqrt(19)\)</span>, ~ top-4 or top-5 views based on forecasting skill</p></li>
 </ul>
-<img src="./figures/lorenz.jpg" style="width:500px">
+<img alt="05_SimplexandSmapProjections/./figures/lorenz.jpg" src="05_SimplexandSmapProjections/./figures/lorenz.jpg" />
 </div>
 </div>
 <div class="section" id="in-the-next-section">

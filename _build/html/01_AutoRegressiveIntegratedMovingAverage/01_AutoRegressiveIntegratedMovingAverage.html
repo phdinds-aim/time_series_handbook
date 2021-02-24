@@ -465,8 +465,8 @@
 <strong>d</strong>: The number of times that the raw observations are differenced, also called the degree of differencing (<em>deals with order of <strong>differencing</strong> of <span class="math notranslate nohighlight">\(X_t\)</span></em>)<br />
 <strong>q</strong>: The size of the moving average window, also called the order of moving average (<em>deals with <strong>residuals</strong></em>)</p>
 <p>Given this, the general case of <em><strong>ARIMA(p,d,q)</strong></em> can be written as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64c65f3e-410a-431f-99a2-7276bb57d9f7">
-<span class="eqno">(1)<a class="headerlink" href="#equation-64c65f3e-410a-431f-99a2-7276bb57d9f7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1139a832-cb92-40b5-970f-9823735ec044">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1139a832-cb92-40b5-970f-9823735ec044" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t} = \alpha _{1}X_{t-1} + \dots + \alpha _{p}X_{t-p} + \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
 \end{equation}\]</div>
 <p>Or in words :</p>
@@ -478,35 +478,35 @@ X_{t} = \alpha _{1}X_{t-1} + \dots + \alpha _{p}X_{t-p} + \varepsilon _{t}+\thet
 <p>Before we discuss how we determine p, d, and q that are best to represent a time series, let’s first take a look at special cases of ARIMA models that should help us illustrate the formulation of the ARIMA equation.</p>
 <p><strong>Case 1: ARIMA(p,0,0) = autoregressive model</strong>: if the series is stationary and autocorrelated, perhaps it can be predicted as a multiple of its own previous value, plus a constant.</p>
 <p>The forecasting equation for ARIMA(1,0,0) is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fbc6d67d-0e9e-4c45-a65e-94ec382ad903">
-<span class="eqno">(2)<a class="headerlink" href="#equation-fbc6d67d-0e9e-4c45-a65e-94ec382ad903" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-93218596-c130-4c76-85dd-60b46472a152">
+<span class="eqno">(2)<a class="headerlink" href="#equation-93218596-c130-4c76-85dd-60b46472a152" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t}  =  \mu  + \alpha _{1}X_{t-1}
 \end{equation}\]</div>
 <p>while ARIMA(2,0,0)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75b89923-01e4-4264-a130-c73d8c56f1c0">
-<span class="eqno">(3)<a class="headerlink" href="#equation-75b89923-01e4-4264-a130-c73d8c56f1c0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-92567d6d-ace7-4089-8c18-fa79a927d5f2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-92567d6d-ace7-4089-8c18-fa79a927d5f2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t}  =  \mu  + \alpha _{1}X_{t-1} +  \alpha _{2}X_{t-2}
 \end{equation}\]</div>
 <p>or in general ARIMA(p,0,0)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-adc7af31-f208-4b8e-9fa5-7a0111895cd7">
-<span class="eqno">(4)<a class="headerlink" href="#equation-adc7af31-f208-4b8e-9fa5-7a0111895cd7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0ea810a7-3492-4005-80cf-58bb943ede73">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0ea810a7-3492-4005-80cf-58bb943ede73" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t}  =  \mu  + \alpha _{1}X_{t-1} +  \alpha _{2}X_{t-2} \dots + \alpha _{p}X_{t-p}
 \end{equation}\]</div>
 <p><strong>Case 2: ARIMA(0,0,q) = moving average model</strong>: if the series is stationary but is correlated to the errors of previous values, we can regress using the past forecast errors.</p>
 <p>The forecasting equation for this is ARIMA(0,0,1) given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28c51415-b3e2-449c-93d5-df899f27c89d">
-<span class="eqno">(5)<a class="headerlink" href="#equation-28c51415-b3e2-449c-93d5-df899f27c89d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a59746c0-dcdd-479a-8f66-c8db5dda9e46">
+<span class="eqno">(5)<a class="headerlink" href="#equation-a59746c0-dcdd-479a-8f66-c8db5dda9e46" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t} = \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}
 \end{equation}\]</div>
 <p>or in simillar fashion to p, this can be generalized to ARIMA(0,0,q):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93d25e1f-a55a-41f2-ac5c-02dd4a702fd0">
-<span class="eqno">(6)<a class="headerlink" href="#equation-93d25e1f-a55a-41f2-ac5c-02dd4a702fd0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-547e8dff-1cc9-49c2-8cfa-6cb4c8f325f0">
+<span class="eqno">(6)<a class="headerlink" href="#equation-547e8dff-1cc9-49c2-8cfa-6cb4c8f325f0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t} = \varepsilon _{t}+\theta_{1}\varepsilon _{t-1}+\cdots +\theta _{q}\varepsilon _{t-q}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta_{q}\)</span> is the coefficient at time <span class="math notranslate nohighlight">\(t-q\)</span> of the residual <span class="math notranslate nohighlight">\(\varepsilon _{t-q}\)</span>.</p>
 <p><strong>Case 3: ARIMA(0,1,0) = Random Walk</strong>: if the series is non-stationary then the simplest model that we can use is a random walk model, which is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-510fc4e5-b6ad-4b75-a495-34189a6991fc">
-<span class="eqno">(7)<a class="headerlink" href="#equation-510fc4e5-b6ad-4b75-a495-34189a6991fc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7514f418-e28b-454a-be6f-85bb58946e13">
+<span class="eqno">(7)<a class="headerlink" href="#equation-7514f418-e28b-454a-be6f-85bb58946e13" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 X_{t}  =  \mu  + X_{t-1}
 \end{equation}\]</div>
 <p><em>This can then further be generalized to ARIMA(0,d,0) simillar to the first two cases.</em></p>
@@ -681,8 +681,8 @@ Critical Values:
 Dep. Variable:                D.value   No. Observations:                   99
 Model:                 ARIMA(2, 1, 3)   Log Likelihood                -251.701
 Method:                       css-mle   S.D. of innovations              3.050
-Date:                Mon, 22 Feb 2021   AIC                            517.402
-Time:                        02:49:41   BIC                            535.568
+Date:                Wed, 24 Feb 2021   AIC                            517.402
+Time:                        14:54:10   BIC                            535.568
 Sample:                             1   HQIC                           524.752
                                                                               
 =================================================================================
@@ -723,8 +723,8 @@ MA.3           -1.1296           +0.7624j            1.3628            0.4055
 Dep. Variable:                D.value   No. Observations:                   99
 Model:                 ARIMA(1, 1, 1)   Log Likelihood                -253.790
 Method:                       css-mle   S.D. of innovations              3.119
-Date:                Mon, 22 Feb 2021   AIC                            515.579
-Time:                        02:49:41   BIC                            525.960
+Date:                Wed, 24 Feb 2021   AIC                            515.579
+Time:                        14:54:11   BIC                            525.960
 Sample:                             1   HQIC                           519.779
                                                                               
 =================================================================================
