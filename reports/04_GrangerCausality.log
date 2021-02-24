@@ -32,9 +32,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-jena_data = pd.read_csv('../data/jena_climate_2009_2016.csv')
-jena_data['Date Time'] = pd.to_datetime(jena_data['Date Time'])
-jena_data = jena_data.set_index('Date Time')
-jena_data.head(3)
+granger_causation_matrix(train_df, train_df.columns, p)  
 -------------------
 

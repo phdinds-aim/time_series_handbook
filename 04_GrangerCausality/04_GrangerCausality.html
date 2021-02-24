@@ -310,15 +310,63 @@
   <a class="reference internal nav-link" href="#testing-for-granger-causality">
    Testing for Granger Causality
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-ipo-dam-dataset">
+     Example 1: Ipo Dam Dataset
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causality-between-rainfall-and-ipo-dam-water-level">
+       Causality between Rainfall and Ipo Dam Water Level
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causality-between-nia-release-flow-and-ipo-dam-water-level">
+       Causality between NIA Release Flow and Ipo Dam Water Level
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-causality-for-la-mesa-dam">
+     Example 2: Causality for La Mesa Dam
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causality-between-rainfall-and-la-mesa-dam-water-level">
+       Causality between Rainfall and La Mesa Dam Water Level
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causality-between-nia-release-flow-and-la-mesa-dam-water-level">
+       Causality between NIA Release Flow and La Mesa Dam Water Level
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-jena-climate-data">
+     Example 3: Jena Climate Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causality-between-pressure-and-temperature">
+       Causality between Pressure and Temperature
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jena-weather-data">
-   Jena Weather Data
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -341,24 +389,17 @@
 <h1>Chapter 4: Granger Causality Test<a class="headerlink" href="#chapter-4-granger-causality-test" title="Permalink to this headline">¶</a></h1>
 <p>In the first three chapters, we discussed the classical methods for both univariate and multivariate time series forecasting. We now introduce the notion of causality and its implications on time series analysis in general. We also describe a test for the linear VAR model discussed in the previous chapter.</p>
 <p>Prepared by: Carlo Vincienzo G. Dajac</p>
-<p><strong>Chapter Outline</strong></p>
-<ul class="simple">
-<li><p>Notations</p></li>
-<li><p>Definitions</p></li>
-<li><p>Assunmptions</p></li>
-<li><p>Testing for Granger Causality</p></li>
-</ul>
 <div class="section" id="notations">
 <h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h2>
 <p>If <span class="math notranslate nohighlight">\(A_t\)</span> is a stationary stochastic process, let <span class="math notranslate nohighlight">\(\overline A_t\)</span> represent the set of <em>past</em> values <span class="math notranslate nohighlight">\({A_{t-j}, \; j=1,2,\ldots,\infty}\)</span> and <span class="math notranslate nohighlight">\(\overline{\overline A}_t\)</span> represent the set of <em>past and present</em> values <span class="math notranslate nohighlight">\({A_{t-j}, \; j=0,1,\ldots,\infty}\)</span>. Further, let <span class="math notranslate nohighlight">\(\overline A(k)\)</span> represent the set <span class="math notranslate nohighlight">\({A_{t-j}, \; j=k,k+1,\ldots,\infty}\)</span>.</p>
 <p>Denote the optimum, unbiased, least-squares predictor of <span class="math notranslate nohighlight">\(A_t\)</span> using the set of values <span class="math notranslate nohighlight">\(B_t\)</span> by <span class="math notranslate nohighlight">\(P_t (A|B)\)</span>. Thus, for instance, <span class="math notranslate nohighlight">\(P_t (X|\overline X)\)</span> will be the optimum predictor of <span class="math notranslate nohighlight">\(X_t\)</span> using only past <span class="math notranslate nohighlight">\(X_t\)</span>. The predictive error series will be denoted by <span class="math notranslate nohighlight">\(\varepsilon_t(A|B) = A_t - P_t(A|B)\)</span>. Let <span class="math notranslate nohighlight">\(\sigma^2 (A|B)\)</span> be the variance of <span class="math notranslate nohighlight">\(\varepsilon_t(A|B)\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(U_t\)</span> be all the information in the universe accumulated since time <span class="math notranslate nohighlight">\(t-1\)</span> and let <span class="math notranslate nohighlight">\(U_t - Y_t\)</span> denote all this information <em>apart</em> from the specified series <span class="math notranslate nohighlight">\(Y_t\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(U_t\)</span> be all the information in the universe accumulated since time <span class="math notranslate nohighlight">\(t-1\)</span> and let <span class="math notranslate nohighlight">\(U_t - Y_t\)</span> denote all this information <em>apart</em> from the specified series <span class="math notranslate nohighlight">\(Y_t\)</span>, which is another stationary time series that is different from <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 </div>
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="causality">
 <h3>Causality<a class="headerlink" href="#causality" title="Permalink to this headline">¶</a></h3>
-<p>If <span class="math notranslate nohighlight">\(\sigma^2 (X|U) &lt; \sigma^2 (X| \overline{U-Y})\)</span>, we say that <span class="math notranslate nohighlight">\(Y\)</span> is causing <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(Y_t \implies X_t\)</span>. We say that <span class="math notranslate nohighlight">\(Y_t\)</span> is causing <span class="math notranslate nohighlight">\(X_t\)</span> if we are able to predict <span class="math notranslate nohighlight">\(X_t\)</span> using all available information than if the information apart from <span class="math notranslate nohighlight">\(Y_t\)</span> had been used.</p>
+<p>If <span class="math notranslate nohighlight">\(\sigma^2 (X|U) &lt; \sigma^2 (X| \overline{U-Y})\)</span>, we say that <span class="math notranslate nohighlight">\(Y\)</span> is causing <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(Y_t \implies X_t\)</span>. We say that <span class="math notranslate nohighlight">\(Y_t\)</span> is causing <span class="math notranslate nohighlight">\(X_t\)</span> if we are <strong>able to predict</strong> <span class="math notranslate nohighlight">\(X_t\)</span> using all available information than if the information apart from <span class="math notranslate nohighlight">\(Y_t\)</span> had been used.</p>
 </div>
 <div class="section" id="feedback">
 <h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h3>
@@ -376,35 +417,35 @@
 <div class="section" id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Series is stationary.</p></li>
-<li><p>Linear model is already optimized.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(Y_t\)</span> are stationary.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t (A|B)\)</span> is already optimized.</p></li>
 </ul>
 </div>
 <div class="section" id="testing-for-granger-causality">
 <h2>Testing for Granger Causality<a class="headerlink" href="#testing-for-granger-causality" title="Permalink to this headline">¶</a></h2>
+<p>We will be first building VAR models for our examples in this section. In addition to the steps outlined in the previous chapter, we will just call built-in Granger causality test function and configure it accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">lag_plot</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.api</span> <span class="kn">import</span> <span class="n">VAR</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">kpss</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">grangercausalitytests</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tools.eval_measures</span> <span class="kn">import</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">aic</span>
-<span class="kn">from</span> <span class="nn">statsmodels.stats.stattools</span> <span class="kn">import</span> <span class="n">durbin_watson</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.vector_ar.var_model</span> <span class="kn">import</span> <span class="n">VAR</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span><span class="p">,</span> <span class="n">kpss</span><span class="p">,</span> <span class="n">grangercausalitytests</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We will use the Ipo dataset in this notebook.</p>
+<div class="section" id="example-1-ipo-dam-dataset">
+<h3>Example 1: Ipo Dam Dataset<a class="headerlink" href="#example-1-ipo-dam-dataset" title="Permalink to this headline">¶</a></h3>
+<p>We will use the Ipo dataset in this example. It contains daily measurements of the following variables: rainfall (in millimeters), Oceanic Niño Index (ONI), NIA release flow (in cubic meters per second), and dam water level (in meters), respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Ipo_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ipo_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Ipo_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span>
+<span class="n">ipo_df</span> <span class="o">=</span> <span class="n">ipo_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">ipo_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -443,91 +484,67 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>-0.7</td>
       <td>38.225693</td>
       <td>100.70</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>-0.7</td>
       <td>57.996530</td>
       <td>100.63</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>-0.7</td>
       <td>49.119213</td>
       <td>100.56</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>-0.7</td>
       <td>47.034720</td>
       <td>100.55</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>-0.7</td>
       <td>42.223380</td>
       <td>100.48</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>7111</th>
-      <td>1.80</td>
-      <td>-0.2</td>
-      <td>5.040000</td>
-      <td>100.86</td>
-    </tr>
-    <tr>
-      <th>7112</th>
-      <td>1.60</td>
-      <td>-0.2</td>
-      <td>4.500000</td>
-      <td>101.01</td>
-    </tr>
-    <tr>
-      <th>7113</th>
-      <td>21.60</td>
-      <td>-0.2</td>
-      <td>6.730000</td>
-      <td>101.08</td>
-    </tr>
-    <tr>
-      <th>7114</th>
-      <td>0.20</td>
-      <td>-0.2</td>
-      <td>6.720000</td>
-      <td>100.92</td>
-    </tr>
-    <tr>
-      <th>7115</th>
-      <td>46.82</td>
-      <td>-0.2</td>
-      <td>1.950000</td>
-      <td>100.97</td>
-    </tr>
   </tbody>
 </table>
-<p>7116 rows × 4 columns</p>
 </div></div></div>
 </div>
-<p>As an example, we will only use the NIA and Dam time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;NIA&#39;</span><span class="p">,</span> <span class="s1">&#39;ONI&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rain&#39;</span><span class="p">,</span> <span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]</span>
+<span class="n">ipo_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)):</span> 
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">plot_cols</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_9_0.png" src="../_images/04_GrangerCausality_9_0.png" />
+</div>
+</div>
+<div class="section" id="causality-between-rainfall-and-ipo-dam-water-level">
+<h4>Causality between Rainfall and Ipo Dam Water Level<a class="headerlink" href="#causality-between-rainfall-and-ipo-dam-water-level" title="Permalink to this headline">¶</a></h4>
+<p>For this example, we will focus on the Rain and Dam time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">ipo_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -562,303 +579,465 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>100.70</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>100.63</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>100.56</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>100.55</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.00</td>
+      <td>0.0</td>
       <td>100.48</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>7111</th>
-      <td>1.80</td>
-      <td>100.86</td>
-    </tr>
-    <tr>
-      <th>7112</th>
-      <td>1.60</td>
-      <td>101.01</td>
-    </tr>
-    <tr>
-      <th>7113</th>
-      <td>21.60</td>
-      <td>101.08</td>
-    </tr>
-    <tr>
-      <th>7114</th>
-      <td>0.20</td>
-      <td>100.92</td>
-    </tr>
-    <tr>
-      <th>7115</th>
-      <td>46.82</td>
-      <td>100.97</td>
     </tr>
   </tbody>
 </table>
-<p>7116 rows × 2 columns</p>
 </div></div></div>
 </div>
-<p><strong>Step 1</strong>: Test each time series for stationarity. Ideally, this should involve using a test (such as the ADF test) where the null hypothesis is non-stationarity, as well as a test (such as the KPSS test) where the null is stationarity. This is a good cross-check.</p>
+<p>We look at the lag plots to quickly check for stationarity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">ax5</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">f2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">):</span>
+    <span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Rain&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rainfall&#39;</span><span class="p">);</span>
+    <span class="n">lag_plot</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 
-<span class="c1"># lag_plot(data[&#39;NIA&#39;], ax=ax4)</span>
-<span class="c1"># ax4.set_title(&#39;NIA Releases&#39;);</span>
+    <span class="n">lag_plot</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">)</span>
-<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dam Water Level&#39;</span><span class="p">);</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y_{t+1}$&#39;</span><span class="p">);</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$y_t$&#39;</span><span class="p">);</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y_{t+1}$&#39;</span><span class="p">);</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$y_t$&#39;</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_GrangerCausality_12_0.png" src="../_images/04_GrangerCausality_12_0.png" />
+<img alt="../_images/04_GrangerCausality_14_0.png" src="../_images/04_GrangerCausality_14_0.png" />
 </div>
 </div>
-<p><strong>Result</strong>: Both data are not stationary. We can make them stationary through differencing.</p>
+<p><strong>Result:</strong> Dam does not look stationary. Rainfall lag plot is inconclusive.</p>
+<p>We use KPSS and ADF tests discussed in the previous chapter to conclusively check for stationarity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># differencing for stationarity check</span>
-<span class="n">rawData</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># data[&#39;Rain&#39;] = data[&#39;Rain&#39;] - data[&#39;Rain&#39;].shift(1)</span>
-<span class="c1"># data[&#39;NIA&#39;] = data[&#39;NIA&#39;] - data[&#39;NIA&#39;].shift(1)</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">):</span>
+    <span class="n">test_stat</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">cv_1pct</span><span class="p">,</span> <span class="n">cv_2p5pct</span><span class="p">,</span> <span class="n">cv_5pct</span><span class="p">,</span> <span class="n">cv_10pct</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+        <span class="n">kpss_res</span> <span class="o">=</span> <span class="n">kpss</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">)</span>
+        <span class="n">test_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">p_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cv_1pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+        <span class="n">cv_2p5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;2.5%&#39;</span><span class="p">])</span>
+        <span class="n">cv_5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;5%&#39;</span><span class="p">])</span>
+        <span class="n">cv_10pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpss_res</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;10%&#39;</span><span class="p">])</span>
+    <span class="n">kpss_res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">:</span> <span class="n">test_stat</span><span class="p">,</span> 
+                               <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_val</span><span class="p">,</span> 
+                               <span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">:</span> <span class="n">cv_1pct</span><span class="p">,</span>
+                               <span class="s1">&#39;Critical value - 2.5%&#39;</span><span class="p">:</span> <span class="n">cv_2p5pct</span><span class="p">,</span>
+                               <span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">:</span> <span class="n">cv_5pct</span><span class="p">,</span>
+                               <span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">:</span> <span class="n">cv_10pct</span><span class="p">},</span> 
+                             <span class="n">index</span><span class="o">=</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">kpss_res_df</span> <span class="o">=</span> <span class="n">kpss_res_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kpss_res_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data into train and test sets for VAR later on</span>
-<span class="n">end</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">*.</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">end</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ADF Null Hypothesis: there is a unit root, meaning series is non-stationary</span>
-
-<span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">])</span>
-<span class="n">X1</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X1</span><span class="p">)]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
-    
-    
-<span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Rain&#39;</span><span class="p">])</span>
-<span class="c1"># X2 = np.array(data[&#39;NIA&#39;])</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">X2</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X2</span><span class="p">)]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -21.591918
-p-value: 0.000000
-Critical Values:
-	1%: -3.431
-	5%: -2.862
-	10%: -2.567
-ADF Statistic: -8.622738
-p-value: 0.000000
-Critical Values:
-	1%: -3.431
-	5%: -2.862
-	10%: -2.567
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.018</td>
+      <td>1.8045</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.100</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.216</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.176</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.146</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.119</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> Rain is stationary, while Dam is not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">):</span>
+    <span class="n">test_stat</span><span class="p">,</span> <span class="n">p_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">cv_1pct</span><span class="p">,</span> <span class="n">cv_5pct</span><span class="p">,</span> <span class="n">cv_10pct</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+        <span class="n">adf_res</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+        <span class="n">test_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">p_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cv_1pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;1%&#39;</span><span class="p">])</span>
+        <span class="n">cv_5pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;5%&#39;</span><span class="p">])</span>
+        <span class="n">cv_10pct</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adf_res</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;10%&#39;</span><span class="p">])</span>
+    <span class="n">adf_res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Test statistic&#39;</span><span class="p">:</span> <span class="n">test_stat</span><span class="p">,</span> 
+                               <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_val</span><span class="p">,</span> 
+                               <span class="s1">&#39;Critical value - 1%&#39;</span><span class="p">:</span> <span class="n">cv_1pct</span><span class="p">,</span>
+                               <span class="s1">&#39;Critical value - 5%&#39;</span><span class="p">:</span> <span class="n">cv_5pct</span><span class="p">,</span>
+                               <span class="s1">&#39;Critical value - 10%&#39;</span><span class="p">:</span> <span class="n">cv_10pct</span><span class="p">},</span> 
+                             <span class="n">index</span><span class="o">=</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">adf_res_df</span> <span class="o">=</span> <span class="n">adf_res_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adf_res_df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KPSS Null Hypothesis: there is no unit root, meaning series is stationary</span>
-
-<span class="k">def</span> <span class="nf">kpss_test</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>    
-    <span class="n">statistic</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">,</span> <span class="n">critical_values</span> <span class="o">=</span> <span class="n">kpss</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-    <span class="c1"># Format Output</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KPSS Statistic: </span><span class="si">{</span><span class="n">statistic</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p-value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;num lags: </span><span class="si">{</span><span class="n">n_lags</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critial Values:&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">critical_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Result: The series is </span><span class="si">{</span><span class="s2">&quot;not &quot;</span> <span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">stationary&#39;</span><span class="p">)</span>
-
-<span class="n">kpss_test</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="n">kpss_test</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KPSS Statistic: 0.009242367643647224
-p-value: 0.1
-num lags: 35
-Critial Values:
-   10% : 0.347
-   5% : 0.463
-   2.5% : 0.574
-   1% : 0.739
-Result: The series is stationary
-KPSS Statistic: 0.09395749653745288
-p-value: 0.1
-num lags: 35
-Critial Values:
-   10% : 0.347
-   5% : 0.463
-   2.5% : 0.574
-   1% : 0.739
-Result: The series is stationary
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/stattools.py:1875: FutureWarning: The behavior of using nlags=None will change in release 0.13.Currently nlags=None is the same as nlags=&quot;legacy&quot;, and so a sample-size lag length is used. After the next release, the default will change to be the same as nlags=&quot;auto&quot; which uses an automatic lag length selection method. To silence this warning, either use &quot;auto&quot; or &quot;legacy&quot;
-  warnings.warn(msg, FutureWarning)
-/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/stattools.py:1911: InterpolationWarning: The test statistic is outside of the range of p-values available in the
-look-up table. The actual p-value is greater than the p-value returned.
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-  warn_msg.format(direction=&quot;greater&quot;), InterpolationWarning
-/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/stattools.py:1911: InterpolationWarning: The test statistic is outside of the range of p-values available in the
-look-up table. The actual p-value is greater than the p-value returned.
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-  warn_msg.format(direction=&quot;greater&quot;), InterpolationWarning
-</pre></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-8.6223</td>
+      <td>-5.8742</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-<p><strong>Results</strong>: ADF Null Hypothesis is rejected. Thus, data is stationary. KPSS Null Hypothesis could not be rejected. Thus, data is stationary.</p>
+<p><strong>Result:</strong> Both data are stationary.</p>
+<p>Since both the lag plot and KPSS test indicate that Dam is not stationary, we apply differencing first before building our VAR model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">ax5</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">f2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Rain&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rainfall&#39;</span><span class="p">);</span>
-
-<span class="c1"># lag_plot(data[&#39;NIA&#39;], ax=ax4)</span>
-<span class="c1"># ax4.set_title(&#39;NIA Releases&#39;);</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">)</span>
-<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dam Water Level&#39;</span><span class="p">);</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We again look at the lag plots and apply the KPSS and ADF tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_GrangerCausality_19_0.png" src="../_images/04_GrangerCausality_19_0.png" />
+<img alt="../_images/04_GrangerCausality_26_0.png" src="../_images/04_GrangerCausality_26_0.png" />
 </div>
 </div>
-<p><strong>Result</strong>: Lag plots confirm results of ADF test and KPSS test.</p>
-<p><strong>Step 2</strong>: Set up a VAR model for the data (without differencing).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-<span class="n">model_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:579: ValueWarning: An unsupported index was provided and will be ignored when e.g. forecasting.
-  &#39; ignored when e.g. forecasting.&#39;, ValueWarning)
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Step 4</strong>: Make sure that the VAR is well-specified. For example, ensure that there is no serial correlation in the residuals. If need be, increase p until any autocorrelation issues are resolved.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check for Serial Correlation of Residuals (Errors) using Durbin Watson Statistic</span>
-<span class="c1">#The value of this statistic can vary between 0 and 4. </span>
-<span class="c1">#The closer it is to the value 2, then there is no significant serial correlation. </span>
-<span class="c1">#The closer to 0, there is a positive serial correlation, </span>
-<span class="c1">#and the closer it is to 4 implies negative serial correlation.</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">out</span> <span class="o">=</span> <span class="n">durbin_watson</span><span class="p">(</span><span class="n">model_fitted</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0179</td>
+      <td>0.0047</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rain : 2.01
-Dam : 2.07
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-8.6227</td>
+      <td>-21.5919</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively agree that both data are now stationary.</p>
+<p>We next split the data into train and test sets for the VAR model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">):</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span><span class="o">*.</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">train_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="n">end</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Result</strong>: There is no significant correlation between in the residuals.</p>
-<p><strong>Step 5</strong>: Now take the preferred VAR model and add in m additional lags of each of the variables into each of the equations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-<span class="n">model_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1">#get the lag order</span>
-<span class="n">lag_order</span> <span class="o">=</span> <span class="n">model_fitted</span><span class="o">.</span><span class="n">k_ar</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lag_order</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then select the VAR order <span class="math notranslate nohighlight">\(p\)</span> by computing the different multivariate information criteria (AIC, BIC, HQIC), and FPE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">):</span>
+    <span class="n">aic</span><span class="p">,</span> <span class="n">bic</span><span class="p">,</span> <span class="n">fpe</span><span class="p">,</span> <span class="n">hqic</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span> 
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">aic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">aic</span><span class="p">)</span>
+        <span class="n">bic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">bic</span><span class="p">)</span>
+        <span class="n">fpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fpe</span><span class="p">)</span>
+        <span class="n">hqic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">hqic</span><span class="p">)</span>
+    <span class="n">lags_metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;AIC&#39;</span><span class="p">:</span> <span class="n">aic</span><span class="p">,</span> 
+                                    <span class="s1">&#39;BIC&#39;</span><span class="p">:</span> <span class="n">bic</span><span class="p">,</span> 
+                                    <span class="s1">&#39;HQIC&#39;</span><span class="p">:</span> <span class="n">hqic</span><span class="p">,</span>
+                                    <span class="s1">&#39;FPE&#39;</span><span class="p">:</span> <span class="n">fpe</span><span class="p">},</span> 
+                                   <span class="n">index</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>    
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">lags_metrics_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">lags_metrics_df</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     21
+BIC      8
+HQIC    11
+FPE     21
+dtype: int64
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:579: ValueWarning: An unsupported index was provided and will be ignored when e.g. forecasting.
-  &#39; ignored when e.g. forecasting.&#39;, ValueWarning)
-</pre></div>
+<img alt="../_images/04_GrangerCausality_35_1.png" src="../_images/04_GrangerCausality_35_1.png" />
 </div>
 </div>
-</div>
-<p><strong>Step 6</strong>: Test for Granger non-causality.</p>
+<p><strong>Result:</strong> We see that BIC has the lowest value at <span class="math notranslate nohighlight">\(p=8\)</span> while HQIC  at <span class="math notranslate nohighlight">\(p=11\)</span>. Although both AIC and FPE have the lowest value at <span class="math notranslate nohighlight">\(p=21\)</span>, their plots also show an elbow. We can thus select the number of lags to be 8 (also for computational efficiency).</p>
+<p>We now fit the VAR model with the chosen order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maxlag</span> <span class="o">=</span> <span class="n">lag_order</span>
-<span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span>
-<span class="k">def</span> <span class="nf">grangers_causation_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;ssr_chi2test&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can finally test the variables for Granger Causality</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">granger_causation_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
     <span class="sd">&quot;&quot;&quot;Check Granger Causality of all possible combinations of the time series.</span>
-<span class="sd">    The rows are the response variable, columns are predictors. The values in the table </span>
+<span class="sd">    The rows are the response variables, columns are predictors. The values in the table </span>
 <span class="sd">    are the P-Values. P-Values lesser than the significance level (0.05), implies </span>
 <span class="sd">    the Null Hypothesis that the coefficients of the corresponding past values is </span>
 <span class="sd">    zero, that is, the X does not cause Y can be rejected.</span>
@@ -869,23 +1048,21 @@ Dam : 2.07
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">test_result</span> <span class="o">=</span> <span class="n">grangercausalitytests</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]],</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">test</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxlag</span><span class="p">)]</span>
+            <span class="n">test_result</span> <span class="o">=</span> <span class="n">grangercausalitytests</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]],</span> <span class="n">p</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">test</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Y = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">, X = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">, P Values = </span><span class="si">{</span><span class="n">p_values</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
             <span class="n">min_p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_p_value</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="o">+</span> <span class="s1">&#39;_x&#39;</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
     <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="o">+</span> <span class="s1">&#39;_y&#39;</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">df</span>
-
-<span class="n">o</span> <span class="o">=</span> <span class="n">grangers_causation_matrix</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">granger_causation_matrix</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
@@ -916,7 +1093,7 @@ Dam : 2.07
     <tr>
       <th>Rain_y</th>
       <td>1.0</td>
-      <td>0.2932</td>
+      <td>0.2169</td>
     </tr>
     <tr>
       <th>Dam_y</th>
@@ -927,39 +1104,1357 @@ Dam : 2.07
 </table>
 </div></div></div>
 </div>
-<p><strong>Result</strong>: If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
-<p>For this particular example, we can say that NIA releases causes changes in the dam water level. On the other hand, dam water level also causes changes in the NIA releases. This is an example of the feedback mentioned above.</p>
-<p>We do the similar steps for the La Mesa dataset.</p>
+<p><strong>Recall:</strong> If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
+<p><strong>Results:</strong> For this particular example, we can say that rainfall Granger causes changes in the dam water level. This means that rainfall data improves changes in dam water level prediction performance.</p>
+<p>On the other hand, changes in dam water level does not Granger cause rainfall. This means that changes in dam water level data does not improve rainfall prediction performance.</p>
+</div>
+<div class="section" id="causality-between-nia-release-flow-and-ipo-dam-water-level">
+<h4>Causality between NIA Release Flow and Ipo Dam Water Level<a class="headerlink" href="#causality-between-nia-release-flow-and-ipo-dam-water-level" title="Permalink to this headline">¶</a></h4>
+<p>In this next example, we now focus on the NIA and Dam time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/La Mesa_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Rain&#39;</span><span class="p">,</span> <span class="s1">&#39;ONI&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># data[&#39;Rain&#39;] = data[&#39;Rain&#39;] - data[&#39;Rain&#39;].shift(1)</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="n">train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">end</span><span class="p">:]</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-<span class="n">model_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">lag_order</span> <span class="o">=</span> <span class="n">model_fitted</span><span class="o">.</span><span class="n">k_ar</span>
-
-<span class="n">maxlag</span> <span class="o">=</span> <span class="n">lag_order</span>
-<span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span>
-
-<span class="n">o1</span> <span class="o">=</span> <span class="n">grangers_causation_matrix</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">o1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">ipo_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/prince.javier/opt/anaconda3/envs/atsa/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:579: ValueWarning: An unsupported index was provided and will be ignored when e.g. forecasting.
-  &#39; ignored when e.g. forecasting.&#39;, ValueWarning)
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>38.225693</td>
+      <td>100.70</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>57.996530</td>
+      <td>100.63</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>49.119213</td>
+      <td>100.56</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47.034720</td>
+      <td>100.55</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42.223380</td>
+      <td>100.48</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We first check for stationarity by looking at the lag plots and applying the KPSS and ADF tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_47_0.png" src="../_images/04_GrangerCausality_47_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.184</td>
+      <td>1.8045</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.022</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.216</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.176</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.146</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.119</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-6.6030</td>
+      <td>-5.8742</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively show that both data are not stationary.</p>
+<p>We apply differencing and recheck for stationarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_53_0.png" src="../_images/04_GrangerCausality_53_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0048</td>
+      <td>0.0047</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-21.2837</td>
+      <td>-21.5919</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively agree that both data are now stationary.</p>
+<p>We next split the data and select the lag order <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     27
+BIC      8
+HQIC    13
+FPE     27
+dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/04_GrangerCausality_59_1.png" src="../_images/04_GrangerCausality_59_1.png" />
+</div>
+</div>
+<p>We select <span class="math notranslate nohighlight">\(p=8\)</span> with the same reasons as before. We finally fit our VAR model and test for Granger Causality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">granger_causation_matrix</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA_x</th>
+      <th>Dam_x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NIA_y</th>
+      <td>1.0000</td>
+      <td>0.0007</td>
+    </tr>
+    <tr>
+      <th>Dam_y</th>
+      <td>0.0216</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Recall:</strong> If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
+<p><strong>Result:</strong> For this particular example, we can say that changes in NIA release flow Granger causes changes in the dam water level. Conversely, changes in dam water level also Granger causes changes in the NIA release flow. This is an example of the feedback mentioned in an earlier section above. This means that NIA release flow data improves changes in dam water level prediction performance, and dam water level data also improves changes in NIA release flow prediction performance.</p>
+</div>
+</div>
+<div class="section" id="example-2-causality-for-la-mesa-dam">
+<h3>Example 2: Causality for La Mesa Dam<a class="headerlink" href="#example-2-causality-for-la-mesa-dam" title="Permalink to this headline">¶</a></h3>
+<p>We now do the same steps for the La Mesa dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lamesa_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/La Mesa_dataset.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span>
+<span class="n">lamesa_df</span> <span class="o">=</span> <span class="n">lamesa_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">lamesa_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>ONI</th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>-0.7</td>
+      <td>38.225693</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>-0.7</td>
+      <td>57.996530</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>-0.7</td>
+      <td>49.119213</td>
+      <td>78.61</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>-0.7</td>
+      <td>47.034720</td>
+      <td>78.59</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>-0.7</td>
+      <td>42.223380</td>
+      <td>78.56</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rain&#39;</span><span class="p">,</span> <span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">,</span> <span class="s1">&#39;Dam&#39;</span><span class="p">]</span>
+<span class="n">lamesa_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)):</span> 
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">plot_cols</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_67_0.png" src="../_images/04_GrangerCausality_67_0.png" />
+</div>
+</div>
+<div class="section" id="causality-between-rainfall-and-la-mesa-dam-water-level">
+<h4>Causality between Rainfall and La Mesa Dam Water Level<a class="headerlink" href="#causality-between-rainfall-and-la-mesa-dam-water-level" title="Permalink to this headline">¶</a></h4>
+<p>In this next example, we first consider the Rain and Dam time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">lamesa_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIA&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>78.61</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>78.59</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>78.56</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We first check for stationarity by looking at the lag plots and applying the KPSS and ADF tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_71_0.png" src="../_images/04_GrangerCausality_71_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0327</td>
+      <td>1.8845</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-8.7136</td>
+      <td>-4.2004</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0007</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively show that again Rain is stationary, while Dam is not.</p>
+<p>We apply differencing and recheck for stationarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_77_0.png" src="../_images/04_GrangerCausality_77_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0327</td>
+      <td>0.0226</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-8.7138</td>
+      <td>-26.5948</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively agree that both data are now stationary.</p>
+<p>We next split the data and select the lag order <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     7
+BIC     6
+HQIC    7
+FPE     7
+dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/04_GrangerCausality_83_1.png" src="../_images/04_GrangerCausality_83_1.png" />
+</div>
+</div>
+<p>We select <span class="math notranslate nohighlight">\(p=7\)</span>. We finally fit our VAR model and test for Granger Causality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">granger_causation_matrix</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rain_x</th>
+      <th>Dam_x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rain_y</th>
+      <td>1.0</td>
+      <td>0.0005</td>
+    </tr>
+    <tr>
+      <th>Dam_y</th>
+      <td>0.0</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Recall:</strong> If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
+<p><strong>Result:</strong> For this particular example, we can say that rainfall Granger causes changes in the dam water level. Conversely, changes in dam water level also Granger causes rainfall. This is another example of feedback. This means that rainfall data improves changes in dam water level prediction performance, and dam water level data also improves rainfall prediction performance.</p>
+</div>
+<div class="section" id="causality-between-nia-release-flow-and-la-mesa-dam-water-level">
+<h4>Causality between NIA Release Flow and La Mesa Dam Water Level<a class="headerlink" href="#causality-between-nia-release-flow-and-la-mesa-dam-water-level" title="Permalink to this headline">¶</a></h4>
+<p>In this next example, we now focus on the NIA and Dam time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">lamesa_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ONI&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>38.225693</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>57.996530</td>
+      <td>78.63</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>49.119213</td>
+      <td>78.61</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47.034720</td>
+      <td>78.59</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42.223380</td>
+      <td>78.56</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We first check for stationarity by looking at the lag plots and applying the KPSS and ADF tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_92_0.png" src="../_images/04_GrangerCausality_92_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.184</td>
+      <td>1.8845</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.022</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.216</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.176</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.146</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.119</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-6.6030</td>
+      <td>-4.2004</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0007</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively show that both data are not stationary.</p>
+<p>We apply differencing and recheck for stationarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;NIA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Dam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_98_0.png" src="../_images/04_GrangerCausality_98_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0048</td>
+      <td>0.0226</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NIA</th>
+      <th>Dam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-21.2837</td>
+      <td>-26.5948</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4313</td>
+      <td>-3.4313</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8619</td>
+      <td>-2.8619</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5670</td>
+      <td>-2.5670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Result:</strong> All three conclusively agree that both data are now stationary.</p>
+<p>We next split the data and select the lag order <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     14
+BIC      2
+HQIC     8
+FPE     14
+dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/04_GrangerCausality_104_1.png" src="../_images/04_GrangerCausality_104_1.png" />
+</div>
+</div>
+<p>We select <span class="math notranslate nohighlight">\(p=14\)</span>. We finally fit our VAR model and test for Granger Causality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">granger_causation_matrix</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -997,21 +2492,29 @@ Dam : 2.07
 </table>
 </div></div></div>
 </div>
-<p>We see that, unlike for Ipo, NIA releases and dam water level are NOT causal to one another.</p>
+<p><strong>Recall:</strong> If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
+<p><strong>Result:</strong> We see that, unlike for Ipo Dam, changes in NIA release flow and changes in the dam water level do NOT Granger cause one another for La Mesa Dam. This means that NIA release flow data does NOT improve changes in dam water level prediction performance, and dam water level data also does NOT improve changes in NIA release flow prediction performance.</p>
+</div>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>As exercises, the reader can check for causality between other pairs of variables from both the Ipo and La Mesa datasets, as well as from the Angat dataset.</p>
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>As exercises, the reader can test for Granger Causality between other pairs of variables from both the Ipo and La Mesa datasets, as well as from the Angat dataset.</p>
 </div>
-<div class="section" id="jena-weather-data">
-<h2>Jena Weather Data<a class="headerlink" href="#jena-weather-data" title="Permalink to this headline">¶</a></h2>
-<p>We look back at the Jena Weather Data and explore which variables are causal to one another.</p>
+<div class="section" id="example-3-jena-climate-data">
+<h3>Example 3: Jena Climate Data<a class="headerlink" href="#example-3-jena-climate-data" title="Permalink to this headline">¶</a></h3>
+<p>We look back at the Jena climate dataset and explore which variables are Granger causal to another.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jena_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jena_climate_2009_2016.csv&#39;</span><span class="p">)</span>
-<span class="n">jena_data</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">jena_data</span><span class="p">[</span><span class="s1">&#39;Date Time&#39;</span><span class="p">])</span>
-<span class="n">jena_data</span> <span class="o">=</span> <span class="n">jena_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date Time&#39;</span><span class="p">)</span>
-<span class="n">jena_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/train_series_datetime.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date Time&#39;</span><span class="p">)</span>
+<span class="n">val_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/val_series_datetime.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date Time&#39;</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/test_series_datetime.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date Time&#39;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">val_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">val_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">test_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">test_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">train_val_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_df</span><span class="p">,</span> <span class="n">val_df</span><span class="p">])</span>
+<span class="n">jena_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_df</span><span class="p">,</span> <span class="n">val_df</span><span class="p">,</span> <span class="n">test_df</span><span class="p">])</span>
+<span class="n">jena_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1086,48 +2589,84 @@ Dam : 2.07
       <td>152.3</td>
     </tr>
     <tr>
-      <th>2009-01-01 00:20:00</th>
-      <td>996.57</td>
-      <td>-8.41</td>
-      <td>265.01</td>
-      <td>-9.28</td>
-      <td>93.4</td>
-      <td>3.23</td>
-      <td>3.02</td>
-      <td>0.21</td>
-      <td>1.89</td>
-      <td>3.03</td>
-      <td>1309.80</td>
-      <td>0.72</td>
-      <td>1.50</td>
-      <td>136.1</td>
+      <th>2009-01-01 01:10:00</th>
+      <td>996.50</td>
+      <td>-7.62</td>
+      <td>265.81</td>
+      <td>-8.30</td>
+      <td>94.8</td>
+      <td>3.44</td>
+      <td>3.26</td>
+      <td>0.18</td>
+      <td>2.04</td>
+      <td>3.27</td>
+      <td>1305.68</td>
+      <td>0.18</td>
+      <td>0.63</td>
+      <td>166.5</td>
     </tr>
     <tr>
-      <th>2009-01-01 00:30:00</th>
-      <td>996.53</td>
-      <td>-8.51</td>
-      <td>264.91</td>
-      <td>-9.31</td>
-      <td>93.9</td>
-      <td>3.21</td>
-      <td>3.01</td>
+      <th>2009-01-01 02:10:00</th>
+      <td>996.63</td>
+      <td>-8.85</td>
+      <td>264.57</td>
+      <td>-9.70</td>
+      <td>93.5</td>
+      <td>3.12</td>
+      <td>2.92</td>
       <td>0.20</td>
-      <td>1.88</td>
-      <td>3.02</td>
-      <td>1310.24</td>
-      <td>0.19</td>
-      <td>0.63</td>
-      <td>171.6</td>
+      <td>1.82</td>
+      <td>2.93</td>
+      <td>1312.11</td>
+      <td>0.16</td>
+      <td>0.50</td>
+      <td>158.3</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 03:10:00</th>
+      <td>996.87</td>
+      <td>-8.84</td>
+      <td>264.56</td>
+      <td>-9.69</td>
+      <td>93.5</td>
+      <td>3.13</td>
+      <td>2.92</td>
+      <td>0.20</td>
+      <td>1.83</td>
+      <td>2.93</td>
+      <td>1312.37</td>
+      <td>0.07</td>
+      <td>0.25</td>
+      <td>129.3</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 04:10:00</th>
+      <td>997.05</td>
+      <td>-9.23</td>
+      <td>264.15</td>
+      <td>-10.25</td>
+      <td>92.2</td>
+      <td>3.03</td>
+      <td>2.79</td>
+      <td>0.24</td>
+      <td>1.74</td>
+      <td>2.80</td>
+      <td>1314.62</td>
+      <td>0.10</td>
+      <td>0.38</td>
+      <td>203.9</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Consider last 10,000 data points for p and T.</p>
+<div class="section" id="causality-between-pressure-and-temperature">
+<h4>Causality between Pressure and Temperature<a class="headerlink" href="#causality-between-pressure-and-temperature" title="Permalink to this headline">¶</a></h4>
+<p>In this next example, we first consider the p and T time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jena_sample</span> <span class="o">=</span> <span class="n">jena_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">jena_sample</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">jena_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1166,14 +2705,99 @@ Dam : 2.07
       <td>-8.02</td>
     </tr>
     <tr>
-      <th>2009-01-01 00:20:00</th>
-      <td>996.57</td>
-      <td>-8.41</td>
+      <th>2009-01-01 01:10:00</th>
+      <td>996.50</td>
+      <td>-7.62</td>
     </tr>
     <tr>
-      <th>2009-01-01 00:30:00</th>
-      <td>996.53</td>
-      <td>-8.51</td>
+      <th>2009-01-01 02:10:00</th>
+      <td>996.63</td>
+      <td>-8.85</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 03:10:00</th>
+      <td>996.87</td>
+      <td>-8.84</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 04:10:00</th>
+      <td>997.05</td>
+      <td>-9.23</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We first check for stationarity by looking at the lag plots and applying the KPSS and ADF tests.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_GrangerCausality_118_0.png" src="../_images/04_GrangerCausality_118_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.2295</td>
+      <td>0.3649</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0100</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
     </tr>
   </tbody>
 </table>
@@ -1181,281 +2805,246 @@ Dam : 2.07
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">ax5</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">f2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">);</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">)</span>
-<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">);</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_GrangerCausality_43_0.png" src="../_images/04_GrangerCausality_43_0.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-18.3281</td>
+      <td>-8.5824</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4304</td>
+      <td>-3.4304</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8616</td>
+      <td>-2.8616</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5668</td>
+      <td>-2.5668</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-<p><strong>Result</strong>: T data is not stationary. We use differencing to make it  stationary.</p>
+<p><strong>Result:</strong> All three conclusively show that both data are not stationary.</p>
+<p>We apply differencing and recheck for stationarity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># differencing for stationarity check</span>
-<span class="n">rawData</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">jena_sample</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_plots</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-98-3aed1e4c60a7&gt;:4: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  jena_sample[&#39;p (mbar)&#39;] = jena_sample[&#39;p (mbar)&#39;] - jena_sample[&#39;p (mbar)&#39;].shift(1)
-&lt;ipython-input-98-3aed1e4c60a7&gt;:5: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  jena_sample[&#39;T (degC)&#39;] = jena_sample[&#39;T (degC)&#39;] - jena_sample[&#39;T (degC)&#39;].shift(1)
-</pre></div>
-</div>
+<img alt="../_images/04_GrangerCausality_124_0.png" src="../_images/04_GrangerCausality_124_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data into train and test sets for VAR later on</span>
-<span class="n">end</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">)</span><span class="o">*.</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">jena_sample</span><span class="p">[</span><span class="n">end</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ADF Null Hypothesis: there is a unit root, meaning series is non-stationary</span>
-
-<span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">])</span>
-<span class="n">X1</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X1</span><span class="p">)]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
-    
-    
-<span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">])</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">X2</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X2</span><span class="p">)]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpss_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ADF Statistic: -59.104716
-p-value: 0.000000
-Critical Values:
-	1%: -3.430
-	5%: -2.862
-	10%: -2.567
-ADF Statistic: -122.256393
-p-value: 0.000000
-Critical Values:
-	1%: -3.430
-	5%: -2.862
-	10%: -2.567
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>0.0009</td>
+      <td>0.0024</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.1000</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>0.2160</td>
+      <td>0.2160</td>
+    </tr>
+    <tr>
+      <th>Critical value - 2.5%</th>
+      <td>0.1760</td>
+      <td>0.1760</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>0.1460</td>
+      <td>0.1460</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>0.1190</td>
+      <td>0.1190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KPSS Null Hypothesis: there is no unit root, meaning series is stationary</span>
-
-<span class="k">def</span> <span class="nf">kpss_test</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>    
-    <span class="n">statistic</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">,</span> <span class="n">critical_values</span> <span class="o">=</span> <span class="n">kpss</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-    <span class="c1"># Format Output</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KPSS Statistic: </span><span class="si">{</span><span class="n">statistic</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p-value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;num lags: </span><span class="si">{</span><span class="n">n_lags</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critial Values:&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">critical_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Result: The series is </span><span class="si">{</span><span class="s2">&quot;not &quot;</span> <span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">stationary&#39;</span><span class="p">)</span>
-
-<span class="n">kpss_test</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="n">kpss_test</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adf_test</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KPSS Statistic: 0.0016032868205162105
-p-value: 0.1
-num lags: 97
-Critial Values:
-   10% : 0.347
-   5% : 0.463
-   2.5% : 0.574
-   1% : 0.739
-Result: The series is stationary
-KPSS Statistic: 0.002692749007731491
-p-value: 0.1
-num lags: 97
-Critial Values:
-   10% : 0.347
-   5% : 0.463
-   2.5% : 0.574
-   1% : 0.739
-Result: The series is stationary
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:1850: FutureWarning: The behavior of using nlags=None will change in release 0.13.Currently nlags=None is the same as nlags=&quot;legacy&quot;, and so a sample-size lag length is used. After the next release, the default will change to be the same as nlags=&quot;auto&quot; which uses an automatic lag length selection method. To silence this warning, either use &quot;auto&quot; or &quot;legacy&quot;
-  warnings.warn(msg, FutureWarning)
-/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:1885: InterpolationWarning: The test statistic is outside of the range of p-values available in the
-look-up table. The actual p-value is greater than the p-value returned.
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-  warnings.warn(
-/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:1885: InterpolationWarning: The test statistic is outside of the range of p-values available in the
-look-up table. The actual p-value is greater than the p-value returned.
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-  warnings.warn(
-</pre></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p (mbar)</th>
+      <th>T (degC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Test statistic</th>
+      <td>-38.6219</td>
+      <td>-41.3374</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Critical value - 1%</th>
+      <td>-3.4304</td>
+      <td>-3.4304</td>
+    </tr>
+    <tr>
+      <th>Critical value - 5%</th>
+      <td>-2.8616</td>
+      <td>-2.8616</td>
+    </tr>
+    <tr>
+      <th>Critical value - 10%</th>
+      <td>-2.5668</td>
+      <td>-2.5668</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-<p><strong>Results</strong>: ADF Null Hypothesis is rejected. Thus, data is stationary. KPSS Null Hypothesis could not be rejected. Thus, data is stationary.</p>
+<p><strong>Result:</strong> All three conclusively agree that both data are now stationary.</p>
+<p>We next split the data and select the lag order <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">ax5</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">f2</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;p (mbar)&#39;</span><span class="p">);</span>
-
-<span class="n">lag_plot</span><span class="p">(</span><span class="n">jena_sample</span><span class="p">[</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">)</span>
-<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">);</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_p</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_GrangerCausality_50_0.png" src="../_images/04_GrangerCausality_50_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC     59
+BIC     53
+HQIC    54
+FPE     59
+dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/04_GrangerCausality_130_1.png" src="../_images/04_GrangerCausality_130_1.png" />
 </div>
 </div>
-<p><strong>Result</strong>: Lag plots confirm results of ADF test and KPSS test.</p>
-<p><strong>Step 2</strong>: Set up a VAR model for the data (without differencing).</p>
+<p>We select <span class="math notranslate nohighlight">\(p=30\)</span>. We finally fit our VAR model and test for Granger Causality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-<span class="n">model_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:581: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
-  warnings.warn(&#39;A date index has been provided, but it has no&#39;
-/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:585: ValueWarning: A date index has been provided, but it is not monotonic and so will be ignored when e.g. forecasting.
-  warnings.warn(&#39;A date index has been provided, but it is not&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Step 4</strong>: Make sure that the VAR is well-specified. For example, ensure that there is no serial correlation in the residuals. If need be, increase p until any autocorrelation issues are resolved.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check for Serial Correlation of Residuals (Errors) using Durbin Watson Statistic</span>
-<span class="c1">#The value of this statistic can vary between 0 and 4. </span>
-<span class="c1">#The closer it is to the value 2, then there is no significant serial correlation. </span>
-<span class="c1">#The closer to 0, there is a positive serial correlation, </span>
-<span class="c1">#and the closer it is to 4 implies negative serial correlation.</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="n">durbin_watson</span><span class="p">(</span><span class="n">model_fitted</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rain : 2.01
-Dam : 2.0
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Result</strong>: There is no significant correlation between in the residuals.</p>
-<p><strong>Step 5</strong>: Now take the preferred VAR model and add in m additional lags of each of the variables into each of the equations.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-<span class="n">model_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1">#get the lag order</span>
-<span class="n">lag_order</span> <span class="o">=</span> <span class="n">model_fitted</span><span class="o">.</span><span class="n">k_ar</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lag_order</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:581: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
-  warnings.warn(&#39;A date index has been provided, but it has no&#39;
-/opt/conda/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:585: ValueWarning: A date index has been provided, but it is not monotonic and so will be ignored when e.g. forecasting.
-  warnings.warn(&#39;A date index has been provided, but it is not&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Step 6</strong>: Test for Granger non-causality.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maxlag</span> <span class="o">=</span> <span class="n">lag_order</span>
-<span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span>
-<span class="k">def</span> <span class="nf">grangers_causation_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;ssr_chi2test&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
-    <span class="sd">&quot;&quot;&quot;Check Granger Causality of all possible combinations of the time series.</span>
-<span class="sd">    The rows are the response variable, columns are predictors. The values in the table </span>
-<span class="sd">    are the P-Values. P-Values lesser than the significance level (0.05), implies </span>
-<span class="sd">    the Null Hypothesis that the coefficients of the corresponding past values is </span>
-<span class="sd">    zero, that is, the X does not cause Y can be rejected.</span>
-
-<span class="sd">    data      : pandas dataframe containing the time series variables</span>
-<span class="sd">    variables : list containing names of the time series variables.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-            <span class="n">test_result</span> <span class="o">=</span> <span class="n">grangercausalitytests</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]],</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">test</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxlag</span><span class="p">)]</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Y = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">, X = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">, P Values = </span><span class="si">{</span><span class="n">p_values</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">min_p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
-            <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_p_value</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="o">+</span> <span class="s1">&#39;_x&#39;</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="o">+</span> <span class="s1">&#39;_y&#39;</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="n">o</span> <span class="o">=</span> <span class="n">grangers_causation_matrix</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">var_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">granger_causation_matrix</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
@@ -1497,8 +3086,15 @@ Dam : 2.0
 </table>
 </div></div></div>
 </div>
-<p>We observe that p “causes” T, but not the other way around.</p>
-<p>Causality will be revisited in a later chapter, in particular addressing the limitations of the method discussed in this chapter.</p>
+<p><strong>Recall:</strong> If a given p-value is &lt; significance level (0.05), then, the corresponding X series (column) causes the Y (row).</p>
+<p><strong>Result:</strong> For this particular example, we can say that changes in pressure Granger causes changes in temperature. Conversely, changes in temperature also Granger causes pressure. This is another example of feedback. This means that pressure data improves changes in temperature prediction performance, and temperature data also improves pressure prediction performance.</p>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>We have introduced the notion of causality in this chapter, and discussed its implications on time series analysis. We also applied the Granger Causality Test for linear VAR models for several datasets, seeing different examples of causality between the variables explored.</p>
+<p>Causality will be revisited in a later chapter, in particular addressing the limitations of the method discussed in this chapter and discussing causality for nonlinear models.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

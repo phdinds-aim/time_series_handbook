@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# checking convergence', '# Looking at "convergence"', 'L_range = range(5, len(X), 500) # L values to test', 'tau = 1', 'E = 2']
+['# checking convergence', '# Looking at "convergence"', 'L_range = range(5, len(X), 1000) # L values to test', 'tau = 1', 'E = 2']
 ...
-["plt.plot(L_range, Xhat_My, label='$\\hat{X}(t)|M_y$')", "plt.plot(L_range, Yhat_Mx, label='$\\hat{Y}(t)|M_x$')", "plt.xlabel('L', size=15)", "plt.ylabel('correl', size=15)", "plt.legend(prop={'size': 20})"]
+["plt.plot(L_range, Xhat_My, label='$\\hat{X}(t)|M_y$')", "plt.plot(L_range, Yhat_Mx, label='$\\hat{Y}(t)|M_x$')", "plt.xlabel('L', size=12)", "plt.ylabel('correl', size=12)", "plt.legend(prop={'size': 12})"]
 -------------------
 

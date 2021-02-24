@@ -505,7 +505,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum at: 0.236 (in $s$)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum at: 0.25 (in $s$)
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_10_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_10_1.png" />
@@ -859,8 +859,8 @@ Critical Values:
 <div class="section" id="the-fourier-transform">
 <h2>The Fourier Transform:<a class="headerlink" href="#the-fourier-transform" title="Permalink to this headline">¶</a></h2>
 <p>Transforming a signal from the time domain into the frequency (<span class="math notranslate nohighlight">\(\omega\)</span>) domain using this method is called the \textbf{Fourier Transform (FT)}. The FT is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7881af04-0fcd-48b7-9292-d9e8350fb3e3">
-<span class="eqno">(12)<a class="headerlink" href="#equation-7881af04-0fcd-48b7-9292-d9e8350fb3e3" title="Permalink to this equation">¶</a></span>\[\begin{align} \hat{y}(\omega) = \int_{-\infty}^{\infty}{y(t)e^{-2\pi i \omega t}d\omega} \end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-c8718931-076c-4ef3-93fd-7ad7a482dd42">
+<span class="eqno">(12)<a class="headerlink" href="#equation-c8718931-076c-4ef3-93fd-7ad7a482dd42" title="Permalink to this equation">¶</a></span>\[\begin{align} \hat{y}(\omega) = \int_{-\infty}^{\infty}{y(t)e^{-2\pi i \omega t}d\omega} \end{align}\]</div>
 <p>To better understand the FT, let us take a look at some of its applications.</p>
 <div class="section" id="ft-of-a-pure-signal">
 <h3>FT of a Pure Signal<a class="headerlink" href="#ft-of-a-pure-signal" title="Permalink to this headline">¶</a></h3>
@@ -974,8 +974,8 @@ Critical Values:
 <h2>Noise Filtering<a class="headerlink" href="#noise-filtering" title="Permalink to this headline">¶</a></h2>
 <p>Real time series data are never free from noise making it tricky to find the real dynamics of whatever it is measuring. We may end up trying to model noise and end up overlooking the real behavior of the time series.</p>
 <p>Thankfully, we can manipulate time series data in the frequency domain to eliminate one of the most types of noise - white noise. White noise pervades time series data and by definition, has components across all frequencies. Usually, a time series with white noise is represented as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-26437f41-be18-4069-b5be-9c527d96c09a">
-<span class="eqno">(13)<a class="headerlink" href="#equation-26437f41-be18-4069-b5be-9c527d96c09a" title="Permalink to this equation">¶</a></span>\[\begin{align} y(t) = s(t) + v(t) \end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-05016bf0-b61f-4fab-9711-767b0867bd08">
+<span class="eqno">(13)<a class="headerlink" href="#equation-05016bf0-b61f-4fab-9711-767b0867bd08" title="Permalink to this equation">¶</a></span>\[\begin{align} y(t) = s(t) + v(t) \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(s(t)\)</span> is the true signal we want to retrieve from <span class="math notranslate nohighlight">\(y(t)\)</span> and <span class="math notranslate nohighlight">\(v(t)\)</span> is white noise we want to eliminate. We simulate this below by adding white noise to the signal.</p>
 <div class="section" id="filtering-by-energy-level">
 <h3>Filtering by Energy Level<a class="headerlink" href="#filtering-by-energy-level" title="Permalink to this headline">¶</a></h3>
@@ -1040,41 +1040,42 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  0.4   1.4   2.    2.6   3.2   4.2   4.8   6.4   7.    7.4   8.    8.6
-   9.2   9.8  10.4  10.8  11.8  12.2  12.8  13.6  14.   15.   15.6  16.2
-  17.   18.   18.4  19.2  19.6  20.2  21.   21.6  22.2  22.6  23.2  23.8
-  24.6  25.2  25.6  26.4  26.8  27.4  28.   28.8  29.4  30.4  30.8  31.2
-  31.6  32.4  33.2  33.6  34.2  34.6  35.2  35.8  36.6  37.6  38.2  38.8
-  39.4  40.2  41.   41.4  42.2  43.   43.8  44.2  44.6  45.2  45.8  46.4
-  46.8  47.4  48.2  48.8  49.6  50.8  51.2  52.2  53.   53.4  53.8  54.4
-  55.2  55.6  56.   56.4  56.8  57.4  57.8  58.4  59.4  59.8  60.4  61.
-  61.6  62.   62.6  63.2  64.   64.6  65.2  65.8  66.4  67.   67.8  69.
-  69.6  70.   71.4  71.8  72.8  73.2  73.6  74.   75.2  75.8  76.6  77.
-  77.8  78.6  79.   79.8  80.6  81.2  81.6  82.4  82.8  83.2  83.6  84.8
-  85.2  85.6  86.   86.6  87.2  87.6  88.2  88.8  89.2  90.   90.6  91.2
-  91.6  92.2  92.8  93.4  94.   94.8  95.6  96.   96.6  97.2  97.6  98.
-  98.6  99.   99.8 100.2 101.2 102.  102.8 103.2 103.8 104.2 104.6 105.
- 105.6 106.  106.4 107.  107.6 108.  108.8 109.4 110.  111.2 112.2 112.8
- 113.6 114.2 114.6 115.6 116.2 116.6 117.  117.4 118.  118.6 119.2 120.
- 120.4 121.4 121.8 122.4 123.  123.8 124.4 124.8 125.4 126.2 126.8 127.4
- 128.4 129.  129.4 129.8 130.4 131.  132.  132.4 133.2 133.8 134.2 134.8
- 135.2 136.  136.4 137.  137.6 138.  138.6 139.2 139.6 140.2 140.6 141.6
- 142.  142.4 143.8 144.6 145.4 146.  146.8 147.2 148.  148.4 148.8 149.4
- 149.8 150.4 150.8 151.4 152.2 153.  153.4 153.8 154.4 155.  155.4 156.
- 156.6 157.2 158.  158.4 159.  159.8 160.2 161.  161.4 162.2 163.  163.4
- 164.  164.6 165.  165.8 166.2 167.  167.6 168.  168.4 168.8 169.2 169.6
- 170.  170.4 171.  172.  172.6 173.  174.2 174.6 175.  175.4 176.2 176.6
- 177.2 177.8 178.2 178.8 179.6 180.  180.4 181.4 182.  182.8 183.2 183.6
- 184.4 185.  185.4 186.  186.8 187.2 187.6 188.4 189.2 189.6 190.2 190.8
- 191.2 192.  192.4 192.8 193.6 194.  194.8 195.4 196.2 196.8 197.8 198.4
- 199.  199.4 200.4 200.8 201.2 201.8 202.4 203.  203.6 204.  204.8 205.2
- 205.6 206.2 206.8 207.6 208.4 208.8 209.4 210.  210.6 211.6 212.  212.4
- 212.8 213.6 214.  214.6 215.2 216.  216.8 217.2 217.6 218.4 218.8 219.2
- 219.6 220.6 221.4 221.8 222.4 222.8 223.6 224.2 225.8 226.2 226.6 227.4
- 228.  228.4 228.8 229.4 230.  230.6 231.  231.6 232.  232.6 233.  234.
- 234.8 235.2 235.6 236.8 237.2 238.2 238.8 239.2 239.6 240.4 241.2 241.6
- 242.2 242.6 243.2 243.6 244.  244.6 245.  245.8 246.6 247.  247.6 248.
- 248.8 249.6]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [  0.8   1.2   1.6   2.    2.6   3.2   4.    4.6   5.    5.8   6.2   7.
+   7.6   8.2   8.8   9.8  11.   11.6  12.6  13.6  14.2  15.   15.4  16.2
+  17.   17.4  18.4  18.8  19.4  20.   20.6  21.4  21.8  22.6  23.2  23.6
+  24.   24.6  25.2  26.   26.4  27.2  27.6  28.   28.4  29.2  29.6  30.4
+  31.2  31.8  32.4  33.2  33.8  34.2  34.6  35.   35.4  36.2  36.8  37.6
+  38.4  39.4  39.8  40.2  40.6  41.   41.4  41.8  42.2  42.6  43.4  44.
+  44.4  44.8  45.8  46.6  47.4  48.2  48.6  49.   49.4  50.   51.   51.6
+  52.   52.4  53.8  54.2  54.6  55.4  55.8  56.4  57.   57.6  58.   58.4
+  59.   59.6  60.2  60.6  61.4  62.   63.   63.6  64.4  64.8  65.4  65.8
+  66.2  66.6  67.2  67.8  68.4  69.   69.4  70.2  70.8  71.2  71.8  72.2
+  72.8  73.4  73.8  74.8  75.4  76.4  77.   77.4  78.   78.4  79.   79.4
+  79.8  80.2  80.6  81.4  82.   82.6  83.2  83.8  84.4  84.8  85.4  85.8
+  86.4  87.4  87.8  88.6  89.4  90.2  91.2  91.6  92.2  93.2  93.8  94.2
+  94.8  95.2  95.6  96.4  96.8  97.6  98.   98.8  99.6 100.2 100.8 101.6
+ 102.  102.4 103.  104.  104.6 105.2 106.  106.4 106.8 107.2 107.6 108.2
+ 109.4 110.  110.8 111.2 111.8 112.4 113.  113.8 114.2 114.8 115.2 115.6
+ 116.2 116.6 117.  117.8 118.4 118.8 119.4 120.  120.8 121.6 122.4 123.2
+ 124.4 125.2 126.  126.8 127.4 128.  128.6 129.  129.6 130.2 130.6 131.
+ 131.4 131.8 132.6 133.2 133.6 134.2 134.8 135.2 135.6 136.  136.6 137.2
+ 137.8 138.2 139.  140.  140.4 140.8 141.6 142.4 143.2 143.6 144.  144.4
+ 144.8 145.2 145.8 146.4 146.8 147.2 147.6 148.4 149.2 149.8 150.2 150.6
+ 151.4 151.8 152.4 153.  153.6 154.6 155.  155.8 156.4 156.8 157.4 158.
+ 158.6 159.2 159.8 160.6 161.4 161.8 162.2 162.6 163.  163.6 164.6 165.
+ 165.8 166.4 166.8 167.2 167.8 168.4 169.2 170.4 170.8 171.4 172.2 172.8
+ 174.  174.6 175.2 176.  176.4 176.8 177.4 178.2 178.8 179.2 179.8 180.2
+ 180.8 181.2 182.  182.6 183.  183.8 184.2 184.6 185.  185.6 186.2 186.8
+ 187.2 187.6 188.2 188.6 189.2 189.6 190.4 191.  191.6 192.  192.6 193.2
+ 193.6 194.  194.8 195.2 195.8 196.2 197.  197.4 198.2 198.6 199.6 200.
+ 200.4 200.8 201.2 201.8 202.2 202.6 203.2 203.8 204.2 205.  205.4 205.8
+ 206.6 207.  207.6 208.  208.6 209.2 209.6 210.2 210.6 211.2 212.2 212.8
+ 213.2 213.8 214.2 215.  215.6 216.2 216.8 217.6 218.  218.6 219.2 220.2
+ 221.  221.6 222.  222.4 222.8 223.4 223.8 224.2 224.8 225.4 226.  226.4
+ 227.2 227.8 228.4 229.2 229.6 230.2 230.8 231.4 231.8 232.4 233.2 233.6
+ 234.8 235.6 236.6 237.2 237.6 238.4 239.  239.6 240.  240.4 241.  241.6
+ 242.2 242.8 243.2 243.8 244.2 244.6 245.4 245.8 246.6 247.6 248.2 248.8
+ 249.4]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_56_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_56_1.png" />
@@ -1092,7 +1093,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 17.   60.4  67.  224.2 246.8]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Peaks at: [ 9.8 17. ]
 </pre></div>
 </div>
 </div>
@@ -1346,7 +1347,7 @@ Critical Values:
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe67a606350&gt;]
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9976353550&gt;]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_71_2.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_71_2.png" />
@@ -1364,7 +1365,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe67a89a810&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9967cc3150&gt;]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_73_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_73_1.png" />
@@ -1381,7 +1382,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe67a9b7dd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f996800fd10&gt;]
 </pre></div>
 </div>
 <img alt="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_75_1.png" src="../_images/07_CrosscorrelationsFourierTransformandWaveletTransform_75_1.png" />

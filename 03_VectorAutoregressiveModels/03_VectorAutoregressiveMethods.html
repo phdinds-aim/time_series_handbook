@@ -964,113 +964,6 @@ This sample dataset contains weekly data of US Treasury rates from January 1982 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>p (mbar)</th>
-      <th>T (degC)</th>
-      <th>Tpot (K)</th>
-      <th>Tdew (degC)</th>
-      <th>rh (%)</th>
-      <th>VPmax (mbar)</th>
-      <th>VPact (mbar)</th>
-      <th>VPdef (mbar)</th>
-      <th>sh (g/kg)</th>
-      <th>H2OC (mmol/mol)</th>
-      <th>rho (g/m**3)</th>
-      <th>wv (m/s)</th>
-      <th>max. wv (m/s)</th>
-      <th>wd (deg)</th>
-    </tr>
-    <tr>
-      <th>Date Time</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2009-01-01 00:10:00</th>
-      <td>996.52</td>
-      <td>-8.02</td>
-      <td>265.40</td>
-      <td>-8.90</td>
-      <td>93.3</td>
-      <td>3.33</td>
-      <td>3.11</td>
-      <td>0.22</td>
-      <td>1.94</td>
-      <td>3.12</td>
-      <td>1307.75</td>
-      <td>1.03</td>
-      <td>1.75</td>
-      <td>152.3</td>
-    </tr>
-    <tr>
-      <th>2009-01-01 00:20:00</th>
-      <td>996.57</td>
-      <td>-8.41</td>
-      <td>265.01</td>
-      <td>-9.28</td>
-      <td>93.4</td>
-      <td>3.23</td>
-      <td>3.02</td>
-      <td>0.21</td>
-      <td>1.89</td>
-      <td>3.03</td>
-      <td>1309.80</td>
-      <td>0.72</td>
-      <td>1.50</td>
-      <td>136.1</td>
-    </tr>
-    <tr>
-      <th>2009-01-01 00:30:00</th>
-      <td>996.53</td>
-      <td>-8.51</td>
-      <td>264.91</td>
-      <td>-9.31</td>
-      <td>93.9</td>
-      <td>3.21</td>
-      <td>3.01</td>
-      <td>0.20</td>
-      <td>1.88</td>
-      <td>3.02</td>
-      <td>1310.24</td>
-      <td>0.19</td>
-      <td>0.63</td>
-      <td>171.6</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1172,9 +1065,9 @@ This sample dataset contains weekly data of US Treasury rates from January 1982 
 \[ y_{2,t} = b_{2,0} - b_{2,1}y_{2,t} +  \varphi_{2,1}y_{1,t-1} + \varphi_{2,2}y_{2,t-1} + \varepsilon_{2,t}\]</div>
 <p>where both <span class="math notranslate nohighlight">\(y_{1,t}\)</span> and <span class="math notranslate nohighlight">\(y_{2,t}\)</span> are assumed to be stationary, and <span class="math notranslate nohighlight">\(\varepsilon_{1,t}\)</span> and <span class="math notranslate nohighlight">\(\varepsilon_{2,t}\)</span> are the uncorrelated error terms with standard deviation <span class="math notranslate nohighlight">\(\sigma_{1,t}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{2,t}\)</span>, respectively.</p>
 <p>In matrix notation:
-<img src="bivariate1.png" style="width: 480px;"/></p>
+<img alt="../_images/bivariate1.png" src="../_images/bivariate1.png" /></p>
 <p>Let
-<img src="bivariate2.png" style="width: 500px;"/></p>
+<img alt="../_images/bivariate2.png" src="../_images/bivariate2.png" /></p>
 <p>then</p>
 <div class="math notranslate nohighlight">
 \[\mathbf B \mathbf y_t = \mathbf Q_0 + \mathbf Q_1 \mathbf y_{t-1} + \boldsymbol\varepsilon_t\]</div>
@@ -2185,7 +2078,7 @@ Wall time: 1.48 s
 <h4>IRF in the VAR system for Air Quality<a class="headerlink" href="#irf-in-the-var-system-for-air-quality" title="Permalink to this headline">¶</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(y_{1,t}\)</span>, <span class="math notranslate nohighlight">\(y_{2,t}\)</span> and <span class="math notranslate nohighlight">\(y_{3,t}\)</span> be the time series corresponding to CO signal, NO2 signal, and RH signal, respectively. Consider the moving average representation of the system shown below:</p>
 <p>Let
-<img src="irf_eq.png" style="width: 350px;"/></p>
+<img alt="../_images/irf_eq.png" src="../_images/irf_eq.png" /></p>
 <p>Suppose <span class="math notranslate nohighlight">\(u_1\)</span> in the first equation increases by a value of one standard deviation.</p>
 <ul class="simple">
 <li><p>This shock will change <span class="math notranslate nohighlight">\(y_1\)</span> in the current as well as the future periods.</p></li>
