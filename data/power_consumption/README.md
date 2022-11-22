@@ -26,3 +26,6 @@ Attribute Information:
 8.submetering2: energy sub-metering No. 2 (in watt-hour of active energy). It corresponds to the laundry room, containing a washing-machine, a tumble-drier, a refrigerator and a light.
 
 9.submetering3: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.
+
+
+Source: Learning, U. C. I. M. (2016, August 23). Household Electric Power Consumption. Kaggle. Retrieved November 2022, from https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set?select=household_power_consumption.txt 
