@@ -17,4 +17,4 @@ This notebook will discuss:
 
 - *Climate Data* (Filename: `../data/jena_climate_2009_2016.csv"`)
 
-- *Household Electric Power Consumption* (Filename: `../data/power_consumption/household_power_consumption.txt"`) (https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set?select=household_power_consumption.txt)
+- *Household Electric Power Consumption* (Filename: `../data/power_consumption/household_power_consumption.txt"`) (Learning, U. C. I. M. (2016, August 23). Household Electric Power Consumption. Kaggle. Retrieved November 2022, from https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set?select=household_power_consumption.txt)
