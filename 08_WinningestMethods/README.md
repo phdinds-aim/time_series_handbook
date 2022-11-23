@@ -6,6 +6,8 @@ In this section, we demonstrate several of the fundamental ideas and approaches 
 ### How to use these notebooks
 Please access the notebooks in this sequence:
 
+- lightgbm_m5_introduction.ipynb
+
 - lightgbm_m5_forecasting.ipynb
 
 - lightgbm_m5_tuning.ipynb
