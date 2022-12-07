@@ -71,7 +71,7 @@ class UniTS_Toolbox:
         self.lags = lags
 
     # Function for preprocessing
-    def preprocess_dataset(self, resolution):
+    def preprocess_dataset(self, resolution, all_cols=False):
         """Perform preprocessing of the dataset
         Parameters
         ----------
@@ -114,7 +114,10 @@ class UniTS_Toolbox:
 
         # Aggregating level: "M" - Monthly, "W" - Weekly, "D" - Daily
         df = df[relevant_columns].resample(resolution).sum()
-        df_power_consumption = df['power_consumption']
+        if not all_cols:
+            df_power_consumption = df['power_consumption']
+        else:
+            df_power_consumption = df
         print("DONE: Data Preprocessing")
         return df_power_consumption
 
