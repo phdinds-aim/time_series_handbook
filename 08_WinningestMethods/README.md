@@ -14,9 +14,9 @@ Please access the notebooks in this sequence:
 
 - lightgbm_jena_forecasting.ipynb
 
-- lightgbm_power_forecasting.ipynb
+- lightgbm_power_forecasting_v2.ipynb
 
-- lightgbm_stock_forecasting.ipynb
+- lightgbm_stock_forecasting_r2.ipynb
 
 ### M5 Dataset
 The M5 dataset consists of Walmart sales data. Specifically, daily unit sales of 3,049 products, classified in 3 product categories (Hobbies, Foods, and Household), and 7 product departments in which the previously mentioned categories are disaggregated. The products are sold across 10 stores, located in 3 States (California, Texas, and Wisconsin).
