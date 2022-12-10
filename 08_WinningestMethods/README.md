@@ -14,7 +14,7 @@ Please access the notebooks in this sequence:
 
 - lightgbm_jena_forecasting.ipynb
 
-- lightgbm_power_forecasting_r2.ipynb
+- lightgbm_power_forecasting.ipynb
 
 - lightgbm_stock_forecasting_v2.ipynb
 
