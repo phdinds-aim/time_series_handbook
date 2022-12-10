@@ -4,7 +4,7 @@ This is a compiled report covering the M4 forecasting competition (100,000 diffe
 The notebook executes the first 50 timeseries per time frame
     and then graphs to include the forecasted values from the winning method (smyl)
     
-The notebook also focuses on the comparison (errors) of the top methods that were submitted for the competition.
+The notebook will implement ESRNN using class dataset (Power Consumption)
 
 Note: 
     Obtain main dataset (m4) online.
