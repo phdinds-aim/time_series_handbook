@@ -16,3 +16,5 @@ This notebook will discuss:
 - *Synthetic Data* (Filename: [`../data/wwwusage.csv`](https://raw.githubusercontent.com/selva86/datasets/master/wwwusage.csv)) 
 
 - *Climate Data* (Filename: `../data/jena_climate_2009_2016.csv"`)
+
+- *Household Electric Power Consumption* (Filename: `../data/power_consumption/household_power_consumption.txt"`) (Learning, U. C. I. M. (2016, August 23). Household Electric Power Consumption. Kaggle. Retrieved November 2022, from https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set?select=household_power_consumption.txt)
